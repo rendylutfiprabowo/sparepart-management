@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // role sales
+Route::get('test', [Controller::class, 'test']);
+
 Route::get('/', function () {
     return view('oilab.sales.index-sales');
 });
