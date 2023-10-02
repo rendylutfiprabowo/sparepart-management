@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('karyawan', function (Blueprint $table) {
+        Schema::create('sales_spareparts', function (Blueprint $table) {
             $table->id();
-            $table->string('id_karyawan');
-            $table->string('nama_karyawan');
-            $table->string('nohp_karyawan');
-            $table->timestamp('karyawan_created_at')->nullable();
-            $table->string('nip_karyawan');
-            $table->string('id_user');
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('karyawan');
+        Schema::dropIfExists('sales_spareparts');
     }
 };
