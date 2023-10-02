@@ -1,0 +1,57 @@
+.sidebar-dark .nav-item.active .nav-link {
+    color: #C52226;
+}
+
+.sidebar-dark .nav-item.active .nav-link i {
+color: #C52226;
+}
+
+
+.merah{
+background-color: #c52226;
+}
+
+.abu{
+background-color: #888888;
+}
+
+.putih{
+background-color: #FFFFFF;
+}
+
+.text-merah{ 
+color: #c52226;}
+
+.text-abu{
+color: #888888;
+}
+
+.text-putih{
+color: #FFFFF0;
+}
+
+.sidebar .nav-item:hover
+{
+background-color: #D12226;
+
+}
+
+.card-oil {
+background-image: url('/Asset/Card BG.png');
+background-size: cover;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.pdf-link
+{
+color: #888;
+}
+
+.badge-item{
+position: absolute;
+transform: scale(0.7);
+transform-origin: top right;
+right: .25rem;
+margin-top: -.25rem;
+}
+
