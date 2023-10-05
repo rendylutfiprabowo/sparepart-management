@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\managerSparepart;
 use Illuminate\Http\Request;
+use App\Models\stockSparepart;
+use App\Models\sparepart;
+use App\Models\storeSparepart;
 
-class managerSparepartController extends Controller
+class stockController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        return view(
+            'sparepart.manager.stockManager',
+            [
+                'spareparts' => $stockSparepart
+            ]
+        );
     }
 
     /**
@@ -34,7 +42,7 @@ class managerSparepartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(managerSparepart $managerSparepart)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +50,7 @@ class managerSparepartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(managerSparepart $managerSparepart)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +58,7 @@ class managerSparepartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, managerSparepart $managerSparepart)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +66,7 @@ class managerSparepartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(managerSparepart $managerSparepart)
+    public function destroy(string $id)
     {
         //
     }
