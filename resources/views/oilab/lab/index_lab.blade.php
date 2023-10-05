@@ -1,4 +1,4 @@
-@extends('template.lab')
+@extends('template.laboil')
 @section('content')
 <div>
 

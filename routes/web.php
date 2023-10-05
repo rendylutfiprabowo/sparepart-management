@@ -27,40 +27,39 @@ Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
 Route::get('/sales/oil/history/detail', [salesController::class, 'salesOrderOil']);
 
 
-
 // role lab
-// Route::get('/', function () {
-//     return view('template.lab.index_lab');
-// });
-// Route::get('/item_test', function () {
-//     return view('template.lab.item_test');
-// });
-// Route::get('/order_list', function () {
-//     return view('template.lab.order_list');
-// });
-// Route::get('/history_lab', function () {
-//     return view('template.lab.history_lab');
-// });
-// Route::get('/form_add_data', function () {
-//     return view('template.lab.form_add_data');
-// });
-// Route::get('/detailhistory_lab', function () {
-//     return view('template.lab.detailhistory_lab');
-// });
-// Route::get('/form_dga_lab', function () {
-//     return view('template.lab.form_dga_lab');
-// });
-// Route::get('/form_furan_lab', function () {
-//     return view('template.lab.form_furan_lab');
-// });
-// Route::get('/form_oa_lab', function () {
-//     return view('template.lab.form_oa_lab');
-// });
-// Route::get('/form_dga1_lab', function () {
-//     return view('template.lab.form_dga1_lab');
-// });
+Route::get('/', function () {
+    return view('oilab.lab.index_lab');
+});
+Route::get('/item_test', function () {
+    return view('oilab.lab.item_test');
+});
+Route::get('/order_list', function () {
+    return view('oilab.lab.order_list');
+});
+Route::get('/history_lab', function () {
+    return view('oilab.lab.history_lab');
+});
+Route::get('/form_add_data', function () {
+    return view('oilab.lab.form_add_data');
+});
+Route::get('/detailhistory_lab', function () {
+    return view('oilab.lab.detailhistory_lab');
+});
+Route::get('/form_dga_lab', function () {
+    return view('oilab.lab.form_dga_lab');
+});
+Route::get('/form_furan_lab', function () {
+    return view('oilab.lab.form_furan_lab');
+});
+Route::get('/form_oa_lab', function () {
+    return view('oilab.lab.form_oa_lab');
+});
+Route::get('/form_dga1_lab', function () {
+    return view('oilab.lab.form_dga1_lab');
+});
 
-//Role Manager Spareparts
+//role Manager
 Route::get('/manager_spareparts', function () {
     return view('sparepart.manager.dashboardManager');
 });
