@@ -30,9 +30,11 @@ color: #888888;
 color: #FFFFF0;
 }
 
+
+
 .sidebar .nav-item:hover
 {
-background-color: #D12226;
+/* background-color: #D12226; */
 
 }
 
