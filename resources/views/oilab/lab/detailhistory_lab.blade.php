@@ -1,4 +1,4 @@
-@extends('template.lab')
+@extends('template.laboil')
 @section('content')
 
 <p style="font-size: 23px; color: black;">REPORT TEST HISTORY</p>

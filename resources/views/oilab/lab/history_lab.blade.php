@@ -1,4 +1,4 @@
-@extends('template.lab')
+@extends('template.laboil')
 @section('content')
 
 <p style="font-size: 23px; color: black;">HISTORY HASIL PENGETESAN</p>
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>1</td>
-                            <td>0098923783</td>
+                            <td>1198923783</td>
                             <td>12 Februari 2023</td>
                             <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>

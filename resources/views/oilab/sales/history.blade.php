@@ -1,4 +1,4 @@
-@extends('template.sales')
+@extends('template.salesoil')
 @section('content')
 
 <p style="font-size: 23px; color: black;">HISTORY HASIL PENGETESAN</p>
