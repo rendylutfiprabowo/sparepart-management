@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\stockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +76,9 @@ Route::get('/detailhistory_sales', function () {
 // Route::get('/form_dga1_lab', function () {
 //     return view('template.lab.form_dga1_lab');
 // });
+
+//Role Manager Spareparts
+Route::get('/manager_spareparts', function () {
+    return view('sparepart.manager.dashboardManager');
+});
+Route::get('/stock_manager_spareparts', [stockController::class, 'index']);
