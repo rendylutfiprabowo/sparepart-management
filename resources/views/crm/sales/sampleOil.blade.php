@@ -1,4 +1,4 @@
-@extends('template.sales')
+@extends('template.salesCrm')
 @section('content')
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead class="text-center">

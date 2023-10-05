@@ -1,4 +1,4 @@
-@extends('template.salesOil')
+@extends('template.salesCrm')
 @section('content')
 <div>
 

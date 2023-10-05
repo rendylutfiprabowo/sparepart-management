@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\stockController;
+use App\Http\Controllers\salesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,32 +18,14 @@ use App\Http\Controllers\stockController;
 // role sales
 Route::get('test', [Controller::class, 'test']);
 
-Route::get('/', function () {
-    return view('oilab.sales.index-sales');
-});
+Route::get('/sales/oil', [salesController::class, 'indexOil']);
+Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
+Route::get('/sales/oil/salesorder/add', [salesController::class, 'salesOrderOil']);
+Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
+Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
+Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
+Route::get('/sales/oil/history/detail', [salesController::class, 'salesOrderOil']);
 
-Route::get('/history', function () {
-    return view('oilab.sales.history');
-});
-
-Route::get('/salesorder', function () {
-    return view('oilab.sales.salesorder');
-});
-
-Route::get('/form_sales_order', function () {
-    return view('oilab.sales.form_sales_order');
-});
-
-Route::get('/report_sales', function () {
-    return view('oilab.sales.report_sales');
-});
-
-Route::get('/sample_sales', function () {
-    return view('oilab.sales.sample_sales');
-});
-Route::get('/detailhistory_sales', function () {
-    return view('oilab.sales.detailhistory_sales');
-});
 
 
 // role lab
