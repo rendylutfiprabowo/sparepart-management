@@ -1,4 +1,4 @@
-@extends('template.lab')
+@extends('template.laboil')
 @section('content')
 <p style="font-size: 23px; color: black;">LIST ORDER</p>
 <div class="row">
@@ -44,7 +44,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                                 </div>
                                 <div>
                                     <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
