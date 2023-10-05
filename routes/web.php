@@ -18,7 +18,7 @@ use App\Http\Controllers\salesController;
 // role sales
 Route::get('test', [Controller::class, 'test']);
 
-Route::get('/sales/oil', [salesController::class, 'indexOil']);
+Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
 Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
 Route::get('/sales/oil/salesorder/add', [salesController::class, 'salesOrderOil']);
 Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
