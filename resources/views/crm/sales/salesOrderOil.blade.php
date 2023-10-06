@@ -9,7 +9,7 @@
 
     <!-- Button Create -->
     <div class="d-flex justify-content-end mx-5">
-        <a href="/form_sales_order" class="btn mb-0 btn-md shadow-bottom font-weight-bold rounded-pill text-putih align-items-center mt-5" style="background-image: url('/Asset/Card BG.png'); background-size: cover; background-repeat: no-repeat;">
+        <a href="/sales/oil/salesorder/add" class="btn mb-0 btn-md shadow-bottom font-weight-bold rounded-pill text-putih align-items-center mt-5" style="background-image: url('/Asset/Card BG.png'); background-size: cover; background-repeat: no-repeat;">
             Create <i class="fa-regular fa-square-plus ml-2 "></i>
         </a>
     </div>

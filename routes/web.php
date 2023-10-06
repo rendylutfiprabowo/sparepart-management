@@ -20,11 +20,11 @@ Route::get('test', [Controller::class, 'test']);
 
 Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
 Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
-Route::get('/sales/oil/salesorder/add', [salesController::class, 'salesOrderOil']);
+Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
 Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
 Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
 Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
-Route::get('/sales/oil/history/detail', [salesController::class, 'salesOrderOil']);
+Route::get('/sales/oil/history/detail', [salesController::class, 'detailHistoryOil']);
 
 
 // role lab

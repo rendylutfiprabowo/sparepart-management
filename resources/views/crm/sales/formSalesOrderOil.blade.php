@@ -31,7 +31,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Year Trafo</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Year Trafo">
+            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Year Trafo">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
@@ -42,7 +42,7 @@
         <div>
             <label for="exampleFormControlTextarea1" class="form-label">Input Scope</label>
         </div>
-        <div class="row mb-3 border p-3"  style="background-color: white;">
+        <div class="row mb-3 border p-3" style="background-color: white;">
             <div class="col-md-12">
                 <div class="row">
                     <div class="col">

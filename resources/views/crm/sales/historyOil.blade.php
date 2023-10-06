@@ -35,61 +35,61 @@
                         <td>1</td>
                         <td>0098923783</td>
                         <td>12 Februari 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>0998889889</td>
                         <td>02 Juni 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>0098923783</td>
                         <td>12 Februari 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>0998889889</td>
                         <td>02 Juni 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>0098923783</td>
                         <td>12 Februari 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>0998889889</td>
                         <td>02 Juni 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td>0098923783</td>
                         <td>12 Februari 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>8</td>
                         <td>0998889889</td>
                         <td>02 Juni 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>9</td>
                         <td>0098923783</td>
                         <td>12 Februari 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                     <tr>
                         <td>10</td>
                         <td>0998889889</td>
                         <td>02 Juni 2023</td>
-                        <td><a href="/detailhistory_sales" class="btn merah text-putih">detail</a></td>
+                        <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
                     </tr>
                 </tbody>
             </table>
