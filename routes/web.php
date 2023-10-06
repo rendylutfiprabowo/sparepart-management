@@ -28,7 +28,7 @@ Route::get('/sales/oil/history/detail', [salesController::class, 'salesOrderOil'
 
 
 // role lab
-Route::get('/', function () {
+Route::get('/index_lab', function () {
     return view('oilab.lab.index_lab');
 });
 Route::get('/item_test', function () {
@@ -57,6 +57,15 @@ Route::get('/form_oa_lab', function () {
 });
 Route::get('/form_dga1_lab', function () {
     return view('oilab.lab.form_dga1_lab');
+});
+Route::get('/index_adminlab', function () {
+    return view('oilab.lab.index_adminlab');
+});
+Route::get('/report_adminlab', function () {
+    return view('oilab.lab.report_adminlab');
+});
+Route::get('/history_adminlab', function () {
+    return view('oilab.lab.history_adminlab');
 });
 
 //role Manager
