@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('id_sparepart');
             $table->string('id_store');
             $table->integer('qty_stock');
+            $table->date('updated_at');
+            $table->date('created_at');
         });
     }
 

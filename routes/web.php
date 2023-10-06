@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
+use App\Http\Controllers\warehouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\salesController;
 */
 // role sales
 Route::get('test', [Controller::class, 'test']);
-
+//Oil lab sales
 Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
 Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
 Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
@@ -25,7 +26,14 @@ Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
 Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
 Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
 Route::get('/sales/oil/history/detail', [salesController::class, 'detailHistoryOil']);
-
+//Spareparts sales
+Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
+Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
+Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
+Route::get('/sales/sparepart/order/add', [salesController::class, 'createOrderSparepart']);
+Route::get('/sales/sparepart/order/{$id}', [salesController::class, 'detailOrderSparepart']);
+Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
+Route::get('/sales/sparepart/revision/{$id}', [salesController::class, 'detailRevisionSparepart']);
 
 // role lab
 Route::get('/index_lab', function () {
@@ -68,8 +76,16 @@ Route::get('/history_adminlab', function () {
     return view('oilab.lab.history_adminlab');
 });
 
-//role Manager
+//Role Manager Sparepart
 Route::get('/manager_spareparts', function () {
     return view('sparepart.manager.dashboardManager');
 });
-Route::get('/stock_manager_spareparts', [stockController::class, 'index']);
+Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
+
+
+//Role Warehouse Sparepart
+Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
+Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
+Route::post('/warehouse/stock/store', [stockController::class, 'store']);
+Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);

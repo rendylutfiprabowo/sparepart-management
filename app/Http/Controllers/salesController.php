@@ -3,28 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\stockSparepart;
 
 class salesController extends Controller
 {
     public function indexOil(){
-        return view('crm.sales.indexOil');
+        return view('crm.sales.oilab.indexOil');
     }
     public function historyOil(){
-        return view('crm.sales.historyOil');
+        return view('crm.sales.oilab.historyOil');
     }
     public function salesOrderOil(){
-        return view('crm.sales.salesOrderOil');
+        return view('crm.sales.oilab.salesOrderOil');
     }
     public function createSalesOrderOil(){
-        return view('crm.sales.formSalesOrderOil');
+        return view('crm.sales.oilab.formSalesOrderOil');
     }
     public function reportOil(){
-        return view('crm.sales.reportOil');
+        return view('crm.sales.oilab.reportOil');
     }
     public function sampleOil(){
-        return view('crm.sales.sampleOil');
+        return view('crm.sales.oilab.sampleOil');
     }
     public function detailHistoryOil(){
-        return view('crm.sales.detailHistoryOil');
+        return view('crm.sales.oilab.detailHistoryOil');
+    }
+
+    public function indexSparepart(){
+        return view('crm.sales.sparepart.indexSparepart');
+    }
+    public function stockSparepart(){
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
+
+        return view('crm.sales.sparepart.stockSparepart',[
+            'stocks'=>$stocks,
+        ]);
+    }
+    public function orderSparepart(){
+        return view('crm.sales.sparepart.orderSparepart');
+    }
+    public function createOrderSparepart(){
+        return view('crm.sales.sparepart.formsOrderSparepart');
+    }
+    public function detailOrderSparepart(){
+        return view('crm.sales.sparepart.detailOrderSparepart');
+    }
+    public function revisionSparepart(){
+        return view('crm.sales.sparepart.revisionSparepart');
+    }
+    public function detailRevisionSparepart(){
+        return view('crm.sales.sparepart.detailRevisionSparepart');
     }
 }

@@ -37,7 +37,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav putih sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-light accordion border-right" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">
@@ -55,14 +55,13 @@
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="d-none d-md-inline text-center">
-                <i id="sidebarToggle" class="fa-solid fa-chevron-left"></i>
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
         </ul>
         <!-- End of Sidebar -->
 
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
@@ -78,7 +77,6 @@
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
-
                     <!-- Dropdown - Messages -->
                     <div class="dropdown-menu dropdown-menu-right animated--grow-in p-3 shadow"
                         aria-labelledby="searchDropdown">
@@ -101,7 +99,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow"
@@ -142,7 +140,8 @@
                                     Spending Alert: We've noticed unusually high spending for your account.
                                 </div>
                             </a>
-                            <a class="dropdown-item small text-center text-gray-500" href="#">Show All Alerts</a>
+                            <a class="dropdown-item small text-center text-gray-500" href="#">Show All
+                                Alerts</a>
                         </div>
                     </li>
 
@@ -152,7 +151,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
+                            <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow"
@@ -216,7 +215,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="d-none d-lg-inline small mr-2 text-gray-600">Douglas McGee</span>
+                            <span class="d-none d-lg-inline small mr-2 text-gray-600">USERNAME</span>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                         </a>
                         <!-- Dropdown - User Information -->

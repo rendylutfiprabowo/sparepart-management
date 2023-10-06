@@ -14,7 +14,9 @@ class sparepart extends Model
 
     protected $fillable = [
         'codematerial_sparepart',
-        'nama_sparepart'
+        'nama_sparepart',
+        'spesifikasi_sparepart',
+        'satuan'
     ];
 
 
