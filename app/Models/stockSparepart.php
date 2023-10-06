@@ -12,7 +12,9 @@ class stockSparepart extends Model
     protected $table = 'stock';
 
     protected $fillable = [
+        'id_sparepart',
         'qty_stock',
+        'id_store',
         'id_stock'
     ];
 

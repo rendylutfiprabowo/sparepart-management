@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
+use App\Http\Controllers\warehouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +60,14 @@ Route::get('/form_dga1_lab', function () {
     return view('oilab.lab.form_dga1_lab');
 });
 
-//role Manager
+//Role Manager Sparepart
 Route::get('/manager_spareparts', function () {
     return view('sparepart.manager.dashboardManager');
 });
-Route::get('/stock_manager_spareparts', [stockController::class, 'index']);
+Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
+
+
+//Role Warehouse Sparepart
+Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+Route::post('/warehouse/stock/store', [stockController::class, 'store']);
+Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
