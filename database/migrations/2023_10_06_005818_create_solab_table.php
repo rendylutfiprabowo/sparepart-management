@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('solab', function (Blueprint $table) {
             $table->id();
-            $table->string('id_solab');
             $table->string('no_so_solab');
             $table->string('no_spk_solab');
             $table->string('alamat_solab');

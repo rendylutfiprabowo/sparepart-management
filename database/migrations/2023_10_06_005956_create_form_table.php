@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('form', function (Blueprint $table) {
             $table->id();
             $table->string('id_form');
-            $table->json('field_form[]');
+            $table->json('field_form');
             $table->string('id_scope');
         });
     }

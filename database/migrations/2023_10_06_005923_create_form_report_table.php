@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('form_report', function (Blueprint $table) {
             $table->id();
             $table->string('id_formreport');
-            $table->json('field_formreport[]');
-            $table->json('value_formreport[]');
+            $table->json('field_formreport');
+            $table->json('value_formreport');
             $table->string('id_solab');
             $table->string('id_lab');
         });
