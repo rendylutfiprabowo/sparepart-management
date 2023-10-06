@@ -23,26 +23,52 @@
             <div class="table-responsive">
                 <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th class="text-center" scope="col">No SO</th>
-                            <th class="text-center" scope="col">Customer</th>
-                            <th class="text-center" scope="col">Project</th>
-                            <th class="text-center" scope="col">Item Test</th>
-                            <th class="text-center" scope="col">Action</th>
-                            <th class="text-center" scope="col">Input Data</th>
+                        <tr class="text-center">
+                            <th scope="col">No SO</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Project</th>
+                            <th scope="col">Item Test</th>
+                            <th scope="col">Action</th>
+                            <th scope="col">Input Data</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Note</th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
+                    <tbody class="text-center ">
                         <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
+                            <td class="text-center align-middle">A9099885</td>
+                            <td class="text-center align-middle">Pertamina Indonesia</td>
+                            <td class="text-center align-middle">Cilacap</td>
+                            <td class="text-center align-middle">
+                                <div>DGA</div>
+                                <div>Furan</div>
+                            </td>
+                            <td class="text-center align-middle">
+                                <div>
+                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                </div>
+                                <div>
+                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                </div>
+                            </td>
+                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <td class="text-center align-middle">
+                                <div>
+                                    <strong>-</strong>
+                                </div>
+                            </td>
+                            <!-- button modal 1 -->
+                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                        <tr>
+                            <td class="text-center align-middle">A9099885</td>
+                            <td class="text-center align-middle">Pertamina Indonesia</td>
+                            <td class="text-center align-middle">Cilacap</td>
+                            <td class="text-center align-middle">
                                 <div>DGA</div>
                                 <div>Furan</div>
                                 <div>OA</div>
                             </td>
-                            <td>
+                            <td class="text-center align-middle">
                                 <div>
                                     <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                                 </div>
@@ -53,156 +79,139 @@
                                     <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                                 </div>
                             </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <td class="text-center align-middle">
+                                <div>
+                                    <strong>Checking</strong>
+                                </div>
+                            </td>
+                            <!-- button modal -->
+                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
+
                         <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
+                            <td class="text-center align-middle">A9099885</td>
+                            <td class="text-center align-middle">Pertamina Indonesia</td>
+                            <td class="text-center align-middle">Cilacap</td>
+                            <td class="text-center align-middle">
+                                <div>DGA</div>
+                            </td>
+                            <td class="text-center align-middle">
+                                <div>
+                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                </div>
+                            </td>
+                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <td class="text-center align-middle">
+                                <div>
+                                    <strong>Completed</strong>
+                                </div>
+                            </td>
+                            <!-- button modal -->
+                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal2"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                        <tr>
+                            <td class="text-center align-middle">A9099885</td>
+                            <td class="text-center align-middle">Pertamina Indonesia</td>
+                            <td class="text-center align-middle">Cilacap</td>
+                            <td class="text-center align-middle">
                                 <div>DGA</div>
                                 <div>Furan</div>
-                                <div>OA</div>
                             </td>
-                            <td>
+                            <td class="text-center align-middle">
                                 <div>
                                     <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                                 </div>
                                 <div>
                                     <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                                 </div>
+                            </td>
+                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <td class="text-center align-middle">
                                 <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                    <strong>Declined</strong>
                                 </div>
                             </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                        <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                            <!-- button modal -->
+                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal3"><i class="fa-regular fa-file fa-xl"></i></a></td>
                     </tbody>
                 </table>
+                <!-- Modal 1 -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header merah">
+                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
+                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">Terlihat kejanggalan pada diagram duval Pentagon</form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal 2 -->
+                <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header merah">
+                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
+                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action=""></form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal 3 -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header merah">
+                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
+                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action=""> disini terdapat hasil yang tidak seharusnya terjadi</form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal 3 -->
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header merah">
+                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
+                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">ada yang tidak beres</form>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
