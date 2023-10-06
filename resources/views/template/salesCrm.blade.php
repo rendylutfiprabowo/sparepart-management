@@ -10,66 +10,44 @@
         <hr class="sidebar-divider d-none d-md-block">
     </li>
 
-    <li class="nav-item text-center">
+    <li class="nav-item {{ Request::is('sales/sparepart*') ? 'active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#collapseSparePart" role="button" aria-expanded="false"
             aria-controls="collapseSparePart">
             <i class="fa-solid fa-screwdriver-wrench"></i>
-            Spare Parts
+            Spareparts
         </a>
     </li>
     <div class="collapse" id="collapseSparePart">
         <div class="">
-            <li class="nav-item {{ Request::is('sales/oil/index*') ? 'active' : '' }}">
-                <a class="nav-link pl-5" href="/sales/oil/index">
+            <li class="nav-item {{ Request::is('sales/sparepart/index*') ? 'active' : '' }}">
+                <a class="nav-link pl-5" href="/sales/sparepart/index">
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Dashboard</span></a>
             </li>
 
-            <li class="nav-item {{ Request::is('sales/oil/salesorder*') ? 'active' : '' }}">
-                <a class="nav-link pl-5" href="/sales/oil/salesorder">
+            <li class="nav-item {{ Request::is('sales/sparepart/stock*') ? 'active' : '' }}">
+                <a class="nav-link pl-5" href="/sales/sparepart/stock">
                     <i class="fa-solid fa-chart-simple"></i>
-                    <span>Sales Order</span></a>
+                    <span>Stock</span></a>
             </li>
-            <li class="nav-item {{ Request::is('sales/oil/report*') ? 'active' : '' }}">
-                <a class="nav-link pl-5" href="/sales/oil/report">
+            <li class="nav-item {{ Request::is('sales/sparepart/order*') ? 'active' : '' }}">
+                <a class="nav-link pl-5" href="/sales/sparepart/order">
                     <i class="fa-solid fa-file-circle-check"></i>
-                    <span>Report</span></a>
+                    <span>Pemesanan</span></a>
             </li>
-            <li class="nav-item {{ Request::is('sales/oil/history*') ? 'active' : '' }}">
-                <a class="nav-link pl-5" href="/sales/oil/history">
+            <li class="nav-item {{ Request::is('sales/sparepart/revision*') ? 'active' : '' }}">
+                <a class="nav-link pl-5" href="/sales/sparepart/revision">
                     <i class="fas fa-fw fa-clock-rotate-left"></i>
-                    <span>History</span></a>
+                    <span>Pengajuan Revisi</span></a>
             </li>
         </div>
     </div>
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Menu</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <div class="list-group">
-                    <a class="collapse-item {{ Request::is('sales/oil/index*') ? 'active' : '' }}" href="/sales/oil/index">
-                        <i class="fa-solid fa-chart-simple"></i> Dashboard</a>
-                </div>
 
-                <a class="collapse-item {{ Request::is('sales/oil/salesorder*') ? 'active' : '' }}"
-                    href="/sales/oil/salesorder"> <i class="fa-solid fa-address-card"></i> Sales Order</a>
-                <a class="collapse-item {{ Request::is('sales/oil/report*') ? 'active' : '' }}" href="/sales/oil/report"> <i
-                        class="fa-solid fa-file-circle-check"></i> Report</a>
-                <a class="collapse-item {{ Request::is('sales/oil/history*') ? 'active' : '' }}"
-                    href="/sales/oil/history"><i class="fas fa-fw fa-clock-rotate-left"></i> History</a>
-            </div>
-        </div>
-    </li> --}}
-
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('sales/oil*') ? 'active' : '' }}">
         <a class="nav-link collapsed" data-toggle="collapse" href="#collapseOil" role="button" aria-expanded="false"
             aria-controls="collapseOil">
             <i class="fa-solid fa-oil-can"></i>
-            Sales Oil
+            Oil Lab
         </a>
     </li>
     <div class="collapse" id="collapseOil">

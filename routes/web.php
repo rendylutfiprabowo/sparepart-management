@@ -18,7 +18,7 @@ use App\Http\Controllers\warehouseController;
 */
 // role sales
 Route::get('test', [Controller::class, 'test']);
-
+//Oil lab sales
 Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
 Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
 Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
@@ -26,7 +26,14 @@ Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
 Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
 Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
 Route::get('/sales/oil/history/detail', [salesController::class, 'detailHistoryOil']);
-
+//Spareparts sales
+Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
+Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
+Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
+Route::get('/sales/sparepart/order/add', [salesController::class, 'createOrderSparepart']);
+Route::get('/sales/sparepart/order/{$id}', [salesController::class, 'detailOrderSparepart']);
+Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
+Route::get('/sales/sparepart/revision/{$id}', [salesController::class, 'detailRevisionSparepart']);
 
 // role lab
 Route::get('/', function () {
