@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\sparepart;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
-use App\Models\sparepart;
-use App\Models\storeSparepart;
 
 class stockController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function viewStockManager()
     {
         $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart')->get();
         return view(
             'sparepart.manager.stockManager',
+            [
+                'spareparts' => $stockSparepart
+            ]
+        );
+    }
+    public function viewStockWarehouse()
+    {
+        $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        return view(
+            'sparepart.warehouse.stockWarehouse',
             [
                 'spareparts' => $stockSparepart
             ]
@@ -36,7 +45,32 @@ class stockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'codematerial_sparepart' => 'required',
+            'nama_sparepart' => 'required',
+            'spesifikasi_sparepart' => 'required',
+            'satuan' => 'required',
+
+        ]);
+
+        $sparepart = sparepart::create([
+            'codematerial_sparepart' => $validatedData['codematerial_sparepart'],
+            'nama_sparepart' => $validatedData['nama_sparepart'],
+            'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
+            'satuan' => $validatedData['satuan'],
+
+        ]);
+
+        $stock = stockSparepart::create([
+            'id_stock' => 'STK-' . rand(1, 999),
+            'id_sparepart' => $validatedData['codematerial_sparepart'],
+            'id_store' => 'STR-01',
+            'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
+            'qty_stock' => 0
+        ]);
+
+
+        return redirect('/warehouse/stock');
     }
 
     /**
