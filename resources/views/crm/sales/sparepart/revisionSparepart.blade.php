@@ -41,8 +41,7 @@
                                             <i class="fa-solid fa-file fa-lg"></i>
                                         </a>
                                     </div>
-                                    
-
+                                </div>
                             </td>
                         </tr>
                     @endforeach
