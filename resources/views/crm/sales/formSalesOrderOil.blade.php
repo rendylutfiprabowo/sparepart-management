@@ -109,7 +109,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- OA -->
                 <div class="row">
                     <div class="col">
@@ -204,7 +203,7 @@
     <!-- button back -->
     <div class="row  mb-5">
         <div class="d-flex col justify-content-start">
-            <a href="/salesorder" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+            <a href="/sales/oil/salesorder" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
                 Back
             </a>
         </div>
