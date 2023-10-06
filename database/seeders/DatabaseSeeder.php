@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'codematerial_sparepart'    => 'CR-003',
             'nama_sparepart'    => 'Oil',
             'spesifikasi_sparepart'    => '100 V',
-            'satuan'    => 'pcs'
+            'satuan'    => 'l'
         ]);
         sparepart::create([
             'codematerial_sparepart'    => 'CR-004',

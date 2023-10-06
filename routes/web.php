@@ -68,6 +68,8 @@ Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManag
 
 
 //Role Warehouse Sparepart
-Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
-Route::post('/warehouse/stock/store', [stockController::class, 'store']);
 Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
+Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
+Route::post('/warehouse/stock/store', [stockController::class, 'store']);
+Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);

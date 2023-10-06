@@ -32,12 +32,18 @@ class stockController extends Controller
         );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function addStock($id_stock, Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'qty_stock' => 'required',
+        ]);
+
+        $spareparts = stockSparepart::find($id_stock);
+        $spareparts->qty_stock += $validatedData['qty_stock'];
+
+        $spareparts->save();
+
+        return redirect('/warehouse/stock')->with('success', 'Stok berhasil ditambahkan.');
     }
 
     /**
