@@ -21,12 +21,13 @@ use Illuminate\Support\Facades\Auth;
 // role sales
 
 Auth::routes();
+Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
-Route::middleware('auth')->group(function () {
 
-    Route::get('test', [Controller::class, 'test']);
-    //Oil lab sales
+//Role Sales
+Route::middleware(['auth','sales'])->group(function () {
+    //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
     Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
@@ -42,7 +43,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/sales/sparepart/order/{$id}', [salesController::class, 'detailOrderSparepart']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{$id}', [salesController::class, 'detailRevisionSparepart']);
+});
 
+//Role Warehouse Sparepart
+Route::middleware(['auth','warehouse'])->group(function () {
+    Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
+    Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
+    Route::post('/warehouse/stock/store', [stockController::class, 'store']);
+    Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
+    Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
+});
+
+//Role Manager Sparepart
+Route::middleware(['auth','warehouse-center'])->group(function () {
+    Route::get('/manager_spareparts', function () {
+        return view('sparepart.manager.dashboardManager');
+    });
+    Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
+});
+
+Route::middleware(['auth','laboil'])->group(function () {
     // role lab
     Route::get('/index_lab', function () {
         return view('oilab.lab.index_lab');
@@ -83,22 +104,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
     });
-
-    //Role Manager Sparepart
-    Route::get('/manager_spareparts', function () {
-        return view('sparepart.manager.dashboardManager');
-    });
-    Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
-
-
-    //Role Warehouse Sparepart
-    Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
-    Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
-    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
-    Route::post('/warehouse/stock/store', [stockController::class, 'store']);
-    Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
-    Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
-
-    //Logout
-    Route::post('/logout', [loginController::class, 'logout']);
 });
+
+Route::post('/logout', [loginController::class, 'logout']);
+//Logout
