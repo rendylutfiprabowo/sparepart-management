@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\salesSparepart;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -51,6 +53,14 @@ class User extends Authenticatable
     public function sales(): HasMany
     {
         return $this->hasMany(salesSparepart::class, 'id_user', 'id_user');
+    }
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(role::class, 'id_role', 'id');
+    }
+    public function warehouse(): HasOne
+    {
+        return $this->hasOne(warehouse::class, 'id_user', 'id_user');
     }
 
     public function findForPassport($username)

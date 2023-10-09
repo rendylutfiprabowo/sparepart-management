@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class storeSparepart extends Model
 {
@@ -20,5 +21,9 @@ class storeSparepart extends Model
     public function stock(): HasMany
     {
         return $this->hasMany(stockSparepart::class, 'id_store', 'id_store');
+    }
+    public function warehouse(): HasOne
+    {
+        return $this->hasOne(warehouse::class, 'id_store', 'id_store');
     }
 }
