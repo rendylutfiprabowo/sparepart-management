@@ -9,6 +9,7 @@ use App\Models\customer;
 use App\Models\project;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+use App\Models\User;
 use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
@@ -89,7 +90,14 @@ class DatabaseSeeder extends Seeder
             'nama_store' => 'Tangerang',
             'alamat_store' => 'Jl. Serayu 1',
         ]);
-
+      
+        User::create([
+            'id_user' => 'USR-01',
+            'username' => 'Calvin',
+            'email' => 'calvin@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
 
 
         customer::create([
@@ -325,9 +333,5 @@ class DatabaseSeeder extends Seeder
             'alamat_project' => 'bandung',
             'id_customer' => '60007591',
         ]);
-
-        // $this->call([
-        //     projectseeder::class, 
-        // ]);
     }
 }
