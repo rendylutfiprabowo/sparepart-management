@@ -10835,10 +10835,10 @@ a:focus {
     white-space: nowrap;
 }
 
-.sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
+/* .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
     background-color: #eaecf4;
-}
+} */
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:active {
@@ -11783,23 +11783,27 @@ body.sidebar-toggled footer.sticky-footer {
     color: #d12226;
 }
 
-.sidebar .nav-item.active .nav-link i {
+/* .sidebar .nav-item.active .nav-link i {
     color: #d12226;
-}
+} */
 
 /* 
 .sidebar .nav-item:hover {
     background-color: #efefef;
-} */
+} 
 
-.sidebar .nav-item:hover span {
+/* .sidebar .nav-item:hover span {
     color: #d12226 !important;
 }
 
 .sidebar .nav-item:hover i {
     color: #d12226 !important;
-}
+} */
 
+/* 
 .sidebar .nav-link .nav-item.active:hover {
     color: white;
-}
+} */
+
+/* .special-hover:hover {
+    background-color: #f0f0f0 !important; /* Ganti dengan warna latar belakang yang Anda inginkan */

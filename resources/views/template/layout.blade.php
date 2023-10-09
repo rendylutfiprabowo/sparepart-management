@@ -32,43 +32,31 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-light accordion border-right" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">
                 <img src="/Asset/LogoTrafoindo.png" style="width: 100%;" alt="trafoindo logo">
-
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             @yield('sidebar')
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="d-none d-md-inline text-center">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
         </ul>
         <!-- End of Sidebar -->
 
         <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-
-            <!-- Topbar -->
             <!-- <div class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow"></div> -->
-            <nav class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow">
+            <nav class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow-sm">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -240,9 +228,7 @@
                             </a>
                         </div>
                     </li>
-
                 </ul>
-
             </nav>
             <!-- End of Topbar -->
 
