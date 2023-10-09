@@ -2,56 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\customer;
+use App\Models\salesSparepart;
+use App\Models\solab;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
+use Illuminate\Support\Facades\DB;
 
 class salesController extends Controller
 {
-    public function indexOil(){
+    public function indexOil()
+    {
         return view('crm.sales.oilab.indexOil');
     }
-    public function historyOil(){
+    public function historyOil()
+    {
         return view('crm.sales.oilab.historyOil');
     }
-    public function salesOrderOil(){
-        return view('crm.sales.oilab.salesOrderOil');
+    public function salesOrderOil()
+    {
+        // dd($salesorderoil);
+
+        $salesorderoil = solab::all()->whereNotNull('id_project');
+        // dd($salesorderoil);
+        return view('crm.sales.oilab.salesOrderOil', compact('salesorderoil'));
     }
-    public function createSalesOrderOil(){
-        return view('crm.sales.oilab.formSalesOrderOil');
+    public function createSalesOrderOil()
+    {
+        $customers = customer::all();
+        $sales = salesSparepart::find('1');
+        // dd($sales);
+        return view('crm.sales.oilab.formSalesOrderOil', compact('customers', 'sales'));
     }
-    public function reportOil(){
+    public function reportOil()
+    {
         return view('crm.sales.oilab.reportOil');
     }
-    public function sampleOil(){
+    public function sampleOil()
+    {
         return view('crm.sales.oilab.sampleOil');
     }
-    public function detailHistoryOil(){
+    public function detailHistoryOil()
+    {
         return view('crm.sales.oilab.detailHistoryOil');
     }
 
-    public function indexSparepart(){
+    public function indexSparepart()
+    {
         return view('crm.sales.sparepart.indexSparepart');
     }
-    public function stockSparepart(){
+    public function stockSparepart()
+    {
         $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
 
-        return view('crm.sales.sparepart.stockSparepart',[
-            'stocks'=>$stocks,
+        return view('crm.sales.sparepart.stockSparepart', [
+            'stocks' => $stocks,
         ]);
     }
-    public function orderSparepart(){
+    public function orderSparepart()
+    {
         return view('crm.sales.sparepart.orderSparepart');
     }
-    public function createOrderSparepart(){
+    public function createOrderSparepart()
+    {
         return view('crm.sales.sparepart.formsOrderSparepart');
     }
-    public function detailOrderSparepart(){
+    public function detailOrderSparepart()
+    {
         return view('crm.sales.sparepart.detailOrderSparepart');
     }
-    public function revisionSparepart(){
+    public function revisionSparepart()
+    {
         return view('crm.sales.sparepart.revisionSparepart');
     }
-    public function detailRevisionSparepart(){
+    public function detailRevisionSparepart()
+    {
         return view('crm.sales.sparepart.detailRevisionSparepart');
     }
 }

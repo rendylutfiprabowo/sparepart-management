@@ -19,7 +19,11 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Customer Name">
+            <select class="form-control" id="exampleFormControlInput1" placeholder="Enter Customer Name">
+                @foreach($customers as $key)
+                <option value="{{$key['nama_customer']}}">{{$key['nama_customer']}}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Project</label>
@@ -27,7 +31,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-            <input class="form-control" type="text" placeholder="Bela" aria-label="Disabled input example" disabled>
+            <input class="form-control" type="text" placeholder="{{$sales->nama_sales}}" aria-label="Disabled input example" value="{{$sales->nama_sales}}" disabled>
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Year Trafo</label>
