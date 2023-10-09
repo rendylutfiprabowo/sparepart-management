@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\sparepart;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -87,8 +88,12 @@ class DatabaseSeeder extends Seeder
             'alamat_store' => 'Jl. Serayu 1',
         ]);
 
-        // $this->call([
-        //     projectseeder::class, 
-        // ]);
+        User::create([
+            'id_user' => 'USR-01',
+            'username' => 'Calvin',
+            'email' => 'calvin@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
     }
 }
