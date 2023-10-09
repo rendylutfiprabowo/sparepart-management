@@ -21,9 +21,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id_user',
+        'username',
         'email',
         'password',
+        'id_role'
     ];
 
     /**
@@ -49,5 +51,10 @@ class User extends Authenticatable
     public function sales(): HasMany
     {
         return $this->hasMany(salesSparepart::class, 'id_user', 'id_user');
+    }
+
+    public function findForPassport($username)
+    {
+        return $this->orWhere('email', $username)->orWhere('username', $username)->first();
     }
 }

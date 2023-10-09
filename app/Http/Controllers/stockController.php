@@ -43,6 +43,8 @@ class stockController extends Controller
 
         $spareparts->save();
 
+        session()->flash('success', 'Stock berhasil ditambahkan');
+
         return redirect('/warehouse/stock')->with('success', 'Stok berhasil ditambahkan.');
     }
 
@@ -74,9 +76,24 @@ class stockController extends Controller
             'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
             'qty_stock' => 0
         ]);
-
+        session()->flash('success', 'Stock berhasil ditambahkan');
 
         return redirect('/warehouse/stock');
+    }
+
+    public function safetyStock($id_stock, Request $request)
+    {
+        $validatedData = $request->validate([
+            'safety_stock' => 'required',
+        ]);
+
+        $spareparts = stockSparepart::find($id_stock);
+        $spareparts->safety_stock = $validatedData['safety_stock'];
+
+        $spareparts->save();
+        session()->flash('success', 'Stock berhasil ditambahkan');
+        
+        return redirect('/warehouse/stock')->with('success', 'Safety Stok berhasil diubah.');
     }
 
     /**

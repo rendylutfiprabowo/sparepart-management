@@ -15,7 +15,8 @@ class stockSparepart extends Model
         'id_sparepart',
         'qty_stock',
         'id_store',
-        'id_stock'
+        'id_stock',
+        'safety_stock'
     ];
 
     public function sparepart(): BelongsTo
@@ -25,5 +26,10 @@ class stockSparepart extends Model
     public function store_sparepart(): BelongsTo
     {
         return $this->belongsTo(storeSparepart::class, 'id_store', 'id_store');
+    }
+    public function isBelowSafetyStock()
+    {
+        if ($this->qty_stock <= $this->safety_stock)
+            return true;
     }
 }

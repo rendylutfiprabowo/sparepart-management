@@ -5,8 +5,12 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\sparepart;
+use App\Models\customer;
+use App\Models\project;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+use App\Models\User;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -86,9 +90,248 @@ class DatabaseSeeder extends Seeder
             'nama_store' => 'Tangerang',
             'alamat_store' => 'Jl. Serayu 1',
         ]);
+      
+        User::create([
+            'id_user' => 'USR-01',
+            'username' => 'Calvin',
+            'email' => 'calvin@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
 
-        // $this->call([
-        //     projectseeder::class, 
-        // ]);
+
+        customer::create([
+            'id_customer' => '60007596',
+            'nama_customer'=> 'azizi shafa asadel',
+            'phone_customer' => '0856027541982',
+            'email_customer'=> 'akucintazee@gmail.com',
+            'jenisusaha_customer'=> 'sanggar tari',
+            'id_user' => NULL,
+        ]);
+        customer::create([
+            'id_customer' => '60007510',
+            'nama_customer'=> 'shani indira natio',
+            'phone_customer' => '085602754434',
+            'email_customer'=> 'akucintashani@gmail.com',
+            'jenisusaha_customer'=> 'RM padang',
+            'id_user' => NULL,
+        ]);
+        customer::create([
+            'id_customer' => '60007522',
+            'nama_customer'=> 'adzana shaliha',
+            'phone_customer' => '085602754112',
+            'email_customer'=> 'akucintaacel@gmail.com',
+            'jenisusaha_customer'=> 'toko kue',
+            'id_user' => NULL,
+        ]);
+        customer::create([
+            'id_customer' => '60007593',
+            'nama_customer'=> 'marsha lenathea lapian',
+            'phone_customer' => '08560275222',
+            'email_customer'=> 'akucintamatcha@gmail.com',
+            'jenisusaha_customer'=> 'cosplayer',
+            'id_user' => NULL,
+        ]);
+        customer::create([
+            'id_customer' => '60007591',
+            'nama_customer'=> 'freyanashifa jayawardhana',
+            'phone_customer' => '0856027541922',
+            'email_customer'=> 'akucintafreya@gmail.com',
+            'jenisusaha_customer'=> 'pembuat komik',
+            'id_user' => NULL,
+        ]);
+
+
+        $faker = Faker::create();
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007596',
+        ]);  
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007596',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007596',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007596',
+        ]);
+         project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+            
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007522',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007510',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007510',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007510',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007591',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007591',
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007591',
+        ]);
     }
 }

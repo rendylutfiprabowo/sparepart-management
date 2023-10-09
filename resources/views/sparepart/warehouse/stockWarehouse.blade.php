@@ -25,7 +25,11 @@
                             class="fa-solid fa-plus"></i> Add Product</a>
                 </div>
             </div>
-
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
                 <thead class="text-center">
                     <tr>
@@ -50,8 +54,38 @@
                                         class="fa-regular fa-file fa-lg"></i></a>
                                 <a data-toggle="modal" data-target="#addstock-{{ $stock->id }}" class="btn btn-primary"
                                     href="/warehouse/stock/{id_sparepart}"><i class="fa-solid fa-plus"></i></a>
-                                <a class="btn btn-success" href=""><i class="fa-solid fa-shield-heart"></i></a>
+                                <a data-toggle="modal" data-target="#editsafetystock-{{ $stock->id }}"
+                                    class="btn btn-success" href="/warehouse/stock/safety-stock/{id_sparepart}"><i
+                                        class="fa-solid fa-shield-heart"></i></a>
                             </td>
+                            @if ($stock->qty_stock <= 0)
+                                <div class="alert alert-danger">
+                                    Stock{!! '<strong> ' .
+                                        $stock->sparepart->nama_sparepart .
+                                        '</strong>' .
+                                        '<strong> ' .
+                                        $stock->qty_stock .
+                                        ' ' .
+                                        $stock->sparepart->satuan .
+                                        '</strong>' !!}
+                                    abisss!!!!
+                                </div>
+                            @elseif ($stock->isBelowSafetyStock())
+                                <div class="alert alert-danger">
+                                    Stock{!! '<strong> ' .
+                                        $stock->sparepart->nama_sparepart .
+                                        '</strong>' .
+                                        ' sisa ' .
+                                        ' ' .
+                                        '<strong> ' .
+                                        $stock->qty_stock .
+                                        ' ' .
+                                        $stock->sparepart->satuan .
+                                        '</strong>' !!}
+                                    mau
+                                    abisss!!!!
+                                </div>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
@@ -187,6 +221,87 @@
                                     <div class="form-group col-md-9 mb-1">
                                         <input type="number" class="form-control" name="qty_stock"
                                             placeholder="Masukan Jumlah Stock">
+                                    </div>
+                                    <div class="form-group col-md-3 mb-1">
+                                        <input type="text" class="form-control" name="satuan"
+                                            value="{{ $stock->sparepart->satuan }}" readonly
+                                            placeholder="Masukkan Satuan">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    <!--Edit Safety Stock Modal -->
+    @foreach ($spareparts as $stock)
+        <div class="modal fade" id="editsafetystock-{{ $stock->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="editsafetystockLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header merah text-putih">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Safety Stock</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/warehouse/stock/safety-stock/{{ $stock->id }}">
+                            @csrf
+                            <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <div class="alert-title">
+                                            <h4>Whoops!</h4>
+                                        </div>
+                                        Wah Gagal
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                @if (session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+
+                                @if (session('error'))
+                                    <div class="alert alert-danger">{{ session('error') }}</div>
+                                @endif
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Code Material</label>
+                                    <input type="text" class="form-control" name="codematerial_sparepart"
+                                        value="{{ $stock->sparepart->codematerial_sparepart }}" readonly
+                                        placeholder="Masukkan Code Material">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Product Name</label>
+                                    <input type="text" class="form-control" name="nama_sparepart"
+                                        value="{{ $stock->sparepart->nama_sparepart }}" readonly
+                                        placeholder="Masukkan Nama Product">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Spesifikasi</label>
+                                    <input type="text" class="form-control" name="spesifikasi_sparepart"
+                                        value="{{ $stock->sparepart->spesifikasi_sparepart }}" readonly
+                                        placeholder="Masukkan Spesifikasi">
+                                </div>
+                                <div class="form-group mb-1">
+                                    <label class="form-label">Safety Stock</label>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-9 mb-1">
+                                        <input type="number" class="form-control" name="safety_stock"
+                                            value="{{ $stock->safety_stock }}"
+                                            placeholder="Masukan Jumlah Minimum Safety Stock">
                                     </div>
                                     <div class="form-group col-md-3 mb-1">
                                         <input type="text" class="form-control" name="satuan"
