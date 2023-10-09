@@ -29,4 +29,11 @@ class loginController extends Controller
         // Jika kedua percobaan di atas gagal, kembalikan ke halaman login
         return back()->withErrors(['email_or_username' => 'Kombinasi email/username dan kata sandi salah']);
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/login');
+    }
 }
