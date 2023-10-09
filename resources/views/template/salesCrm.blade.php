@@ -57,7 +57,6 @@
                     <i class="fa-solid fa-chart-simple"></i>
                     <span>Dashboard</span></a>
             </li>
-
             <li class="nav-item {{ Request::is('sales/oil/salesorder*') ? 'active' : '' }}">
                 <a class="nav-link pl-5" href="/sales/oil/salesorder">
                     <i class="fa-solid fa-address-card"></i>
@@ -67,6 +66,11 @@
                 <a class="nav-link pl-5" href="/sales/oil/report">
                     <i class="fa-solid fa-file-circle-check"></i>
                     <span>Report</span></a>
+            </li>
+            <li class="nav-item {{ Request::is('sales/oil/sample*') ? 'active' : '' }}">
+                <a class="nav-link pl-5" href="/sales/oil/sample">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span>Sample</span></a>
             </li>
             <li class="nav-item {{ Request::is('sales/oil/history*') ? 'active' : '' }}">
                 <a class="nav-link pl-5" href="/sales/oil/history">
