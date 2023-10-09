@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 
 class loginController extends Controller
 {
-    public function home(){
-        if (Auth::check()){
+    public function home()
+    {
+        if (Auth::check()) {
             if (Auth::user()->id_role == 1)
                 return redirect('/warehouse/stock');
             else if (Auth::user()->id_role == 2)
@@ -22,7 +23,7 @@ class loginController extends Controller
         }
         return redirect('/login');
     }
-     
+
     public function verifyLogin(Request $request)
     {
         $field = $request->input('email_or_username');
@@ -31,8 +32,10 @@ class loginController extends Controller
         // Coba login berdasarkan email
         if (Auth::attempt(['email' => $field, 'password' => $password])) {
             // Jika berhasil login berdasarkan email
-            if (Auth::user()->id_role == 1)
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
                 return redirect('/warehouse/stock');
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+                return redirect('/stock_manager_spareparts');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');
             else if (Auth::user()->id_role == 3)
@@ -43,8 +46,10 @@ class loginController extends Controller
 
         // Jika gagal login berdasarkan email, coba login berdasarkan username
         if (Auth::attempt(['username' => $field, 'password' => $password])) {
-            if (Auth::user()->id_role == 1)
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
                 return redirect('/warehouse/stock');
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+                return redirect('/stock_manager_spareparts');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');
             else if (Auth::user()->id_role == 3)
