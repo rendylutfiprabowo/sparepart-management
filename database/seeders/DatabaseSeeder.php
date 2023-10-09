@@ -86,5 +86,9 @@ class DatabaseSeeder extends Seeder
             'nama_store' => 'Tangerang',
             'alamat_store' => 'Jl. Serayu 1',
         ]);
+
+        // $this->call([
+        //     projectseeder::class, 
+        // ]);
     }
 }

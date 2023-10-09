@@ -24,4 +24,14 @@ class solab extends Model
     {
         return $this->hasMany(sample::class, 'id_sample', 'id_sample');
     }
+
+    public function project()
+    {
+        return $this->belongsTo(project::class, 'id_project', 'id_project');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(customer::class, 'id_customer', 'id_customer');
+    }
 }
