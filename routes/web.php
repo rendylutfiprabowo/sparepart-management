@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::post('/login', [loginController::class, 'verifyLogin']);
+Route::post('/logout', [loginController::class, 'logout']);
 Route::middleware('auth')->group(function () {
 
     Route::get('test', [Controller::class, 'test']);
@@ -97,4 +98,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/warehouse/stock/store', [stockController::class, 'store']);
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
+
+    //Logout
+    Route::post('/logout', [loginController::class, 'logout']);
 });
