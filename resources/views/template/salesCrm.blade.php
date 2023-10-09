@@ -47,16 +47,18 @@
         <div id="collapseOil" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu OilLab</h6>
-                <a class="collapse-item {{ Request::is('sales/oil/index') ? 'merah text-white' : '' }}"
+                <a class="collapse-item {{ Request::is('sales/oil/index*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/index"> <i class="fa-solid fa-chart-simple"></i>
                     <span>Dashboard</span></a>
-                <a class="collapse-item {{ Request::is('sales/oil/salesorder') ? 'merah text-white' : '' }}"
+                <a class="collapse-item {{ Request::is('sales/oil/salesorder*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/salesorder"><i class="fa-solid fa-cubes"></i>
-                    <span>Stock</span></a>
-                <a class="collapse-item" href="/sales/oil/report"><i class="fa-solid fa-cart-shopping"></i>
-                    <span>Pemesanan</span></a>
-                <a class="collapse-item" href="/sales/oil/history"><i class="fa-solid fa-clipboard-check"></i>
-                    <span>Pengajuan Revisi</span></a>
+                    <span>Sales Order</span></a>
+                <a class="collapse-item {{ Request::is('sales/oil/report*') ? 'merah text-white' : '' }}" href="/sales/oil/report"><i class="fa-solid fa-cart-shopping"></i>
+                    <span>Report</span></a>
+                <a class="collapse-item {{ Request::is('sales/oil/sample*') ? 'merah text-white' : '' }}" href="/sales/oil/sample"><i class="fa-solid fa-cart-shopping"></i>
+                    <span>Sample</span></a>
+                <a class="collapse-item {{ Request::is('sales/oil/history*') ? 'merah text-white' : '' }}" href="/sales/oil/history"><i class="fa-solid fa-clipboard-check"></i>
+                    <span>History</span></a>
             </div>
         </div>
     </li>
