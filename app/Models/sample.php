@@ -11,13 +11,15 @@ class sample extends Model
     use HasFactory;
     protected $table = 'sample';
 
-     protected $fillable = [
+    public $timestamps = false;
+
+    protected $fillable = [
         'id_sample',
         'jumlah_sample',
         'status_sample',
         'id_solab',
         'id_scope'
-     ];
+    ];
 
     public function solab(): BelongsTo
     {

@@ -7,10 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 
-class salesSparepart extends Model
+class sales extends Model
 {
     use HasFactory;
     protected $table = 'sales';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'id_sales',
+        'nama_sales',
+        'phone_sales',
+        'nip_sales',
+        'id_user',
+    ];
 
     public function user(): BelongsTo
     {
