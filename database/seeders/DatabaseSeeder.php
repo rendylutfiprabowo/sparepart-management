@@ -10,6 +10,7 @@ use App\Models\project;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use App\Models\User;
+use App\Models\sales;
 use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
@@ -90,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'nama_store' => 'Tangerang',
             'alamat_store' => 'Jl. Serayu 1',
         ]);
-      
+
         User::create([
             'id_user' => 'USR-01',
             'username' => 'Calvin',
@@ -123,42 +124,42 @@ class DatabaseSeeder extends Seeder
 
         customer::create([
             'id_customer' => '60007596',
-            'nama_customer'=> 'azizi shafa asadel',
+            'nama_customer' => 'azizi shafa asadel',
             'phone_customer' => '0856027541982',
-            'email_customer'=> 'akucintazee@gmail.com',
-            'jenisusaha_customer'=> 'sanggar tari',
+            'email_customer' => 'akucintazee@gmail.com',
+            'jenisusaha_customer' => 'sanggar tari',
             'id_user' => NULL,
         ]);
         customer::create([
             'id_customer' => '60007510',
-            'nama_customer'=> 'shani indira natio',
+            'nama_customer' => 'shani indira natio',
             'phone_customer' => '085602754434',
-            'email_customer'=> 'akucintashani@gmail.com',
-            'jenisusaha_customer'=> 'RM padang',
+            'email_customer' => 'akucintashani@gmail.com',
+            'jenisusaha_customer' => 'RM padang',
             'id_user' => NULL,
         ]);
         customer::create([
             'id_customer' => '60007522',
-            'nama_customer'=> 'adzana shaliha',
+            'nama_customer' => 'adzana shaliha',
             'phone_customer' => '085602754112',
-            'email_customer'=> 'akucintaacel@gmail.com',
-            'jenisusaha_customer'=> 'toko kue',
+            'email_customer' => 'akucintaacel@gmail.com',
+            'jenisusaha_customer' => 'toko kue',
             'id_user' => NULL,
         ]);
         customer::create([
             'id_customer' => '60007593',
-            'nama_customer'=> 'marsha lenathea lapian',
+            'nama_customer' => 'marsha lenathea lapian',
             'phone_customer' => '08560275222',
-            'email_customer'=> 'akucintamatcha@gmail.com',
-            'jenisusaha_customer'=> 'cosplayer',
+            'email_customer' => 'akucintamatcha@gmail.com',
+            'jenisusaha_customer' => 'cosplayer',
             'id_user' => NULL,
         ]);
         customer::create([
             'id_customer' => '60007591',
-            'nama_customer'=> 'freyanashifa jayawardhana',
+            'nama_customer' => 'freyanashifa jayawardhana',
             'phone_customer' => '0856027541922',
-            'email_customer'=> 'akucintafreya@gmail.com',
-            'jenisusaha_customer'=> 'pembuat komik',
+            'email_customer' => 'akucintafreya@gmail.com',
+            'jenisusaha_customer' => 'pembuat komik',
             'id_user' => NULL,
         ]);
 
@@ -172,15 +173,6 @@ class DatabaseSeeder extends Seeder
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
             'id_customer' => '60007596',
-        ]);  
-        project::create([
-            'id_project' => $faker->numberBetween(100, 999),
-            'nama_project' => $faker->name,
-            'namapic_project' => $faker->name,
-            'nopic_project' => '081234567890',
-            'email_project' => 'trafo@gmail.com',
-            'alamat_project' => 'bandung',
-            'id_customer' => '60007596',
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
@@ -200,14 +192,14 @@ class DatabaseSeeder extends Seeder
             'alamat_project' => 'bandung',
             'id_customer' => '60007596',
         ]);
-         project::create([
+        project::create([
             'id_project' => $faker->numberBetween(100, 999),
             'nama_project' => $faker->name,
             'namapic_project' => $faker->name,
             'nopic_project' => '081234567890',
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
-            'id_customer' => '60007593',
+            'id_customer' => '60007596',
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
@@ -235,7 +227,16 @@ class DatabaseSeeder extends Seeder
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
             'id_customer' => '60007593',
-            
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
@@ -353,6 +354,13 @@ class DatabaseSeeder extends Seeder
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
             'id_customer' => '60007591',
+        ]);
+        sales::create([
+            'id_sales' => $faker->numberBetween(100, 999),
+            'nama_sales' => $faker->name,
+            'phone_sales' => '08238927386',
+            'nip_sales' => '08238273',
+            'id_user' => '123',
         ]);
     }
 }

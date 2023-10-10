@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('id_project');
             $table->string('nama_project');
-            $table->string('namapic_project');
-            $table->string('nopic_project');
-            $table->string('email_project');
+            $table->string('namapic_project')->default(null)->nullable();
+            $table->string('nopic_project')->default(null)->nullable();
+            $table->string('email_project')->default(null)->nullable();
             $table->string('alamat_project');
             $table->string('id_customer');
         });
