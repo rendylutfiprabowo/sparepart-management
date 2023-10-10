@@ -12,6 +12,9 @@ use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use App\Models\User;
 use App\Models\sales;
+use App\Models\sample;
+use App\Models\form;
+use App\Models\scope;
 use App\Models\warehouse;
 use Faker\Factory as Faker;
 
@@ -395,6 +398,69 @@ class DatabaseSeeder extends Seeder
         ]);
         role::create([
             'nama_role' => 'Technician',
+        ]);
+
+        form::create([
+            'id_form' => '1',
+            'field_form' => json_encode([
+                'Hidrogen (H2)' => 0,
+                'Etana (C2H6)' => 0,
+                'Etilena (C2H4)' => 0,
+                'Asetilena (C2H2)' => 0,
+                'Karbon Dioksida (CO2)' => 0,
+                'Metana (CH4)' => 0,
+                'Karbon Monoksida (CO)' => 0,
+                'CO2/CO ratio' => 0
+            ]),
+            'id_scope' => '233',
+        ]);
+
+        form::create([
+            'id_form' => '2',
+            'field_form' => json_encode([
+                '5MHF' => 0,
+                '2FOL' => 0,
+                '2FAL' => 0,
+                '2ACF' => 0,
+                '5MEF' => 0,
+                'Total 2FAL' => 0,
+                'Total Furan' => 0,
+                'Estimate DP' => 0
+            ]),
+            'id_scope' => '233',
+        ]);
+
+        form::create([
+            'id_form' => '3',
+            'field_form' => json_encode([
+                'Color / Appearance' => 0,
+                'Breakdown Voltage (Dieclectric Strength)' => 0,
+                'Interfacial Tension' => 0,
+                'Total Acid Number (TAN)' => 0,
+                'Water Content' => 0,
+                'Oil Quality Index (OQIN)' => 0,
+                'Sediment & Sludge' => 0,
+                'Density' => 0,
+                'Corrosive Sulfur' => 0,
+                'Flash Point' => 0,
+            ]),
+            'id_scope' => '233',
+        ]);
+
+
+        scope::create([
+            'id_scope' => $faker->numberBetween(100, 999),
+            'nama_scope' => 'DGA',
+        ]);
+
+        scope::create([
+            'id_scope' => $faker->numberBetween(100, 999),
+            'nama_scope' => 'Furan',
+        ]);
+
+        scope::create([
+            'id_scope' => $faker->numberBetween(100, 999),
+            'nama_scope' => 'OA',
         ]);
     }
 }

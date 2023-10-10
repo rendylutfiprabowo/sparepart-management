@@ -11,6 +11,8 @@ class formReport extends Model
     use HasFactory;
     protected $table = 'form_report';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_formreport',
         'field_formreport',
@@ -19,9 +21,9 @@ class formReport extends Model
         'id_lab'
     ];
 
-    public function solab(): BelongsTo
+    public function sample(): BelongsTo
     {
-        return $this->BelongsTo(solab::class, 'id_solab', 'id_solab');
+        return $this->BelongsTo(sample::class, 'id_sample', 'id_sample');
     }
     public function lab(): BelongsTo
     {

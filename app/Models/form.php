@@ -11,6 +11,8 @@ class form extends Model
     use HasFactory;
     protected $table = 'form';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_form',
         'field_form',

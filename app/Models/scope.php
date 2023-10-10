@@ -12,6 +12,8 @@ class scope extends Model
     use HasFactory;
     protected $table = 'scope';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_scope',
         'nama_scope',
