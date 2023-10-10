@@ -1,13 +1,13 @@
 @extends('template.layout')
 @section('sidebar')
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('warehouse/dashboard*') ? 'active' : '' }}">
         <a class="nav-link" href="/warehouse/dashboard">
             <i class="fa-solid fa-chart-simple"></i>
             <span>Dashboard</span></a>
     </li>
 
     <!-- Nav Item - Report -->
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('warehouse/stock*') ? 'active' : '' }}">
         <a class="nav-link" href="/warehouse/stock">
             <i class="fa-solid fa-address-card"></i>
             <span>Stock</span></a>

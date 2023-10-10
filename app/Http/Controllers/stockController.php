@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\sparepart;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
+use App\Models\storeSparepart;
 
 class stockController extends Controller
 {
@@ -24,13 +25,28 @@ class stockController extends Controller
     public function viewStockWarehouse()
     {
         $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        $stores = storeSparepart::all();
         return view(
             'sparepart.warehouse.stockWarehouse',
             [
-                'spareparts' => $stockSparepart
+                'spareparts' => $stockSparepart,
+                'stores' => $stores
             ]
         );
     }
+    public function viewStockWarehouseToko($id_store)
+    {
+
+        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store',$id_store)->get();
+        $stores = storeSparepart::all();
+        // Mengirimkan nilai $id_store ke tampilan
+        return view('sparepart.warehouse.stockWarehouseCabang', [
+            'spareparts' => $stockSpareparts,
+            'stores' => $stores,
+            'id_store' => $id_store,
+        ]);
+    }
+
 
     public function addStock($id_stock, Request $request)
     {
@@ -92,7 +108,7 @@ class stockController extends Controller
 
         $spareparts->save();
         session()->flash('success', 'Stock berhasil ditambahkan');
-        
+
         return redirect('/warehouse/stock')->with('success', 'Safety Stok berhasil diubah.');
     }
 

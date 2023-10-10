@@ -48,12 +48,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
 
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
-    Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
-    Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
-    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
-    Route::post('/warehouse/stock/store', [stockController::class, 'store']);
-    Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
-    Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
+    Route::get('/warehouse/branch/stock', [stockController::class, 'viewStockBranchWarehouse']);
 });
 
 //Role Manager Sparepart
@@ -62,6 +57,13 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
         return view('sparepart.manager.dashboardManager');
     });
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
+    Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
+    Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
+    Route::post('/warehouse/stock/store', [stockController::class, 'store']);
+    Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
+    Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
+    Route::get('/warehouse/stock/{id_store}', [stockController::class, 'viewStockWarehouseToko']);
 });
 
 Route::middleware(['auth', 'laboil'])->group(function () {
