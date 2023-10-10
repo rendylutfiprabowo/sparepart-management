@@ -17,7 +17,8 @@
                     <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
                         @foreach ($stores as $store)
-                            <a class="dropdown-item" href="/warehouse/stock/{{$store->id_store}}">{{$store->nama_store}}</a>
+                            <a class="dropdown-item"
+                                href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
                         @endforeach
                     </div>
                 </div>

@@ -4,28 +4,10 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Warehouse</h3>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabang</h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="row">
-                <div class="dropdown mb-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        List Cabang
-                    </button>
-                    <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
-                        @foreach ($stores as $store)
-                            <a class="dropdown-item" href="/warehouse/stock/{{$store->id_store}}">{{$store->nama_store}}</a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
-                            class="fa-solid fa-plus"></i> Add Product</a>
-                </div>
-            </div>
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -35,9 +17,10 @@
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Name</th>
                         <th scope="col">Code Material</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Qty</th>
+                        <th scope="col">Spesifikasi</th>
                         <th scope="col">Branch</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -46,9 +29,10 @@
                     @foreach ($spareparts as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
                                     data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i

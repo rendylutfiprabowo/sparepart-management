@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('id_warehouse');
             $table->string('nama_warehouse');
-            $table->string('phone_warehouses');
+            $table->string('phone_warehouse');
             $table->string('id_user');
-            $table->string('id_store');
+            $table->string('id_store')->nullable();
         });
     }
 

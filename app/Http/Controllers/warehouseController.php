@@ -2,13 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\stockSparepart;
+use App\Models\storeSparepart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class warehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function viewStockBranchId()
+    {
+        Auth::User()->warehouse->id_store;
+
+        $stockSparepart = Auth::User()->warehouse->store->stock;
+        $stores = storeSparepart::all();
+        return view(
+            'sparepart.branch.stockBranchWarehouse',
+            [
+                'spareparts' => $stockSparepart,
+                'stores' => $stores
+            ]
+        );
+    }
     public function index()
     {
         return view('sparepart.warehouse.dashboardWarehouse');
