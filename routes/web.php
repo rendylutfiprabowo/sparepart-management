@@ -29,6 +29,8 @@ Route::post('/logout', [loginController::class, 'logout']);
 
 //Role Sales
 Route::middleware(['auth', 'sales'])->group(function () {
+    // Dashboard Sales CRM
+    Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
