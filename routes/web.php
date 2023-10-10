@@ -48,7 +48,8 @@ Route::middleware(['auth', 'sales'])->group(function () {
 
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
-    Route::get('/warehouse/branch/stock', [stockController::class, 'viewStockBranchWarehouse']);
+    // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
 });
 
 //Role Manager Sparepart

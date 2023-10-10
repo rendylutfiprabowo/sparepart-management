@@ -12,8 +12,10 @@ class loginController extends Controller
     public function home()
     {
         if (Auth::check()) {
-            if (Auth::user()->id_role == 1)
-                return redirect('/warehouse/stock');
+            if (Auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
+                return redirect('/warehouse/branch/stock');
+            else if (auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+                return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');
             else if (Auth::user()->id_role == 3)
@@ -34,7 +36,7 @@ class loginController extends Controller
             // Jika berhasil login berdasarkan email
             if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
                 return redirect('/warehouse/branch/stock');
-            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+            else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');

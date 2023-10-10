@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('id_store');
             $table->string('nama_store');
             $table->string('alamat_store');
-            $table->date('updated_at');
-            $table->date('created_at');
+            $table->date('updated_at')->nullable();
+            $table->date('created_at')->nullable();
         });
     }
 
