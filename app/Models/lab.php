@@ -11,6 +11,8 @@ class lab extends Model
     use HasFactory;
     protected $table = 'lab';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'id_lab',
         'nama_lab',

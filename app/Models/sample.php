@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class sample extends Model
 {
@@ -21,8 +22,8 @@ class sample extends Model
         'id_scope'
     ];
 
-    public function solab(): BelongsTo
+    public function formReport(): HasOne
     {
-        return $this->belongsTo(solab::class, 'id_solab', 'id_solab');
+        return $this->hasOne(formReport::class, 'id_form', 'id_form');
     }
 }
