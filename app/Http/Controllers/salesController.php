@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer;
-use App\Models\salesSparepart;
+use App\Models\sales;
 use App\Models\solab;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
@@ -15,10 +15,12 @@ class salesController extends Controller
     {
         return view('crm.sales.oilab.indexOil');
     }
+
     public function historyOil()
     {
         return view('crm.sales.oilab.historyOil');
     }
+
     public function salesOrderOil()
     {
         // dd($salesorderoil);
@@ -27,21 +29,30 @@ class salesController extends Controller
         // dd($salesorderoil);
         return view('crm.sales.oilab.salesOrderOil', compact('salesorderoil'));
     }
+
     public function createSalesOrderOil()
     {
         $customers = customer::all();
-        $sales = salesSparepart::find('1');
+        $sales = sales::find('1');
         // dd($sales);
         return view('crm.sales.oilab.formSalesOrderOil', compact('customers', 'sales'));
     }
+
+    public function storeformsales()
+    {
+        
+    }
+
     public function reportOil()
     {
         return view('crm.sales.oilab.reportOil');
     }
+
     public function sampleOil()
     {
         return view('crm.sales.oilab.sampleOil');
     }
+
     public function detailHistoryOil()
     {
         return view('crm.sales.oilab.detailHistoryOil');
@@ -51,6 +62,7 @@ class salesController extends Controller
     {
         return view('crm.sales.sparepart.indexSparepart');
     }
+    
     public function stockSparepart()
     {
         $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();

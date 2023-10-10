@@ -6,6 +6,7 @@ use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\solabController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
     Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
+    Route::post('/sales/oil/salesorder/add', [solabController::class, 'store']);
     Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
     Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
     Route::get('/sales/oil/history', [salesController::class, 'historyOil']);

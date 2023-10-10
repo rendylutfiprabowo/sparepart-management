@@ -11,6 +11,8 @@ class solab extends Model
     use HasFactory;
     protected $table = 'solab';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'no_so_solab',
         'no_spk_solab',
