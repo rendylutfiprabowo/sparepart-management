@@ -3,25 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\stockSparepart;
+use App\Models\storeSparepart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class warehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function viewStockBranch($id_store)
+    public function viewStockBranchId()
     {
-        $stockBranch = StockSparepart::with('sparepart', 'store_sparepart')
-            ->whereHas('store_sparepart', function ($query) use ($id_store) {
-                $query->where('store_id', $id_store);
-            })
-            ->get();
+        Auth::User()->warehouse->id_store;
 
+        $stockSparepart = Auth::User()->warehouse->store->stock;
+        $stores = storeSparepart::all();
         return view(
-            'sparepart.warehouse.stockWarehouse',
+            'sparepart.branch.stockBranchWarehouse',
             [
-                'spareparts' => $stockBranch
+                'spareparts' => $stockSparepart,
+                'stores' => $stores
             ]
         );
     }

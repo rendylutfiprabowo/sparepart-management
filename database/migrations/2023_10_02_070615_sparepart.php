@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('codematerial_sparepart');
             $table->string('spesifikasi_sparepart');
             $table->string('satuan');
-            $table->date('updated_at');
-            $table->date('created_at');
+            $table->date('updated_at')->nullable();
+            $table->date('created_at')->nullable();
         });
     }
 
