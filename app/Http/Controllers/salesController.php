@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class salesController extends Controller
 {
+    // ================ OIL LAB ============================
     public function indexOil()
     {
         return view('crm.sales.oilab.indexOil');
@@ -47,6 +48,8 @@ class salesController extends Controller
         return view('crm.sales.oilab.detailHistoryOil');
     }
 
+    // ================ SPAREPARTS ============================
+
     public function indexSparepart()
     {
         return view('crm.sales.sparepart.indexSparepart');
@@ -78,5 +81,12 @@ class salesController extends Controller
     public function detailRevisionSparepart()
     {
         return view('crm.sales.sparepart.detailRevisionSparepart');
+    }
+
+    // ================ DASHBOARD SALES CRM ============================
+
+    public function dashboardSalesCrm()
+    {
+        return view('crm.sales.dashboard.salesIndexCrm');
     }
 }
