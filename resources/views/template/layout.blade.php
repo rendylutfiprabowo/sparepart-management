@@ -14,9 +14,7 @@
     <!-- Custom fonts for this template-->
 
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
@@ -28,6 +26,9 @@
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- library select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
 
 </head>
 
@@ -66,12 +67,10 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right animated--grow-in p-3 shadow"
-                        aria-labelledby="searchDropdown">
+                    <div class="dropdown-menu dropdown-menu-right animated--grow-in p-3 shadow" aria-labelledby="searchDropdown">
                         <form class="form-inline w-100 navbar-search mr-auto">
                             <div class="input-group">
-                                <input type="text" class="form-control bg-light small border-0"
-                                    placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                <input type="text" class="form-control bg-light small border-0" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="button">
                                         <i class="fas fa-search fa-sm"></i>
@@ -83,15 +82,13 @@
 
                     <!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Alerts -->
                             <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow"
-                            aria-labelledby="alertsDropdown">
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow" aria-labelledby="alertsDropdown">
                             <h6 class="dropdown-header">
                                 Alerts Center
                             </h6>
@@ -135,15 +132,13 @@
 
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-envelope fa-fw"></i>
                             <!-- Counter - Messages -->
                             <span class="badge badge-danger badge-counter">0</span>
                         </a>
                         <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow"
-                            aria-labelledby="messagesDropdown">
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right animated--grow-in shadow" aria-labelledby="messagesDropdown">
                             <h6 class="dropdown-header">
                                 Message Center
                             </h6>
@@ -182,8 +177,7 @@
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="...">
+                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div>
@@ -200,7 +194,11 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
+                    <li class="nav-item dropdown no-arrow">                    
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="d-none d-lg-inline small mr-2 text-gray-600">USERNAME</span>
+                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="d-none d-lg-inline mr-3 text-gray-600">{{ Auth::user()->username }}</span>
@@ -208,8 +206,7 @@
                                 alt="avatars">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right animated--grow-in shadow"
-                            aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right animated--grow-in shadow" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
@@ -223,9 +220,7 @@
                                 Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                    class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
                         </div>
                         <form id="logout-form" action="/logout" method="POST" style="display: none;">
                             @csrf
@@ -262,8 +257,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -280,6 +274,19 @@
             </div>
         </div>
     </div>
+
+    <!-- Add jQuery before the Select2 JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" defer></script>
+    <script>
+        // Initialize Select2 on your select element
+        $(document).ready(function() {
+            $('#select-customers').select2({
+                theme: 'modern'
+            });
+        });
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>
