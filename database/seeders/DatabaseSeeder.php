@@ -386,7 +386,7 @@ class DatabaseSeeder extends Seeder
             'phone_sales' => '08238927386',
             'nip_sales' => '08238273',
             'id_user' => '123',
-
+        ]);
         role::create([
             'nama_role' => 'Warehouse',
         ]);
@@ -412,7 +412,7 @@ class DatabaseSeeder extends Seeder
                 'Karbon Monoksida (CO)' => 0,
                 'CO2/CO ratio' => 0
             ]),
-            'id_scope' => '233',
+            'id_scope' => '220',
         ]);
 
         form::create([
@@ -427,7 +427,7 @@ class DatabaseSeeder extends Seeder
                 'Total Furan' => 0,
                 'Estimate DP' => 0
             ]),
-            'id_scope' => '233',
+            'id_scope' => '842',
         ]);
 
         form::create([
@@ -441,25 +441,26 @@ class DatabaseSeeder extends Seeder
                 'Oil Quality Index (OQIN)' => 0,
                 'Sediment & Sludge' => 0,
                 'Density' => 0,
+                'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
             ]),
-            'id_scope' => '233',
+            'id_scope' => '399',
         ]);
 
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '220',
             'nama_scope' => 'DGA',
         ]);
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '842',
             'nama_scope' => 'Furan',
         ]);
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '399',
             'nama_scope' => 'OA',
         ]);
     }
