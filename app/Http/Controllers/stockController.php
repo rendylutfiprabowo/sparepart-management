@@ -37,13 +37,14 @@ class stockController extends Controller
     public function viewStockWarehouseToko($id_store)
     {
 
-        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store',$id_store)->get();
+        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store)->get();
         $stores = storeSparepart::all();
         // Mengirimkan nilai $id_store ke tampilan
         return view('sparepart.warehouse.stockWarehouseCabang', [
             'spareparts' => $stockSpareparts,
             'stores' => $stores,
             'id_store' => $id_store,
+            'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
         ]);
     }
 
