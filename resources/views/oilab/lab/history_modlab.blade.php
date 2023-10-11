@@ -1,4 +1,4 @@
-@extends('template.adminoillab')
+@extends('template.modoillab')
 @section('content')
 
 <p style="font-size: 23px; color: black;">HISTORY HASIL PENGETESAN</p>
@@ -36,37 +36,37 @@
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         <tr>
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/detailhistory_modlab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                     </tbody>
                 </table>
