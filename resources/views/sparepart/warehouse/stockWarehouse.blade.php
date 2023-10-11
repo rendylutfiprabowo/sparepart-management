@@ -17,7 +17,8 @@
                     <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
                         @foreach ($stores as $store)
-                            <a class="dropdown-item" href="/warehouse/stock/{{$store->id_store}}">{{$store->nama_store}}</a>
+                            <a class="dropdown-item"
+                                href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
                         @endforeach
                     </div>
                 </div>
@@ -50,6 +51,7 @@
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
+                            {{-- @dd($stock->sparepart) --}}
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
                                     data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i
                                         class="fa-regular fa-file fa-lg"></i></a>
@@ -82,7 +84,11 @@
                                         $stock->qty_stock .
                                         ' ' .
                                         $stock->sparepart->satuan .
-                                        '</strong>' !!}
+                                        '</strong>' .
+                                        ' di ' .
+                                        '<strong> ' .
+                                        $stock->store_sparepart->nama_store .
+                                        '</strong> ' !!}
                                     mau
                                     abisss!!!!
                                 </div>
