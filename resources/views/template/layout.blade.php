@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard</title>
+    <title>CRM - @yield('title')</title>
 
     <!-- Custom fonts for this template-->
 
@@ -94,7 +94,7 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="mr-3">
-                                    <div class="icon-circle bg-primary">
+                                    <div class="icon-circle merah">
                                         <i class="fas fa-file-alt text-white"></i>
                                     </div>
                                 </div>
@@ -194,10 +194,16 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
+                    <li class="nav-item dropdown no-arrow">                    
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="d-none d-lg-inline small mr-2 text-gray-600">USERNAME</span>
                             <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="d-none d-lg-inline mr-3 text-gray-600">{{ Auth::user()->username }}</span>
+                            <img class="img-profile rounded-circle" src="{{ asset('Asset/sales-image.jpg') }}"
+                                alt="avatars">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right animated--grow-in shadow" aria-labelledby="userDropdown">

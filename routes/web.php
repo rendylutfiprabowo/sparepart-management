@@ -22,12 +22,15 @@ use Illuminate\Support\Facades\Auth;
 // role sales
 
 Auth::routes();
+Route::get('/', [loginController::class, 'home']);
 Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
 
 //Role Sales
-Route::middleware(['auth','sales'])->group(function () {
+Route::middleware(['auth', 'sales'])->group(function () {
+    // Dashboard Sales CRM
+    Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -48,24 +51,27 @@ Route::middleware(['auth','sales'])->group(function () {
 });
 
 //Role Warehouse Sparepart
-Route::middleware(['auth','warehouse'])->group(function () {
+Route::middleware(['auth', 'warehouse'])->group(function () {
+    // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
+});
+
+//Role Manager Sparepart
+Route::middleware(['auth', 'warehouse-center'])->group(function () {
+    Route::get('/manager_spareparts', function () {
+        return view('sparepart.manager.dashboardManager');
+    });
+    Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
     Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
     Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
     Route::post('/warehouse/stock/store', [stockController::class, 'store']);
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
+    Route::get('/warehouse/stock/{id_store}', [stockController::class, 'viewStockWarehouseToko']);
 });
 
-//Role Manager Sparepart
-Route::middleware(['auth','warehouse-center'])->group(function () {
-    Route::get('/manager_spareparts', function () {
-        return view('sparepart.manager.dashboardManager');
-    });
-    Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
-});
-
-Route::middleware(['auth','laboil'])->group(function () {
+Route::middleware(['auth', 'laboil'])->group(function () {
     // role lab
     Route::get('/index_lab', function () {
         return view('oilab.lab.index_lab');

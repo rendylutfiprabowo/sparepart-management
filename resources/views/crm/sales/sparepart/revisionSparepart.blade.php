@@ -1,4 +1,5 @@
 @extends('template.salesCrm')
+@section('title', 'Revision SpareParts')
 @section('content')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">

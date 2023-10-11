@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\role;
 use Illuminate\Database\Seeder;
 use App\Models\sparepart;
 use App\Models\customer;
@@ -14,6 +15,7 @@ use App\Models\sales;
 use App\Models\sample;
 use App\Models\form;
 use App\Models\scope;
+use App\Models\warehouse;
 use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
@@ -104,6 +106,13 @@ class DatabaseSeeder extends Seeder
         ]);
         User::create([
             'id_user' => 'USR-02',
+            'username' => 'Maryam',
+            'email' => 'maryamn@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
+        User::create([
+            'id_user' => 'USR-02',
             'username' => 'maulana',
             'email' => 'maul@mail.com',
             'password' => bcrypt('123456789'),
@@ -122,6 +131,19 @@ class DatabaseSeeder extends Seeder
             'email' => 'lang@mail.com',
             'password' => bcrypt('123456789'),
             'id_role' => '4'
+        ]);
+        warehouse::create([
+            'id_warehouse' => 'WAR-001',
+            'nama_warehouse' => 'Calvin',
+            'phone_warehouse' => '081218854',
+            'id_user' => 'USR-01',
+            'id_store' => 'STR-01',
+        ]);
+        warehouse::create([
+            'id_warehouse' => 'WAR-002',
+            'nama_warehouse' => 'Maryam',
+            'phone_warehouse' => '00444558',
+            'id_user' => '1',
         ]);
 
 
@@ -364,6 +386,18 @@ class DatabaseSeeder extends Seeder
             'phone_sales' => '08238927386',
             'nip_sales' => '08238273',
             'id_user' => '123',
+
+        role::create([
+            'nama_role' => 'Warehouse',
+        ]);
+        role::create([
+            'nama_role' => 'CRM',
+        ]);
+        role::create([
+            'nama_role' => 'Laboil',
+        ]);
+        role::create([
+            'nama_role' => 'Technician',
         ]);
 
         form::create([
