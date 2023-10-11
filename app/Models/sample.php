@@ -18,12 +18,16 @@ class sample extends Model
         'id_sample',
         'jumlah_sample',
         'status_sample',
-        'id_solab',
+        'no_so_solab',
         'id_scope'
     ];
 
     public function formReport(): HasOne
     {
         return $this->hasOne(formReport::class, 'id_form', 'id_form');
+    }
+    public function soLab(): BelongsTo
+    {
+        return $this->belongsTo(solab::class, 'no_so_solab', 'np_so_solab');
     }
 }

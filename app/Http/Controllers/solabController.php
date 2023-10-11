@@ -8,6 +8,8 @@ use App\Models\sales;
 use App\Models\sample;
 use App\Models\solab;
 use App\Models\project;
+use App\Models\formReport;
+use App\Models\form;
 use Faker\Factory as Faker;
 
 class solabController extends Controller
@@ -22,11 +24,22 @@ class solabController extends Controller
             "id_sales" => "required",
             "tahun_solab" => "required",
             "alamat_project" => "required",
+            "dga_check" => "sometimes",
             "dga_qty" => "required",
+            "furan_check" => "sometimes",
             "furan_qty" => "required",
+            "bdv_check" => "sometimes",
+            "ift_check" => "sometimes",
+            "wo_check" => "sometimes",
+            "tan_check" => "sometimes",
+            "sns_check" => "sometimes",
+            "cs_check" => "sometimes",
+            "fp_check" => "sometimes",
+            "pcb_check" => "sometimes",
+            "color_check" => "sometimes",
+            "density_check" => "sometimes",
             "oa_qty" => "required",
         ]);
-        // dd($validated);
         $faker = Faker::create();
         if (!(Project::where('id_customer', $validated['id_customer'])
             ->where('nama_project', $validated['nama_project'])
@@ -36,18 +49,11 @@ class solabController extends Controller
             $project->id_project = $faker->numberBetween(100, 999);
             $generatedNumber = $faker->numberBetween(100, 999);
 
-            // Check if the generated number already exists in the database
             $existingProject = Project::where('id_project', $generatedNumber)->first();
-
-            if ($existingProject) {
-                // The generated number already exists, handle this case (e.g., generate a new number).
-                // You can generate a new number and check again or handle it as needed.
-                // For example:
-                $generatedNumber = $faker->numberBetween(100, 999);
-            } else {
-                // The generated number is unique and can be assigned to $project->id_project.
-                $project->id_project = $generatedNumber;
+            while ($existingProject) {
+                $existingProject = Project::where('id_project', $generatedNumber)->first();
             }
+            $project->id_project = $generatedNumber;
 
             $project->id_customer = $validated['id_customer'];
             $project->nama_project = $validated['nama_project'];
@@ -68,32 +74,91 @@ class solabController extends Controller
         $solab->alamat_solab = $validated['alamat_project'];
         $solab->save();
 
+        //dga
         $dga = new sample();
-        $dga->id_sample = '12333';
+        $dga->id_sample = $faker->numberBetween(100, 999);;
         $dga->jumlah_sample = $validated['dga_qty'];
-        $dga->status_sample = $validated['dga_qty'];
-        $dga->id_solab = '12';
-        $dga->id_scope = '2';
+        $dga->status_sample = 'false';
+        $dga->id_solab = $solab->no_so_solab;
+        $dga->id_scope = '220';
         $dga->save();
 
+        $form_dga = new formReport();
+        $form_dga->id_formreport = $dga->id_sample.'-220';
+        $form_dga->field_formreport = form::where('id_scope','220')->get()->first()->field_form;
+        $form_dga->value_formreport = $form_dga->field_formreport;
+        $form_dga->id_sample = $dga->id_sample;
+        $form_dga->id_lab = '1';
+        $form_dga->save();
+
+        //furan
         $furan = new sample();
-        $furan->id_sample = '12333';
+        $furan->id_sample = $faker->numberBetween(100, 999);;
         $furan->jumlah_sample = $validated['furan_qty'];
-        $furan->status_sample = $validated['furan_qty'];
-        $furan->id_solab = '12';
-        $furan->id_scope = '2';
+        $furan->status_sample = 'false';
+        $furan->id_solab = $solab->no_so_solab;
+        $furan->id_scope = '842';
         $furan->save();
 
+        $form_furan = new formReport();
+        $form_furan->id_formreport = $furan->id_sample.'-842';
+        $form_furan->field_formreport = form::where('id_scope','842')->get()->first()->field_form;
+        $form_furan->value_formreport = $form_furan->field_formreport;
+        $form_furan->id_sample = $furan->id_sample;
+        $form_furan->id_lab = '1';
+        $form_furan->save();
+
+        //oa
         $oa = new sample();
-        $oa->id_sample = '12333';
+        $oa->id_sample = $faker->numberBetween(100, 999);;
         $oa->jumlah_sample = $validated['oa_qty'];
-        $oa->status_sample = $validated['oa_qty'];
-        $oa->id_solab = '12';
-        $oa->id_scope = '2';
+        $oa->status_sample = 'false';
+        $oa->id_solab = $solab->no_so_solab;
+        $oa->id_scope = '399';
         $oa->save();
 
-        $salesorderoil = solab::all()->whereNotNull('id_project');
-        // dd($salesorderoil);
-        return view('crm.sales.oilab.salesOrderOil', compact('salesorderoil'));
+        $form_oa = new formReport();
+        $form_oa->id_formreport = $oa->id_sample.'-399';
+
+        $data = (array)json_decode(form::where('id_scope','399')->get()->first()->field_form);
+        // @dd($data);
+        if(isset($validated['bdv_check'])){
+            $data['Breakdown Voltage (Dieclectric Strength)'] = '1';
+        };
+        if(isset($validated['ift_check'])){
+            $data['Interfacial Tension'] = '1';
+        };
+        if(isset($validated['wo_check'])){
+            $data['Water Content'] = '1';
+        };
+        if(isset($validated['tan_check'])){
+            $data['Total Acid Number (TAN)'] = '1';
+        };
+        if(isset($validated['sns_check'])){
+            $data['Sediment & Sludge'] = '1';
+        };
+        if(isset($validated['cs_check'])){
+            $data['Corrosive Sulfur'] = '1';
+        };
+        if(isset($validated['fp_check'])){
+            $data['Flash Point'] = '1';
+        };
+        if(isset($validated['pcb_check'])){
+            $data['PCB'] = '1';
+        };
+        if(isset($validated['color_check'])){
+            $data['Color / Appreance'] = '1';
+        };
+        if(isset($validated['density_check'])){
+            $data['Density'] = '1';
+        };
+
+        $form_oa->field_formreport = json_encode($data);
+        $form_oa->value_formreport = $form_oa->field_formreport;
+        $form_oa->id_sample = $oa->id_sample;
+        $form_oa->id_lab = '1';
+        $form_oa->save();
+
+        return redirect('sales/oil/salesorder');
     }
 }
