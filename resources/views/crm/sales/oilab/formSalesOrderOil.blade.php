@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-                <select class="form-control" id="exampleFormControlInput1" placeholder="Enter Customer Name" name="id_customer">
+                <select class="form-control" id="select-customers" placeholder="Enter Customer Name" name="id_customer">
                     @foreach($customers as $key)
                     <option value="{{$key['id_customer']}}">{{$key['nama_customer']}}</option>
                     @endforeach

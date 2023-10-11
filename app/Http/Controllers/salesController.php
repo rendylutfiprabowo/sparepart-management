@@ -23,10 +23,8 @@ class salesController extends Controller
 
     public function salesOrderOil()
     {
-        // dd($salesorderoil);
 
         $salesorderoil = solab::all()->whereNotNull('id_project');
-        // dd($salesorderoil);
         return view('crm.sales.oilab.salesOrderOil', compact('salesorderoil'));
     }
 
