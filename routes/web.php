@@ -105,6 +105,27 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
     });
+    Route::get('/detailhistory_adminlab', function () {
+        return view('oilab.lab.detailhistory_adminlab');
+    });
+    Route::get('/reviewreport_adminlab', function () {
+        return view('oilab.lab.reviewreport_adminlab');
+    });
+    Route::get('/index_modlab', function () {
+        return view('oilab.lab.index_modlab');
+    });
+    Route::get('/report_modlab', function () {
+        return view('oilab.lab.report_modlab');
+    });
+    Route::get('/reviewreport_modlab', function () {
+        return view('oilab.lab.reviewreport_modlab');
+    });
+    Route::get('/history_modlab', function () {
+        return view('oilab.lab.history_modlab');
+    });
+    Route::get('/detailhistory_modlab', function () {
+        return view('oilab.lab.detailhistory_modlab');
+    });
 });
 
 Route::post('/logout', [loginController::class, 'logout']);

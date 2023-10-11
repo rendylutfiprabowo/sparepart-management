@@ -1,4 +1,4 @@
-@extends('template.adminoillab')
+@extends('template.modoillab')
 @section('content')
 <p style="font-size: 23px; color: black;">Report Order</p>
 <div class="row">
@@ -30,6 +30,7 @@
                             <th class="text-center" scope="col">Pic</th>
                             <th class="text-center" scope="col">Item Test</th>
                             <th class="text-center" scope="col">Action</th>
+                            <!-- <th class="text-center" scope="col">Notes</th> -->
                             <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
@@ -51,7 +52,7 @@
                                 </div>
                             </td>
                             <td class="text-center align-middle">
-                                <div><a href="/reviewreport_adminlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
+                                <div><a href="/reviewreport_modlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
                             </td>
                             <td class="text-center align-middle">
                                 <strong>Inspection</strong>
@@ -72,7 +73,7 @@
                                 </div>
                             </td>
                             <td class="text-center align-middle">
-                                <div><a href="/reviewreport_adminlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
+                                <div><a href="/reviewreport_modlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
                             </td>
                             <td class="text-center align-middle">
                                 <strong>Inspection</strong>
