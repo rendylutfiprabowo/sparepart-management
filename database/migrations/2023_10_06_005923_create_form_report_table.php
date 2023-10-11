@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('id_formreport');
             $table->json('field_formreport');
             $table->json('value_formreport');
-            $table->string('id_solab');
+            $table->string('id_sample');
             $table->string('id_lab');
         });
     }
