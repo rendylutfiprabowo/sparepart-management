@@ -39,7 +39,6 @@ class salesController extends Controller
 
     public function storeformsales()
     {
-        
     }
 
     public function reportOil()
@@ -63,7 +62,7 @@ class salesController extends Controller
     {
         return view('crm.sales.sparepart.indexSparepart');
     }
-    
+
     public function stockSparepart()
     {
         $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
@@ -93,10 +92,17 @@ class salesController extends Controller
         return view('crm.sales.sparepart.detailRevisionSparepart');
     }
 
-    // ================ DASHBOARD SALES CRM ============================
+    // ================ DASHBOARD SALES CRM =======================
 
     public function dashboardSalesCrm()
     {
         return view('crm.sales.dashboard.salesIndexCrm');
+    }
+
+    // ====================== CUSTOMER =============================
+
+    public function dashboardCustomerCrm()
+    {
+        return view('crm.sales.customer.salesIndexCustomer');
     }
 }

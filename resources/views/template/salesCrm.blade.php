@@ -6,7 +6,12 @@
             Dashboard
         </a>
     </li>
-    {{-- New Dashboard SpareParts --}}
+    <li class="nav-item {{ Request::is('sales/customer/salesIndexCustomer') ? 'active' : '' }} text-center">
+        <a class="nav-link" href="/sales/customer/salesIndexCustomer" role="button" aria-expanded="false">
+            <i class="fa-solid fa-users"></i>
+            Customer
+        </a>
+    </li>
     <li class="nav-item  {{ Request::is('sales/sparepart*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSpareParts"
             aria-expanded="false" aria-controls="collapseTwo">
@@ -36,8 +41,6 @@
     <li>
         <hr class="sidebar-divider d-none d-md-block">
     </li>
-
-    {{-- New Dashboard OilLab --}}
     <li class="nav-item {{ Request::is('sales/oil*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOil" aria-expanded="false"
             aria-controls="collapseTwo">
