@@ -10760,6 +10760,8 @@ a:focus {
     color: #858796;
 }
 
+/* SIDEBARS */
+
 .sidebar {
     width: 6.5rem;
     min-height: 100vh;
@@ -11812,4 +11814,11 @@ body.sidebar-toggled footer.sticky-footer {
     background-color: #d12226;
     background-position: center;
     background-size: cover;
+}
+
+.divider-nav-vertical {
+    width: 0;
+    border-right: 1px solid #d12226;
+    height: calc(4.375rem - 2rem);
+    margin: auto 1rem;
 }

@@ -42,7 +42,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">
-                <img src="/Asset/LogoTrafoindo.png" style="width: 100%;" alt="trafoindo logo">
+                <img src="/Asset/LogoTrafoindo.png" width="70%" alt="trafoindo logo">
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -200,13 +200,14 @@
                         </div>
                     </li>
 
-                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <div class="divider-nav-vertical d-none d-sm-block merah opacity-25"></div>
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">                    
+                    <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="d-none d-lg-inline mr-3 text-merah">{{ Auth::user()->username }}</span>
+                            <span
+                                class="d-none d-lg-inline mr-3 font-weight-bold text-merah">{{ Auth::user()->username }}</span>
                             <img class="img-profile rounded-circle" src="{{ asset('Asset/sales-image.jpg') }}"
                                 alt="avatars">
                         </a>
