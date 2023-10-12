@@ -4,10 +4,29 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabang</h3>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Warehouse</h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
+            <div class="row">
+                <div class="dropdown mb-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        List Cabang
+                    </button>
+                    <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
+                        @foreach ($stores as $store)
+                            <a class="dropdown-item"
+                                href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
+                            class="fa-solid fa-plus"></i> Add Product</a>
+                </div>
+            </div>
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
