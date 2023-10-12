@@ -25,67 +25,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        stockSparepart::create([
-            'id_stock'    => 'STK-01',
-            'id_sparepart'    => 'CR-001',
-            'id_store'    => 'STR-01',
-            'qty_stock'    => 100,
-
-        ]);
-        stockSparepart::create([
-            'id_stock'    => 'STK-02',
-            'id_sparepart'    => 'CR-002',
-            'id_store'    => 'STR-01',
-            'qty_stock'    => 20,
-        ]);
-        stockSparepart::create([
-            'id_stock'    => 'STK-03',
-            'id_sparepart'    => 'CR-003',
-            'id_store'    => 'STR-01',
-            'qty_stock'    => 10,
-        ]);
-        stockSparepart::create([
-            'id_stock'    => 'STK-04',
-            'id_sparepart'    => 'CR-001',
-            'id_store'    => 'STR-02',
-            'qty_stock'    => 100,
-        ]);
-        stockSparepart::create([
-            'id_stock'    => 'STK-05',
-            'id_sparepart'    => 'CR-002',
-            'id_store'    => 'STR-02',
-            'qty_stock'    => 300,
-        ]);
-        stockSparepart::create([
-            'id_stock'    => 'STK-06',
-            'id_sparepart'    => 'CR-004',
-            'id_store'    => 'STR-02',
-            'qty_stock'    => 300,
-        ]);
-        sparepart::create([
-            'codematerial_sparepart'    => 'CR-001',
-            'nama_sparepart'    => 'Bushing',
-            'spesifikasi_sparepart'    => '250 A',
-            'satuan'    => 'pcs'
-        ]);
-        sparepart::create([
-            'codematerial_sparepart'    => 'CR-002',
-            'nama_sparepart'    => 'Proteksi ISD',
-            'spesifikasi_sparepart'    => ' 30 V',
-            'satuan'    => 'pcs'
-        ]);
-        sparepart::create([
-            'codematerial_sparepart'    => 'CR-003',
-            'nama_sparepart'    => 'Oil',
-            'spesifikasi_sparepart'    => '100 V',
-            'satuan'    => 'l'
-        ]);
-        sparepart::create([
-            'codematerial_sparepart'    => 'CR-004',
-            'nama_sparepart'    => 'Seal Bushing',
-            'spesifikasi_sparepart'    => ' 30 V',
-            'satuan'    => 'pcs'
-        ]);
         storeSparepart::create([
             'id_store'    => 'STR-01',
             'nama_store' => 'Surabaya',
@@ -386,7 +325,7 @@ class DatabaseSeeder extends Seeder
             'phone_sales' => '08238927386',
             'nip_sales' => '08238273',
             'id_user' => '123',
-
+        ]);
         role::create([
             'nama_role' => 'Warehouse',
         ]);
@@ -412,7 +351,7 @@ class DatabaseSeeder extends Seeder
                 'Karbon Monoksida (CO)' => 0,
                 'CO2/CO ratio' => 0
             ]),
-            'id_scope' => '233',
+            'id_scope' => '220',
         ]);
 
         form::create([
@@ -427,7 +366,7 @@ class DatabaseSeeder extends Seeder
                 'Total Furan' => 0,
                 'Estimate DP' => 0
             ]),
-            'id_scope' => '233',
+            'id_scope' => '842',
         ]);
 
         form::create([
@@ -441,25 +380,26 @@ class DatabaseSeeder extends Seeder
                 'Oil Quality Index (OQIN)' => 0,
                 'Sediment & Sludge' => 0,
                 'Density' => 0,
+                'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
             ]),
-            'id_scope' => '233',
+            'id_scope' => '399',
         ]);
 
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '220',
             'nama_scope' => 'DGA',
         ]);
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '842',
             'nama_scope' => 'Furan',
         ]);
 
         scope::create([
-            'id_scope' => $faker->numberBetween(100, 999),
+            'id_scope' => '399',
             'nama_scope' => 'OA',
         ]);
     }

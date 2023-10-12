@@ -17,7 +17,7 @@ class formReport extends Model
         'id_formreport',
         'field_formreport',
         'value_formreport',
-        'id_solab',
+        'id_sample',
         'id_lab'
     ];
 

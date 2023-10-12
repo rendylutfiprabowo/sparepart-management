@@ -22,6 +22,14 @@
         body {
             background-image: url('/Asset/powerindo.jpg');
             background-size: cover;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
     </style>
 </head>
@@ -36,7 +44,7 @@
                             <div class="col-lg-12">
                                 <div class="p-4">
                                     <div class="text-center">
-                                        <h1 class="mb-4 text-gray-800 font-weight-bold">Welcome To <span
+                                        <h1 class="font-weight-bold mb-4 text-gray-800">Welcome To <span
                                                 class="text-danger">Trafoindo</span> Solution System
                                         </h1>
                                     </div>
