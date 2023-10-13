@@ -14,8 +14,8 @@
     </li>
 
     <!-- Nav Item - Report -->
-    <li class="nav-item">
-        <a class="nav-link" href="/">
+    <li class="nav-item {{ Request::is('warehouse/listspk*') ? 'active' : '' }}">
+        <a class="nav-link" href="/warehouse/listspk">
             <i class="fa-solid fa-file-circle-check"></i>
             <span>List SPK</span></a>
     </li>

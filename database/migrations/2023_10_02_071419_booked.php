@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('id_booked');
             $table->string('id_stock');
-            $table->string('id_order');
-            $table->string('id_revisi');
+            $table->string('id_order')->nullable();
+            $table->string('id_revisi')->nullable();
             $table->integer('qty_booked');
             $table->string('status_booked');
         });

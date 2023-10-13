@@ -296,6 +296,11 @@
                 theme: 'modern'
             });
         });
+        $(document).ready(function() {
+            $('#select-technician').select2({
+                theme: 'modern'
+            });
+        });
     </script>
 
     <!-- Bootstrap core JavaScript-->

@@ -26,4 +26,9 @@ class storeSparepart extends Model
     {
         return $this->hasOne(warehouse::class, 'id_store', 'id_store');
     }
+
+    public function order(): HasMany
+    {
+        return $this->hasMany(order::class, 'id_store', 'id_store');
+    }
 }
