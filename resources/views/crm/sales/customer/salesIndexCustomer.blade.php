@@ -1,6 +1,6 @@
 @extends('template.salesCrm')
 
-@section('title', 'Customer')
+@section('title', 'Sales Customer')
 
 @section('content')
 
@@ -12,16 +12,49 @@
                     class="fas fa-download fa-sm text-white-50 "></i> Export</a>
         </div>
 
-        <!-- Content Row -->
+        <!-- Card Data User -->
         <div class="row">
-            <div class="card shadow-sm">
-                <h5 class="card-header merah text-putih">Total User</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+            {{-- Card Total Customer --}}
+            <x-card-crm titles='Total Customers ' prices='{{ count($dataCust) }}' icons='fa-solid fa-2x fa-users-line' />
+
+            {{-- Card Total Projects --}}
+            <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}' icons='fa-solid fa-2x fa-users-line' />
+        </div>
+        <hr />
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-merah font-weight-bold">Table Of Customer</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm rounded btn-success"><i
+                    class="fas fa-plus fa-sm text-white-50 "></i> Add </a>
+        </div>
+
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name Customer</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Jenis Usaha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (count($dataCust) > 0)
+                        @foreach ($dataCust as $dataTable)
+                            <tr>
+                                <th scope="row">{{ $dataTable->id }}</th>
+                                <td><a href="#" class="text-merah">{{ $dataTable->nama_customer }}</a></td>
+                                <td>{{ $dataTable->phone_customer }}</td>
+                                <td> <a href="#">{{ $dataTable->email_customer }}</a></td>
+                                <td><a href="#" class="text-dark">{{ $dataTable->jenisusaha_customer }}</a></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <p>Tidak ada data customer</p>
+                    @endif
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
