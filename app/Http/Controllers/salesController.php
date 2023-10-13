@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer;
+use App\Models\project;
 use App\Models\sales;
 use App\Models\solab;
 use Illuminate\Http\Request;
@@ -96,13 +97,17 @@ class salesController extends Controller
 
     public function dashboardSalesCrm()
     {
-        return view('crm.sales.dashboard.salesIndexCrm');
+        // GET ALL DATA PROJECTS
+        $dataProjects = project::all();
+        return view('crm.sales.dashboard.salesIndexCrm', compact('dataProjects'));
     }
 
     // ====================== CUSTOMER =============================
 
     public function dashboardCustomerCrm()
     {
-        return view('crm.sales.customer.salesIndexCustomer');
+        // GET ALL DATA CUSTOMERS
+        $dataCust = customer::all();
+        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 }

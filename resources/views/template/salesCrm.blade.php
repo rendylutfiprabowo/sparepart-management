@@ -2,7 +2,7 @@
 @section('sidebar')
     <li class="nav-item {{ Request::is('sales/dashboard/salesIndexCrm') ? 'active' : '' }} text-center">
         <a class="nav-link" href="/sales/dashboard/salesIndexCrm" role="button" aria-expanded="false">
-            <i class="fa-solid fa-gauge"></i>
+            <i class="fa-solid fa-border-all"></i>
             Dashboard
         </a>
     </li>
@@ -20,7 +20,7 @@
         </a>
         <div id="collapseSpareParts" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar"
             style="">
-            <div class=" py-2 collapse-inner rounded">
+            <div class=" py-2 collapse-inner rounded bg-white">
                 <h6 class="collapse-header">Menu SpareParts</h6>
                 <a class="collapse-item {{ Request::is('sales/sparepart/index') ? 'merah text-white' : '' }}"
                     href="/sales/sparepart/index">
@@ -48,7 +48,7 @@
             <span>OilLab</span>
         </a>
         <div id="collapseOil" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar" style="">
-            <div class=" py-2 collapse-inner rounded">
+            <div class=" py-2 collapse-inner rounded bg-white">
                 <h6 class="collapse-header">Menu OilLab</h6>
                 <a class="collapse-item {{ Request::is('sales/oil/index*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/index"> <i class="fa-solid fa-chart-simple"></i>

@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>CRM - @yield('title')</title>
 
     <!-- Custom fonts for this template-->
@@ -38,7 +39,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav sidebar sidebar-light accordion border-right" id="accordionSidebar">
+        <ul class="navbar-nav fixed-left sidebar sidebar-light accordion border-right" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">

@@ -583,6 +583,7 @@ pre code {
     overflow-y: scroll;
 }
 
+/* Default Awal */
 .container,
 .container-fluid,
 .container-sm,
@@ -595,6 +596,20 @@ pre code {
     margin-right: auto;
     margin-left: auto;
 }
+
+/* Modif Sidebar Fixed
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+    width: 90.5%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: 0;
+    margin-left: auto;
+} */
 
 @media (min-width: 576px) {
     .container,
@@ -11822,3 +11837,11 @@ body.sidebar-toggled footer.sticky-footer {
     height: calc(4.375rem - 2rem);
     margin: auto 1rem;
 }
+
+/* .fixed-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 5;
+} */
