@@ -319,13 +319,7 @@ class DatabaseSeeder extends Seeder
             'alamat_project' => 'bandung',
             'id_customer' => '60007591',
         ]);
-        sales::create([
-            'id_sales' => $faker->numberBetween(100, 999),
-            'nama_sales' => $faker->name,
-            'phone_sales' => '08238927386',
-            'nip_sales' => '08238273',
-            'id_user' => '123',
-        ]);
+        
         role::create([
             'nama_role' => 'Warehouse',
         ]);
