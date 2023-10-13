@@ -203,7 +203,7 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">                    
+                    <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="d-none d-lg-inline mr-3 text-gray-600">{{ Auth::user()->username }}</span>
@@ -292,6 +292,11 @@
         // Initialize Select2 on your select element
         $(document).ready(function() {
             $('#select-customers').select2({
+                theme: 'modern'
+            });
+        });
+        $(document).ready(function() {
+            $('#select-technician').select2({
                 theme: 'modern'
             });
         });

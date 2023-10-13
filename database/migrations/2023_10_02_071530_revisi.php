@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('id_revisi');
             $table->string('id_order');
             $table->string('id_technician');
-            $table->string('do_orde');
+            $table->string('do_order')->nullable();
             $table->string('status');
         });
     }

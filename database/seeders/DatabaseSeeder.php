@@ -3,17 +3,20 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\booked;
 use App\Models\role;
+use App\Models\technician;
 use Illuminate\Database\Seeder;
-use App\Models\sparepart;
 use App\Models\customer;
 use App\Models\project;
-use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use App\Models\User;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\form;
+use App\Models\order;
+use App\Models\revisi;
 use App\Models\scope;
 use App\Models\warehouse;
 use Faker\Factory as Faker;
@@ -51,7 +54,7 @@ class DatabaseSeeder extends Seeder
             'id_role' => '1'
         ]);
         User::create([
-            'id_user' => 'USR-02',
+            'id_user' => 'USR-005',
             'username' => 'maulana',
             'email' => 'maul@mail.com',
             'password' => bcrypt('123456789'),
@@ -82,7 +85,7 @@ class DatabaseSeeder extends Seeder
             'id_warehouse' => 'WAR-002',
             'nama_warehouse' => 'Maryam',
             'phone_warehouse' => '00444558',
-            'id_user' => '1',
+            'id_user' => 'USR-02',
         ]);
 
 
@@ -401,6 +404,35 @@ class DatabaseSeeder extends Seeder
         scope::create([
             'id_scope' => '399',
             'nama_scope' => 'OA',
+        ]);
+        technician::create([
+            'id_technician' => 'TECH-01',
+            'nama_technician' => 'Erlangga',
+            'phone_technician' => '08122546',
+            'nip_technician' => '000022215554',
+            'id_user' => 'USR-04',
+        ]);
+        revisi::create([
+            'id_revisi' => 'REV-01',
+            'id_order' => 'ORD-01',
+            'id_technician' => 'TECH-01',
+            'status' => 'Progress',
+        ]);
+        order::create([
+            'id_order' => 'ORD-01',
+            'id_customer' => '60007596',
+            'id_store' => 'STR-02',
+            'id_sales' => '265',
+            'do_order' => 'DO/250/100A',
+            'spk_order' => 'S500029388123',
+            'date_order' => $faker->date('Y-m-d'),
+        ]);
+        booked::create([
+            'id_booked' => 'BOOK-01',
+            'id_stock' => 'STK-314',
+            'id_order' => 'ORD-01',
+            'qty_booked' => '100',
+            'status_booked' => 'Progress',
         ]);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+use App\Models\technician;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +28,43 @@ class warehouseController extends Controller
             ]
         );
     }
+    public function viewSpk()
+    {
+        $spks = order::with('booked', 'technician', 'revisi', 'customer')->get();
+        return view(
+            'sparepart.warehouse.technicianWarehouse',
+            [
+                'spk' => $spks,
+            ]
+        );
+    }
+
+    public function viewOrder($id_order)
+    {
+        $order = order::with('booked', 'customer')->where('id_order', $id_order)->get();
+        return view('sparepart.warehouse.addTechnicianWarehouse', [
+            'order' => $order,
+            'technician' => technician::all()
+        ]);
+    }
+    public function addWorker($id_order, Request $request)
+    {
+        $validatedData = $request->validate([
+            'id_technician' => 'required',
+        ]);
+        $orders = order::all()->where('id_order', $id_order)->first();
+        $orders->id_technician = $validatedData['id_technician'];
+
+        $orders->save();
+        session()->flash('success', 'Teknisi berhasil ditambahkan');
+
+        return redirect('/warehouse/listspk')
+            ->with('order', $orders)
+            ->with('id_order', $id_order);
+    }
     public function index()
     {
+
         return view('sparepart.warehouse.dashboardWarehouse');
     }
 
