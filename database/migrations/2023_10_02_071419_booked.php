@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('jenis_layanan');
             $table->integer('qty_booked');
             $table->string('status_booked');
+            $table->date('date');
         });
     }
 
