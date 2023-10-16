@@ -30,7 +30,7 @@
                             <td class="table-plus">{{ $no + 1 }}</td>
                             <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
                             <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}</td>
-                            <td class="table-plus">{{ $spks->booked->status_booked }}</td>
+                            <td class="table-plus">{{ $spks->status }}</td>
                             <td class="table-plus">{{ $spks->spk_order }}</td>
                             <td><a href="/warehouse/view-order/{{ $spks->id_order }}" class="btn btn-dark" type="button"><i
                                         class="fa-regular fa-file fa-lg"></i></a>

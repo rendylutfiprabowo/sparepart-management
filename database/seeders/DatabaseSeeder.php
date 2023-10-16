@@ -413,30 +413,6 @@ class DatabaseSeeder extends Seeder
             'nip_technician' => '000022215554',
             'id_user' => 'USR-04',
         ]);
-        revisi::create([
-            'id_revisi' => 'REV-01',
-            'id_order' => 'ORD-01',
-            'id_technician' => 'TECH-01',
-            'status' => 'Progress',
-        ]);
-        order::create([
-            'id_order' => 'ORD-01',
-            'id_customer' => '60007596',
-            'id_store' => 'STR-02',
-            'id_sales' => '265',
-            'do_order' => 'DO/250/100A',
-            'spk_order' => 'S500029388123',
-            'date_order' => $faker->date('Y-m-d'),
-        ]);
-        booked::create([
-            'id_booked' => 'BOOK-01',
-            'id_stock' => 'STK-314',
-            'id_customer' => '60007596',
-            'qty_booked' => '100',
-            'status_booked' => 'Progress',
-            'jenis_layanan' => '1',
-            'date' => $faker->date('Y-m-d'),
-        ]);
         tools::create([
             'id_tools' => 'TOOLS-01',
             'id_store' => 'STR-01',
