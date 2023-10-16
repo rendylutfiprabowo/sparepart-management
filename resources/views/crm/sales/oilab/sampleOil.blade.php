@@ -14,52 +14,34 @@
         </tr>
     </thead>
     <tbody class="text-center">
+        @foreach ($salesorderoil as $solab)
         <tr>
-            <td>A9099885</td>
-            <td>Pertamina Indonesia</td>
-            <td>Cilacap</td>
-            <td>Nana</td>
             <td>
-                <div>DGA</div>
-                <div>Furan</div>
-                <div>OA</div>
+                {{$solab['no_so_solab']}}
+            </td>
+            <td>{{$solab->project->customer->nama_customer}}</td>
+            <td>{{$solab['project']['nama_project']}}</td>
+            <td>{{$solab['sales']['nama_sales']}}</td>
+            <td>
+                @foreach($solab->samples as $sample)
+
+                <div>{{$sample->scope->nama_scope}}</div>
+                @endforeach
             </td>
             <td>
-                <div>7</div>
-                <div>7</div>
-                <div>7</div>
+                @foreach($solab->samples as $sample)
+
+                <div>{{$sample->jumlah_sample}}</div>
+                @endforeach
             </td>
             <td>
-                <div>In Progress</div>
-                <div>In Progress</div>
-                <div>In Progress</div>
+                @foreach($solab->samples as $sample)
+                <div>{{($sample->status_sample == true) ? 'Completed' : 'In Progress'}}</div>
+                @endforeach
             </td>
             <td><button href="#" class="btn" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa-regular fa-file fa-xl"></i></button></td>
         </tr>
-        <tr>
-            <td>A9099886</td>
-            <td>PLN</td>
-            <td>UP 3 Jakarta</td>
-            <td>Rosyid</td>
-            <td>
-                <div>DGA</div>
-                <div>Furan</div>
-                <div>OA</div>
-            </td>
-            <td>
-                <div>8</div>
-                <div>8</div>
-                <div>7</div>
-            </td>
-            <td>
-                <div>Complete</div>
-                <div>Complete</div>
-                <div>Complete</div>
-            </td>
-            <td>
-                <a href="/sample_Sales" class="btn" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa-regular fa-file fa-xl"></i></a>
-            </td>
-        </tr>
+        @endforeach
     </tbody>
 </table>
 <!-- Modal -->

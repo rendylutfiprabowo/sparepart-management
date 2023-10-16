@@ -24,36 +24,43 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-            
+                        @foreach ($salesorderoil as $solab)
                         <tr>
-                            <td>A9099885</td>
-                            <td>Pertamina Indonesia</td>
-                            <td>Cilacap</td>
-                            <td>Nana</td>
+                            <td>{{$solab['no_so_solab']}}</td>
+                            <td>{{$solab->project->customer->nama_customer}}</td>
+                            <td>{{$solab['project']['nama_project']}}</td>
+                            <td>{{$solab['sales']['nama_sales']}}</td>
                             <td>
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
+                                @foreach($solab->samples as $sample)
+                                <div>{{$sample->scope->nama_scope}}</div>
+                                @endforeach
                             </td>
                             <td>
-                                <div>7</div>
-                                <div>7</div>
-                                <div>7</div>
+                                @foreach($solab->samples as $sample)
+                                <div>{{$sample->jumlah_sample}}</div>
+                                @endforeach
                             </td>
                             <td>
-                                <div>In Progress</div>
-                                <div>In Progress</div>
-                                <div>In Progress</div>
+                                @foreach($solab->samples as $sample)
+                                    <div>{{($sample->status_sample == true) ? 'Completed' : 'In Progress'}}</div>
+                                @endforeach
                             </td>
-                            <td><a href="#" data-toggle="modal" data-target="#exampleModal" class="btn"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                            <td>
+                                <button class="btn" type="button" data-toggle="modal" data-target="#note-{{$solab->no_so_solab}}">
+                                    <i class="fa-regular fa-file fa-xl"></i>
+                                </button>
+                            </td>
                         </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
 
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            @foreach ($salesorderoil as $solab)
+            <div class="modal fade" id="note-{{$solab->no_so_solab}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header merah">
@@ -63,18 +70,21 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="post" action="/item_test/add/{{$solab->no_so_solab}}">
+                                @csrf
+                                <input type="hidden" value="{{$solab->no_so_solab}}" name="no_so_solab">
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn merah text-putih">Save changes</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn merah text-putih">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
             @endsection

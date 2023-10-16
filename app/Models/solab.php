@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class solab extends Model
@@ -24,16 +25,26 @@ class solab extends Model
 
     public function samples(): HasMany
     {
-        return $this->hasMany(sample::class, 'id_sample', 'id_sample');
+        return $this->hasMany(sample::class, 'no_so_solab', 'no_so_solab');
     }
 
-    public function project()
+    public function project(): BelongsTo
     {
         return $this->belongsTo(project::class, 'id_project', 'id_project');
     }
 
-    public function customer()
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(customer::class, 'id_customer', 'id_customer');
+    }
+
+    public function sales():BelongsTo
+    {
+        return $this->belongsTo(sales::class, 'id_sales', 'id_sales');
+    }
+
+    public function reportsample():BelongsTo
+    {
+        return $this->belongsTo(reportSample::class, 'id_reportsample', 'id_reportsample');
     }
 }

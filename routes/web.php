@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\itemtestController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
@@ -79,6 +80,11 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/item_test', function () {
         return view('oilab.lab.item_test');
     });
+    Route::get('/item_test', [itemtestController::class, 'notesitem']);
+    Route::post('/item_test/add/{no_so_solab}', [itemtestController::class, 'storenotes']);
+    // Route::get('/updateStatus/{no_so_solab}', 'ItemTestController@updateStatus')->name('updateStatus');
+
+
     Route::get('/order_list', function () {
         return view('oilab.lab.order_list');
     });
