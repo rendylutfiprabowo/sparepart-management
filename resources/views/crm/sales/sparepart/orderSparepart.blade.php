@@ -25,11 +25,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach (range(1, 10) as $i)
+                    @foreach ($orders as $key => $order)
                         <tr>
-                            <td class="table-plus">{{ $i }}</td>
-                            <td class="table-plus">Erlangga Maman Agus</td>
-                            <td class="table-plus text-danger">Rejected</td>
+                            <td class="table-plus">{{ $key }}</td>
+                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
+                            <td class="table-plus text-danger">{{$order->status}}</td>
                             <td class="table-plus">DO</td>
                             <td class="table-plus">03SA0039214</td>
                             <td>

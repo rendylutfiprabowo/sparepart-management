@@ -6,6 +6,7 @@ use App\Models\customer;
 use App\Models\project;
 use App\Models\sales;
 use App\Models\sample;
+use App\Models\order;
 use App\Models\solab;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
@@ -80,8 +81,9 @@ class salesController extends Controller
     }
     public function orderSparepart()
     {
-        
-        return view('crm.sales.sparepart.orderSparepart');
+        return view('crm.sales.sparepart.orderSparepart',[
+            'orders'=> order::all()
+        ]);
     }
     public function selectStore(){
         $stores = storeSparepart::all();

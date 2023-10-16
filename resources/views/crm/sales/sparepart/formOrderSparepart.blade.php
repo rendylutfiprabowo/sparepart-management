@@ -68,15 +68,15 @@
                                 <div class="col mx-3 d-flex align-items-center text-right">qty</div>
                                 <input class="col mx-3 form-control" name="qty[]" value="0">
                                 <input class="col mx-3 form-control" name="dim"
-                                    value="{{ $stocks->first()->sparepart->satuan }}" readonly>
+                                    value="{{ $stocks ? $stocks->first()->sparepart->satuan : '' }}" readonly>
                                 <div class="col ml-3 btn btn-danger form-control" onclick="deleteItem(this)">hapus</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
                             <input type="text" class="form-control"
-                                value="{{ $stocks->first()->sparepart->spesifikasi_sparepart }}" name="spesifikasi"
-                                readonly>
+                                value="{{ $stocks ? $stocks->first()->sparepart->spesifikasi_sparepart : '' }}"
+                                name="spesifikasi" readonly>
                         </div>
                     </div>
                 </div>
@@ -87,8 +87,9 @@
                     </div>
                 </div>
 
-                
-                <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+
+                <button type="submit"
+                    class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
                     Submit
                 </button>
         </form>
