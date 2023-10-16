@@ -7,6 +7,7 @@ use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
+use App\Http\Controllers\technicianController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -31,6 +32,8 @@ Route::post('/logout', [loginController::class, 'logout']);
 Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
     Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
+    // Dashboard Customer CRM
+    Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -60,13 +63,13 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
 
 //Role Manager Sparepart
 Route::middleware(['auth', 'warehouse-center'])->group(function () {
-    Route::get('/manager_spareparts', function () {
-        return view('sparepart.manager.dashboardManager');
-    });
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
     Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
-    Route::get('/warehouse/stock/{id}', [stockController::class, 'detailStock']);
+    Route::get('/warehouse/listspk', [warehouseController::class, 'viewSpk']);
+    Route::get('/warehouse/view-order/{id_order}', [warehouseController::class, 'viewOrder']);
+    Route::post('/warehouse/add-worker/{id_order}', [warehouseController::class, 'addWorker']);
+    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
     Route::post('/warehouse/stock/store', [stockController::class, 'store']);
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);

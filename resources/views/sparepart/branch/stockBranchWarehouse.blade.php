@@ -17,10 +17,9 @@
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Code Material</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Code Material</th>
                         <th scope="col">Qty</th>
-                        <th scope="col">Spesifikasi</th>
                         <th scope="col">Branch</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -29,11 +28,11 @@
                     @foreach ($spareparts as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
+                            {{-- @dd($stock->sparepart) --}}
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
                                     data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i
                                         class="fa-regular fa-file fa-lg"></i></a>
@@ -66,7 +65,11 @@
                                         $stock->qty_stock .
                                         ' ' .
                                         $stock->sparepart->satuan .
-                                        '</strong>' !!}
+                                        '</strong>' .
+                                        ' di ' .
+                                        '<strong> ' .
+                                        $stock->store_sparepart->nama_store .
+                                        '</strong> ' !!}
                                     mau
                                     abisss!!!!
                                 </div>

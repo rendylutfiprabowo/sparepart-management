@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('id_customer');
             $table->string('id_store');
             $table->string('id_sales');
-            $table->string('memo_order');
-            $table->string('do_order');
-            $table->string('spk_order');
+            $table->string('id_technician')->nullable();
+            $table->string('memo_order')->nullable();
+            $table->string('do_order')->nullable();
+            $table->string('spk_order')->nullable();
             $table->date('date_order');
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer;
+use App\Models\project;
 use App\Models\sales;
 use App\Models\solab;
 use Illuminate\Http\Request;
@@ -40,7 +41,6 @@ class salesController extends Controller
 
     public function storeformsales()
     {
-        
     }
 
     public function reportOil()
@@ -64,7 +64,7 @@ class salesController extends Controller
     {
         return view('crm.sales.sparepart.indexSparepart');
     }
-    
+
     public function stockSparepart()
     {
         $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
@@ -107,10 +107,21 @@ class salesController extends Controller
         return view('crm.sales.sparepart.detailRevisionSparepart');
     }
 
-    // ================ DASHBOARD SALES CRM ============================
+    // ================ DASHBOARD SALES CRM =======================
 
     public function dashboardSalesCrm()
     {
-        return view('crm.sales.dashboard.salesIndexCrm');
+        // GET ALL DATA PROJECTS
+        $dataProjects = project::all();
+        return view('crm.sales.dashboard.salesIndexCrm', compact('dataProjects'));
+    }
+
+    // ====================== CUSTOMER =============================
+
+    public function dashboardCustomerCrm()
+    {
+        // GET ALL DATA CUSTOMERS
+        $dataCust = customer::all();
+        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 }
