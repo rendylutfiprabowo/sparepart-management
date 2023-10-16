@@ -8,6 +8,7 @@ use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
+use App\Http\Controllers\labController;
 use App\Http\Controllers\technicianController;
 use Illuminate\Support\Facades\Auth;
 
@@ -87,12 +88,11 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     });
     Route::get('/item_test', [itemtestController::class, 'notesitem']);
     Route::post('/item_test/add/{no_so_solab}', [itemtestController::class, 'storenotes']);
-    // Route::get('/updateStatus/{no_so_solab}', 'ItemTestController@updateStatus')->name('updateStatus');
 
-
-    Route::get('/order_list', function () {
+    Route::get('/orderlist', function () {
         return view('oilab.lab.order_list');
     });
+    Route::get('/orderlist', [labController::class, 'viewOrder']);
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');
     });

@@ -34,105 +34,37 @@
                             <th scope="col">Note</th>
                         </tr>
                     </thead>
+                    @foreach($salesorderoil as $solab)
                     <tbody class="text-center ">
-                        <tr>
-                            <td class="text-center align-middle">A9099885</td>
-                            <td class="text-center align-middle">Pertamina Indonesia</td>
-                            <td class="text-center align-middle">Cilacap</td>
-                            <td class="text-center align-middle">
-                                <div>DGA</div>
-                                <div>Furan</div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <strong>-</strong>
-                                </div>
-                            </td>
-                            <!-- button modal 1 -->
-                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa-regular fa-file fa-xl"></i></a></td>
-                        <tr>
-                            <td class="text-center align-middle">A9099885</td>
-                            <td class="text-center align-middle">Pertamina Indonesia</td>
-                            <td class="text-center align-middle">Cilacap</td>
-                            <td class="text-center align-middle">
-                                <div>DGA</div>
-                                <div>Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <strong>Checking</strong>
-                                </div>
-                            </td>
-                            <!-- button modal -->
-                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
-
-                        <tr>
-                            <td class="text-center align-middle">A9099885</td>
-                            <td class="text-center align-middle">Pertamina Indonesia</td>
-                            <td class="text-center align-middle">Cilacap</td>
-                            <td class="text-center align-middle">
-                                <div>DGA</div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <strong>Completed</strong>
-                                </div>
-                            </td>
-                            <!-- button modal -->
-                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal2"><i class="fa-regular fa-file fa-xl"></i></a></td>
-                        <tr>
-                            <td class="text-center align-middle">A9099885</td>
-                            <td class="text-center align-middle">Pertamina Indonesia</td>
-                            <td class="text-center align-middle">Cilacap</td>
-                            <td class="text-center align-middle">
-                                <div>DGA</div>
-                                <div>Furan</div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                                <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                                </div>
-                            </td>
-                            <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    <strong>Declined</strong>
-                                </div>
-                            </td>
-                            <!-- button modal -->
-                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal3"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                        <td>{{$solab['no_so_solab']}}</td>
+                        <td>{{$solab->project->customer->nama_customer}}</td>
+                        <td>{{$solab['project']['nama_project']}}</td>
+                        <td>
+                            @foreach($solab->samples as $sample)
+                            <div>{{$sample->scope->nama_scope}}</div>
+                            @endforeach
+                        </td>
+                        <td class="text-center align-middle">
+                            <div>
+                                <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                            </div>
+                            <div>
+                                <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                            </div>
+                            <div>
+                                <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                            </div>
+                        </td>
+                        <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
+                        <td class="text-center align-middle">
+                            <div>
+                                <strong>Checking</strong>
+                            </div>
+                        </td>
+                        <!-- button modal -->
+                        <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
                     </tbody>
+                    @endforeach
                 </table>
                 <!-- Modal 1 -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
