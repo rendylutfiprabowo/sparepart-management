@@ -44,10 +44,12 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
     Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
     Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
-    Route::get('/sales/sparepart/order/add', [salesController::class, 'createOrderSparepart']);
-    Route::get('/sales/sparepart/order/{$id}', [salesController::class, 'detailOrderSparepart']);
+    Route::get('/sales/sparepart/order/add/{id_store}', [salesController::class, 'createOrderSparepart']);
+    Route::get('/sales/sparepart/order/add', [salesController::class, 'selectStore']);
+    Route::get('/sales/sparepart/order/{id}', [salesController::class, 'detailOrderSparepart']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
-    Route::get('/sales/sparepart/revision/{$id}', [salesController::class, 'detailRevisionSparepart']);
+    Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
+    Route::post('/sales/sparepart/order/add', [stockController::class, 'store']);
 });
 
 //Role Warehouse Sparepart
@@ -64,7 +66,7 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
     Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
-    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
+    Route::get('/warehouse/stock/{id}', [stockController::class, 'detailStock']);
     Route::post('/warehouse/stock/store', [stockController::class, 'store']);
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
