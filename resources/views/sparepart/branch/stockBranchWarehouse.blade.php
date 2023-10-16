@@ -4,7 +4,8 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabang</h3>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabang {{ $namaStore }}
+                    </h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
@@ -20,7 +21,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Code Material</th>
                         <th scope="col">Qty</th>
-                        <th scope="col">Branch</th>
+                        <th scope="col">Spesification</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -31,7 +32,7 @@
                             <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
-                            <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             {{-- @dd($stock->sparepart) --}}
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
                                     data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i

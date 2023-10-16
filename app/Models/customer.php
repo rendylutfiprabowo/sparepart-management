@@ -26,6 +26,10 @@ class customer extends Model
     {
         return $this->hasMany(project::class, 'id_project', 'id_project');
     }
+    public function booked(): HasMany
+    {
+        return $this->hasMany(booked::class, 'id_customer', 'id_customer');
+    }
 
     public function order(): HasMany
     {
