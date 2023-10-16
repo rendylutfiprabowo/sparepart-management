@@ -31,7 +31,7 @@ class warehouseController extends Controller
     }
     public function viewSpk()
     {
-        $spks = order::with('booked', 'technician', 'revisi', 'customer')->get();
+        $spks = order::with('technician', 'revisi', 'customer')->get();
         return view(
             'sparepart.warehouse.technicianWarehouse',
             [
@@ -42,7 +42,7 @@ class warehouseController extends Controller
 
     public function viewOrder($id_order)
     {
-        $order = order::with('booked', 'customer')->where('id_order', $id_order)->get();
+        $order = order::with('customer')->where('id_order', $id_order)->get();
         return view('sparepart.warehouse.addTechnicianWarehouse', [
             'order' => $order,
             'technician' => technician::all()
