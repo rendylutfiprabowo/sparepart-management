@@ -431,9 +431,11 @@ class DatabaseSeeder extends Seeder
         booked::create([
             'id_booked' => 'BOOK-01',
             'id_stock' => 'STK-314',
-            'id_order' => 'ORD-01',
+            'id_customer' => '60007596',
             'qty_booked' => '100',
             'status_booked' => 'Progress',
+            'jenis_layanan' => '1',
+            'date' => $faker->date('Y-m-d'),
         ]);
         tools::create([
             'id_tools' => 'TOOLS-01',
