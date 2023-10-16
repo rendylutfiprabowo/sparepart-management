@@ -13,19 +13,15 @@
 
         <!-- Content Row -->
         <div class="row">
-
             {{-- Card Penjualan Bulanan --}}
             <x-card-crm titles='Total Project (All)' prices='{{ count($dataProjects) }}'
-                icons='fa-solid text-success fa-2x fa-diagram-project' />
-
+                icons='fa-solid fa-2x fa-diagram-project' />
             {{-- Card Data Penjualan SpareParts --}}
             <x-card-crm titles='Penjualan (SpareParts)' prices='Rp. 511,000,000'
                 icons='fa-solid text-primary fa-2x fa-wrench' />
-
             {{-- Card Data Oil Testing Lab --}}
             <x-card-crm titles='Oil Lab (Testing)' prices='Rp. 300,000,000'
                 icons='fa-solid text-warning fa-2x fa-microscope' />
-
             {{-- Card Data Oil Testing Lab --}}
             <x-card-crm titles='Cancel(Project)' prices='Rp. 76,000,000' icons='fa-solid text-danger fa-2x fa-ban' />
         </div>

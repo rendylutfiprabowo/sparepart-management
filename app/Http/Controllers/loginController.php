@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use Session;
-use App\User;
 use Illuminate\Http\Request;
 
 class loginController extends Controller
@@ -61,7 +59,7 @@ class loginController extends Controller
         }
 
         // Jika kedua percobaan di atas gagal, kembalikan ke halaman login
-        return back()->withErrors(['email_or_username' => 'Kombinasi email/username dan kata sandi salah']);
+        return back()->with(['error' => 'Email/username & Password yang anda masukan salah']);
     }
 
     public function logout()
