@@ -15,6 +15,8 @@ class reportSample extends Model
     protected $fillable = [
         'id_reportsample',
         'notes_reportsample',
-        'id_solab'
+        'no_so_solab'
     ];
+
+    
 }

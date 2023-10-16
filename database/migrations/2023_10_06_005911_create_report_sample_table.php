@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_reportsample');
             $table->string('notes_reportsample');
-            $table->string('id_solab');
+            $table->string('no_so_solab');
         });
     }
 
