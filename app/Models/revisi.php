@@ -18,15 +18,21 @@ class revisi extends Model
 
     protected $fillable = [
         'id_revisi',
+        'id_stock',
         'id_order',
         'id_technician',
         'do_order',
+        'qty',
         'status',
     ];
 
     public function order(): BelongsTo
     {
         return $this->BelongsTo(order::class, 'id_order', 'id_order');
+    }
+    public function stock(): BelongsTo
+    {
+        return $this->BelongsTo(stockSparepart::class, 'id_stock', 'id_stock');
     }
     public function technician(): BelongsTo
     {

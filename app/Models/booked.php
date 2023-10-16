@@ -17,19 +17,16 @@ class booked extends Model
     protected $fillable = [
         'id_booked',
         'id_stock',
-        'jenis_layanan',
-        'id_customer',
         'qty_booked',
-        'status_booked',
-        'date',
+        'id_order'
     ];
 
     public function stock(): BelongsTo
     {
         return $this->BelongsTo(stockSparepart::class, 'id_stock', 'id_stock');
     }
-    public function customer(): BelongsTo
+    public function order(): BelongsTo
     {
-        return $this->BelongsTo(customer::class, 'id_customer', 'id_customer');
+        return $this->BelongsTo(order::class, 'id_order', 'id_order');
     }
 }
