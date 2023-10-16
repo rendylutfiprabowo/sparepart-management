@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('id_sample');
             $table->string('jumlah_sample');
             $table->string('status_sample');
-            $table->string('id_solab');
+            $table->string('no_so_solab');
             $table->string('id_scope');
         });
     }

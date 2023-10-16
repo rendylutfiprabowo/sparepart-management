@@ -24,10 +24,15 @@ class sample extends Model
 
     public function formReport(): HasOne
     {
-        return $this->hasOne(formReport::class, 'id_form', 'id_form');
+        return $this->hasOne(formReport::class, 'id_formreport', 'id_formreport');
     }
     public function soLab(): BelongsTo
     {
         return $this->belongsTo(solab::class, 'no_so_solab', 'np_so_solab');
+    }
+
+    public function scope(): BelongsTo
+    {
+        return $this->belongsTo(scope::class, 'id_scope', 'id_scope');
     }
 }

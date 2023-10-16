@@ -31,10 +31,6 @@ class order extends Model
     {
         return $this->HasOne(revisi::class, 'id_order', 'id_order');
     }
-    public function booked(): HasOne
-    {
-        return $this->HasOne(booked::class, 'id_order', 'id_order');
-    }
     public function customer(): BelongsTo
     {
         return $this->BelongsTo(customer::class, 'id_customer', 'id_customer');

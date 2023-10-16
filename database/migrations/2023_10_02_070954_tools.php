@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_tools');
             $table->string('id_store');
+            $table->string('nama_tools');
             $table->integer('qty_tools');
         });
     }

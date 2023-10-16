@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\customer;
 use App\Models\project;
 use App\Models\sales;
+use App\Models\sample;
 use App\Models\solab;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
@@ -45,12 +46,16 @@ class salesController extends Controller
 
     public function reportOil()
     {
-        return view('crm.sales.oilab.reportOil');
+        $salesorderoil = solab::all()->whereNotNull('id_project');
+        $sample = sample::all();
+        return view('crm.sales.oilab.reportOil', compact('salesorderoil', 'sample'));
     }
 
     public function sampleOil()
     {
-        return view('crm.sales.oilab.sampleOil');
+        $salesorderoil = solab::all()->whereNotNull('id_project');
+        $sample = sample::all();
+        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample'));
     }
 
     public function detailHistoryOil()

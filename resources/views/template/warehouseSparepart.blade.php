@@ -24,8 +24,8 @@
             <i class="fa-solid fa-tent-arrow-turn-left"></i>
             <span>Return Item</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
+    <li class="nav-item {{ Request::is('warehouse/tools*') ? 'active' : '' }}">
+        <a class="nav-link" href="/warehouse/tools">
             <i class="fa-solid fa-screwdriver-wrench"></i>
             <span>Tools</span></a>
     </li>

@@ -31,7 +31,7 @@ class solabController extends Controller
             "oa_check" => "sometimes",
             "oa_qty" => "required",
         ]);
-        
+
         $faker = Faker::create();
         if (!(Project::where('id_customer', $validated['id_customer'])
             ->where('nama_project', $validated['nama_project'])
@@ -67,12 +67,12 @@ class solabController extends Controller
         $solab->save();
 
         //dga
-        if (isset($validated['dga_check'])){
+        if (isset($validated['dga_check'])) {
             $dga = new sample();
             $dga->id_sample = $faker->numberBetween(100, 999);;
             $dga->jumlah_sample = $validated['dga_qty'];
-            $dga->status_sample = 'false';
-            $dga->id_solab = $solab->no_so_solab;
+            $dga->status_sample = false;
+            $dga->no_so_solab = $solab->no_so_solab;
             $dga->id_scope = '220';
             $dga->save();
 
@@ -84,35 +84,35 @@ class solabController extends Controller
             $form_dga->id_lab = '1';
             $form_dga->save();
         }
-        
+
 
         //furan
         if (isset($validated['furan_check'])) {
-            # code...
-        }
-        $furan = new sample();
-        $furan->id_sample = $faker->numberBetween(100, 999);;
-        $furan->jumlah_sample = $validated['furan_qty'];
-        $furan->status_sample = 'false';
-        $furan->id_solab = $solab->no_so_solab;
-        $furan->id_scope = '842';
-        $furan->save();
+            $furan = new sample();
+            $furan->id_sample = $faker->numberBetween(100, 999);;
+            $furan->jumlah_sample = $validated['furan_qty'];
+            $furan->status_sample = false;
+            $furan->no_so_solab = $solab->no_so_solab;
+            $furan->id_scope = '842';
+            $furan->save();
 
-        $form_furan = new formReport();
-        $form_furan->id_formreport = $furan->id_sample.'-842';
-        $form_furan->field_formreport = form::where('id_scope','842')->get()->first()->field_form;
-        $form_furan->value_formreport = $form_furan->field_formreport;
-        $form_furan->id_sample = $furan->id_sample;
-        $form_furan->id_lab = '1';
-        $form_furan->save();
+            $form_furan = new formReport();
+            $form_furan->id_formreport = $furan->id_sample . '-842';
+            $form_furan->field_formreport = form::where('id_scope', '842')->get()->first()->field_form;
+            $form_furan->value_formreport = $form_furan->field_formreport;
+            $form_furan->id_sample = $furan->id_sample;
+            $form_furan->id_lab = '1';
+            $form_furan->save();
+        }
+
 
         //oa
-        if(isset($validated['oa_check'])){
+        if (isset($validated['oa_check'])) {
             $oa = new sample();
             $oa->id_sample = $faker->numberBetween(100, 999);;
             $oa->jumlah_sample = $validated['oa_qty'];
-            $oa->status_sample = 'false';
-            $oa->id_solab = $solab->no_so_solab;
+            $oa->status_sample = false;
+            $oa->no_so_solab = $solab->no_so_solab;
             $oa->id_scope = '399';
             $oa->save();
 
@@ -158,8 +158,8 @@ class solabController extends Controller
             $form_oa->id_lab = '1';
             $form_oa->save();
         }
-        
 
-        return redirect('sales/oil/salesorder');
+
+        return redirect('/sales/oil/salesorder');
     }
 }

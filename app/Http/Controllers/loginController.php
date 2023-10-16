@@ -12,9 +12,9 @@ class loginController extends Controller
     public function home()
     {
         if (Auth::check()) {
-            if (Auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
+            if (Auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
                 return redirect('/warehouse/branch/stock');
-            else if (auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+            else if (auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');
@@ -34,9 +34,9 @@ class loginController extends Controller
         // Coba login berdasarkan email
         if (Auth::attempt(['email' => $field, 'password' => $password])) {
             // Jika berhasil login berdasarkan email
-            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
                 return redirect('/warehouse/branch/stock');
-            else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+            else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');
@@ -48,9 +48,9 @@ class loginController extends Controller
 
         // Jika gagal login berdasarkan email, coba login berdasarkan username
         if (Auth::attempt(['username' => $field, 'password' => $password])) {
-            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != NULL)
+            if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
                 return redirect('/warehouse/branch/stock');
-            else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == NULL)
+            else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
                 return redirect('/sales/oil/index');

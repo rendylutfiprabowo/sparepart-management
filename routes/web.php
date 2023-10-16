@@ -1,14 +1,17 @@
 <?php
 
+use App\Http\Controllers\toolsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\bookedController;
+use App\Http\Controllers\itemtestController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
 use App\Http\Controllers\technicianController;
+use App\Models\tools;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -60,6 +63,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
+    Route::get('/warehouse/branch/tools', [warehouseController::class, 'viewStockBranchId']);
 });
 
 //Role Manager Sparepart
@@ -75,6 +79,8 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
     Route::get('/warehouse/stock/{id_store}', [stockController::class, 'viewStockWarehouseToko']);
+    Route::get('/warehouse/tools', [toolsController::class, 'viewToolsWarehouse']);
+    Route::get('/warehouse/tools/{id_store}', [toolsController::class, 'viewToolsWarehouseToko']);
 });
 
 Route::middleware(['auth', 'laboil'])->group(function () {
@@ -85,6 +91,11 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/item_test', function () {
         return view('oilab.lab.item_test');
     });
+    Route::get('/item_test', [itemtestController::class, 'notesitem']);
+    Route::post('/item_test/add/{no_so_solab}', [itemtestController::class, 'storenotes']);
+    // Route::get('/updateStatus/{no_so_solab}', 'ItemTestController@updateStatus')->name('updateStatus');
+
+
     Route::get('/order_list', function () {
         return view('oilab.lab.order_list');
     });
