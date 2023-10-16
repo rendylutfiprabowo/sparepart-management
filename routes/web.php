@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\bookedController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
 use App\Http\Controllers\warehouseController;
@@ -52,7 +53,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/order/{id}', [salesController::class, 'detailOrderSparepart']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
-    Route::post('/sales/sparepart/order/add', [stockController::class, 'store']);
+    Route::post('/sales/sparepart/order/add', [bookedController::class, 'store']);
 });
 
 //Role Warehouse Sparepart
