@@ -1,4 +1,5 @@
 @extends('template.salesCrm')
+@section('title', 'Oil Sales Sample')
 @section('content')
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
     <thead class="text-center">
@@ -60,8 +61,8 @@
             </div>
             <div class="modal-footer">
                 <a href="/sample_sales" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+
             </div>
         </div>
     </div>
-</div>
 @endsection

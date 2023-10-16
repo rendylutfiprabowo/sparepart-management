@@ -1,60 +1,59 @@
 .sidebar-dark .nav-item.active .nav-link {
-    color: #C52226;
+    color: #c52226;
 }
 
 .sidebar-dark .nav-item.active .nav-link i {
-color: #C52226;
+    color: #c52226;
 }
 
-
-
-.merah{
-background-color: #c52226;
+.merah {
+    background-color: #c52226;
 }
 
-.abu{
-background-color: #888888;
+.abu {
+    background-color: #888888;
 }
 
-.putih{
-background-color: #FFFFFF;
+.putih {
+    background-color: #ffffff;
 }
 
-.text-merah{ 
-color: #c52226;}
-
-.text-abu{
-color: #888888;
+.text-merah {
+    color: #c52226;
 }
 
-.text-putih{
-color: #FFFFF0;
+.text-abu {
+    color: #888888;
 }
 
+.text-putih {
+    color: #fffff0;
+}
 
-
-.sidebar .nav-item:hover
-{
-/* background-color: #D12226; */
-
+.sidebar .nav-item:hover {
+    /* background-color: #D12226; */
 }
 
 .card-oil {
-background-image: url('/Asset/Card BG.png');
-background-size: cover;
-font-family: 'Courier New', Courier, monospace;
+    background-image: url("/Asset/Card BG.png");
+    background-size: cover;
+    font-family: "Courier New", Courier, monospace;
 }
 
-.pdf-link
-{
-color: #888;
+.pdf-link {
+    color: #888;
 }
 
-.badge-item{
-position: absolute;
-transform: scale(0.7);
-transform-origin: top right;
-right: .25rem;
-margin-top: -.25rem;
+.badge-item {
+    position: absolute;
+    transform: scale(0.7);
+    transform-origin: top right;
+    right: 0.25rem;
+    margin-top: -0.25rem;
 }
 
+.select2-container {
+    border: 1px solid #ccc;
+    /* Ganti warna dan ketebalan sesuai kebutuhan Anda */
+    border-radius: 5px;
+}

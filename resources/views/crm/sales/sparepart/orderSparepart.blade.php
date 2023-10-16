@@ -1,4 +1,6 @@
 @extends('template.salesCrm')
+
+@section('title', 'SpareParts Sales Order')
 @section('content')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
@@ -9,7 +11,7 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="py-2">    
-                <a class="btn btn-success">+ Add Order</a>
+                <a class="btn btn-success" href="/sales/sparepart/order/add">+ Add Order</a>
             </div>
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
                 <thead class="text-center">
@@ -23,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach (range(1,10) as $i)
+                    @foreach (range(1, 10) as $i)
                         <tr>
                             <td class="table-plus">{{ $i }}</td>
                             <td class="table-plus">Erlangga Maman Agus</td>
@@ -32,7 +34,7 @@
                             <td class="table-plus">03SA0039214</td>
                             <td>
                                 <a href="" class="pdf-link btn" type="button">
-                                <i class="fa-regular fa-file fa-lg"></i></a>
+                                    <i class="fa-regular fa-file fa-lg"></i></a>
                             </td>
                         </tr>
                     @endforeach

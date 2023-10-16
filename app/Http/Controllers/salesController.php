@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\customer;
+use App\Models\project;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\solab;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
+use App\Models\storeSparepart;
 use Illuminate\Support\Facades\DB;
 
 class salesController extends Controller
@@ -78,11 +80,24 @@ class salesController extends Controller
     }
     public function orderSparepart()
     {
+        
         return view('crm.sales.sparepart.orderSparepart');
     }
-    public function createOrderSparepart()
-    {
-        return view('crm.sales.sparepart.formsOrderSparepart');
+    public function selectStore(){
+        $stores = storeSparepart::all();
+        return view('crm.sales.sparepart.selectStore',[
+            'stores'=>$stores,
+        ]);
+    }
+    public function createOrderSparepart($id_store){
+        $store = storeSparepart::all()->where('id_store',$id_store)->first();
+        $stocks = stockSparepart::all()->where('id_store',$id_store);
+        $customers = customer::all();
+        return view('crm.sales.sparepart.formOrderSparepart',[
+            'customers'=>$customers,
+            'store'=>$store,
+            'stocks'=>$stocks,
+        ]);
     }
     public function detailOrderSparepart()
     {
@@ -97,10 +112,21 @@ class salesController extends Controller
         return view('crm.sales.sparepart.detailRevisionSparepart');
     }
 
-    // ================ DASHBOARD SALES CRM ============================
+    // ================ DASHBOARD SALES CRM =======================
 
     public function dashboardSalesCrm()
     {
-        return view('crm.sales.dashboard.salesIndexCrm');
+        // GET ALL DATA PROJECTS
+        $dataProjects = project::all();
+        return view('crm.sales.dashboard.salesIndexCrm', compact('dataProjects'));
+    }
+
+    // ====================== CUSTOMER =============================
+
+    public function dashboardCustomerCrm()
+    {
+        // GET ALL DATA CUSTOMERS
+        $dataCust = customer::all();
+        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 }

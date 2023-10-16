@@ -26,4 +26,9 @@ class customer extends Model
     {
         return $this->hasMany(project::class, 'id_project', 'id_project');
     }
+
+    public function order(): HasMany
+    {
+        return $this->hasMany(order::class, 'id_customer', 'id_customer');
+    }
 }

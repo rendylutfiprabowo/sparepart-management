@@ -12,7 +12,7 @@ class projectseeder extends Seeder
     /**
      * Run the database seeds.
      */
-    
+
     public function run(): void
     {
         $faker = Faker::create();
@@ -24,15 +24,6 @@ class projectseeder extends Seeder
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
             'id_customer' => '60007596',
-        ]);  
-        project::create([
-            'id_project' => $faker->numberBetween(100, 999),
-            'nama_project' => $faker->name,
-            'namapic_project' => $faker->name,
-            'nopic_project' => '081234567890',
-            'email_project' => 'trafo@gmail.com',
-            'alamat_project' => 'bandung',
-            'id_customer' => '60007596',
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
@@ -52,14 +43,14 @@ class projectseeder extends Seeder
             'alamat_project' => 'bandung',
             'id_customer' => '60007596',
         ]);
-         project::create([
+        project::create([
             'id_project' => $faker->numberBetween(100, 999),
             'nama_project' => $faker->name,
             'namapic_project' => $faker->name,
             'nopic_project' => '081234567890',
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
-            'id_customer' => '60007593',
+            'id_customer' => '60007596',
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
@@ -87,7 +78,16 @@ class projectseeder extends Seeder
             'email_project' => 'trafo@gmail.com',
             'alamat_project' => 'bandung',
             'id_customer' => '60007593',
-            
+        ]);
+        project::create([
+            'id_project' => $faker->numberBetween(100, 999),
+            'nama_project' => $faker->name,
+            'namapic_project' => $faker->name,
+            'nopic_project' => '081234567890',
+            'email_project' => 'trafo@gmail.com',
+            'alamat_project' => 'bandung',
+            'id_customer' => '60007593',
+
         ]);
         project::create([
             'id_project' => $faker->numberBetween(100, 999),
