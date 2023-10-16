@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\booked;
 
 class bookedController extends Controller
 {
@@ -16,7 +17,21 @@ class bookedController extends Controller
             'stocks'=>'required',
             'qty'=>'required',
         ]);
-        dd($validated);
+       foreach ($validated['stocks'] as $key => $stock) {
+            // 'id_booked',
+            // 'id_stock',
+            // 'jenis_layanan',
+            // 'id_customer',
+            // 'qty_booked',
+            // 'status_booked',
+            $booking = new booked();
+            $booking->id_stock = $stock;
+            $booking->jenis_layanan = $validated['jenis_layanan'];
+            $booking->id_customer = $validated['id_customer'];
+            $booking->qty = $validated['qty_booked'];
+            $booking->qty = $validated['qty_booked'];
+       }
+        
 
     }
 }
