@@ -21,6 +21,7 @@ class booked extends Model
         'id_customer',
         'qty_booked',
         'status_booked',
+        'date',
     ];
 
     public function stock(): BelongsTo
