@@ -52,11 +52,9 @@
                             </td>
                         </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
-
 
             <!-- Modal -->
             @foreach ($salesorderoil as $solab)

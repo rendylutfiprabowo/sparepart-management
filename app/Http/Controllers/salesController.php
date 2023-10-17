@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\customer;
 use App\Models\project;
+use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\solab;
@@ -55,7 +56,9 @@ class salesController extends Controller
     {
         $salesorderoil = solab::all()->whereNotNull('id_project');
         $sample = sample::all();
-        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample'));
+        $reportSample = reportSample::all();
+        // dd($reportSample);
+        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'reportSample'));
     }
 
     public function detailHistoryOil()
