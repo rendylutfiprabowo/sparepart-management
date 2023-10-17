@@ -49,12 +49,12 @@
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
                     <input type="text" class="form-control" name="address" readonly
                     @if ($customer->first())
-                        value = {{$customer->first()->address_customer}}
+                        value = {{$customer->first()->jenisusaha_customer}}
                     @endif>
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
-                    <input class="form-control" type="date" id="dateInput" name="date" value="2001-12-24">
+                    <input class="form-control" type="date" id="dateInput" name="date" value="{{$now->toDateString()}}">
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Store</label>
