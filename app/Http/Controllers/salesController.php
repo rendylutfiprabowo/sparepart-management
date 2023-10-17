@@ -131,4 +131,9 @@ class salesController extends Controller
         $dataCust = customer::all();
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
+
+    public function showCust($id)
+    {
+        $customers = customer::find($id);
+    }
 }

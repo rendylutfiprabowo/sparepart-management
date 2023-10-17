@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Trafoindo - Login</title>
+    <link rel="shortcut icon" href="{{ asset('/Asset/favicon.ico') }}" type="image/x-icon">
+    <title>Transformer Solution System - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,6 +47,11 @@
                                                 class="text-danger">Trafoindo</span> Solution System
                                         </h1>
                                     </div>
+                                    <div>
+                                        @if (session('error'))
+                                            <x-error_message text="Username/Email & Password Salah" />
+                                        @endif
+                                    </div>
                                     <form method="post" class="user" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
@@ -67,16 +71,12 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-danger btn-user btn-block">
+                                        <button id="button-submit" type="submit"
+                                            class="btn btn-danger btn-user btn-block font-weight-bold">
                                             Login
                                         </button>
+
                                         <hr />
-                                        {{-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a> --}}
                                     </form>
                                     <div class="text-center">
                                         <a class="small" href="#">Forgot Password?</a>
@@ -94,15 +94,23 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
+    {{-- ============ ALL --}}
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+
+    <script>
+        // Erro Login Message
+        const errorMessage = document.querySelector('.alert-danger');
+        if (errorMessage) {
+
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 8000);
+        }
+    </script>
 
 </body>
 
