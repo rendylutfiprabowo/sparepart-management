@@ -42,10 +42,12 @@ class warehouseController extends Controller
 
     public function viewOrder($id_order)
     {
-        $order = order::with('customer')->where('id_order', $id_order)->get();
+        $order = order::all()->where('id_order', $id_order)->first();
+        // @dd($order->first()->booked->sparepart);
         return view('sparepart.warehouse.addTechnicianWarehouse', [
             'order' => $order,
-            'technician' => technician::all()
+            'technician' => technician::all(),
+            // 'jumlahItems' => order::all()->where('id_order', $id_order)->first()->booked->first()->qty_booked
         ]);
     }
     public function addWorker($id_order, Request $request)
