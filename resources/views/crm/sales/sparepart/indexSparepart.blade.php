@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-danger font-weight-bold">SparePart Dashboard</h1>
+            <h1 class="h3 text-danger font-weight-bold mb-0">SparePart Dashboard</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50 "></i> Export</a>
+                    class="fas fa-download fa-sm text-white-50"></i> Export</a>
         </div>
 
         <div class="row cols-2">

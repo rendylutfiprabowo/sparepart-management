@@ -37,4 +37,8 @@ class technician extends Model
     {
         return $this->hasMany(order::class, 'id_technician', 'id_technician');
     }
+    public function technician_tools(): HasMany
+    {
+        return $this->hasMany(technician_tools::class, 'id_technician', 'id_technician');
+    }
 }

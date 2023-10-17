@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\booked;
 use App\Models\role;
 use App\Models\technician;
+use App\Models\tools;
 use Illuminate\Database\Seeder;
 use App\Models\customer;
 use App\Models\project;
@@ -37,6 +38,11 @@ class DatabaseSeeder extends Seeder
             'id_store'    => 'STR-02',
             'nama_store' => 'Tangerang',
             'alamat_store' => 'Jl. Serayu 1',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'CTR',
+            'nama_store' => 'Pusat',
+            'alamat_store' => 'Jl. Gembor Raya',
         ]);
 
         User::create([
@@ -86,6 +92,7 @@ class DatabaseSeeder extends Seeder
             'nama_warehouse' => 'Maryam',
             'phone_warehouse' => '00444558',
             'id_user' => 'USR-02',
+            'id_store' => 'CTR',
         ]);
 
 
@@ -322,7 +329,7 @@ class DatabaseSeeder extends Seeder
             'alamat_project' => 'bandung',
             'id_customer' => '60007591',
         ]);
-        
+
         role::create([
             'nama_role' => 'Warehouse',
         ]);
@@ -406,27 +413,41 @@ class DatabaseSeeder extends Seeder
             'nip_technician' => '000022215554',
             'id_user' => 'USR-04',
         ]);
-        revisi::create([
-            'id_revisi' => 'REV-01',
-            'id_order' => 'ORD-01',
-            'id_technician' => 'TECH-01',
-            'status' => 'Progress',
+        tools::create([
+            'id_tools' => 'TOOLS-01',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Helm Pengaman',
+            'qty_tools' => '100',
         ]);
-        order::create([
-            'id_order' => 'ORD-01',
-            'id_customer' => '60007596',
-            'id_store' => 'STR-02',
-            'id_sales' => '265',
-            'do_order' => 'DO/250/100A',
-            'spk_order' => 'S500029388123',
-            'date_order' => $faker->date('Y-m-d'),
+        tools::create([
+            'id_tools' => 'TOOLS-02',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Kacamata Pengaman',
+            'qty_tools' => '100',
         ]);
-        booked::create([
-            'id_booked' => 'BOOK-01',
-            'id_stock' => 'STK-314',
-            'id_order' => 'ORD-01',
-            'qty_booked' => '100',
-            'status_booked' => 'Progress',
+        tools::create([
+            'id_tools' => 'TOOLS-03',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Masker',
+            'qty_tools' => '100',
+        ]);
+        tools::create([
+            'id_tools' => 'TOOLS-04',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Pelindung Wajah',
+            'qty_tools' => '100',
+        ]);
+        tools::create([
+            'id_tools' => 'TOOLS-05',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Sarung Tangan',
+            'qty_tools' => '100',
+        ]);
+        tools::create([
+            'id_tools' => 'TOOLS-06',
+            'id_store' => 'STR-01',
+            'nama_tools' => 'Sepatu Pengaman',
+            'qty_tools' => '100',
         ]);
     }
 }

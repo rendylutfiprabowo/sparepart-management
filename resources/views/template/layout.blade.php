@@ -284,7 +284,7 @@
     <script>
         // Initialize Select2 on your select element
         $(document).ready(function() {
-            $('#select-customers').select2({
+            $('.select-search').select2({
                 theme: 'modern'
             });
         });

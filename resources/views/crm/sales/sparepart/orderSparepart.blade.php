@@ -10,8 +10,8 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="py-2">
-                <a class="btn btn-success">+ Add Order</a>
+            <div class="py-2">    
+                <a class="btn btn-success" href="/sales/sparepart/order/add">+ Add Order</a>
             </div>
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
                 <thead class="text-center">
@@ -25,11 +25,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach (range(1, 10) as $i)
+                    @foreach ($orders as $key => $order)
                         <tr>
-                            <td class="table-plus">{{ $i }}</td>
-                            <td class="table-plus">Erlangga Maman Agus</td>
-                            <td class="table-plus text-danger">Rejected</td>
+                            <td class="table-plus">{{ $key }}</td>
+                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
+                            <td class="table-plus text-danger">{{$order->status}}</td>
                             <td class="table-plus">DO</td>
                             <td class="table-plus">03SA0039214</td>
                             <td>
