@@ -1,7 +1,7 @@
 @extends('template.salesCrm')
 @section('content')
     <div class="card mb-3">
-        <div class="card-header mb-3 pt-3 merah text-light">
+        <div class="card-header merah text-light mb-3 pt-3">
             <h6>Add Order</h6>
         </div>
         @if (session('error'))
@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label ">Customer Name</label>
+                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
                     <select class="form-control select-search" id="select-customer" name="id_customer"
                         onchange="updateForm(this)">
                         @foreach ($customers as $customer)
@@ -77,11 +77,11 @@
                                             {{ $stock->sparepart->nama_sparepart }}</option>
                                     @endforeach
                                 </select>
-                                <div class="col mx-3 d-flex align-items-center text-right">qty</div>
-                                <input class="col mx-3 form-control" name="qty[]" value="0">
-                                <input class="col mx-3 form-control" name="dim"
+                                <div class="col d-flex align-items-center mx-3 text-right">qty</div>
+                                <input class="col form-control mx-3" name="qty[]" value="0">
+                                <input class="col form-control mx-3" name="dim"
                                     value="{{ $stocks ? $stocks->first()->sparepart->satuan : '' }}" readonly>
-                                <div class="col ml-3 btn btn-danger form-control" onclick="deleteItem(this)">hapus</div>
+                                <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="mb-3 d-flex justify-content-center my-3">
+                <div class="d-flex justify-content-center my-3 mb-3">
                     <div onclick="addNewItem()" class="btn btn-secondary">Add Item
 
                     </div>
@@ -101,7 +101,7 @@
 
 
                 <button type="submit"
-                    class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    class="btn merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mb-0 mb-2 mt-5">
                     Submit
                 </button>
         </form>
@@ -140,5 +140,6 @@
             }
         </script>
 
+    </div>
     </div>
 @endsection
