@@ -4,7 +4,7 @@
         <div class="card-header mb-3 pt-3 merah text-light">
             <h6>Add Order</h6>
         </div>
-        <form id="form" method="post" action="/sales/oil/salesorder/add">
+        <form method="post" action="/sales/sparepart/order/add">
             @csrf
             <div class="container-fluid">
                 <h3 class="my-3">Data Pelanggan</h3>
@@ -34,6 +34,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
                     <input type="text" class="form-control" name="sales_name" readonly value="Ahmad Sumbul">
+                    <input type="hidden" value="1" name="id_sales">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
@@ -47,6 +48,7 @@
                     <label for="dateInput">Store</label>
                     <input class="form-control" type="text" id="dateInput" name="nama_store"
                         value="{{ $store->nama_store }}" readonly>
+                    <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
                 <div class="items mt-5">
                     <h3 class="my-3">Spareparts</h3>
@@ -54,25 +56,27 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                             <div class="d-flex">
-                                <select class="form-control col-7" placeholder="Enter Customer Name"
-                                    name="id_customer" onchange="updateItem(this)">
+                                <select class="form-control col-7" placeholder="Enter Customer Name" name="stocks[]"
+                                    onchange="updateItem(this)">
                                     @foreach ($stocks as $stock)
                                         <option value="{{ $stock->id_stock }}"
                                             data-spec="{{ $stock->sparepart->spesifikasi_sparepart }}"
-                                            data-dim="{{ $stock->sparepart->satuan }}"
-                                            >
+                                            data-dim="{{ $stock->sparepart->satuan }}">
                                             {{ $stock->sparepart->nama_sparepart }}</option>
                                     @endforeach
                                 </select>
                                 <div class="col mx-3 d-flex align-items-center text-right">qty</div>
-                                <input class="col mx-3 form-control" value="0">
-                                <input class="col mx-3 form-control" name="dim" value="{{$stocks->first()->sparepart->satuan}}" readonly>
+                                <input class="col mx-3 form-control" name="qty[]" value="0">
+                                <input class="col mx-3 form-control" name="dim"
+                                    value="{{ $stocks ? $stocks->first()->sparepart->satuan : '' }}" readonly>
                                 <div class="col ml-3 btn btn-danger form-control" onclick="deleteItem(this)">hapus</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <input type="text" class="form-control" value="{{$stocks->first()->sparepart->spesifikasi_sparepart}}" name="spesifikasi" readonly>
+                            <input type="text" class="form-control"
+                                value="{{ $stocks ? $stocks->first()->sparepart->spesifikasi_sparepart : '' }}"
+                                name="spesifikasi" readonly>
                         </div>
                     </div>
                 </div>
@@ -82,6 +86,12 @@
 
                     </div>
                 </div>
+
+
+                <button type="submit"
+                    class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    Submit
+                </button>
         </form>
         <script>
             function addNewItem() {
