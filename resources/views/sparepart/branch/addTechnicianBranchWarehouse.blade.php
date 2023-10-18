@@ -1,4 +1,4 @@
-@extends('template.warehouseSparepart')
+@extends('template.warehouseBranchSparepart')
 @section('content')
     <div class="col-md-12">
         <div>
@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <form method="POST" action="/warehouse/add-worker/{{ $order->id_order }}">
+    <form method="POST" action="/warehouse/add-worker/branch/{{ $order->id_order }}">
         @csrf
         <div class="card rounded-4 p-4">
             <thead>
@@ -111,15 +111,15 @@
                     <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
                         placeholder="" readonly>
                 </div>
-                <strong><label class="form-label">No. Nota Penyerahan</label></strong>
+                <strong><label class="form-label">Nota Penyerahan</label></strong>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
-                        placeholder="" readonly>
+                    <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
+                        value="{{ $nota }}" readonly>
                 </div>
-                <strong><label class="form-label">No. Surat Jalan</label></strong>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
-                        placeholder="" readonly>
+                <strong><label class="form-label">Surat Jalan</label></strong>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="surat_jalan" placeholder=""
+                        value="{{ $surat_jalan }}" readonly>
                 </div>
             @elseif($order->do_order == null)
 
