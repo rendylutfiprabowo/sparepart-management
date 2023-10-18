@@ -29,11 +29,22 @@
                         <tr>
                             <td class="table-plus">{{ $key }}</td>
                             <td class="table-plus">{{$order->customer->nama_customer}}</td>
-                            <td class="table-plus text-danger">{{$order->status}}</td>
-                            <td class="table-plus">DO</td>
-                            <td class="table-plus">03SA0039214</td>
+                            <td class="table-plus text-danger">
+                                @if($order->spk_order!=NULL ||
+                                    $order->do_order!=NULL || 
+                                    $order->memo_order!=NULL
+                                )
+                                    <b class="text-success">{{$order->status}}</b>
+                                @elseif($now->diffInDays($order->date_order)<=3 && $now>$order->date_order)
+                                    <b class="text-warning">{{$now->diffInDays($order->date_order).' Days left'}}</b>
+                                @else    
+                                    <b class="text-danger">Canceled</b>
+                                @endif
+                            </td>
+                            <td class="table-plus">{{$order->spk_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>
+                            <td class="table-plus">{{$order->spk_order?$order->spk_order:'-'}}</td>
                             <td>
-                                <a href="" class="pdf-link btn" type="button">
+                                <a href="/sales/sparepart/order/{{$order->id_order}}" class="pdf-link btn" type="button">
                                     <i class="fa-regular fa-file fa-lg"></i></a>
                             </td>
                         </tr>

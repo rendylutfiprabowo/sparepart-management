@@ -13,6 +13,8 @@ use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use Illuminate\Support\Facades\DB;
 
+use Carbon\Carbon;
+
 class salesController extends Controller
 {
     // ================ OIL LAB ============================
@@ -81,8 +83,17 @@ class salesController extends Controller
     }
     public function orderSparepart()
     {
+        $orders = order::all();
+        foreach ($orders as $order) {
+            if(isset($order->date)){
+                $order->date_order = Carbon::create($order->date_order);
+            }
+        }
+        $now = Carbon::now();
+        $now = $now->addDays(3);
         return view('crm.sales.sparepart.orderSparepart',[
-            'orders'=> order::all()
+            'orders'=> $orders,
+            'now'=>$now
         ]);
     }
     public function selectStore(){
@@ -95,15 +106,20 @@ class salesController extends Controller
         $store = storeSparepart::all()->where('id_store',$id_store)->first();
         $stocks = stockSparepart::all()->where('id_store',$id_store);
         $customers = customer::all();
+        $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart',[
             'customers'=>$customers,
             'store'=>$store,
             'stocks'=>$stocks,
+            'now'=>$now,
         ]);
     }
-    public function detailOrderSparepart()
+    public function detailOrderSparepart($id_order)
     {
-        return view('crm.sales.sparepart.detailOrderSparepart');
+        $order = order::all()->where('id_order',$id_order)->first();
+        return view('crm.sales.sparepart.detailOrderSparepart',[
+            'order'=>$order,
+        ]);
     }
     public function revisionSparepart()
     {

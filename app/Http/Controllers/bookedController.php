@@ -19,6 +19,13 @@ class bookedController extends Controller
             'stocks'=>'required',
             'qty'=>'required',
         ]);
+
+        foreach ($validated['qty'] as  $qty) {
+            if ($qty <= 0){
+                return redirect()->back()->with('error','Qty Barang tidak boleh nol');
+            }
+        }
+
         // 'id_order',
         // 'id_customer',
         // 'id_store',
