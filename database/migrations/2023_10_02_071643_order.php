@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('id_sales');
             $table->string('jenis_layanan');
             $table->string('id_technician')->nullable();
+            $table->string('nota_penyerahan')->nullable();
+            $table->string('surat_jalan')->nullable();
             $table->string('memo_order')->nullable();
             $table->string('do_order')->nullable();
             $table->string('spk_order')->nullable();

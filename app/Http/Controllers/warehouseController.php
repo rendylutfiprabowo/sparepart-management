@@ -8,12 +8,24 @@ use App\Models\storeSparepart;
 use App\Models\technician;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class warehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    public function viewSpkBranch()
+    {
+        $spks = Auth::User()->warehouse->store->order;
+        return view(
+            'sparepart.branch.technicianBranchWarehouse',
+            [
+                'spk' => $spks,
+            ]
+        );
+    }
     public function viewStockBranchId()
     {
         $id_store = Auth::User()->warehouse->id_store;
@@ -31,7 +43,7 @@ class warehouseController extends Controller
     }
     public function viewSpk()
     {
-        $spks = order::with('technician', 'revisi', 'customer')->get();
+        $spks = Auth::User()->warehouse->store->order;
         return view(
             'sparepart.warehouse.technicianWarehouse',
             [
@@ -50,14 +62,53 @@ class warehouseController extends Controller
             // 'jumlahItems' => order::all()->where('id_order', $id_order)->first()->booked->first()->qty_booked
         ]);
     }
+    public function viewOrderBranch($id_order)
+    {
+        $uuid = Str::uuid();
+        $uuidWithSlashes = str_replace('-', '/', $uuid);
+        $np = 'Nota/' . $uuidWithSlashes . '/' . date('Ymd');
+        $sj = 'Surat Jalan/' . $uuidWithSlashes . '/' . date('Ymd');
+        $sj = strtoupper($sj);
+        $np = strtoupper($np);
+        $order = order::all()->where('id_order', $id_order)->first();
+        // @dd($order->first()->booked->sparepart);
+        return view('sparepart.branch.addTechnicianBranchWarehouse', [
+            'order' => $order,
+            'technician' => technician::all(),
+            'nota' => $np,
+            'surat_jalan' => $sj
+            // 'jumlahItems' => order::all()->where('id_order', $id_order)->first()->booked->first()->qty_booked
+        ]);
+    }
+    public function addWorkerBranch($id_order, Request $request)
+    {
+        $validatedData = $request->validate([
+            'id_technician' => 'required',
+            'nota_penyerahan' => 'required',
+            'surat_jalan' => 'required',
+        ]);
+        $orders = order::all()->where('id_order', $id_order)->first();
+        $orders->id_technician = $validatedData['id_technician'];
+        $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+        $orders->surat_jalan = $validatedData['surat_jalan'];
+        $orders->save();
+        session()->flash('success', 'Teknisi berhasil ditambahkan');
+
+        return redirect('/warehouse/branch/listspk')
+            ->with('order', $orders)
+            ->with('id_order', $id_order);
+    }
     public function addWorker($id_order, Request $request)
     {
         $validatedData = $request->validate([
             'id_technician' => 'required',
+            'nota_penyerahan' => 'required',
+            'surat_jalan' => 'required',
         ]);
         $orders = order::all()->where('id_order', $id_order)->first();
         $orders->id_technician = $validatedData['id_technician'];
-
+        $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+        $orders->surat_jalan = $validatedData['surat_jalan'];
         $orders->save();
         session()->flash('success', 'Teknisi berhasil ditambahkan');
 

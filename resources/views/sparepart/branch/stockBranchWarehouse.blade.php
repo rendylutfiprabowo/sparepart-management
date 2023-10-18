@@ -1,4 +1,4 @@
-@extends('template.warehouseSparepart')
+@extends('template.warehouseBranchSparepart')
 @section('content')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">

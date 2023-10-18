@@ -1,4 +1,4 @@
-@extends('template.warehouseSparepart')
+@extends('template.warehouseBranchSparepart')
 @section('content')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
@@ -46,7 +46,7 @@
                                     {{ $spks->spk_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
                                 </td>
                                 <td class="table-plus">{{ $spks->spk_order }}</td>
-                                <td><a href="/warehouse/view-order/{{ $spks->id_order }}" class="btn btn-dark"
+                                <td><a href="/warehouse/view-order/branch/{{ $spks->id_order }}" class="btn btn-dark"
                                         type="button"><i class="fa-regular fa-file fa-lg"></i></a>
                                 </td>
                             @endif
