@@ -450,4 +450,6 @@ class DatabaseSeeder extends Seeder
             'qty_tools' => '100',
         ]);
     }
+
+    
 }

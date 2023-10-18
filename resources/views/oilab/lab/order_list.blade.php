@@ -28,7 +28,7 @@
                             <th scope="col">Customer</th>
                             <th scope="col">Project</th>
                             <th scope="col">Item Test</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Report</th>
                             <th scope="col">Input Data</th>
                             <th scope="col">Status</th>
                             <th scope="col">Note</th>
@@ -80,7 +80,7 @@
                                 <form action="">Terlihat kejanggalan pada diagram duval Pentagon</form>
                             </div>
                             <div class="modal-footer">
-                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                                 <form action=""></form>
                             </div>
                             <div class="modal-footer">
-                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                 <form action=""> disini terdapat hasil yang tidak seharusnya terjadi</form>
                             </div>
                             <div class="modal-footer">
-                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                 <form action="">ada yang tidak beres</form>
                             </div>
                             <div class="modal-footer">
-                                <a href="/order_list" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
+                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,6 @@
             <td>{{$solab['sales']['nama_sales']}}</td>
             <td>
                 @foreach($solab->samples as $sample)
-
                 <div>{{$sample->scope->nama_scope}}</div>
                 @endforeach
             </td>
@@ -40,13 +39,14 @@
                 <div>{{($sample->status_sample == true) ? 'Completed' : 'In Progress'}}</div>
                 @endforeach
             </td>
-            <td><button href="#" class="btn" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa-regular fa-file fa-xl"></i></button></td>
+            <td><button href="#" class="btn" type="button" data-toggle="modal" data-target="#exampleModal{{$solab['no_so_solab']}}"><i class="fa-regular fa-file fa-xl"></i></button></td>
         </tr>
         @endforeach
     </tbody>
 </table>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($salesorderoil as $solab)
+<div class="modal fade" id="exampleModal{{$solab['no_so_solab']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header merah">
@@ -56,13 +56,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="">Sample Lengkap 7/7</form>
-                <form action="">Sample Kurang Lengkap 6/7</form>
+                @foreach($reportSample as $report)
+                @if($report['no_so_solab'] == $solab['no_so_solab'])
+                <div>{{$report['notes_reportsample']}}</div>
+                @endif
+                @endforeach
             </div>
             <div class="modal-footer">
-                <a href="/sample_sales" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
-
+                <a href="/sales/oil/sample" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
             </div>
         </div>
     </div>
+</div>
+@endforeach
 @endsection

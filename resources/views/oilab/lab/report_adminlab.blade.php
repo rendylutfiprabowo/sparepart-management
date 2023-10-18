@@ -29,7 +29,7 @@
                             <th class="text-center" scope="col">Project</th>
                             <th class="text-center" scope="col">Pic</th>
                             <th class="text-center" scope="col">Item Test</th>
-                            <th class="text-center" scope="col">Action</th>
+                            <th class="text-center" scope="col">Report</th>
                             <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>

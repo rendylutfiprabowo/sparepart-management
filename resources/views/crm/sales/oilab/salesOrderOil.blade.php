@@ -33,33 +33,6 @@
                         <b>{{ $solab['no_so_solab'] }}</b></div>
                 </div>
             @endforeach
-            <!-- <div class="col-4 card card-oil m-5 w-40 align-items-center">
-                <div class="container d-flex justify-content-center align-items-center mt-3">
-                    <img src="\Asset\Logo.svg" alt="Centered Image" style="max-width: 10%;">
-                </div>
-                <div class="text-putih mt-5" style="font-size: 1.5vw;"> <strong>PT. Pertamina Indonesia</strong></div>
-                <div class="text-putih mb-3" style="font-size: 1vw;"> Balongan (Project Name)</div>
-                <div class="text-merah putih mb-3 mt-5 px-2 rounded" style="font-size: 1.1vw;"><b>8838231123</b></div>
-            </div>
-            <div class="col-4 card card-oil m-5 w-40 align-items-center">
-                <div class="container d-flex justify-content-center align-items-center mt-3">
-                    <img src="\Asset\Logo.svg" alt="Centered Image" style="max-width: 10%;">
-                </div>
-                <div class="text-putih mt-5" style="font-size: 1.5vw;"> <strong>PT. Pertamina Indonesia</strong></div>
-                <div class="text-putih mb-3" style="font-size: 1vw;"> Balongan (Project Name)</div>
-                <div class="text-merah putih mb-3 mt-5 px-2 rounded" style="font-size: 1.1vw;"><b>8838231123</b></div>
-            </div>
-            <div class="col-4 card card-oil m-5 w-40 align-items-center">
-                <div class="container d-flex justify-content-center align-items-center mt-3">
-                    <img src="\Asset\Logo.svg" alt="Centered Image" style="max-width: 10%;">
-                </div>
-                <div class="text-putih mt-5" style="font-size: 1.5vw;"> <strong>PT. Pertamina Indonesia</strong></div>
-                <div class="text-putih mb-3" style="font-size: 1vw;"> Balongan (Project Name)</div>
-                <div class="text-merah putih mb-3 mt-5 px-2 rounded" style="font-size: 1.1vw;"><b>8838231123</b></div>
-            </div> -->
         </div>
-
-
-
     </div>
 @endsection
