@@ -22,6 +22,7 @@ class revisi extends Model
         'id_order',
         'id_technician',
         'do_order',
+        'memo_order',
         'status',
     ];
 
