@@ -9,57 +9,26 @@ use Faker\Factory as Faker;
 
 class bookedController extends Controller
 {
-    public function store(Request $request){
+    public function store($id_order, Request $request){
         $validated = $request->validate([
-            'jenis_layanan'=>'required',
-            'id_customer'=>'required',
-            'id_sales'=>'required',
-            'id_store'=>'required',
-            'date'=>'required',
-            'stocks'=>'required',
-            'qty'=>'required',
+            'stock'=>'required',
+            'qty'=>'required|numeric|min:1'
         ]);
+        $order = order::where('id_order',$id_order)->firstOrFail();
 
-        foreach ($validated['qty'] as  $qty) {
-            if ($qty <= 0){
-                return redirect()->back()->with('error','Qty Barang tidak boleh nol');
-            }
-        }
+        $booking = new booked();
+        $booking->id_order = $id_order;
+        $booking->id_stock = $validated['stock'];
+        $booking->id_booked = $validated['stock'].'-'.$id_order.'-'.$order->date_order;
+        $booking->qty_booked = $validated['qty'];
+        $booking->save();
 
-        // 'id_order',
-        // 'id_customer',
-        // 'id_store',
-        // 'id_sales',
-        // 'id_technician',
-        // 'memo_order',
-        // 'do_order',
-        // 'spk_order',
-        // 'date_order',
-        // 'jenis_layanan',
-        // 'status',
+        return redirect()->back()->with('success','item berhasil ditambahkan');
+    }
+    public function remove($id_booked){
+        $booked = booked::where('id_booked',$id_booked)->firstOrFail();
+        $booked->delete();
 
-        $faker = Faker::create();
-    
-        $order = new order;
-        $order->id_order = $faker->numberBetween(000,999);
-        $order->id_customer = $validated['id_customer'];
-        $order->id_sales = $validated['id_sales'];
-        $order->id_store = $validated['id_store'];
-        $order->date_order = $validated['date'];
-        $order->jenis_layanan = $validated['jenis_layanan'];
-        $order->status = 'on-progress';
-        $order->save();
-
-
-        foreach ($validated['stocks'] as $key => $stock) {
-            $booking = new booked();
-            $booking->id_order = $order->id_order;
-            $booking->id_stock = $stock;
-            $booking->id_booked = $stock.'-'.$order->id_order.'-'.$validated['date'];
-            $booking->qty_booked = $validated['qty'][$key];
-            $booking->save();
-        }
-
-        return redirect('sales/sparepart/order');
+        return redirect()->back()->with('success','item berhasil dihapus');
     }
 }

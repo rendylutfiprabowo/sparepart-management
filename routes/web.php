@@ -56,10 +56,12 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
     Route::get('/sales/sparepart/order/add/{id_store}', [salesController::class, 'createOrderSparepart']);
     Route::get('/sales/sparepart/order/add', [salesController::class, 'selectStore']);
-    Route::get('/sales/sparepart/order/{id}', [salesController::class, 'detailOrderSparepart']);
+    Route::get('/sales/sparepart/order/{id_order}', [salesController::class, 'detailOrderSparepart']);
+    Route::get('/sales/sparepart/order/remove-item/{id_booked}', [bookedController::class, 'remove']);
+    Route::post('/sales/sparepart/order/{id_order}/add-item', [bookedController::class, 'store']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
-    Route::post('/sales/sparepart/order/add', [bookedController::class, 'store']);
+    Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'update']);
 });
 //Role Technician Sparepart
