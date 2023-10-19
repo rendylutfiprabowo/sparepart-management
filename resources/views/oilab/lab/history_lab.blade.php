@@ -28,7 +28,7 @@
                             <th>No</th>
                             <th>No seri</th>
                             <th>Tanggal Masuk</th>
-                            <th>Action</th>
+                            <th>Report</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,49 +38,6 @@
                             <td>12 Februari 2023</td>
                             <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1198923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
-                            <td><a href="/detailhistory_lab" type="button" class="btn merah text-putih">detail</a></td>
-                        </tr>
-                        
                     </tbody>
                 </table>
             </div>

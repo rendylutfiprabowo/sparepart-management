@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\customer;
 use App\Models\project;
+use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
@@ -12,6 +13,8 @@ use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use Illuminate\Support\Facades\DB;
+
+use Carbon\Carbon;
 
 class salesController extends Controller
 {
@@ -56,7 +59,9 @@ class salesController extends Controller
     {
         $salesorderoil = solab::all()->whereNotNull('id_project');
         $sample = sample::all();
-        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample'));
+        $reportSample = reportSample::all();
+        // dd($reportSample);
+        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'reportSample'));
     }
 
     public function detailHistoryOil()
@@ -81,8 +86,17 @@ class salesController extends Controller
     }
     public function orderSparepart()
     {
-        return view('crm.sales.sparepart.orderSparepart', [
-            'orders' => order::all()
+        $orders = order::all();
+        foreach ($orders as $order) {
+            if(isset($order->date)){
+                $order->date_order = Carbon::create($order->date_order);
+            }
+        }
+        $now = Carbon::now();
+        $now = $now->addDays(3);
+        return view('crm.sales.sparepart.orderSparepart',[
+            'orders'=> $orders,
+            'now'=>$now
         ]);
     }
     public function selectStore()
@@ -97,15 +111,20 @@ class salesController extends Controller
         $store = storeSparepart::all()->where('id_store', $id_store)->first();
         $stocks = stockSparepart::all()->where('id_store', $id_store);
         $customers = customer::all();
-        return view('crm.sales.sparepart.formOrderSparepart', [
-            'customers' => $customers,
-            'store' => $store,
-            'stocks' => $stocks,
+        $now = Carbon::now();
+        return view('crm.sales.sparepart.formOrderSparepart',[
+            'customers'=>$customers,
+            'store'=>$store,
+            'stocks'=>$stocks,
+            'now'=>$now,
         ]);
     }
-    public function detailOrderSparepart()
+    public function detailOrderSparepart($id_order)
     {
-        return view('crm.sales.sparepart.detailOrderSparepart');
+        $order = order::all()->where('id_order',$id_order)->first();
+        return view('crm.sales.sparepart.detailOrderSparepart',[
+            'order'=>$order,
+        ]);
     }
     public function revisionSparepart()
     {

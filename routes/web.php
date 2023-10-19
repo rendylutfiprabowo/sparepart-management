@@ -4,6 +4,7 @@ use App\Http\Controllers\toolsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\bookedController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\itemtestController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
@@ -59,13 +60,17 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
     Route::post('/sales/sparepart/order/add', [bookedController::class, 'store']);
+    Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'update']);
 });
 
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
-    Route::get('/warehouse/branch/tools', [warehouseController::class, 'viewStockBranchId']);
+    Route::get('/warehouse/branch/listspk', [warehouseController::class, 'viewSpkBranch']);
+    Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
+    Route::get('/warehouse/view-order/branch/{id_order}', [warehouseController::class, 'viewOrderBranch']);
+    Route::post('/warehouse/add-worker/branch/{id_order}', [warehouseController::class, 'addWorkerBranch']);
 });
 
 //Role Manager Sparepart
