@@ -1,7 +1,7 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'SpareParts Dashboard ')
-@section('content')
+@section('contents')
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">

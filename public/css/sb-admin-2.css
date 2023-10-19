@@ -10603,10 +10603,10 @@ a:focus {
     content: "\f107";
 }
 
-.sidebar .nav-item .nav-link,
+/* .sidebar .nav-item .nav-link,
 .topbar .nav-item .nav-link {
     position: relative;
-}
+} */
 
 .sidebar .nav-item .nav-link .badge-counter,
 .topbar .nav-item .nav-link .badge-counter {
@@ -10624,8 +10624,18 @@ a:focus {
 }
 
 .topbar {
-    height: 4.375rem;
+    height: 4.3rem;
 }
+
+/* .topbar {
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    left: 14.1rem;
+    right: 0;
+    background-color: red;
+    z-index: 10;
+} */
 
 .topbar #sidebarToggleTop {
     height: 2.5rem;
@@ -10701,7 +10711,7 @@ a:focus {
     border-left: 1px solid #e3e6f0;
     border-right: 1px solid #e3e6f0;
     border-bottom: 1px solid #e3e6f0;
-    line-height: 1.3rem;
+    line-height: 1.1rem;
 }
 
 .topbar .dropdown-list .dropdown-item .dropdown-list-image {
@@ -10825,7 +10835,7 @@ a:focus {
 .sidebar .nav-item .collapse .collapse-inner,
 .sidebar .nav-item .collapsing .collapse-inner {
     padding: 0.5rem 0;
-    min-width: 10rem;
+    min-width: 5rem;
     font-size: 0.85rem;
     margin: 0 0 1rem 0;
 }
@@ -10859,7 +10869,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:active,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:active {
-    background-color: #dddfeb;
+    background-color: white;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
@@ -11139,7 +11149,8 @@ a:focus {
 }
 
 .sidebar-light #sidebarToggle:hover {
-    background-color: #dddfeb;
+    background-color: #d12226;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .sidebar-dark .sidebar-brand {

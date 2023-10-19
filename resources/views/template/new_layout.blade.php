@@ -3,70 +3,166 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="CRM">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>TRANSFORMER - CRM</title>
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Trafindo · @yield('title')</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow-sm">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">TRAFOINDO</a>
-        <div class="">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <header class="navbar sticky-top flex-md-nowrap bg-white p-0 shadow-sm">
+        {{-- LOGO --}}
+        <div>
+            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> <img src="/Asset/LogoTrafoindo.png"
+                    width="120" height="50" class="d-inline-block" alt="trafoindo logo"></a>
         </div>
 
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Sign out</a>
-            </li>
-        </ul>
-    </nav>
+        {{-- TOOGLE MOBILE --}}
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {{-- USER MENU --}}
+        <div class="btn-group me-4">
+            <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{ Auth::user()->username }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li><button class="dropdown-item" type="button">Profile</button></li>
+                <li><button class="dropdown-item" type="button">Setting</button></li>
+                <li><a class="dropdown-item" href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                            class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a></li>
+                <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </ul>
+        </div>
+    </header>
 
+    {{-- SIDEBARS --}}
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-white sidebar">
-                <div class="sidebar-sticky">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block shadow-sm bg-white sidebar collapse">
+                <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="home"></span>
-                                Dashboard <span class="sr-only">(current)</span>
+                        <li class="nav-item ">
+                            <a class="nav-link {{ Request::is('sales/dashboard/salesIndexCrm') ? 'text-white active rounded' : '' }}"
+                                href="/sales/dashboard/salesIndexCrm">
+                                <i class="bi bi-house-fill"></i>
+                                Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Customers
+                        <li class="nav-item ">
+                            <a class="nav-link {{ Request::is('sales/customer/salesIndexCustomer') ? 'text-white active rounded' : '' }}"
+                                href="/sales/customer/salesIndexCustomer">
+                                <i class="bi bi-people-fill"></i>
+                                Customer
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                OIL LAB
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
+                        {{-- SPAREPARTS --}}
+                        <li class="nav-item {{ Request::is('/sales/sparepart/*') ? 'text-white active' : '' }}">
+                            <a href="#"
+                                class="nav-link d-inline-flex align-items-center gap-1 rounded border-0 collapsed "
+                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
+                                <i class="bi bi-wrench-adjustable-circle"></i>
                                 SpareParts
+                                <span class="ms-5">
+                                    <i class="bi bi-caret-down-fill"></i>
+                                </span>
+
                             </a>
+                            <div class="collapse" id="dashboard-collapse-sp">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li class="ms-4">
+                                        <a href="/sales/sparepart/index"
+                                            class="nav-link d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/index') ? 'text-white active' : '' }}"><i
+                                                class="bi bi-house-gear-fill me-1"></i> <span
+                                                class="me-2">Dashboard</span></a>
+                                    </li>
+                                    <li class="ms-4"><a href="/sales/sparepart/stock"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/stock') ? 'text-white active' : '' }}"><i
+                                                class="bi bi-box-seam-fill me-1"></i> <span
+                                                class="me-2">Stock</span></a>
+                                    </li>
+                                    <li class="ms-4"><a href="/sales/sparepart/revision"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/revision') ? 'text-white active' : '' }}"><i
+                                                class="bi bi-file-earmark-diff-fill me-1"></i> <span
+                                                class="me-2">Pengajuan Revisi</span></a>
+                                    </li>
+                                    <li class="ms-4"><a href="/sales/sparepart/order"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/order') ? 'text-white active' : '' }}"><i
+                                                class="bi bi-cart-plus-fill me-1"></i> <span
+                                                class="me-2">Pemesanan</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- LAB OIL --}}
+                        <li class="nav-item ">
+                            <a href="#"
+                                class="nav-link d-inline-flex align-items-center gap-1 rounded border-0 collapsed "
+                                data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-oil"
+                                aria-expanded="false">
+                                <i class="bi bi-fuel-pump-fill"></i>
+                                Oil Lab
+                                <span class="ms-5">
+                                    <i class="bi bi-caret-down-fill"></i>
+                                </span>
+                            </a>
+                            <div class="collapse" id="dashboard-collapse-oil">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                    <li class="ms-4"><a href="/sales/oil/index"
+                                            class="nav-link d-inline-flex text-decoration-none rounded {{ Request::is('/sales/oil/index') ? 'text-white active' : '' }}"><i
+                                                class="bi bi-cart-plus-fill me-1"></i> <span
+                                                class="me-2">Dashboard</span></a>
+                                    </li>
+                                    <li class="ms-4"><a href="#"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('/sales/oil/index') ? 'text-white active' : '' }}">Sales
+                                            Order</a>
+                                    </li>
+                                    <li class="ms-4"><a href="#"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('/sales/oil/index') ? 'text-white active' : '' }}">Report
+                                        </a>
+                                    </li>
+                                    <li class="ms-4"><a href="#"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('/sales/oil/index') ? 'text-white active' : '' }}">Sample</a>
+                                    </li>
+                                    <li class="ms-4"><a href="#"
+                                            class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('/sales/oil/index') ? 'text-white active' : '' }}">History</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
 
                     <h6
                         class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Menu Lainnya</span>
-                        <a class="d-flex align-items-center text-muted" href="#">
+                        <span class="text-secondary">Laporan Lainnya</span>
+                        <a class="link-secondary" href="#" aria-label="Add a new report">
                             <span data-feather="plus-circle"></span>
                         </a>
                     </h6>
@@ -74,41 +170,32 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
-                                Penjualan
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Produk Trafo
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Social engagement
+                                Bulanan
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3 bg-light">
                 @yield('contents')
             </main>
         </div>
     </div>
 
-    {{-- SCRIPT HERE --}}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.9.0/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

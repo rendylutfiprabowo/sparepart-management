@@ -1,7 +1,7 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'SpareParts Sales Order')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
             <thead>
@@ -10,7 +10,7 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="py-2">    
+            <div class="py-2">
                 <a class="btn btn-success" href="/sales/sparepart/order/add">+ Add Order</a>
             </div>
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
@@ -28,8 +28,8 @@
                     @foreach ($orders as $key => $order)
                         <tr>
                             <td class="table-plus">{{ $key }}</td>
-                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
-                            <td class="table-plus text-danger">{{$order->status}}</td>
+                            <td class="table-plus">{{ $order->customer->nama_customer }}</td>
+                            <td class="table-plus text-danger">{{ $order->status }}</td>
                             <td class="table-plus">DO</td>
                             <td class="table-plus">03SA0039214</td>
                             <td>

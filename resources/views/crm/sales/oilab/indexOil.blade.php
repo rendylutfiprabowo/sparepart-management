@@ -1,9 +1,8 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'Oil Sales Dashboard')
-@section('content')
+@section('contents')
     <div>
-
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Notification</h1>

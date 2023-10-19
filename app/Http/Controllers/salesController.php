@@ -81,24 +81,26 @@ class salesController extends Controller
     }
     public function orderSparepart()
     {
-        return view('crm.sales.sparepart.orderSparepart',[
-            'orders'=> order::all()
+        return view('crm.sales.sparepart.orderSparepart', [
+            'orders' => order::all()
         ]);
     }
-    public function selectStore(){
+    public function selectStore()
+    {
         $stores = storeSparepart::all();
-        return view('crm.sales.sparepart.selectStore',[
-            'stores'=>$stores,
+        return view('crm.sales.sparepart.selectStore', [
+            'stores' => $stores,
         ]);
     }
-    public function createOrderSparepart($id_store){
-        $store = storeSparepart::all()->where('id_store',$id_store)->first();
-        $stocks = stockSparepart::all()->where('id_store',$id_store);
+    public function createOrderSparepart($id_store)
+    {
+        $store = storeSparepart::all()->where('id_store', $id_store)->first();
+        $stocks = stockSparepart::all()->where('id_store', $id_store);
         $customers = customer::all();
-        return view('crm.sales.sparepart.formOrderSparepart',[
-            'customers'=>$customers,
-            'store'=>$store,
-            'stocks'=>$stocks,
+        return view('crm.sales.sparepart.formOrderSparepart', [
+            'customers' => $customers,
+            'store' => $store,
+            'stocks' => $stocks,
         ]);
     }
     public function detailOrderSparepart()
@@ -134,6 +136,7 @@ class salesController extends Controller
 
     public function showCust($id)
     {
-        $customers = customer::find($id);
+        $dataCust = customer::find($id);
+        return view('crm.sales.customer.salesIndexCustomer', ['dataCust' => $dataCust]);
     }
 }

@@ -1,8 +1,8 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'Sales Customer')
 
-@section('content')
+@section('contents')
 
     <div class="container-fluid">
         <!-- Page Heading -->
@@ -15,10 +15,12 @@
         <!-- Card Data User -->
         <div class="row">
             {{-- Card Total Customer --}}
-            <x-card-crm titles='Total Customers ' prices='{{ count($dataCust) }}' icons='fa-solid fa-2x fa-users-line' />
+            <x-card-crm titles='Total Customers ' prices='{{ count($dataCust) }}'
+                icons='fa-solid text-gray-900 fa-2x fa-users-line' />
 
             {{-- Card Total Projects --}}
-            <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}' icons='fa-solid fa-2x fa-users-line' />
+            <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}'
+                icons='fa-solid fa-2x fa-diagram-project text-gray-900' />
         </div>
         <hr />
         <!-- Page Heading -->
@@ -28,8 +30,8 @@
                     class="fas fa-plus fa-sm text-white-50 "></i> Add </a>
         </div>
 
-        <div class="row">
-            <table class="table table-hover">
+        <div class="row p-2">
+            <table class="table table-hover bg-white">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -44,7 +46,8 @@
                         @foreach ($dataCust as $dataTable)
                             <tr>
                                 <th scope="row">{{ $dataTable->id }}</th>
-                                <td><a href="#" class="text-merah">{{ $dataTable->nama_customer }}</a></td>
+                                <td><a href="{{ url('/sales/customer/customerDetails' . $dataTable->id) }}"
+                                        class="text-merah">{{ $dataTable->nama_customer }}</a></td>
                                 <td>{{ $dataTable->phone_customer }}</td>
                                 <td> <a href="#">{{ $dataTable->email_customer }}</a></td>
                                 <td><a href="#" class="text-dark">{{ $dataTable->jenisusaha_customer }}</a></td>
