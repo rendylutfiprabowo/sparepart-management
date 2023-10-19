@@ -66,7 +66,9 @@ Route::middleware(['auth', 'sales'])->group(function () {
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {
-    Route::get('/technician', [technicianController::class, 'viewDashboard']);
+    Route::get('/technician/index', [technicianController::class, 'viewDashboard']);
+    Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
+    Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
