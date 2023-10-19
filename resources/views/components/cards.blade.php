@@ -1,14 +1,13 @@
 <div class="col-lg-4">
-    <div class="card card-margin">
+    <div class="card card-margi shadow-sm">
         <div class="card-header no-border">
-            <h5 class="card-title">{{ $titleCard }}</h5>
+            <h5 class="card-title">{{ $judulcard }}</h5>
         </div>
         <div class="card-body pt-0">
             <div class="widget-49">
                 <div class="widget-49-title-wrapper">
-                    <div class="widget-49-date-primary">
-                        <span class="widget-49-date-day">{{ $tanggal }}</span>
-                        <span class="widget-49-date-month">{{ $bulan }}</span>
+                    <div class="widget-49-date-danger">
+                        <span class="widget-49-date-day">{{ $angkaPersen }}</span>
                     </div>
                     <div class="widget-49-meeting-info">
                         <span class="widget-49-pro-title">{{ $infoCard }}</span>
@@ -16,7 +15,7 @@
                     </div>
                 </div>
                 <div class="widget-49-meeting-action">
-                    <a href="#" class="btn btn-sm btn-flash-border-primary">View All</a>
+                    <a href="#" class="btn btn-sm btn-danger">Detail</a>
                 </div>
             </div>
         </div>
@@ -26,15 +25,11 @@
 <style>
     /* CARD */
     .card-margin {
-        margin-bottom: 1.875rem;
+        margin-bottom: 1rem;
     }
 
     .card {
         border: 0;
-        box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-        -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-        -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-        -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
     }
 
     .card {

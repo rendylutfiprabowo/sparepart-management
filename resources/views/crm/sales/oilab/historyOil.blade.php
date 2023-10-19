@@ -1,6 +1,6 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 @section('title', 'Oil Sales History')
-@section('content')
+@section('contents')
 
     <p style="font-size: 23px; color: black;">HISTORY HASIL PENGETESAN</p>
     <div class="row">
