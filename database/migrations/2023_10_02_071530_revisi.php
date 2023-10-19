@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('revisi', function (Blueprint $table) {
             $table->id();
             $table->string('id_revisi');
-            $table->string('id_stock')->nullable();
             $table->string('id_order');
             $table->string('id_technician');
             $table->string('do_order')->nullable();
-            $table->string('qty')->nullable();
             $table->string('status');
         });
     }

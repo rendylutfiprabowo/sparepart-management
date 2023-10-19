@@ -1,6 +1,6 @@
 @extends('template.teknisiSparepart')
 @section('content')
-    <form method="POST" action="/warehouse/add-worker/branch/{{ $order->id_order }}">
+    <form method="POST" action="/technician/listspk/{{ $order->id_order }}/return">
         @csrf
         <div class="card rounded-4 p-4">
             @if ($order->do_order != null)
@@ -42,7 +42,7 @@
                         <input type="text" class="form-control" name="" value="DO" placeholder="" readonly>
                     </div>
                     <div class="form-group col-lg-11 mb-3">
-                        <input type="text" class="form-control" name="" value="{{ $order->do_order }}"
+                        <input hidden type="text" class="form-control" name="" value="{{ $order->do_order }}"
                             placeholder="" readonly>
                     </div>
                 </div>
@@ -73,15 +73,18 @@
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
                             <td class="table-plus">{{ $booking->stock->sparepart->nama_sparepart }}</td>
+                            <input hidden type="text" name="id_stock[]" value="{{ $booking->stock->id_sparepart }}"
+                                id="">
                             <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                             <td class="table-plus">{{ $booking->qty_booked }}</td>
                             <td class="table-plus">
-                                <input style="border:none;" type="number" name="return_quantity[]" value="0"
-                                    min="0" max="{{ $booking->qty_booked }}">
+                                <input style="border:none; text-align:center;" type="number" name="qty_booked[]"
+                                    value="0" min="0" max="{{ $booking->qty_booked }}">
                             </td>
                         </tr>
                     </tbody>
                 @endforeach
+                <input hidden type="text" name="id_technician" value="{{ $order->id_technician }}">
             </table>
 
             <strong><label class="form-label mt-5">Material Diluar Scope</label></strong>
@@ -91,7 +94,7 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                         <div class="d-flex">
-                            <select class="form-control col-7" placeholder="" name="stocks[]"
+                            <select class="form-control col-7" placeholder="" name="stock[]"
                                 onchange="updateItem(this)">
                                 <option value="NULL" selected disabled>--Pilih Sparepart--</option>
                                 @foreach ($stocks as $stock)
@@ -125,7 +128,7 @@
 
             <div class="modal-footer">
                 <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
-                <button type="submit" href="" class="btn btn-primary"> Submit</button>
+                <button type="submit" class="btn btn-primary"> Submit</button>
             </div>
 
     </form>

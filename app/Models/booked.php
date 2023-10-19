@@ -17,6 +17,7 @@ class booked extends Model
     protected $fillable = [
         'id_booked',
         'id_stock',
+        'id_revisi',
         'qty_booked',
         'id_order'
     ];
@@ -28,5 +29,9 @@ class booked extends Model
     public function order(): BelongsTo
     {
         return $this->BelongsTo(order::class, 'id_order', 'id_order');
+    }
+    public function revisi(): BelongsTo
+    {
+        return $this->BelongsTo(order::class, 'id_revisi', 'id_revisi');
     }
 }
