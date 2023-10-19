@@ -119,11 +119,17 @@ class salesController extends Controller
             'now'=>$now,
         ]);
     }
+
+    
     public function detailOrderSparepart($id_order)
     {
         $order = order::all()->where('id_order',$id_order)->first();
+        $stocks = $order->store->stock;
+        $type = ($order->spk_order)?'DO':(($order->memo_order)?'MEMO':NULL);
         return view('crm.sales.sparepart.detailOrderSparepart',[
             'order'=>$order,
+            'stocks'=>$stocks,
+            'type'=>$type
         ]);
     }
     public function revisionSparepart()
