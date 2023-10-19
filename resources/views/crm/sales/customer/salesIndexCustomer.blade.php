@@ -6,21 +6,18 @@
 
     <div class="container-fluid">
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-merah font-weight-bold">Customer Data</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50 "></i> Export</a>
-        </div>
+
+        <x-page-heading>
+            Dashboard
+        </x-page-heading>
 
         <!-- Card Data User -->
         <div class="row">
-            {{-- Card Total Customer --}}
-            <x-card-crm titles='Total Customers ' prices='{{ count($dataCust) }}'
-                icons='fa-solid text-gray-900 fa-2x fa-users-line' />
-
+            <x-cards judulcard="Total Customer" angkaPersen="{{ count($dataCust) }}" bulan="Juni"
+                infoCard="Customer Seluruh Indonesia Terdaftar" jam="13:00" />
             {{-- Card Total Projects --}}
-            <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}'
-                icons='fa-solid fa-2x fa-diagram-project text-gray-900' />
+            {{-- <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}'
+                icons='fa-solid fa-2x fa-diagram-project text-gray-900' /> --}}
         </div>
         <hr />
         <!-- Page Heading -->

@@ -5,23 +5,23 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Warehouse & Store</h3>
+                    <h3 class="my-2 text-start">List Stock Warehouse & Store</h3>
                 </tr>
-                <hr class="mt-1" style="background-color: black;">
+                <hr class="mt-1">
             </thead>
             <div class="dropdown mb-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-danger btn-small dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     List Cabang
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
             </div>
-            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
-                <thead class="text-center">
+            <table class="table-bordered table" id="dataTable">
+                <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
@@ -31,7 +31,7 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
-                <tbody class="text-center">
+                <tbody>
                     @foreach ($stocks as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>

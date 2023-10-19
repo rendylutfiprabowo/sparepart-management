@@ -1,12 +1,12 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 @section('title', 'Oil Sales Orders')
-@section('content')
+@section('contents')
     <div>
 
         <!-- lOGO TRAFOINDO -->
         <!-- <div class="container d-flex justify-content-center align-items-center">
-            <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-        </div> -->
+                <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
+            </div> -->
 
         <!-- Button Create -->
         <div class="d-flex justify-content-end mx-5">
@@ -27,10 +27,12 @@
                         <img src="\Asset\Logo.svg" alt="Centered Image" style="max-width: 10%;">
                     </div>
                     <div class="text-putih mt-5" style="font-size: 1.5vw;">
-                        <strong>{{ $solab->project->customer->nama_customer }}</strong></div>
+                        <strong>{{ $solab->project->customer->nama_customer }}</strong>
+                    </div>
                     <div class="text-putih mb-3" style="font-size: 1vw;">{{ $solab['project']['nama_project'] }}</div>
                     <div class="text-merah putih mb-3 mt-5 px-2 rounded" style="font-size: 1.1vw;">
-                        <b>{{ $solab['no_so_solab'] }}</b></div>
+                        <b>{{ $solab['no_so_solab'] }}</b>
+                    </div>
                 </div>
             @endforeach
         </div>
