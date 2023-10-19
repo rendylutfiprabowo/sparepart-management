@@ -62,7 +62,10 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::post('/sales/sparepart/order/add', [bookedController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'update']);
 });
-
+//Role Technician Sparepart
+Route::middleware(['auth', 'technician'])->group(function () {
+    Route::get('/technician', [technicianController::class, 'viewDashboard']);
+});
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);

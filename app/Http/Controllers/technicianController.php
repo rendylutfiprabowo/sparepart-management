@@ -8,13 +8,10 @@ use Illuminate\Http\Request;
 
 class technicianController extends Controller
 {
-    public function viewSpk()
+    public function viewDashboard()
     {
-        $listSpk = order::with('sparepart', 'store_sparepart')->get();
         return view(
-            'sparepart.warehouse.technicianWarehouse',
-            []
+            'sparepart.technician.dashboardTechnician'
         );
     }
-
 }
