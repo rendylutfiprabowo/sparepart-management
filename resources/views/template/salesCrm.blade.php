@@ -2,7 +2,7 @@
 @section('sidebar')
     <li class="nav-item {{ Request::is('sales/dashboard/salesIndexCrm') ? 'active' : '' }} text-center">
         <a class="nav-link" href="/sales/dashboard/salesIndexCrm" role="button" aria-expanded="false">
-            <i class="fa-solid fa-border-all"></i>
+            <i class="fa-solid fa-gauge"></i>
             Dashboard
         </a>
     </li>

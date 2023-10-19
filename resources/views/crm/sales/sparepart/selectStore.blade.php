@@ -1,20 +1,27 @@
-@extends('template.salesCrm')
-@section('content')
-    <div class="col-md-12">
-        <div class="card rounded-4 p-4">
-            <div class="card-header">PILIH STORE</div>
-            <div class="card-body">
-                <select name="" id="" onchange="updateForm(this)">
-                    @foreach ($stores as $store)
-                        <option value="{{ $store->id_store }}">{{ $store->nama_store }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="card-footer"><a class="btn btn-success" id="order-next"
-                    href="/sales/sparepart/order/add/{{ $stores->first()->id_store }}">Next</a></div>
+@extends('template.new_layout')
+
+@section('title', 'Select Store')
+
+@section('contents')
+    <div class="jumbotron bg-white rounded shadow-sm">
+        <h1 class="display-5 text-gray-800">Silahkan Pilih Store</h1>
+        <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id autem labore modi numquam suscipit
+            voluptas ratione ea eos doloribus nobis, ipsam sunt corrupti harum rerum quam fugit voluptatum delectus omnis.
+        </p>
+        <div class="input-group">
+            <select name="" id="" onchange="updateForm(this)" class="custom-select" id="inputGroupSelect04"
+                aria-label="Example select with button addon">
+                @foreach ($stores as $store)
+                    <option value="{{ $store->id_store }}">{{ $store->nama_store }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mt-4">
+            <a href="/sales/sparepart/order/add/{{ $stores->first()->id_store }}" id="order-next"
+                class="btn text-gray-100 merah btn-user btn-block font-weight-bold">Next</a>
         </div>
     </div>
-    </div>
+
     <script>
         function updateForm(select) {
             var selectedValue = select.value;

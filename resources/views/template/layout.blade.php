@@ -31,10 +31,10 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav fixed-left sidebar sidebar-light accordion border-right" id="accordionSidebar">
+        <ul class="navbar-nav bg-white sidebar sidebar-light accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">
+            <a class="sidebar-brand putih d-flex align-items-center justify-content-center" href="/">
                 <img src="/Asset/LogoTrafoindo.png" width="70%" alt="trafoindo logo">
             </a>
             <!-- Divider -->
@@ -51,7 +51,7 @@
         <!-- End of Sidebar -->
 
         <div id="content-wrapper" class="d-flex flex-column" style="background-color: #edf2f7;">
-            <nav class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow-sm">
+            <nav class="navbar navbar-expand navbar-light topbar static-top mb-3 bg-white shadow-sm">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -307,6 +307,7 @@
 
     <!-- Page level plugins -->
     <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>

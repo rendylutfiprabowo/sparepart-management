@@ -40,6 +40,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
     // Dashboard Customer CRM
     Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
+    Route::get('/sales/customer/customerDetails', [salesController::class, 'showCust']);
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
