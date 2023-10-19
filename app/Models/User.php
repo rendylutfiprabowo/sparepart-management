@@ -54,6 +54,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(salesSparepart::class, 'id_user', 'id_user');
     }
+    public function technician(): HasMany
+    {
+        return $this->hasMany(technician::class, 'id_user', 'id_user');
+    }
     public function role(): BelongsTo
     {
         return $this->belongsTo(role::class, 'id_role', 'id');

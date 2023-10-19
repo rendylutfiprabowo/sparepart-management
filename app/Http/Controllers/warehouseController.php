@@ -55,44 +55,67 @@ class warehouseController extends Controller
     public function viewOrder($id_order)
     {
         $order = order::all()->where('id_order', $id_order)->first();
-        // @dd($order->first()->booked->sparepart);
         return view('sparepart.warehouse.addTechnicianWarehouse', [
             'order' => $order,
             'technician' => technician::all(),
-            // 'jumlahItems' => order::all()->where('id_order', $id_order)->first()->booked->first()->qty_booked
         ]);
     }
     public function viewOrderBranch($id_order)
     {
-        $uuid = Str::uuid();
-        $uuidWithSlashes = str_replace('-', '/', $uuid);
-        $np = 'Nota/' . $uuidWithSlashes . '/' . date('Ymd');
-        $sj = 'Surat Jalan/' . $uuidWithSlashes . '/' . date('Ymd');
-        $sj = strtoupper($sj);
-        $np = strtoupper($np);
         $order = order::all()->where('id_order', $id_order)->first();
-        // @dd($order->first()->booked->sparepart);
+        if ($order->do_order == NULL) {
+            $uuid = Str::uuid();
+            $uuidWithSlashes = str_replace('-', '/', $uuid);
+            $np = 'Nota/' . $uuidWithSlashes . '/' . date('Ymd');
+            $np = strtoupper($np);
+            $sj = $order->surat_jalan;
+        } else {
+            if ($order->nota_penyerahan == NULL || $order->surat_jalan == NULL) {
+                $uuid = Str::uuid();
+                $uuidWithSlashes = str_replace('-', '/', $uuid);
+                $np = 'Nota/' . $uuidWithSlashes . '/' . date('Ymd');
+                $sj = 'Surat Jalan/' . $uuidWithSlashes . '/' . date('Ymd');
+                $sj = strtoupper($sj);
+                $np = strtoupper($np);
+            } else {
+                $np = $order->nota_penyerahan;
+                $sj = $order->surat_jalan;
+            }
+        }
+
+
         return view('sparepart.branch.addTechnicianBranchWarehouse', [
             'order' => $order,
             'technician' => technician::all(),
             'nota' => $np,
             'surat_jalan' => $sj
-            // 'jumlahItems' => order::all()->where('id_order', $id_order)->first()->booked->first()->qty_booked
         ]);
     }
     public function addWorkerBranch($id_order, Request $request)
     {
-        $validatedData = $request->validate([
-            'id_technician' => 'required',
-            'nota_penyerahan' => 'required',
-            'surat_jalan' => 'required',
-        ]);
         $orders = order::all()->where('id_order', $id_order)->first();
-        $orders->id_technician = $validatedData['id_technician'];
-        $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
-        $orders->surat_jalan = $validatedData['surat_jalan'];
-        $orders->save();
-        session()->flash('success', 'Teknisi berhasil ditambahkan');
+        if ($orders->do_order == null) {
+            $validatedData = $request->validate([
+                'id_technician' => 'required',
+                'nota_penyerahan' => 'required',
+            ]);
+            $orders->id_technician = $validatedData['id_technician'];
+            $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+            $orders->save();
+            session()->flash('success', 'Teknisi berhasil ditambahkan');
+        } else {
+            $validatedData = $request->validate([
+                'id_technician' => 'required',
+                'nota_penyerahan' => 'required',
+                'surat_jalan' => 'required',
+            ]);
+            $orders->id_technician = $validatedData['id_technician'];
+            $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+            $orders->surat_jalan = $validatedData['surat_jalan'];
+            $orders->save();
+            session()->flash('success', 'Teknisi berhasil ditambahkan');
+        }
+
 
         return redirect('/warehouse/branch/listspk')
             ->with('order', $orders)

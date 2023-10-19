@@ -19,7 +19,7 @@ class loginController extends Controller
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
-                return redirect('/technician');
+                return redirect('/technician/index');
         }
         return redirect('/login');
     }
@@ -41,7 +41,7 @@ class loginController extends Controller
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
-                return redirect('/technician');
+                return redirect('/technician/index');
         }
 
         // Jika gagal login berdasarkan email, coba login berdasarkan username
@@ -55,7 +55,7 @@ class loginController extends Controller
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
-                return redirect('/technician');
+                return redirect('/technician/index');
         }
 
         // Jika kedua percobaan di atas gagal, kembalikan ke halaman login
