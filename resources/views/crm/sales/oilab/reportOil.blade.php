@@ -26,8 +26,6 @@
             </td>
             <td>
                 <div>Complete</div>
-                <div>Complete</div>
-                <div>Complete</div>
             </td>
             <td><button type="button" class="btn merah text-putih">download</button></td>
             @endforeach

@@ -22,6 +22,10 @@ class loginController extends Controller
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
                 return redirect('/technician');
+            else if (Auth::user()->id_role == 5)
+                return redirect('/index_modlab');
+            else if (Auth::user()->id_role == 6)
+                return redirect('/index_adminlab');
         }
         return redirect('/login');
     }
