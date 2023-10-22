@@ -1,7 +1,16 @@
+{{-- INI COMPONENT CARD UNTUK CRM ATAU LAINNYA, CARANYA : 
+    <x-cards judul="text" angkaPersen="text" infoCard="text" jam="text" /> (Tipe Datanya String)  --}}
+
 <div class="col-lg-4">
-    <div class="card card-margi shadow-sm">
-        <div class="card-header no-border">
-            <h5 class="card-title">{{ $judulcard }}</h5>
+    <div class="card card-margin shadow-sm">
+        <div class="card-header no-border d-flex justify-content-between ">
+            <div>
+                <h5 class="card-title">{{ $judulcard }}</h5>
+            </div>
+
+            <div>
+                <i class="bi bi-bookmark-fill"></i>
+            </div>
         </div>
         <div class="card-body pt-0">
             <div class="widget-49">
@@ -15,7 +24,7 @@
                     </div>
                 </div>
                 <div class="widget-49-meeting-action">
-                    <a href="#" class="btn btn-sm btn-danger">Detail</a>
+                    <a href="#" class="btn btn-sm btn-danger rounded">Detail</a>
                 </div>
             </div>
         </div>
@@ -324,9 +333,5 @@
 
     .widget-49 .widget-49-meeting-action {
         text-align: right;
-    }
-
-    .widget-49 .widget-49-meeting-action a {
-        text-transform: uppercase;
     }
 </style>
