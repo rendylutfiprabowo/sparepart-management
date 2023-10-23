@@ -117,6 +117,7 @@
                             <div class="d-flex">
                                 <select class="form-control col-7" placeholder="Enter Customer Name" name="stock"
                                     onchange="updateItem(this)">
+                                    <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($stocks as $stock)
                                         <option value="{{ $stock->id_stock }}"
                                             data-spec="{{ $stock->sparepart->spesifikasi_sparepart }}"
@@ -126,15 +127,12 @@
                                 </select>
                                 <div class="col d-flex align-items-center mx-3 text-right">qty</div>
                                 <input class="col form-control mx-3" name="qty" value="0">
-                                <input class="col form-control mx-3" name="dim"
-                                    value="{{ $stocks ? $stocks->first()->sparepart->satuan : '' }}" readonly>
+                                <input class="col form-control mx-3" name="dim" readonly>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <input type="text" class="form-control"
-                                value="{{ $stocks ? $stocks->first()->sparepart->spesifikasi_sparepart : '' }}"
-                                name="spesifikasi" readonly>
+                            <input type="text" class="form-control" name="spesifikasi" readonly>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-success" type="submit">Tambahkan Item</button>

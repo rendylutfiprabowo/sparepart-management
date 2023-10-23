@@ -24,6 +24,7 @@
                     <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
                     <select class="form-control select-search" id="select-customer" name="id_customer"
                         onchange="updateForm(this)">
+                        <option value="" selected disabled>-- Pilih Customer --</option>
                         @foreach ($customers as $customer)
                             <option value="{{ $customer->id_customer }}" data-phone="{{ $customer->phone_customer }}"
                                 data-address="{{ $customer->jenisusaha_customer }}">
@@ -35,22 +36,16 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
                     <input type="text" class="form-control" name="phone_number" readonly 
-                    @if ($customer->first())
-                        value = {{$customer->first()->phone_customer}}
-                    @endif
                     >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
                     <input type="text" class="form-control" name="sales_name" readonly value="Ahmad Sumbul">
                     <input type="hidden" value="1" name="id_sales">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" readonly
-                    @if ($customer->first())
-                        value = {{$customer->first()->jenisusaha_customer}}
-                    @endif>
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
@@ -70,6 +65,7 @@
                             <div class="d-flex">
                                 <select class="form-control col-7" placeholder="Enter Customer Name" name="stocks[]"
                                     onchange="updateItem(this)">
+                                    <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($stocks as $stock)
                                         <option value="{{ $stock->id_stock }}"
                                             data-spec="{{ $stock->sparepart->spesifikasi_sparepart }}"
@@ -79,15 +75,13 @@
                                 </select>
                                 <div class="col d-flex align-items-center mx-3 text-right">qty</div>
                                 <input class="col form-control mx-3" name="qty[]" value="0">
-                                <input class="col form-control mx-3" name="dim"
-                                    value="{{ $stocks ? $stocks->first()->sparepart->satuan : '' }}" readonly>
+                                <input class="col form-control mx-3" name="dim" readonly>
                                 <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
                             <input type="text" class="form-control"
-                                value="{{ $stocks ? $stocks->first()->sparepart->spesifikasi_sparepart : '' }}"
                                 name="spesifikasi" readonly>
                         </div>
                     </div>
