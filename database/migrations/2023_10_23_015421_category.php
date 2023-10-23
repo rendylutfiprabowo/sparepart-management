@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sparepart', function (Blueprint $table) {
+        Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('codematerial_sparepart');
-            $table->string('spesifikasi_sparepart');
-            $table->string('satuan');
             $table->string('id_category');
-            $table->date('updated_at')->nullable();
-            $table->date('created_at')->nullable();
+            $table->string('nama_category');
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sparepart');
+        Schema::dropIfExists('category');
     }
 };
