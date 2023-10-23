@@ -1,4 +1,4 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'Oil Sales Report')
 @section('content')
@@ -29,6 +29,6 @@
             </td>
             <td><button type="button" class="btn merah text-putih">download</button></td>
             @endforeach
-    </tbody>
-</table>
+        </tbody>
+    </table>
 @endsection

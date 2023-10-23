@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\toolsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\bookedController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\itemtestController;
 use App\Http\Controllers\stockController;
 use App\Http\Controllers\salesController;
@@ -10,6 +13,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
 use App\Http\Controllers\labController;
 use App\Http\Controllers\technicianController;
+use App\Models\tools;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -36,6 +40,8 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
     // Dashboard Customer CRM
     Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
+    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer']);
+    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust']);
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -51,16 +57,29 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
     Route::get('/sales/sparepart/order/add/{id_store}', [salesController::class, 'createOrderSparepart']);
     Route::get('/sales/sparepart/order/add', [salesController::class, 'selectStore']);
-    Route::get('/sales/sparepart/order/{id}', [salesController::class, 'detailOrderSparepart']);
+    Route::get('/sales/sparepart/order/{id_order}', [salesController::class, 'detailOrderSparepart']);
+    Route::get('/sales/sparepart/order/remove-item/{id_booked}', [bookedController::class, 'remove']);
+    Route::post('/sales/sparepart/order/{id_order}/add-item', [bookedController::class, 'store']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
-    Route::post('/sales/sparepart/order/add', [stockController::class, 'store']);
+    Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
+    Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'update']);
 });
-
+//Role Technician Sparepart
+Route::middleware(['auth', 'technician'])->group(function () {
+    Route::get('/technician/index', [technicianController::class, 'viewDashboard']);
+    Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
+    Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
+    Route::post('/technician/listspk/{id_order}/return', [technicianController::class, 'returnOrder']);
+});
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
+    Route::get('/warehouse/branch/listspk', [warehouseController::class, 'viewSpkBranch']);
+    Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
+    Route::get('/warehouse/view-order/branch/{id_order}', [warehouseController::class, 'viewOrderBranch']);
+    Route::post('/warehouse/add-worker/branch/{id_order}', [warehouseController::class, 'addWorkerBranch']);
 });
 
 //Role Manager Sparepart
@@ -76,6 +95,8 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
     Route::get('/warehouse/stock/{id_store}', [stockController::class, 'viewStockWarehouseToko']);
+    Route::get('/warehouse/tools', [toolsController::class, 'viewToolsWarehouse']);
+    Route::get('/warehouse/tools/{id_store}', [toolsController::class, 'viewToolsWarehouseToko']);
 });
 
 Route::middleware(['auth', 'laboil'])->group(function () {

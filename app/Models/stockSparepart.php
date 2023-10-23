@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class stockSparepart extends Model
 {
@@ -22,6 +23,10 @@ class stockSparepart extends Model
     public function sparepart(): BelongsTo
     {
         return $this->belongsTo(sparepart::class, 'id_sparepart', 'codematerial_sparepart');
+    }
+    public function revisi(): HasMany
+    {
+        return $this->HasMany(revisi::class, 'id_stock', 'id_stock');
     }
     public function store_sparepart(): BelongsTo
     {

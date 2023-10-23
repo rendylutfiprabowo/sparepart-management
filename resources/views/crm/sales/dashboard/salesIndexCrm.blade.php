@@ -1,33 +1,20 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard Sales')
 
-@section('content')
+@section('contents')
     <div>
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-danger font-weight-bold">Sales Profit Information</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50 "></i> Export</a>
-        </div>
-
-        <!-- Content Row -->
+        <x-page-heading>
+            Dashboard
+        </x-page-heading>
+        <!-- Content Row Card -->
         <div class="row">
-
-            {{-- Card Penjualan Bulanan --}}
-            <x-card-crm titles='Total Project (All)' prices='{{ count($dataProjects) }}'
-                icons='fa-solid text-success fa-2x fa-diagram-project' />
-
-            {{-- Card Data Penjualan SpareParts --}}
-            <x-card-crm titles='Penjualan (SpareParts)' prices='Rp. 511,000,000'
-                icons='fa-solid text-primary fa-2x fa-wrench' />
-
-            {{-- Card Data Oil Testing Lab --}}
-            <x-card-crm titles='Oil Lab (Testing)' prices='Rp. 300,000,000'
-                icons='fa-solid text-warning fa-2x fa-microscope' />
-
-            {{-- Card Data Oil Testing Lab --}}
-            <x-card-crm titles='Cancel(Project)' prices='Rp. 76,000,000' icons='fa-solid text-danger fa-2x fa-ban' />
+            <x-cards judulcard="Project" angkaPersen="12%" bulan="Juni" infoCard="Sales Profit Pada Penjualan Bulan Ini"
+                jam="13:00" classIcon="bi bi-bounding-box" />
+            <x-cards judulcard="Trafo Sales" angkaPersen="42%" bulan="September"
+                infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
+            <x-cards judulcard="Top" angkaPersen="92%" bulan="September"
+                infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
         </div>
     </div>
 @endsection

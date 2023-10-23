@@ -75,14 +75,23 @@
                                     <label for="message-text" class="col-form-label">Message:</label>
                                     <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn merah text-putih">Save changes</button>
+                                <div class="modal-body">
+                                    <form method="post" action="/item_test/add/{{ $solab->no_so_solab }}">
+                                        @csrf
+                                        <input type="hidden" value="{{ $solab->no_so_solab }}" name="no_so_solab">
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Message:</label>
+                                            <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn merah text-putih">Save changes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            @endforeach
+                @endforeach
             @endsection

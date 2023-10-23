@@ -1,7 +1,7 @@
-@extends('template.salesCrm')
+@extends('template.new_layout')
 
 @section('title', 'SpareParts Sales Order')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
             <thead>
@@ -10,7 +10,7 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="py-2">    
+            <div class="py-2">
                 <a class="btn btn-success" href="/sales/sparepart/order/add">+ Add Order</a>
             </div>
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
@@ -25,15 +25,26 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach (range(1, 10) as $i)
+                    @foreach ($orders as $key => $order)
                         <tr>
-                            <td class="table-plus">{{ $i }}</td>
-                            <td class="table-plus">Erlangga Maman Agus</td>
-                            <td class="table-plus text-danger">Rejected</td>
-                            <td class="table-plus">DO</td>
-                            <td class="table-plus">03SA0039214</td>
+                            <td class="table-plus">{{ $key }}</td>
+                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
+                            <td class="table-plus text-danger">
+                                @if($order->spk_order!=NULL ||
+                                    $order->do_order!=NULL || 
+                                    $order->memo_order!=NULL
+                                )
+                                    <b class="text-success">{{$order->status}}</b>
+                                @elseif($now->diffInDays($order->date_order)<=3 && $now>$order->date_order)
+                                    <b class="text-warning">{{$now->diffInDays($order->date_order).' Days left'}}</b>
+                                @else    
+                                    <b class="text-danger">Canceled</b>
+                                @endif
+                            </td>
+                            <td class="table-plus">{{$order->spk_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>
+                            <td class="table-plus">{{$order->spk_order?$order->spk_order:'-'}}</td>
                             <td>
-                                <a href="" class="pdf-link btn" type="button">
+                                <a href="/sales/sparepart/order/{{$order->id_order}}" class="pdf-link btn" type="button">
                                     <i class="fa-regular fa-file fa-lg"></i></a>
                             </td>
                         </tr>

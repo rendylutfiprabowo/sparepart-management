@@ -20,6 +20,7 @@
                         <th scope="col">Customer Name</th>
                         <th scope="col">Technician Name</th>
                         <th scope="col">Status</th>
+                        <th scope="col">DO/Memo DO</th>
                         <th scope="col">No. SPK</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -27,14 +28,28 @@
                 <tbody class="text-center">
                     @foreach ($spk as $no => $spks)
                         <tr>
-                            <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
-                            <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}</td>
-                            <td class="table-plus">{{ $spks->booked->status_booked }}</td>
-                            <td class="table-plus">{{ $spks->spk_order }}</td>
-                            <td><a href="/warehouse/view-order/{{ $spks->id_order }}" class="btn btn-dark" type="button"><i
-                                        class="fa-regular fa-file fa-lg"></i></a>
-                            </td>
+                            @if ($spks->memo_order != null || ($spks->do_order && $spks->spk_order != null))
+                                <td class="table-plus">{{ $no + 1 }}</td>
+                                <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
+                                <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}
+                                </td>
+
+                                <td class="table-plus">
+                                    @if ($spks->status == 'on-progress')
+                                        <b class="text-warning">{{ $spks->status }}</b>
+                                    @elseif ($spks->status == 'completed')
+                                        <b class="text-success">{{ $spks->status }}</b>
+                                    @endif
+                                </td>
+
+                                <td class="table-plus">
+                                    {{ $spks->spk_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
+                                </td>
+                                <td class="table-plus">{{ $spks->spk_order }}</td>
+                                <td><a href="/warehouse/view-order/{{ $spks->id_order }}" class="btn btn-dark"
+                                        type="button"><i class="fa-regular fa-file fa-lg"></i></a>
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

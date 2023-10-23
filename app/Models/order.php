@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class order extends Model
@@ -26,14 +27,16 @@ class order extends Model
         'do_order',
         'spk_order',
         'date_order',
+        'jenis_layanan',
+        'status',
     ];
     public function revisi(): HasOne
     {
         return $this->HasOne(revisi::class, 'id_order', 'id_order');
     }
-    public function booked(): HasOne
+    public function booked(): HasMany
     {
-        return $this->HasOne(booked::class, 'id_order', 'id_order');
+        return $this->HasMany(booked::class, 'id_order', 'id_order');
     }
     public function customer(): BelongsTo
     {

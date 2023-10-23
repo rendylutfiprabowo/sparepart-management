@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('id_tools');
             $table->string('id_technician');
             $table->integer('qty_technician_tools');
+            $table->string('status');
             $table->date('start_date');
             $table->date('finish_date');
         });

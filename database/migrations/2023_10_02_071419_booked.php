@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('id_order')->nullable();
             $table->string('id_revisi')->nullable();
             $table->integer('qty_booked');
-            $table->string('status_booked');
         });
     }
 

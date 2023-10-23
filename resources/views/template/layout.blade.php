@@ -9,27 +9,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
     <title>CRM - @yield('title')</title>
-
-    <!-- Custom fonts for this template-->
 
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-
-    <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Link IMG -->
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
     <link href="/css/style.css" rel="stylesheet" type="text/css">
-
     <!-- library select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
 
@@ -39,10 +31,10 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav fixed-left sidebar sidebar-light accordion border-right" id="accordionSidebar">
+        <ul class="navbar-nav bg-white sidebar sidebar-light accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand putih shadow-botom d-flex align-items-center justify-content-center" href="/">
+            <a class="sidebar-brand putih d-flex align-items-center justify-content-center" href="/">
                 <img src="/Asset/LogoTrafoindo.png" width="70%" alt="trafoindo logo">
             </a>
             <!-- Divider -->
@@ -58,9 +50,8 @@
         </ul>
         <!-- End of Sidebar -->
 
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- <div class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow"></div> -->
-            <nav class="navbar navbar-expand navbar-light topbar static-top mb-4 bg-white shadow-sm">
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: #edf2f7;">
+            <nav class="navbar navbar-expand navbar-light topbar static-top mb-3 bg-white shadow-sm">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -316,6 +307,7 @@
 
     <!-- Page level plugins -->
     <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
