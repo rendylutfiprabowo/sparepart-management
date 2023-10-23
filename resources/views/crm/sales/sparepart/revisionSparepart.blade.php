@@ -26,7 +26,8 @@
                         <tr>
                             <td class="table-plus">{{ $i }}</td>
                             <td class="table-plus">Erlangga Maman Agus</td>
-                            <td class="table-plus text-danger">Rejected</td>
+                            <td class="table-plus"><x-status_badge>Rejected</x-status_badge>
+                            </td>
                             <td class="table-plus">DO</td>
                             <td class="table-plus">03SA0039214</td>
                             <td>

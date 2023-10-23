@@ -2,25 +2,41 @@
 @section('title', 'SpareParts | Stock')
 @section('contents')
     <div class="col-md-12">
-        <div class="card rounded-4 p-4">
+        <div class="card  p-3">
             <thead>
                 <tr>
                     <h3 class="my-2 text-start">List Stock Warehouse & Store</h3>
                 </tr>
                 <hr class="mt-1">
             </thead>
-            <div class="dropdown mb-3">
-                <button class="btn btn-danger btn-small dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    List Cabang
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
+            <div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="dropdown mb-3">
+                            <button class="btn btn-danger btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                List Cabang
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group mb-3 me-auto">
+                            <input type="text" class="form-control border-danger form-control-sm" placeholder="Cari"
+                                aria-label="Cari..." aria-describedby="basic-addon2">
+                            <a href="#" class="input-group-text bg-danger text-white" id="basic-addon2"><i
+                                    class="bi bi-search"></i></a>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <table class="table-bordered table" id="dataTable">
+
+            <table class="table table-hover border-0" id="dataTable">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

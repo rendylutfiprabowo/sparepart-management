@@ -88,15 +88,15 @@ class salesController extends Controller
     {
         $orders = order::all();
         foreach ($orders as $order) {
-            if(isset($order->date)){
+            if (isset($order->date)) {
                 $order->date_order = Carbon::create($order->date_order);
             }
         }
         $now = Carbon::now();
         $now = $now->addDays(3);
-        return view('crm.sales.sparepart.orderSparepart',[
-            'orders'=> $orders,
-            'now'=>$now
+        return view('crm.sales.sparepart.orderSparepart', [
+            'orders' => $orders,
+            'now' => $now
         ]);
     }
     public function selectStore()
@@ -112,24 +112,24 @@ class salesController extends Controller
         $stocks = stockSparepart::all()->where('id_store', $id_store);
         $customers = customer::all();
         $now = Carbon::now();
-        return view('crm.sales.sparepart.formOrderSparepart',[
-            'customers'=>$customers,
-            'store'=>$store,
-            'stocks'=>$stocks,
-            'now'=>$now,
+        return view('crm.sales.sparepart.formOrderSparepart', [
+            'customers' => $customers,
+            'store' => $store,
+            'stocks' => $stocks,
+            'now' => $now,
         ]);
     }
 
-    
+
     public function detailOrderSparepart($id_order)
     {
-        $order = order::all()->where('id_order',$id_order)->first();
+        $order = order::all()->where('id_order', $id_order)->first();
         $stocks = $order->store->stock;
-        $type = ($order->spk_order)?'DO':(($order->memo_order)?'MEMO':NULL);
-        return view('crm.sales.sparepart.detailOrderSparepart',[
-            'order'=>$order,
-            'stocks'=>$stocks,
-            'type'=>$type
+        $type = ($order->spk_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
+        return view('crm.sales.sparepart.detailOrderSparepart', [
+            'order' => $order,
+            'stocks' => $stocks,
+            'type' => $type
         ]);
     }
     public function revisionSparepart()
@@ -159,9 +159,35 @@ class salesController extends Controller
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
-    public function showCust($id)
+    public function detailCustomer($id)
     {
         $dataCust = customer::find($id);
-        return view('crm.sales.customer.salesIndexCustomer', ['dataCust' => $dataCust]);
+        if ($dataCust) {
+            return view('crm.sales.customer.customerDetails', compact('dataCust'));
+        } else {
+            return redirect()->route('crm.sales.customer.salesIndexCustomer')->with('error', 'Pelanggan tidak ditemukan.');
+        }
+    }
+
+    public function addCust(Request $request)
+    {
+        $request->validate([
+            'nama_customer' => 'required|string|max:255',
+            'phone_customer' => 'required|string',
+            'email_customer' => 'required|email|unique:customers,email',
+            'jenisusaha' => 'required|string',
+        ]);
+
+        $customer = new customer();
+        $customer->nama_customer = $request->input('nama_customer');
+        $customer->phone_customer = $request->input('phone_customer');
+        $customer->email_customer = $request->input('email_customer');
+
+        // Setel kolom lainnya sesuai kebutuhan
+
+        $customer->save();
+
+        // Redirect ke halaman daftar pelanggan atau halaman lain yang sesuai
+        return redirect('sales/customer/salesIndexCustomer')->with('success', 'Data pelanggan berhasil ditambahkan');
     }
 }

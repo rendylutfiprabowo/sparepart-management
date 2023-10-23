@@ -5,26 +5,23 @@
 @section('contents')
 
     <div class="container-fluid">
-        <!-- Page Heading -->
 
         <x-page-heading>
-            Dashboard
+            Dashboard Customer
         </x-page-heading>
 
         <!-- Card Data User -->
         <div class="row">
             <x-cards judulcard="Total Customer" angkaPersen="{{ count($dataCust) }}" bulan="Juni"
                 infoCard="Customer Seluruh Indonesia Terdaftar" jam="13:00" />
-            {{-- Card Total Projects --}}
-            {{-- <x-card-crm titles='Total Projects ' prices='{{ count($dataCust) }}'
-                icons='fa-solid fa-2x fa-diagram-project text-gray-900' /> --}}
         </div>
         <hr />
-        <!-- Page Heading -->
+
+        {{-- TABLE DATA CUSTOMER --}}
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-merah font-weight-bold">Table Of Customer</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm rounded btn-success"><i
-                    class="fas fa-plus fa-sm text-white-50 "></i> Add </a>
+            <h1 class="h3 mb-0 font-weight-bold">Data Table Of Customer</h1>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm rounded btn-success" data-bs-toggle="modal"
+                data-bs-target="#addCustModal"><i class="bi bi-plus-circle-fill me-1"></i>Add </button>
         </div>
 
         <div class="row p-2">
@@ -43,8 +40,9 @@
                         @foreach ($dataCust as $dataTable)
                             <tr>
                                 <th scope="row">{{ $dataTable->id }}</th>
-                                <td><a href="{{ url('/sales/customer/customerDetails' . $dataTable->id) }}"
-                                        class="text-merah">{{ $dataTable->nama_customer }}</a></td>
+                                <td><a
+                                        href="{{ url('/sales/customer/customerDetails' . $dataTable->id) }}">{{ $dataTable->nama_customer }}</a>
+                                </td>
                                 <td>{{ $dataTable->phone_customer }}</td>
                                 <td> <a href="#">{{ $dataTable->email_customer }}</a></td>
                                 <td><a href="#" class="text-dark">{{ $dataTable->jenisusaha_customer }}</a></td>
@@ -55,6 +53,25 @@
                     @endif
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <!-- Modal Add Customer -->
+    <div class="modal fade" id="addCustModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
