@@ -69,6 +69,8 @@ class Kernel extends HttpKernel
         'warehouse-center' => \App\Http\Middleware\WarehouseCenterMiddleware::class,
         'laboil' => \App\Http\Middleware\LabOilMiddleware::class,
         'technician' => \App\Http\Middleware\TechnicianMiddleware::class,
+        'adminLab' => \App\Http\Middleware\AdminlabMiddleware::class,
+        'modLab' => \App\Http\Middleware\ModlabMiddleware::class,
 
     ];
 }

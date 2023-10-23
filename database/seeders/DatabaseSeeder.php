@@ -15,6 +15,7 @@ use App\Models\storeSparepart;
 use App\Models\User;
 use App\Models\sales;
 use App\Models\sample;
+use App\Models\trafo;
 use App\Models\form;
 use App\Models\order;
 use App\Models\revisi;
@@ -60,9 +61,16 @@ class DatabaseSeeder extends Seeder
             'id_role' => '1'
         ]);
         User::create([
-            'id_user' => 'USR-005',
+            'id_user' => 'USR-05',
             'username' => 'maulana',
             'email' => 'maul@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '2'
+        ]);
+        User::create([
+            'id_user' => 'USR-08',
+            'username' => 'rendy',
+            'email' => 'rendy@mail.com',
             'password' => bcrypt('123456789'),
             'id_role' => '2'
         ]);
@@ -79,6 +87,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'lang@mail.com',
             'password' => bcrypt('123456789'),
             'id_role' => '4'
+        ]);
+        User::create([
+            'id_user' => 'USR-06',
+            'username' => 'rosyid',
+            'email' => 'rosyid@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '5'
+        ]);
+        User::create([
+            'id_user' => 'USR-07',
+            'username' => 'reza',
+            'email' => 'reza@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '6'
         ]);
         warehouse::create([
             'id_warehouse' => 'WAR-001',
@@ -449,7 +471,55 @@ class DatabaseSeeder extends Seeder
             'nama_tools' => 'Sepatu Pengaman',
             'qty_tools' => '100',
         ]);
+        sales::create([
+            'id_sales' => $faker->numberBetween(100, 999),
+            'nama_sales' => 'maulana',
+            'phone_sales' => '098768986',
+            'nip_sales' => '1123',
+            'id_user' => 'USR-05',
+        ]);
+        sales::create([
+            'id_sales' => $faker->numberBetween(100, 999),
+            'nama_sales' => 'rendy',
+            'phone_sales' => '09874455',
+            'nip_sales' => '1020',
+            'id_user' => 'USR-08',
+        ]);
+        trafo::create([
+            'id_trafo' => $faker->numberBetween(100, 999),
+            'serial_number' => '123',
+            'kva' => '872',
+            'merk' => 'trafindo',
+            'year' => '2020',
+            'voltage' => '1212',
+            'vg' => '1222',
+            'tag_number' => '11',
+            'volume_oil' => '60',
+            'id_project' => '833',
+        ]);
+        trafo::create([
+            'id_trafo' => $faker->numberBetween(100, 999),
+            'serial_number' => '090',
+            'kva' => '388',
+            'merk' => 'power',
+            'year' => '2012',
+            'voltage' => '1234',
+            'vg' => '5543',
+            'tag_number' => '23',
+            'volume_oil' => '32',
+            'id_project' => '435',
+        ]);
+        trafo::create([
+            'id_trafo' => $faker->numberBetween(100, 999),
+            'serial_number' => '232',
+            'kva' => '544',
+            'merk' => 'ranger trafo',
+            'year' => '2998',
+            'voltage' => '1233',
+            'vg' => '98298',
+            'tag_number' => '34',
+            'volume_oil' => '56',
+            'id_project' => '911',
+        ]);
     }
-
-    
 }

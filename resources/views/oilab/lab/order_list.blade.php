@@ -48,12 +48,6 @@
                             <div>
                                 <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
                             </div>
-                            <div>
-                                <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                            </div>
-                            <div>
-                                <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
-                            </div>
                         </td>
                         <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
                         <td class="text-center align-middle">
@@ -97,46 +91,6 @@
                             </div>
                             <div class="modal-body">
                                 <form action=""></form>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- modal 3 -->
-                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header merah">
-                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
-                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action=""> disini terdapat hasil yang tidak seharusnya terjadi</form>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- modal 3 -->
-                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header merah">
-                                <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes</h4>
-                                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="">ada yang tidak beres</form>
                             </div>
                             <div class="modal-footer">
                                 <a href="/orderlist" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>
