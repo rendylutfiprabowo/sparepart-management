@@ -37,13 +37,38 @@ class DatabaseSeeder extends Seeder
         ]);
         storeSparepart::create([
             'id_store'    => 'STR-02',
-            'nama_store' => 'Tangerang',
+            'nama_store' => 'Plaju',
             'alamat_store' => 'Jl. Serayu 1',
         ]);
         storeSparepart::create([
             'id_store'    => 'CTR',
             'nama_store' => 'Pusat',
             'alamat_store' => 'Jl. Gembor Raya',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'STR-03',
+            'nama_store' => 'Balongan',
+            'alamat_store' => 'Jl. Balongan',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'STR-04',
+            'nama_store' => 'Cilacap',
+            'alamat_store' => 'Jl. Cilacap',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'STR-05',
+            'nama_store' => 'Balikpapan',
+            'alamat_store' => 'Jl. Balikpapan',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'STR-06',
+            'nama_store' => 'Dumai',
+            'alamat_store' => 'Jl. Dumai',
+        ]);
+        storeSparepart::create([
+            'id_store'    => 'STR-07',
+            'nama_store' => 'Papua',
+            'alamat_store' => 'Jl. Papua',
         ]);
 
         User::create([
