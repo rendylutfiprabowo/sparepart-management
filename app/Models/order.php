@@ -30,9 +30,9 @@ class order extends Model
         'jenis_layanan',
         'status',
     ];
-    public function revisi(): HasMany
+    public function revisi(): HasOne
     {
-        return $this->HasMany(revisi::class, 'id_order', 'id_order');
+        return $this->HasOne(revisi::class, 'id_order', 'id_order');
     }
     public function booked(): HasMany
     {
