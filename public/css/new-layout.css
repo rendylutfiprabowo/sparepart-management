@@ -86,13 +86,37 @@ body {
     border-radius: 0;
 }
 
-.form-control-dark {
-    color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
+/* HOVER */
+.hover-gray {
+   hover: background-color: #e9ecef;
 }
 
-.form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+/* COLOR BACKGROUND */
+
+.bg-blue {
+    background-color: #0d6efd;
+}
+
+.bg-indigo {
+    background-color: #6610f2;
+}
+
+.bg-red {
+    background-color: #dc3545;
+}
+
+.bg-purple {
+    background-color: #d63384;
+}
+
+.bg-orange {
+    background-color: #fd7e14;
+}
+
+.bg-gray {
+    background-color: #adb5bd;
+}
+
+.bg-gray-black {
+    background-color: #000;
 }

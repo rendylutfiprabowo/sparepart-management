@@ -23,6 +23,6 @@ class lab extends Model
 
     public function formreport(): HasMany
     {
-        return $this->hasMany(formReport::class, 'id_lab', 'id_lab');
+        return $this->hasMany(formReport::class, 'id_formreport', 'id_formreport');
     }
 }

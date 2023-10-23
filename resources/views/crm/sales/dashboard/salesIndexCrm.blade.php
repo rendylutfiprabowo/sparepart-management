@@ -1,6 +1,6 @@
 @extends('template.new_layout')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard Sales')
 
 @section('contents')
     <div>
@@ -10,7 +10,7 @@
         <!-- Content Row Card -->
         <div class="row">
             <x-cards judulcard="Project" angkaPersen="12%" bulan="Juni" infoCard="Sales Profit Pada Penjualan Bulan Ini"
-                jam="13:00" />
+                jam="13:00" classIcon="bi bi-bounding-box" />
             <x-cards judulcard="Trafo Sales" angkaPersen="42%" bulan="September"
                 infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
             <x-cards judulcard="Top" angkaPersen="92%" bulan="September"
