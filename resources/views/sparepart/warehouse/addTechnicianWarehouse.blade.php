@@ -116,13 +116,27 @@
                     <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
                         placeholder="" readonly>
                 </div>
+            @elseif($order->do_order == null)
+                <strong><label class="form-label">DO</label></strong>
+                <div class="row">
+                    <div class="form-group col-lg-1 mb-3">
+                        <input type="text" class="form-control" name="" value="DO" placeholder="" readonly>
+                    </div>
+                    <div class="form-group col-lg-11 mb-3">
+                        <input type="text" class="form-control" name="" value="{{ $order->do_order }}"
+                            placeholder="" readonly>
+                    </div>
+                </div>
+                <strong><label class="form-label">No. SPK</label></strong>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
+                        placeholder="" readonly>
+                </div>
                 <strong><label class="form-label">No. Surat Jalan</label></strong>
                 <div class="form-group">
                     <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
                         placeholder="" readonly>
                 </div>
-            @elseif($order->do_order == null)
-
             @elseif($order->do_order != null && $order->memo_order != null)
             @endif
             <strong><label class="form-label">Input Technician</label></strong>

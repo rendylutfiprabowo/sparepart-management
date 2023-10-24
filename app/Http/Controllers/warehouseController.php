@@ -29,8 +29,7 @@ class warehouseController extends Controller
     public function viewStockBranchId()
     {
         $id_store = Auth::User()->warehouse->id_store;
-
-        $stockSparepart = Auth::User()->warehouse->store->stock;
+        $stockSparepart = Auth::User()->warehouse->store->stock()->paginate(10);
         $stores = storeSparepart::all();
         return view(
             'sparepart.branch.stockBranchWarehouse',
@@ -38,6 +37,7 @@ class warehouseController extends Controller
                 'spareparts' => $stockSparepart,
                 'stores' => $stores,
                 'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
+
             ]
         );
     }

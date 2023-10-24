@@ -14,7 +14,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
+            <table class="table-bordered table" width="100%" cellspacing="0">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
@@ -29,11 +29,10 @@
                     @foreach ($spareparts as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
                             <td class="table-plus">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
-                            {{-- @dd($stock->sparepart) --}}
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
                                     data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i
                                         class="fa-regular fa-file fa-lg"></i></a>
@@ -79,6 +78,21 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <ul class="pagination">
+                <li class="page-item {{ $spareparts->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $spareparts->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $spareparts->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $spareparts->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     {{-- create modal --}}
