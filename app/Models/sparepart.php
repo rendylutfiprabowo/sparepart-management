@@ -24,7 +24,7 @@ class sparepart extends Model
 
     public function stock(): HasMany
     {
-        return $this->hasMany(stockSparepart::class, 'codematerial_sparepart', 'id_sparepart');
+        return $this->hasMany(stockSparepart::class, 'id_sparepart','codematerial_sparepart');
     }
     public function category(): BelongsTo
     {

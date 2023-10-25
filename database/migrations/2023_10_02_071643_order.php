@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('memo_order')->nullable();
             $table->string('do_order')->nullable();
             $table->string('spk_order')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->date('date_order');
         });
     }

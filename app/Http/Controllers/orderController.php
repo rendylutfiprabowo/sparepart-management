@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\booked;
 use Faker\Factory as Faker;
+use Carbon\Carbon;
 
 class orderController extends Controller
 {
-    public function update($id_order,Request $request){
+    public function updateSales($id_order,Request $request){
         $validated =  $request->validate([
             'do-memo'=>'required',
             'no-do-memo'=>'required',
-            'no-spk'=>'sometimes',
+            'no-spk'=>'required',
         ]);
-        // 'memo_order',
-        // 'do_order',
-        // 'spk_order',
         $order = order::where('id_order',$id_order)->firstOrFail();
         if($validated['do-memo']==1){
             $order->spk_order = $validated['no-spk'];
             $order->do_order = $validated['no-do-memo'];
         }
-        else{
+        elseif($validated['do-memo']==2){
+            $order->spk_order = $validated['no-spk'];
             $order->memo_order = $validated['no-do-memo'];
         };
+        $order->status = 'on-warehouse';
         $order->save();
 
         return redirect()->back()->with('success','DO/MEMO DO berhasil di simpan');
@@ -57,7 +57,7 @@ class orderController extends Controller
         $order->id_store = $validated['id_store'];
         $order->date_order = $validated['date'];
         $order->jenis_layanan = $validated['jenis_layanan'];
-        $order->status = 'on-progress';
+        $order->status = NULL;
         $order->save();
 
 
@@ -71,5 +71,17 @@ class orderController extends Controller
         }
 
         return redirect('sales/sparepart/order');
+    }
+
+    public function checkStatus(){
+        $orders = order::all()->where('status',NULL);
+        $now = Carbon::now()->addDays(3);
+        foreach ($orders as $order) {
+            if(($now->diffInDays($order->date_order)>3) && 
+                ($now>$order->date_order)){
+                $order->status = 'canceled';
+                $order->save();
+            };
+        }
     }
 }
