@@ -1,55 +1,48 @@
 @extends('template.new_layout')
-@section('contents')
-    <!-- lOGO TRAFOINDO -->
-    <div class="container d-flex justify-content-center align-items-center">
-        <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-    </div>
+@section('contents')   
+<!-- lOGO TRAFOINDO -->
+<div class="container d-flex justify-content-center align-items-center">
+    <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
+</div>
 
-    <!-- form salesorder -->
-    <div>
-        <form method="post" action="/sales/oil/salesorder/add">
-            @csrf
-            <div class="container-fluid">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">No SO</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SO"
-                        name="no_so_solab">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">No SPK</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SPK"
-                        name="no_spk_solab">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-                    <select class="form-control" id="select-customers" placeholder="Enter Customer Name" name="id_customer">
-                        @foreach ($customers as $key)
-                            <option value="{{ $key['id_customer'] }}">{{ $key['nama_customer'] }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Project</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Project"
-                        name="nama_project">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-                    <input class="form-control" type="text" placeholder="{{ $sales ? $sales->nama_sales : '' }}"
-                        aria-label="Disabled input example" value="{{ $sales ? $sales->nama_sales : '' }}" name="nama_sales"
-                        disabled>
-                    <input type="hidden" name="id_sales" value="{{ $sales->id_sales }}">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Year Trafo</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Year Trafo"
-                        name="tahun_solab">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat_project"></textarea>
-                </div>
-
+<!-- form salesorder -->
+<div>
+    <form method="post" action="/sales/oil/salesorder/add">
+        @csrf
+        <div class="container-fluid">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">No SO</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SO" name="no_so_solab">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">No SPK</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SPK" name="no_spk_solab">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                <select class="form-control" id="select-customers" placeholder="Enter Customer Name" name="id_customer">
+                    @foreach($customers as $key)
+                    <option value="{{$key['id_customer']}}">{{$key['nama_customer']}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Project</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Project" name="nama_project">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
+                <input class="form-control" type="text" placeholder="{{ $sales ? $sales->nama_sales : '' }}" aria-label="Disabled input example" value="{{ $sales ? $sales->nama_sales : '' }}" name="nama_sales" disabled>
+                <input type="hidden" name="id_sales" value="{{$sales->id_sales}}">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat_project"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Transformer Units</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Traformer units" name="tahun_solab">
+            </div>
                 <!-- form input scope -->
                 <div>
                     <label for="exampleFormControlTextarea1" class="form-label">Input Scope</label>
@@ -130,85 +123,74 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- OA -->
-                        <div class="row">
-                            <div class="col">
-                                <div class="dropright mb-3 mt-2">
-                                    <a class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <strong>Oil Analisis</strong>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>BDV</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[ift_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>IFT</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[wo_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Water Content</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[tan_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>TAN</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[sns_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Sludge & Sediment</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[cs_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Corrosif Sulfur</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[fp_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Flash Point</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[pcb_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>PCB</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="oa_check[color_check]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Color</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox"
-                                                name="oa_check[density_check]" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Density</strong>
-                                            </label>
-                                        </div>
+                    </div>
+                    <!-- OA -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="dropright mb-3 mt-2">
+                                <a class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    <strong>Oil Analysis</strong>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>BDV</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[ift_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>IFT</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[wo_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Water Content</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[tan_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>TAN</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[sns_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Sludge & Sediment</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[cs_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Corrosif Sulfur</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[fp_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Flash Point</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[pcb_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>PCB</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[color_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Color</strong>
+                                        </label>
+                                    </div>
+                                    <div class="form-check ml-2">
+                                        <input class="form-check-input" type="checkbox" name="oa_check[density_check]" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            <strong>Density</strong>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
