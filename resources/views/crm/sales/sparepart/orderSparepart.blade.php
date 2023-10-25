@@ -30,15 +30,21 @@
                             <td class="table-plus">{{ $key }}</td>
                             <td class="table-plus">{{$order->customer->nama_customer}}</td>
                             <td class="table-plus text-danger">
-                                @if($order->spk_order!=NULL ||
-                                    $order->do_order!=NULL || 
-                                    $order->memo_order!=NULL
-                                )
-                                    <b class="text-success">{{$order->status}}</b>
-                                @elseif($now->diffInDays($order->date_order)<=3 && $now>$order->date_order)
+                                @if($order->status == NULL)
                                     <b class="text-warning">{{$now->diffInDays($order->date_order).' Days left'}}</b>
                                 @else    
-                                    <b class="text-danger">Canceled</b>
+                                    <b class="
+                                    @if($order->status == 'closed')
+                                        text-success
+                                    @elseif($order->status == 'on-warehouse' || $order->status == 'on-technician')
+                                        text-secondary
+                                    @elseif($order->status == 'revisi')
+                                        text-info
+                                    @elseif($order->status == 'canceled')
+                                        text-danger
+                                    @endif
+                                    ">{{$order->status}}
+                                    </b>
                                 @endif
                             </td>
                             <td class="table-plus">{{$order->spk_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>

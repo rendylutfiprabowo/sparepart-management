@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class category extends Model
 {
@@ -18,8 +18,8 @@ class category extends Model
 
 
 
-    public function sparepart(): HasOne
+    public function sparepart(): HasMany
     {
-        return $this->HasOne(sparepart::class, 'id_category', 'id_category');
+        return $this->HasMany(sparepart::class, 'id_category', 'id_category');
     }
 }

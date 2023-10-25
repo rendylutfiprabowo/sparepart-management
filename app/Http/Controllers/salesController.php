@@ -9,10 +9,14 @@ use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
 use App\Models\solab;
+use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+
 
 use Carbon\Carbon;
 
@@ -109,11 +113,22 @@ class salesController extends Controller
     public function createOrderSparepart($id_store)
     {
         $store = storeSparepart::all()->where('id_store', $id_store)->first();
-        $stocks = stockSparepart::all()->where('id_store', $id_store);
+        $stocks = stockSparepart::where('id_store', $id_store)->with('sparepart.category')->get();
+        $categories = [];
+        $stocks->each(function ($stock) use (&$categories) {
+            $category = $stock->sparepart->category;
+            if ($category) {
+                $categories[] = $category;
+            }
+        });
+        $categories= new Collection($categories);
+        $categories = $categories->unique('id');
+            
         $customers = customer::all();
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
+            'category'=>$categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
@@ -125,13 +140,14 @@ class salesController extends Controller
     {
         $order = order::all()->where('id_order', $id_order)->first();
         $stocks = $order->store->stock;
-        $type = ($order->spk_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
+        $type = ($order->do_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
         return view('crm.sales.sparepart.detailOrderSparepart', [
             'order' => $order,
             'stocks' => $stocks,
             'type' => $type
         ]);
     }
+
     public function revisionSparepart()
     {
         return view('crm.sales.sparepart.revisionSparepart');

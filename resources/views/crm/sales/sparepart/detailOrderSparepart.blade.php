@@ -149,23 +149,21 @@
                     <div class="row my-2">
                         <div class="col-3">
                             <select name="do-memo" id="" class="form-control">
-                                <option value="1">DO</option>
-                                <option value="2"
-                                    {{ $order->memo_order && !$order->spk_order ? "selected='true'" : '' }}>MEMO/DO
-                                </option>
+                                <option value="1" {{ $type == 'MEMO' ? "selected='true'" : '' }}>DO</option>
+                                <option value="2">MEMO/DO</option>
                             </select>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
-                                @if ($order->do_order != null) value="{{ $order->do_order }}" readonly
+                                @if ($type == 'DO') value="{{ $order->do_order }}" readonly
                                 
-                            @elseif($order->memo_order != null)
+                            @else
                                 value="{{ $order->memo_order }}" @endif>
                         </div>
                     </div>
                     <label for=""><b>Input No. SPK</b> </label>
                     <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
-                        @if ($order->spk_order != null) value="{{ $order->spk_order }}"
+                        @if ($type != NULL) value="{{ $order->spk_order }}"
                                 readonly @endif>
 
 
@@ -183,22 +181,16 @@
                     <div class="col-3">
                         <select name="do-memo" id="" class="form-control">
                             <option value="1">DO</option>
-                            <option value="2"
-                                {{ $order->memo_order && !$order->spk_order ? "selected='true'" : '' }}>MEMO/DO</option>
                         </select>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
-                            @if ($order->do_order != null) value="{{ $order->do_order }}" readonly
-                        
-                    @elseif($order->memo_order != null)
-                        value="{{ $order->memo_order }}" @endif>
+                             value="{{ $order->do_order }}" readonly>
                     </div>
                 </div>
                 <label for=""><b>Input No. SPK</b> </label>
-                <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
-                    @if ($order->spk_order != null) value="{{ $order->spk_order }}"
-                        readonly @endif>
+                <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk" value="{{ $order->spk_order }}"
+                        readonly>
                 <div class="modal-footer">
                     <a href="/sales/sparepart/order" class="btn merah text-white"> Back</a>
                 </div>

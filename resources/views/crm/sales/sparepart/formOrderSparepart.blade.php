@@ -5,9 +5,9 @@
             <h6>Add Order</h6>
         </div>
         @if (session('error'))
-        <div class="mx-3">
-            <x-error_message text="{{ session('error') }}"/>
-        </div>
+            <div class="mx-3">
+                <x-error_message text="{{ session('error') }}" />
+            </div>
         @endif
         <form method="post" action="/sales/sparepart/order/add">
             @csrf
@@ -35,8 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_number" readonly 
-                    >
+                    <input type="text" class="form-control" name="phone_number" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
@@ -49,7 +48,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
-                    <input class="form-control" type="date" id="dateInput" name="date" value="{{$now->toDateString()}}">
+                    <input class="form-control" type="date" id="dateInput" name="date"
+                        value="{{ $now->toDateString() }}">
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Store</label>
@@ -63,14 +63,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                             <div class="d-flex">
-                                <select class="form-control col-7" placeholder="Enter Customer Name" name="stocks[]"
-                                    onchange="updateItem(this)">
+                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="stocks[]"
+                                    id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($stocks as $stock)
-                                        <option value="{{ $stock->id_stock }}"
-                                            data-spec="{{ $stock->sparepart->spesifikasi_sparepart }}"
-                                            data-dim="{{ $stock->sparepart->satuan }}">
-                                            {{ $stock->sparepart->nama_sparepart }}</option>
+                                    @foreach ($category as $category)
+                                        <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
                                     @endforeach
                                 </select>
                                 <div class="col d-flex align-items-center mx-3 text-right">qty</div>
@@ -81,8 +78,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <input type="text" class="form-control"
-                                name="spesifikasi" readonly>
+                            <select name="stock[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
+
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -99,7 +97,7 @@
                     Submit
                 </button>
         </form>
-        <script>
+        {{-- <script>
             function addNewItem() {
                 const formContainer = document.querySelector(".items");
                 const originalDiv = formContainer.querySelector(".item");
@@ -110,7 +108,7 @@
             function deleteItem(element) {
                 element.parentElement.parentElement.parentElement.remove();
             }
-        </script>
+        </script> --}}
         <script>
             function updateForm(sel) {
                 var selectedOption = $('#select-customer').find('option:selected');
@@ -124,15 +122,111 @@
 
             function updateItem(select) {
                 var selectedOption = $(select).find(":selected");
-                var spesifikasi = $(select).closest(".item").find('input[name="spesifikasi"]');
                 var dimension = $(select).closest(".item").find('input[name="dim"]');
 
-                var dataSpec = selectedOption.data("spec");
                 var dataDim = selectedOption.data("dim");
-                spesifikasi.val(dataSpec);
                 dimension.val(dataDim);
+                console.log(dimension.val());
             }
         </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            let itemCount = 1;
+
+            // Event delegation to handle category select change
+            document.addEventListener('change', function(event) {
+                if (event.target.classList.contains('category-select')) {
+                    const categoryId = event.target.value;
+
+                    var url = window.location.href;
+                    var parts = url.split('/');
+                    var storeId = parts[parts.length - 1];
+
+                    // Find the corresponding specification select element
+                    const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector('.specification-select');
+
+                    // Clear existing options
+                    specificationSelect.innerHTML = '';
+
+                    if (categoryId) {
+                        // Fetch specifications based on the selected category and store using an AJAX request
+                        $.ajax({
+                            url: '/get/stock/' + categoryId + '/' + storeId,
+                            type: 'GET',
+                            success: function(data) {
+                                // Populate the specification select with the retrieved data
+                                data.forEach(function(stock) {
+                                    const option = document.createElement('option');
+                                    // option.data-dim=stock.satuan;
+                                    option.value = stock.id_stock;
+                                    option.text = stock.spesifikasi_sparepart;
+
+                                    option.setAttribute('data-dim', stock.satuan);
+                                    specificationSelect.appendChild(option);
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+
+            function addNewItem() {
+                itemCount++;
+                const formContainer = document.querySelector(".items");
+                const originalDiv = formContainer.querySelector(".item");
+                const newDiv = originalDiv.cloneNode(true);
+
+                // Update IDs and names for the new elements
+                newDiv.querySelectorAll('.category-select').forEach((select) => {
+                    select.id = `category${itemCount}`;
+                    select.name = `stocks[]`;
+                });
+
+                newDiv.querySelector('.specification-select').innerHTML = '';
+
+                formContainer.appendChild(newDiv);
+            }
+
+            function deleteItem(element) {
+                const itemElements = document.querySelectorAll('.item');
+                if(itemElements.length>1){
+                    element.parentElement.parentElement.parentElement.remove();
+                };
+
+            }
+        </script>
+
+        {{-- <script>
+            $(document).ready(function() {
+                var url = window.location.href;
+                var parts = url.split('/');
+                var storeId = parts[parts.length - 1];
+                $('#category').on('change', function() {
+                    var categoryId = $(this).val();
+                    var stockDropdown = $('#stock');
+
+                    // Clear existing options
+                    stockDropdown.empty();
+
+                    if (categoryId) {
+                        // Fetch stocks based on the selected category and current store using an AJAX request
+                        $.ajax({
+                            url: '/get/stock/' + categoryId + '/' + storeId,
+                            type: 'GET',
+                            success: function(data) {
+                                // Populate the stock dropdown with the retrieved data
+                                $.each(data, function(index, stock) {
+                                    stockDropdown.append('<option value="' + stock.id_stock +
+                                        '">' + stock.spesifikasi_sparepart + '</option>');
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        </script> --}}
+
 
     </div>
     </div>
