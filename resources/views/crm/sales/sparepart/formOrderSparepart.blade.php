@@ -14,10 +14,10 @@
             <div class="container-fluid">
                 <h3 class="my-3">Data Pelanggan</h3>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Jenis Layanan</label>
+                    <label for="exampleFormControlInput1" class="form-label">Delivery Type</label>
                     <select class="form-control" name="jenis_layanan">
-                        <option value="1">Jasa</option>
-                        <option value="2">Material</option>
+                        <option value="1">Delivered by Technician</option>
+                        <option value="2">Delievered by Other Party</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -63,7 +63,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                             <div class="d-flex">
-                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="stocks[]"
+                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="category"
                                     id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($category as $category)
@@ -78,7 +78,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <select name="stock[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
+                            <select name="stocks[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
                             </select>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                 // Update IDs and names for the new elements
                 newDiv.querySelectorAll('.category-select').forEach((select) => {
                     select.id = `category${itemCount}`;
-                    select.name = `stocks[]`;
+                    select.name = `category`;
                 });
 
                 newDiv.querySelector('.specification-select').innerHTML = '';
