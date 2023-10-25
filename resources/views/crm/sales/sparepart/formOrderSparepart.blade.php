@@ -63,8 +63,8 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                             <div class="d-flex">
-                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="category"
-                                    id="category">
+                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
+                                    name="category" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($category as $category)
                                         <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
@@ -78,7 +78,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <select name="stocks[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
+                            <select name="stocks[]" id="stock" class="form-control specification-select"
+                                onchange="updateItem(this)">
                             </select>
                         </div>
                     </div>
@@ -143,7 +144,8 @@
                     var storeId = parts[parts.length - 1];
 
                     // Find the corresponding specification select element
-                    const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector('.specification-select');
+                    const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector(
+                        '.specification-select');
 
                     // Clear existing options
                     specificationSelect.innerHTML = '';
@@ -189,7 +191,7 @@
 
             function deleteItem(element) {
                 const itemElements = document.querySelectorAll('.item');
-                if(itemElements.length>1){
+                if (itemElements.length > 1) {
                     element.parentElement.parentElement.parentElement.remove();
                 };
 

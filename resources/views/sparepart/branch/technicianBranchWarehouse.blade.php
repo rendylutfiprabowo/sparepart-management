@@ -31,19 +31,23 @@
                             @if ($spks->memo_order != null || ($spks->do_order && $spks->spk_order != null))
                                 <td class="table-plus">{{ $no + 1 }}</td>
                                 <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
-                                <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}
+                                <td class="table-plus">
+                                    {{ $spks->technician ? $spks->technician->nama_technician : ($spks->status == 'closed' || $spks->status == 'memo-closed' ? 'Delievered by Other Party' : '-') }}
                                 </td>
 
                                 <td class="table-plus">
-                                    @if ($spks->status == 'on-progress')
-                                        <b class="text-warning">{{ $spks->status }}</b>
-                                    @elseif ($spks->status == 'completed')
-                                        <b class="text-success">{{ $spks->status }}</b>
-                                    @endif
+                                    <b
+                                        class="@if ($spks->status == 'closed') text-success
+                                    @elseif($spks->status == 'on-warehouse' || $spks->status == 'on-technician')
+                                        text-secondary
+                                    @elseif($spks->status == 'revisi')
+                                        text-info
+                                    @elseif($spks->status == 'canceled')
+                                        text-danger @endif">{{ $spks->status }}
+                                    </b>
                                 </td>
-
                                 <td class="table-plus">
-                                    {{ $spks->spk_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
+                                    {{ $spks->do_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
                                 </td>
                                 <td class="table-plus">{{ $spks->spk_order }}</td>
                                 <td><a href="/warehouse/view-order/branch/{{ $spks->id_order }}" class="btn btn-dark"
