@@ -13,11 +13,9 @@ use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
-
-
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
 class salesController extends Controller
@@ -187,35 +185,37 @@ class salesController extends Controller
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
-    public function detailCustomer($id)
+    // Detail Customer
+    public function detailCustomer($id_customer)
     {
-        $dataCust = customer::find($id);
+        $dataCust = customer::where('id_customer', $id_customer)->first();
         if ($dataCust) {
             return view('crm.sales.customer.customerDetails', compact('dataCust'));
         } else {
-            return redirect()->route('crm.sales.customer.salesIndexCustomer')->with('error', 'Pelanggan tidak ditemukan.');
+            return redirect()->route('crm.sales.customer.customerDetails')->with('error', 'Pelanggan tidak ditemukan.');
         }
     }
 
+    // Tambahkan Customer
     public function addCust(Request $request)
     {
-        $request->validate([
-            'nama_customer' => 'required|string|max:255',
-            'phone_customer' => 'required|string',
-            'email_customer' => 'required|email|unique:customers,email',
-            'jenisusaha' => 'required|string',
+        $customers = $request->validate([
+            'id_customer' => 'required',
+            'nama_customer' => 'required',
+            'phone_customer' => 'required',
+            'email_customer' => 'required',
+            'jenisusaha_customer' => 'required',
         ]);
 
-        $customer = new customer();
-        $customer->nama_customer = $request->input('nama_customer');
-        $customer->phone_customer = $request->input('phone_customer');
-        $customer->email_customer = $request->input('email_customer');
+        $customers = new customer();
+        $customers->id_customer = $request->input('id_customer');
+        $customers->nama_customer = $request->input('nama_customer');
+        $customers->phone_customer = $request->input('phone_customer');
+        $customers->email_customer = $request->input('email_customer');
+        $customers->jenisusaha_customer = $request->input('jenisusaha_customer');
 
-        // Setel kolom lainnya sesuai kebutuhan
+        $customers->save();
 
-        $customer->save();
-
-        // Redirect ke halaman daftar pelanggan atau halaman lain yang sesuai
-        return redirect('sales/customer/salesIndexCustomer')->with('success', 'Data pelanggan berhasil ditambahkan');
+        return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 }

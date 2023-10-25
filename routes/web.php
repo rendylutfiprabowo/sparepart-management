@@ -43,10 +43,10 @@ Route::middleware(['auth'])->group(function(){
 Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
     Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
-    // Dashboard Customer CRM
+    // Dashboard Sales Customer CRM
     Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
-    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer']);
-    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust']);
+    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
+    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust'])->name('addCust');
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -118,7 +118,11 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/orderlist', function () {
         return view('oilab.lab.order_list');
     });
+    Route::get('/order_list1', function () {
+        return view('oilab.lab.order_list1');
+    });
     Route::get('/orderlist', [labController::class, 'viewOrder']);
+    Route::get('/order_list1', [labController::class, 'viewitem']);
     Route::post('/form_add_data/add', [labController::class, 'storetrafo']);
 
     Route::get('/history_lab', function () {
