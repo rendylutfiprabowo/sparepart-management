@@ -37,12 +37,12 @@
                 <input type="hidden" name="id_sales" value="{{$sales->id_sales}}">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Year Trafo</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Year Trafo" name="tahun_solab">
-            </div>
-            <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat_project"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Transformer Units</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Traformer units" name="tahun_solab">
             </div>
 
             <!-- form input scope -->
@@ -121,7 +121,7 @@
                         <div class="col">
                             <div class="dropright mb-3 mt-2">
                                 <a class="btn btn-white dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    <strong>Oil Analisis</strong>
+                                    <strong>Oil Analysis</strong>
                                 </a>
                                 <div class="dropdown-menu">
                                     <div class="form-check ml-2">
