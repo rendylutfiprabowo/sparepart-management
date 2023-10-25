@@ -65,8 +65,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check mt-3 ml-2">
-                                <input class="form-check-input" type="checkbox" name="dga_check" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="dga_check" id="flexCheckDefaultdga">
+                                <label class="form-check-label" for="flexCheckDefaultdga">
                                     <strong>DGA</strong>
                                 </label>
                             </div>
@@ -92,8 +92,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-check mt-3 ml-2">
-                                <input class="form-check-input" type="checkbox" name="furan_check" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="furan_check" id="flexCheckDefaultfuran">
+                                <label class="form-check-label" for="flexCheckDefaultfuran">
                                     <strong>Furan</strong>
                                 </label>
                             </div>
@@ -125,62 +125,62 @@
                                 </a>
                             </summary>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[ift_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefaultbdv">
+                                <label class="form-check-label" for="flexCheckDefaultbdv">
                                     <strong>BDV</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[ift_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[ift_check]" id="flexCheckDefaultift">
+                                <label class="form-check-label" for="flexCheckDefaultift">
                                     <strong>IFT</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[wo_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[wo_check]" id="flexCheckDefaultwo">
+                                <label class="form-check-label" for="flexCheckDefaultwo">
                                     <strong>Water Content</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[tan_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[tan_check]" id="flexCheckDefaultTAN">
+                                <label class="form-check-label" for="flexCheckDefaultTAN">
                                     <strong>TAN</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[sns_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[sns_check]" id="flexCheckDefaultsns">
+                                <label class="form-check-label" for="flexCheckDefaultsns">
                                     <strong>Sludge & Sediment</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[cs_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[cs_check]" id="flexCheckDefaultoa">
+                                <label class="form-check-label" for="flexCheckDefaultoa">
                                     <strong>Corrosif Sulfur</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[fp_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[fp_check]" id="flexCheckDefaultfp">
+                                <label class="form-check-label" for="flexCheckDefaultfp">
                                     <strong>Flash Point</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[pcb_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[pcb_check]" id="flexCheckDefaultPCB">
+                                <label class="form-check-label" for="flexCheckDefaultPCB">
                                     <strong>PCB</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[color_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[color_check]" id="flexCheckDefaultC">
+                                <label class="form-check-label" for="flexCheckDefaultC">
                                     <strong>Color</strong>
                                 </label>
                             </div>
                             <div class="form-check ml-2">
-                                <input class="form-check-input" type="checkbox" name="oa_check[density_check]" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="oa_check[density_check]" id="flexCheckDefaultD">
+                                <label class="form-check-label" for="flexCheckDefaultD">
                                     <strong>Density</strong>
                                 </label>
                             </div>
