@@ -94,7 +94,7 @@ class warehouseController extends Controller
     public function addWorkerBranch($id_order, Request $request)
     {
         $orders = order::all()->where('id_order', $id_order)->first();
-        if ($orders->do_order == null) {
+        if ($orders->do_order != null) {
             $validatedData = $request->validate([
                 'id_technician' => 'required',
                 'nota_penyerahan' => 'required',

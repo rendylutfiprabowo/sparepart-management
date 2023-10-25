@@ -113,13 +113,8 @@
                 </div>
                 <strong><label class="form-label">Nota Penyerahan</label></strong>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
-                        value="{{ $nota }}" readonly>
-                </div>
-                <strong><label class="form-label">Surat Jalan</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="surat_jalan" placeholder=""
-                        value="{{ $surat_jalan }}" readonly>
+                    <input type="text" value="{{ $order->nota_penyerahan }}" class="form-control" name="nota_penyerahan"
+                        placeholder="Masukkan Nomor NP" @if ($order->nota_penyerahan != null) readonly @endif>
                 </div>
             @elseif($order->do_order == null)
                 <strong><label class="form-label">Memo DO</label></strong>
@@ -146,8 +141,7 @@
                 <strong><label class="form-label">DO</label></strong>
                 <div class="row">
                     <div class="form-group col-lg-1 mb-3">
-                        <input type="text" class="form-control" name="" value="DO" placeholder=""
-                            readonly>
+                        <input type="text" class="form-control" name="" value="DO" placeholder="" readonly>
                     </div>
                     <div class="form-group col-lg-11 mb-3">
                         <input type="text" class="form-control" name="" value="{{ $order->do_order }}"

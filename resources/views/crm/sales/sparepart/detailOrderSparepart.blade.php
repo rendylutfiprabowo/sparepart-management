@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="card rounded-4 p-4 mb-3">
+    <div class="card rounded-4 mb-3 p-4">
         @if (session('success'))
             <div class="bg-success text-light rounded text-center">
                 {{ session('success') }}
@@ -163,7 +163,7 @@
                     </div>
                     <label for=""><b>Input No. SPK</b> </label>
                     <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
-                        @if ($type != NULL) value="{{ $order->spk_order }}"
+                        @if ($type != null) value="{{ $order->spk_order }}"
                                 readonly @endif>
 
 
@@ -185,12 +185,12 @@
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
-                             value="{{ $order->do_order }}" readonly>
+                            value="{{ $order->do_order }}" readonly>
                     </div>
                 </div>
                 <label for=""><b>Input No. SPK</b> </label>
-                <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk" value="{{ $order->spk_order }}"
-                        readonly>
+                <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
+                    value="{{ $order->spk_order }}" readonly>
                 <div class="modal-footer">
                     <a href="/sales/sparepart/order" class="btn merah text-white"> Back</a>
                 </div>
