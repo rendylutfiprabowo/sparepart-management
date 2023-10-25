@@ -12,6 +12,7 @@ use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
 use App\Http\Controllers\labController;
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
 use App\Models\tools;
 use Illuminate\Support\Facades\Auth;
@@ -34,14 +35,18 @@ Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('/get/stock/{id_category}/{id_store}',[categoryController::class,'getStock']);
+});
+
 //Role Sales
 Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
     Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
-    // Dashboard Customer CRM
+    // Dashboard Sales Customer CRM
     Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
-    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer']);
-    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust']);
+    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
+    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust'])->name('addCust');
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -63,7 +68,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
     Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
-    Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'update']);
+    Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'updateSales']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {

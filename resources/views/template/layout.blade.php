@@ -32,7 +32,6 @@
     <div id="wrapper">
         <!-- Sidebar -->
         <ul class="navbar-nav bg-white sidebar sidebar-light accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand putih d-flex align-items-center justify-content-center" href="/">
                 <img src="/Asset/LogoTrafoindo.png" width="70%" alt="trafoindo logo">
@@ -52,12 +51,10 @@
 
         <div id="content-wrapper" class="d-flex flex-column" style="background-color: #edf2f7;">
             <nav class="navbar navbar-expand navbar-light topbar static-top mb-3 bg-white shadow-sm">
-
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Dropdown - Messages -->

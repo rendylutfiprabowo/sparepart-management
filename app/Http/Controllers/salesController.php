@@ -9,11 +9,13 @@ use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
 use App\Models\solab;
+use App\Models\category;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
 class salesController extends Controller
@@ -109,11 +111,22 @@ class salesController extends Controller
     public function createOrderSparepart($id_store)
     {
         $store = storeSparepart::all()->where('id_store', $id_store)->first();
-        $stocks = stockSparepart::all()->where('id_store', $id_store);
+        $stocks = stockSparepart::where('id_store', $id_store)->with('sparepart.category')->get();
+        $categories = [];
+        $stocks->each(function ($stock) use (&$categories) {
+            $category = $stock->sparepart->category;
+            if ($category) {
+                $categories[] = $category;
+            }
+        });
+        $categories= new Collection($categories);
+        $categories = $categories->unique('id');
+            
         $customers = customer::all();
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
+            'category'=>$categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
@@ -125,13 +138,14 @@ class salesController extends Controller
     {
         $order = order::all()->where('id_order', $id_order)->first();
         $stocks = $order->store->stock;
-        $type = ($order->spk_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
+        $type = ($order->do_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
         return view('crm.sales.sparepart.detailOrderSparepart', [
             'order' => $order,
             'stocks' => $stocks,
             'type' => $type
         ]);
     }
+
     public function revisionSparepart()
     {
         return view('crm.sales.sparepart.revisionSparepart');
@@ -159,35 +173,37 @@ class salesController extends Controller
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
-    public function detailCustomer($id)
+    // Detail Customer
+    public function detailCustomer($id_customer)
     {
-        $dataCust = customer::find($id);
+        $dataCust = customer::where('id_customer', $id_customer)->first();
         if ($dataCust) {
             return view('crm.sales.customer.customerDetails', compact('dataCust'));
         } else {
-            return redirect()->route('crm.sales.customer.salesIndexCustomer')->with('error', 'Pelanggan tidak ditemukan.');
+            return redirect()->route('crm.sales.customer.customerDetails')->with('error', 'Pelanggan tidak ditemukan.');
         }
     }
 
+    // Tambahkan Customer
     public function addCust(Request $request)
     {
-        $request->validate([
-            'nama_customer' => 'required|string|max:255',
-            'phone_customer' => 'required|string',
-            'email_customer' => 'required|email|unique:customers,email',
-            'jenisusaha' => 'required|string',
+        $customers = $request->validate([
+            'id_customer' => 'required',
+            'nama_customer' => 'required',
+            'phone_customer' => 'required',
+            'email_customer' => 'required',
+            'jenisusaha_customer' => 'required',
         ]);
 
-        $customer = new customer();
-        $customer->nama_customer = $request->input('nama_customer');
-        $customer->phone_customer = $request->input('phone_customer');
-        $customer->email_customer = $request->input('email_customer');
+        $customers = new customer();
+        $customers->id_customer = $request->input('id_customer');
+        $customers->nama_customer = $request->input('nama_customer');
+        $customers->phone_customer = $request->input('phone_customer');
+        $customers->email_customer = $request->input('email_customer');
+        $customers->jenisusaha_customer = $request->input('jenisusaha_customer');
 
-        // Setel kolom lainnya sesuai kebutuhan
+        $customers->save();
 
-        $customer->save();
-
-        // Redirect ke halaman daftar pelanggan atau halaman lain yang sesuai
-        return redirect('sales/customer/salesIndexCustomer')->with('success', 'Data pelanggan berhasil ditambahkan');
+        return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 }
