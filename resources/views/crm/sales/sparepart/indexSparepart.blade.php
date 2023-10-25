@@ -16,7 +16,6 @@
                     infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
                 <x-cards judulcard="DO" angkaPersen="92" bulan="September"
                     infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
-
             </div>
         </div>
     </div>

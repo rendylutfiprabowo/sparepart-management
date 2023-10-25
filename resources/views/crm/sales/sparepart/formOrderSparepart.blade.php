@@ -79,7 +79,6 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
                             <select name="stock[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
-
                             </select>
                         </div>
                     </div>
