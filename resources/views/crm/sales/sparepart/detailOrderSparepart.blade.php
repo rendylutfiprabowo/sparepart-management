@@ -85,6 +85,7 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Items Name</th>
+                    <th scope="col">Specification</th>
                     <th scope="col">Code Material</th>
                     <th scope="col">Qty</th>
                     @if ($type == null)
@@ -96,7 +97,8 @@
                 <tbody class="text-center">
                     <tr>
                         <td class="table-plus">{{ $no + 1 }}</td>
-                        <td class="table-plus">{{ $booking->stock->sparepart->nama_sparepart }}</td>
+                        <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
+                        <td class="table-plus">{{$booking->stock->sparepart->spesifikasi_sparepart}}</td>
                         <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                         <td class="table-plus">{{ $booking->qty_booked }}</td>
                         @if ($type == null)
@@ -115,14 +117,11 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
                             <div class="d-flex">
-                                <select class="form-control col-7" placeholder="Enter Customer Name" name="stock"
-                                    onchange="updateItem(this)">
+                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="category"
+                                    id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($stocks as $stock)
-                                        <option value="{{ $stock->id_stock }}"
-                                            data-spec="{{ $stock->sparepart->spesifikasi_sparepart }}"
-                                            data-dim="{{ $stock->sparepart->satuan }}">
-                                            {{ $stock->sparepart->nama_sparepart }}</option>
+                                    @foreach ($category as $category)
+                                        <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
                                     @endforeach
                                 </select>
                                 <div class="col d-flex align-items-center mx-3 text-right">qty</div>
@@ -132,7 +131,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <input type="text" class="form-control" name="spesifikasi" readonly>
+                            <select name="stock" id="stock" class="form-control specification-select" onchange="updateItem(this)">
+
+                            </select>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-success" type="submit">Tambahkan Item</button>
@@ -199,16 +200,82 @@
     </div>
 
     </div>
-    <script>
-        function updateItem(select) {
-            var selectedOption = $(select).find(":selected");
-            var spesifikasi = $(select).closest(".item").find('input[name="spesifikasi"]');
-            var dimension = $(select).closest(".item").find('input[name="dim"]');
 
-            var dataSpec = selectedOption.data("spec");
-            var dataDim = selectedOption.data("dim");
-            spesifikasi.val(dataSpec);
-            dimension.val(dataDim);
+<script>
+    function updateItem(select) {
+        var selectedOption = $(select).find(":selected");
+        var dimension = $(select).closest(".item").find('input[name="dim"]');
+
+        var dataDim = selectedOption.data("dim");
+        dimension.val(dataDim);
+        console.log(dimension.val());
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let itemCount = 1;
+
+    // Event delegation to handle category select change
+    document.addEventListener('change', function(event) {
+        if (event.target.classList.contains('category-select')) {
+            const categoryId = event.target.value;
+            var url = window.location.href;
+            var parts = url.split('/');
+            var storeId = "{{$order->id_store}}";
+            
+            // Find the corresponding specification select element
+            const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector('.specification-select');
+            
+            // Clear existing options
+            specificationSelect.innerHTML = '';
+            
+            if (categoryId) {
+                // Fetch specifications based on the selected category and store using an AJAX request
+                $.ajax({
+                    url: '/get/stock/' + categoryId + '/' + storeId,
+                    type: 'GET',
+                    success: function(data) {
+                        // Populate the specification select with the retrieved data
+                        data.forEach(function(stock) {
+                            const option = document.createElement('option');
+                            console.log('tes');
+                            // option.data-dim=stock.satuan;
+                            option.value = stock.id_stock;
+                            option.text = stock.spesifikasi_sparepart;
+
+                            option.setAttribute('data-dim', stock.satuan);
+                            specificationSelect.appendChild(option);
+                        });
+                    }
+                });
+            }
         }
-    </script>
+    });
+
+    function addNewItem() {
+        itemCount++;
+        const formContainer = document.querySelector(".items");
+        const originalDiv = formContainer.querySelector(".item");
+        const newDiv = originalDiv.cloneNode(true);
+
+        // Update IDs and names for the new elements
+        newDiv.querySelectorAll('.category-select').forEach((select) => {
+            select.id = `category${itemCount}`;
+            select.name = `category`;
+        });
+
+        newDiv.querySelector('.specification-select').innerHTML = '';
+
+        formContainer.appendChild(newDiv);
+    }
+
+    function deleteItem(element) {
+        const itemElements = document.querySelectorAll('.item');
+        if(itemElements.length>1){
+            element.parentElement.parentElement.parentElement.remove();
+        };
+
+    }
+</script>
 @endsection

@@ -137,12 +137,24 @@ class salesController extends Controller
     public function detailOrderSparepart($id_order)
     {
         $order = order::all()->where('id_order', $id_order)->first();
+        $id_store = $order->id_store;
         $stocks = $order->store->stock;
+        $spareparts = stockSparepart::where('id_store', $id_store)->with('sparepart.category')->get();
+        $categories = [];
+        $spareparts->each(function ($stock) use (&$categories) {
+            $category = $stock->sparepart->category;
+            if ($category) {
+                $categories[] = $category;
+            }
+        });
+        $categories= new Collection($categories);
+        $categories = $categories->unique('id');
         $type = ($order->do_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
         return view('crm.sales.sparepart.detailOrderSparepart', [
             'order' => $order,
             'stocks' => $stocks,
-            'type' => $type
+            'type' => $type,
+            'category'=>$categories
         ]);
     }
 
