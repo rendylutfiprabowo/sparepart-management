@@ -80,7 +80,7 @@
                     </a>
                 </div>
                 <div class="d-flex col justify-content-end">
-                    <a href="/order_list" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
                         Submit
                     </a>
                 </div>

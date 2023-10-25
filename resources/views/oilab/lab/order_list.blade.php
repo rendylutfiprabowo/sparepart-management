@@ -46,7 +46,21 @@
                         </td>
                         <td class="text-center align-middle">
                             <div>
-                                <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></a></i>
+                                @foreach($solab->samples as $sample)
+                                @if($sample->scope->nama_scope === 'DGA')
+                                <div>
+                                <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                </div>
+                                @elseif($sample->scope->nama_scope === 'Furan')
+                                <div>
+                                <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                </div>
+                                @elseif($sample->scope->nama_scope === 'OA')
+                                <div>
+                                <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                </div>
+                                @endif
+                                @endforeach
                             </div>
                         </td>
                         <td class="text-center align-middle"><a href="/form_add_data" type="button" class="btn merah text-putih">Add Data</a></td>
