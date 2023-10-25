@@ -94,29 +94,37 @@ class warehouseController extends Controller
     public function addWorkerBranch($id_order, Request $request)
     {
         $orders = order::all()->where('id_order', $id_order)->first();
-        if ($orders->do_order != null) {
-            $validatedData = $request->validate([
-                'id_technician' => 'required',
-                'nota_penyerahan' => 'required',
-            ]);
-            $orders->id_technician = $validatedData['id_technician'];
-            $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
-            $orders->save();
-            session()->flash('success', 'Teknisi berhasil ditambahkan');
-        } else {
-            $validatedData = $request->validate([
-                'id_technician' => 'required',
-                'nota_penyerahan' => 'required',
-                'surat_jalan' => 'required',
-            ]);
-            $orders->id_technician = $validatedData['id_technician'];
-            $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
-            $orders->surat_jalan = $validatedData['surat_jalan'];
-            $orders->save();
-            session()->flash('success', 'Teknisi berhasil ditambahkan');
+        $validatedData = $request->validate([
+            'id_technician' => 'sometimes',
+            'nota_penyerahan' => 'sometimes',
+            'surat_jalan' => 'sometimes',
+        ]);
+        if ($orders->jenis_layanan == 1) {
+            if ($orders->do_order != null) {
+                $orders->id_technician = $validatedData['id_technician'];
+                $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+                $orders->status = 'on-technician';
+                $orders->save();
+                session()->flash('success', 'Teknisi berhasil ditambahkan');
+            } else {
+                $orders->id_technician = $validatedData['id_technician'];
+                $orders->surat_jalan = $validatedData['surat_jalan'];
+                $orders->status = 'on-technician';
+                $orders->save();
+                session()->flash('success', 'Teknisi berhasil ditambahkan');
+            }
+        } elseif ($orders->jenis_layanan == 2) {
+            if ($orders->do_order != null) {
+                $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
+                $orders->status = 'closed';
+                $orders->technician_name = 'closed';
+                $orders->save();
+            } elseif ($orders->do_order == null) {
+                $orders->surat_jalan = $validatedData['surat_jalan'];
+                $orders->status = 'memo-closed';
+                $orders->save();
+            }
         }
-
-
         return redirect('/warehouse/branch/listspk')
             ->with('order', $orders)
             ->with('id_order', $id_order);
