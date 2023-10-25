@@ -5,9 +5,9 @@
             <h6>Add Order</h6>
         </div>
         @if (session('error'))
-        <div class="mx-3">
-            <x-error_message text="{{ session('error') }}"/>
-        </div>
+            <div class="mx-3">
+                <x-error_message text="{{ session('error') }}" />
+            </div>
         @endif
         <form method="post" action="/sales/sparepart/order/add">
             @csrf
@@ -35,8 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_number" readonly 
-                    >
+                    <input type="text" class="form-control" name="phone_number" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
@@ -49,7 +48,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
-                    <input class="form-control" type="date" id="dateInput" name="date" value="{{$now->toDateString()}}">
+                    <input class="form-control" type="date" id="dateInput" name="date"
+                        value="{{ $now->toDateString() }}">
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Store</label>
@@ -81,8 +81,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <input type="text" class="form-control"
-                                name="spesifikasi" readonly>
+                            <input type="text" class="form-control" name="spesifikasi" readonly>
                         </div>
                     </div>
                 </div>
