@@ -117,7 +117,7 @@
                             <!-- COLLAPSE OA -->
                             <div>
                                 <button class="btn btn-white dropdown-toggle mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <strong>Oil Analaysis</strong>
+                                    <strong>Oil Analysis</strong>
                                 </button>
                             </div>
                             <div class="collapse" id="collapseExample">
@@ -184,21 +184,23 @@
                             </div>
                         </div>
                     </div>
-                </div>
-        </div>
-        <!-- button back -->
-        <div class="row mb-5">
-            <div class="d-flex col justify-content-start">
-                <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                    Back
-                </a>
-            </div>
-            <div class="d-flex col justify-content-end">
-                <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                    Submit
-                </button>
-            </div>
+                    <!-- button back -->
+                    <div class="row mb-5">
+                        <div class="d-flex col justify-content-start">
+                            <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                                Back
+                            </a>
+                        </div>
+                        <div class="d-flex col justify-content-end">
+                            <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+            </form>
         </div>
     </div>
+
+</div>
 </div>
 @endsection

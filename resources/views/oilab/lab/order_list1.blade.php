@@ -4,29 +4,30 @@
     <div class="col-md-12">
         <div class="card rounded-4" style="border-left-color: red; border-left-width: 10px;">
             <div class="card-body shadow">
+                <!-- @foreach($salesorderoil as $solab) -->
                 <div class="row">
-                    <div class="col-3">
-                        <div class="text-merah "><strong>No So</strong></div>
+                    <div class="col-6">
+                        <div class="text-merah"><strong>No So</strong></div>
+                        <div class="text-black"><strong>{{ $solab->no_so_solab }}</strong></div>
+                    </div>
+                    <div class="col-6">
                         <div class="text-merah"><strong>Project</strong></div>
+                        <div class="text-black"><strong>{{ $solab->project->nama_project }}</strong></div>
                     </div>
-                    @foreach($salesorderoil as $solab)
-                    <div class="col-3">
-                        <div class="text-black"> <strong>{{$solab['no_so_solab']}}</strong></div>
-                        <div class="text-black"><strong>{{$solab['project']['nama_project']}}</strong></div>
-                    </div>
-                    <div class="col-3">
+                    <div class="col-6">
                         <div class="text-merah"><strong>Customer Name</strong></div>
+                        <div class="text-black"><strong>{{ $solab->project->customer->nama_customer }}</strong></div>
+                    </div>
+                    <div class="col-6">
                         <div class="text-merah"><strong>Sales Name</strong></div>
+                        <div class="text-black"><strong>{{ $solab->sales->nama_sales }}</strong></div>
                     </div>
-                    <div class="col-3">
-                        <div class="text-black"><strong>{{$solab->project->customer->nama_customer}}</strong></div>
-                        <div class="text-black"><strong>{{$solab['sales']['nama_sales']}}</strong></div>
-                    </div>
-                    @endforeach
                 </div>
+                <!-- @endforeach -->
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="row mt-5">
@@ -43,23 +44,21 @@
                     <thead>
                         <tr class="text-center">
                             <th scope="col">Serial Number</th>
+                            <th scope="col">KVA</th>
                             <th scope="col">Merk Trafo</th>
-                            <th scope="col">Year Trafo</th>
                             <th scope="col">Item Test</th>
                             <th scope="col">Report</th>
                             <th scope="col">Status</th>
                             <th scope="col">Note</th>
                         </tr>
                     </thead>
-                    @foreach($salesorderoil as $solab)
                     <tbody class="text-center ">
-                        <td>{{$solab['no_so_solab']}}</td>
-                        <td>{{$solab->project->customer->nama_customer}}</td>
-                        <td>{{$solab['project']['nama_project']}}</td>
+                        @foreach($salesorderoil as $solab)
+                        <td>{{ $solab->project->trafo->serial_number }}</td>
+                        <td>{{ $solab->trafo?->kva }}</td>
+                        <td>{{ $solab->trafo?->merk }}</td>
                         <td>
-                            @foreach($solab->samples as $sample)
-                            <div>{{$sample->scope->nama_scope}}</div>
-                            @endforeach
+                            <div>sesuaikan</div>
                         </td>
                         <td class="text-center align-middle">
                             <div>
@@ -87,8 +86,8 @@
                         </td>
                         <!-- button modal -->
                         <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
                 <!-- Modal 1 -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

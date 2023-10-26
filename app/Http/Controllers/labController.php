@@ -21,11 +21,12 @@ class labController extends Controller
         $sample = sample::all();
         return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));
     }
-    
-    public function viewitem()
+
+    public function viewitem($no_so_solab)
     {
-        $salesorderoil = solab::all()->whereNotNull('id_project');
+        $salesorderoil = solab::all()->where('no_so_solab', $no_so_solab);
         $sample = sample::all();
+        // dd($salesorderoil);
         return view('oilab.lab.order_list1', compact('salesorderoil', 'sample'));
     }
 
