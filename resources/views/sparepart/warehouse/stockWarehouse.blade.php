@@ -32,7 +32,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
+            <table class="table-bordered table" width="100%" cellspacing="0">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>

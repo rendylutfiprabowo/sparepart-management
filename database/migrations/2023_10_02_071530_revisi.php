@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('id_technician');
             $table->string('do_order')->nullable();
             $table->string('status');
-            $table->string('memo_order');
+            $table->string('memo_order')->nullable();
         });
     }
 
