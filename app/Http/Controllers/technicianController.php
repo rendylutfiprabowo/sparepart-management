@@ -80,10 +80,12 @@ class technicianController extends Controller
             $revisi->id_technician = $validatedData['id_technician'];
             $revisi->id_order = $id_order;
             $revisi->id_revisi = $rev;
-            $revisi->status = 'revisi';
+            $revisi->status = false;
+
 
             $revisi->save();
-
+            $revisi->order->status = 'revisi';
+            $revisi->order->save();
             if ($condition1) {
                 foreach ($validatedData['qty_booked'] as $no => $qty) {
                     if ($qty != 0) {
@@ -92,8 +94,6 @@ class technicianController extends Controller
                         $booked->id_stock = $validatedData['id_stock'][$no];
                         $booked->id_booked = $book . Str::uuid() . '/' . date('Ymd');
                         $booked->id_revisi = $rev;
-                        $revisi->status = 'revisi';
-
                         $booked->save();
                     }
                 }
@@ -106,7 +106,6 @@ class technicianController extends Controller
                         $booked->id_stock = $validatedData['stocks'][$no];
                         $booked->id_booked = $book . Str::uuid() . '/' . date('Ymd');
                         $booked->id_revisi = $rev;
-                        $revisi->status = 'revisi';
                         $booked->save();
                     }
                 }
