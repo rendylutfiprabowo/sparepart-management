@@ -11,42 +11,43 @@
             <x-cards judulcard="Total Customer" angkaPersen="{{ count($dataCust) }}" bulan="Juni"
                 infoCard="Customer Seluruh Indonesia Terdaftar" jam="13:00" />
         </div>
-        <hr />
+        <br>
         {{-- TABLE DATA CUSTOMER --}}
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 font-weight-bold">Data Table Of Customer</h1>
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm rounded btn-success" data-bs-toggle="modal"
-                data-bs-target="#addCustModal"><i class="bi bi-plus-circle-fill me-1"></i>Add </button>
-        </div>
-        <div class="row p-2">
-            <table class="table table-hover bg-white">
-                <thead>
-                    <tr>
-                        <th scope="col">ID Customer</th>
-                        <th scope="col">Nama Customer</th>
-                        <th scope="col">No Hp</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Jenis Usaha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (count($dataCust) > 0)
-                        @foreach ($dataCust as $dataTable)
-                            <tr>
-                                <td scope="row">{{ $dataTable->id_customer }}</th>
-                                <td><a class="fw-bold"
-                                        href="{{ url('/sales/customer/customerDetails/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
-                                </td>
-                                <td>{{ $dataTable->phone_customer }}</td>
-                                <td> <a href="#">{{ $dataTable->email_customer }}</a></td>
-                                <td>{{ $dataTable->jenisusaha_customer }}</td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <p>Tidak ada data customer</p>
-                    @endif
-                </tbody>
-            </table>
+        <x-page-heading>
+            Table Of Customer
+        </x-page-heading>
+        <div class="row">
+            <div class="col bg-white p-3 rounded shadow-sm">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID Customer</th>
+                            <th scope="col">Nama Customer</th>
+                            <th scope="col">No Hp</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Jenis Usaha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($dataCust) > 0)
+                            @foreach ($dataCust as $dataTable)
+                                <tr>
+                                    <td scope="row" class="text-secondary">{{ $dataTable->id_customer }}</th>
+                                    <td><a class="text-decoration-none"
+                                            href="{{ url('/sales/customer/customerDetails/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
+                                    </td>
+                                    <td>{{ $dataTable->phone_customer }}</td>
+                                    <td> <a href="#" class="text-decoration-none">{{ $dataTable->email_customer }}</a>
+                                    </td>
+                                    <td>{{ $dataTable->jenisusaha_customer }}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <p>Tidak ada data customer</p>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- Modal Add Customer -->

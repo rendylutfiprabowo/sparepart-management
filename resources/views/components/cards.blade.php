@@ -9,7 +9,7 @@
             </div>
 
             <div>
-                <i class="bi bi-bookmark-fill"></i>
+                <i class="bi bi-bookmark text-danger"></i>
             </div>
         </div>
         <div class="card-body pt-0">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="widget-49-meeting-action">
-                    <a href="#" class="btn btn-sm btn-danger rounded">Detail</a>
+                    <a href="#" class="btn btn-sm btn-danger">Detail</a>
                 </div>
             </div>
         </div>

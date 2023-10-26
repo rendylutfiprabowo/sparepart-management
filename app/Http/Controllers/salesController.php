@@ -119,14 +119,14 @@ class salesController extends Controller
                 $categories[] = $category;
             }
         });
-        $categories= new Collection($categories);
+        $categories = new Collection($categories);
         $categories = $categories->unique('id');
-            
+
         $customers = customer::all();
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
-            'category'=>$categories,
+            'category' => $categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
@@ -205,5 +205,12 @@ class salesController extends Controller
         $customers->save();
 
         return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
+    }
+
+    // EMAILS
+
+    public function emails()
+    {
+        return view('crm.sales.emails.indexEmails');
     }
 }

@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     {{-- STYLE CUSTOM --}}
     <style>
         .bd-placeholder-img {
@@ -36,8 +35,8 @@
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <header class="navbar sticky-top flex-md-nowrap p-1 bg-white border-bottom">
+<body class="bg-secondary-subtle">
+    <header class="navbar sticky-top flex-md-nowrap p-1 bg-white shadow-sm">
         {{-- TOOGLE MOBILE --}}
         <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -83,16 +82,31 @@
             @extends('template.sales_sidebar')
 
             {{-- CONTENTS --}}
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3 bg-body-tertiary">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3 ">
+                {{-- MAIN --}}
                 @yield('contents')
+                {{-- Footers --}}
+
             </main>
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-bg-danger opacity-80 p-4 mt-4">
+                <footer class="sticky-footer">
+                    <div class="container my-auto">
+                        <div class="copyright my-auto text-center">
+                            <span>Copyright &copy; Trafoindo 2023</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
     </div>
+
+
 
     {{-- SCRIPT CDN --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>

@@ -1,8 +1,10 @@
-@extends('template.salesCrm')
-@section('content')
+@extends('template.new_layout')
+
+@section('title', 'SpareParts Dashboard ')
+@section('contents')
     <div class="card mb-3">
         <div class="card-header merah text-light mb-3 pt-3">
-            <h6>Add Order</h6>
+            <h6>Add Orders</h6>
         </div>
         @if (session('error'))
             <div class="mx-3">
@@ -12,17 +14,17 @@
         <form method="post" action="/sales/sparepart/order/add">
             @csrf
             <div class="container-fluid">
-                <h3 class="my-3">Data Pelanggan</h3>
+                <h3 class="my-1 mb-3 text-center">Data Pelanggan</h3>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Jenis Layanan</label>
-                    <select class="form-control" name="jenis_layanan">
+                    <select class="form-select" name="jenis_layanan">
                         <option value="1">Jasa</option>
                         <option value="2">Material</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-                    <select class="form-control select-search" id="select-customer" name="id_customer"
+                    <select class="form-select select-search" id="select-customer" name="id_customer"
                         onchange="updateForm(this)">
                         <option value="" selected disabled>-- Pilih Customer --</option>
                         @foreach ($customers as $customer)
@@ -57,42 +59,48 @@
                         value="{{ $store->nama_store }}" readonly>
                     <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
-                <div class="items mt-5">
-                    <h3 class="my-3">Spareparts</h3>
+                <div class=" mt-4 items">
+                    <h3 class="my-1 text-center">Spareparts</h3>
                     <div class="item mb-5">
-                        <div class="mb-3">
+                        <div class="mb-3 row  ">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                            <div class="d-flex">
-                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name" name="stocks[]"
-                                    id="category">
+                            <div class=" d-flex gap-2">
+                                <select class="form-select category-select" placeholder="Enter Customer Name"
+                                    name="stocks[]" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($category as $category)
                                         <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
                                     @endforeach
                                 </select>
-                                <div class="col d-flex align-items-center mx-3 text-right">qty</div>
-                                <input class="col form-control mx-3" name="qty[]" value="0">
-                                <input class="col form-control mx-3" name="dim" readonly>
-                                <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
+                                <div class="col d-flex align-items-center mx-3 text-right"><strong>qty</strong></div>
+                                <div class="col">
+                                    <input class=" form-control  mx-3 " name="qty[]" value="0">
+                                </div>
+                                <div class="col ">
+                                    <input class="form-control mx-3" name="dim" disabled>
+                                </div>
+
+                                <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">Delete
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <select name="stock[]" id="stock" class="form-control specification-select" onchange="updateItem(this)">
+                            <label for="exampleFormControlInput1" class="form-label">Specification</label>
+                            <select name="stock[]" id="stock" class="form-select specification-select"
+                                onchange="updateItem(this)">
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex justify-content-center my-3 mb-3">
-                    <div onclick="addNewItem()" class="btn btn-secondary">Add Item
-
-                    </div>
+                    <div onclick="addNewItem()" class="btn btn-secondary btn-sm">Add Items</div>
                 </div>
 
 
-                <button type="submit"
-                    class="btn merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mb-0 mb-2 mt-5">
+                <button type="submit" class="btn btn-danger align-items-center mb-0 mb-2 mt-5">
                     Submit
                 </button>
         </form>
@@ -129,7 +137,6 @@
             }
         </script>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             let itemCount = 1;
 
@@ -143,7 +150,8 @@
                     var storeId = parts[parts.length - 1];
 
                     // Find the corresponding specification select element
-                    const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector('.specification-select');
+                    const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector(
+                        '.specification-select');
 
                     // Clear existing options
                     specificationSelect.innerHTML = '';
@@ -189,7 +197,7 @@
 
             function deleteItem(element) {
                 const itemElements = document.querySelectorAll('.item');
-                if(itemElements.length>1){
+                if (itemElements.length > 1) {
                     element.parentElement.parentElement.parentElement.remove();
                 };
 
