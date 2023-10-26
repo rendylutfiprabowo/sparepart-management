@@ -44,10 +44,12 @@ class technicianController extends Controller
         });
         $categories = new Collection($categories);
         $categories = $categories->unique('id');
+        // $return = booked::all()->where('id_revisi', $order->revisi->id_revisi);
         return view('sparepart.technician.returTechnician', [
             'order' => $order,
             'stocks' => $stocks,
             'category' => $categories,
+            // 'return' => $return,
         ]);
     }
     public function returnOrder($id_order, Request $request)
