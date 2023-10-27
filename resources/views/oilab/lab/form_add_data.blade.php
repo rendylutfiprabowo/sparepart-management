@@ -26,8 +26,8 @@
                         <input class="form-control" list="datalistOptions" id="merk" name="merk" placeholder="Enter Merk">
                     </div>
                     <div class="mb-3">
-                        <label for="year" class="form-label">Year</label>
-                        <input type="text" class="form-control" id="year" name="year" placeholder="Enter Customer year">
+                        <label for="year" class="form-label">Trafo Year</label>
+                        <input type="text" class="form-control" id="year" name="year" placeholder="Enter Trafo Year">
                     </div>
                     <div class="mb-3">
                         <label for="voltage" class="form-label">Voltage</label>
@@ -89,20 +89,116 @@
                             </div>
                         </form>
                     </div>
+                    <div>
+                        <label for="exampleFormControlTextarea1" class="form-label">Input Scope</label>
+                    </div>
+                    <div class="row mb-3 border p-3" style="background-color: white;">
+                        <div class="col-md-12">
+                            <div>
+                                <h6 class="mt-2"><strong>Scope Name</strong></h6>
+                            </div>
 
-                    <!-- button back -->
-                    <div class="row mb-5">
-                        <div class="d-flex col justify-content-start">
-                            <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                                Back
-                            </a>
-                        </div>
-                        <div class="d-flex col justify-content-end">
-                            <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                                Submit
-                            </button>
+                            <!-- DGA -->
+                            <div class="form-check mt-3 ml-2">
+                                <input class="form-check-input" type="checkbox" name="dga_check" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    <strong>DGA</strong>
+                                </label>
+                            </div>
+
+                            <!-- Furan -->
+                            <div class="form-check mt-3 ml-2">
+                                <input class="form-check-input" type="checkbox" name="furan_check" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    <strong>Furan</strong>
+                                </label>
+                            </div>
+
+                            <!-- COLLAPSE OA -->
+                            <div>
+                                <button class="btn btn-white dropdown-toggle mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    <strong>Oil Analaysis</strong>
+                                </button>
+                            </div>
+                            <div class="collapse" id="collapseExample">
+                                <div class="form-check ml-2 mt-1">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>BDV</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>IFT</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Water Content</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>TAN</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Sludge & Sediment</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Corrosif Sulfur</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Flash Point</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>PCB</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Color</strong>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-2">
+                                    <input class="form-check-input" type="checkbox" name="oa_check[bdv_check]" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        <strong>Density</strong>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
         </div>
-        @endsection
+        <!-- button back -->
+        <div class="row mb-5">
+            <div class="d-flex col justify-content-start">
+                <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    Back
+                </a>
+            </div>
+            <div class="d-flex col justify-content-end">
+                <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

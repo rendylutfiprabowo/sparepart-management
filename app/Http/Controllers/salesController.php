@@ -137,22 +137,56 @@ class salesController extends Controller
     public function detailOrderSparepart($id_order)
     {
         $order = order::all()->where('id_order', $id_order)->first();
+        $id_store = $order->id_store;
         $stocks = $order->store->stock;
+        $spareparts = stockSparepart::where('id_store', $id_store)->with('sparepart.category')->get();
+        $categories = [];
+        $spareparts->each(function ($stock) use (&$categories) {
+            $category = $stock->sparepart->category;
+            if ($category) {
+                $categories[] = $category;
+            }
+        });
+        $categories= new Collection($categories);
+        $categories = $categories->unique('id');
         $type = ($order->do_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
         return view('crm.sales.sparepart.detailOrderSparepart', [
             'order' => $order,
             'stocks' => $stocks,
-            'type' => $type
+            'type' => $type,
+            'category'=>$categories
         ]);
     }
 
     public function revisionSparepart()
     {
-        return view('crm.sales.sparepart.revisionSparepart');
+        $orders = order::has('revisi')->get();
+        return view('crm.sales.sparepart.revisionSparepart',[
+            'orders' => $orders,
+        ]);
     }
-    public function detailRevisionSparepart()
+    public function detailRevisionSparepart($id_order)
     {
-        return view('crm.sales.sparepart.detailRevisionSparepart');
+        $order = order::all()->where('id_order',$id_order)->first();
+
+        $revision_booked = $order->revisi->booked;
+        $order_booked = $order->booked;
+
+        $id_stock_values = $order_booked->pluck('id_stock')->toArray();
+
+        $revision = $revision_booked->whereIn('id_stock', $id_stock_values);
+        $new = $revision_booked->whereNotIn('id_stock', $id_stock_values);
+
+        $type = NULL;
+        if ($order->revisi->memo_order) $type = 'MEMO';
+        if ($order->revisi->do_order) $type = 'DO';
+
+        return view('crm.sales.sparepart.detailRevisionSparepart',[
+            'order'=>$order,
+            'revision'=>$revision,
+            'new'=>$new,
+            'type'=>$type
+        ]);
     }
 
     // ================ DASHBOARD SALES CRM =======================

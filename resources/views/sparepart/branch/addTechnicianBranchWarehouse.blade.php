@@ -79,8 +79,9 @@
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Items Name</th>
                         <th scope="col">Code Material</th>
+                        <th scope="col">Items Name</th>
+                        <th scope="col">Spesifikasi</th>
                         <th scope="col">Qty</th>
                     </tr>
                 </thead>
@@ -88,61 +89,119 @@
                     <tbody class="text-center">
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $booking->stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
+                            <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
+                            <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $booking->qty_booked }}</td>
                         </tr>
                     </tbody>
                 @endforeach
             </table>
+            @if ($order->jenis_layanan == 1)
+                @if ($order->do_order != null)
+                    <strong><label class="form-label">DO</label></strong>
+                    <div class="row">
+                        <div class="form-group col-lg-1 mb-3">
+                            <input type="text" class="form-control" name="" value="DO" placeholder=""
+                                readonly>
+                        </div>
+                        <div class="form-group col-lg-11 mb-3">
+                            <input type="text" class="form-control" name="" value="{{ $order->do_order }}"
+                                placeholder="" readonly>
+                        </div>
+                    </div>
+                    <strong><label class="form-label">No. SPK</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
+                            placeholder="" readonly>
+                    </div>
+                    <strong><label class="form-label">Nota Penyerahan</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="nota_penyerahan"
+                            placeholder=""value="{{ $order->nota_penyerahan }}"
+                            @if ($order->nota_penyerahan != null) readonly @endif>
+                    </div>
+                @elseif($order->do_order == null)
+                    <strong><label class="form-label">Memo DO</label></strong>
+                    <div class="row">
+                        <div class="form-group col-lg-1 mb-3">
+                            <input type="text" class="form-control" name="" value="DO" placeholder=""
+                                readonly>
+                        </div>
+                        <div class="form-group col-lg-11 mb-3">
+                            <input type="text" class="form-control" name="" value="{{ $order->memo_order }}"
+                                placeholder="" readonly>
+                        </div>
+                    </div>
+                    <strong><label class="form-label">No. SPK</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
+                            placeholder="" readonly>
+                    </div>
+                    <strong><label class="form-label">Surat Jalan</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="surat_jalan"
+                            placeholder=""value="{{ $order->surat_jalan }}"
+                            @if ($order->surat_jalan != null) readonly @endif>
+                    </div>
+                @elseif($order->do_order != null && $order->memo_order != null)
+                    <strong><label class="form-label">DO</label></strong>
+                    <div class="row">
+                        <div class="form-group col-lg-1 mb-3">
+                            <input type="text" class="form-control" name="" value="DO" placeholder=""
+                                readonly>
+                        </div>
+                        <div class="form-group col-lg-11 mb-3">
+                            <input type="text" class="form-control" name="" value="{{ $order->do_order }}"
+                                placeholder="" readonly>
+                        </div>
+                    </div>
+                    <strong><label class="form-label">No. SPK</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
+                            placeholder="" readonly>
+                    </div>
+                    <strong><label class="form-label">Nota Penyerahan</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
+                            value="{{ $order->nota_penyerahan }}" @if ($order->nota_penyerahan != null) readonly @endif>
+                    </div>
+                    <strong><label class="form-label">Surat Jalan</label></strong>
+                    <div class="form-group mb-3">
+                        <input type="text" class="form-control" name="surat_jalan" placeholder=""
+                            value="{{ $order->surat_jalan }}" @if ($order->surat_jalan != null) readonly @endif>
+                    </div>
+                @endif
+                @if ($order->id_technician == null)
+                    <strong><label class="form-label">Input Technician</label></strong>
+                    <select class="form-control with-bordered" id="select-technician" placeholder="Enter Technician Name"
+                        name="id_technician">
+                        <option value="" selected disabled>-- Pilih Technician --</option>
+
+                        <option value="Pilih Teknisi" placeholder="Pilih Teknisi">
+                            @foreach ($technician as $tech)
+                        <option
+                            value="{{ $tech['id_technician'] }}"@if ($order->technician) selected={{ $tech['nama_technician'] == $order->technician->nama_technician ? 'true' : 'false' }} @endif>
+                            {{ $tech['nama_technician'] }}
+                        </option>
+                    </select>
+                @endforeach
+                <div class="modal-footer">
+                    <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                    <button type="submit" href="" class="btn btn-primary"> Submit</button>
+                </div>
+            @else
+                <strong><label class="form-label">Technician</label></strong>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="" placeholder=""
+                        value="{{ $order->technician->nama_technician }}" readonly>
+                </div>
+                <div class="modal-footer">
+                    <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                </div>
+            @endif
+        @elseif ($order->jenis_layanan == 2)
             @if ($order->do_order != null)
-                <strong><label class="form-label">DO</label></strong>
-                <div class="row">
-                    <div class="form-group col-lg-1 mb-3">
-                        <input type="text" class="form-control" name="" value="DO" placeholder="" readonly>
-                    </div>
-                    <div class="form-group col-lg-11 mb-3">
-                        <input type="text" class="form-control" name="" value="{{ $order->do_order }}"
-                            placeholder="" readonly>
-                    </div>
-                </div>
-                <strong><label class="form-label">No. SPK</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
-                        placeholder="" readonly>
-                </div>
-                <strong><label class="form-label">Nota Penyerahan</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
-                        value="{{ $nota }}" readonly>
-                </div>
-                <strong><label class="form-label">Surat Jalan</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="surat_jalan" placeholder=""
-                        value="{{ $surat_jalan }}" readonly>
-                </div>
-            @elseif($order->do_order == null)
-                <strong><label class="form-label">Memo DO</label></strong>
-                <div class="row">
-                    <div class="form-group col-lg-1 mb-3">
-                        <input type="text" class="form-control" name="" value="DO" placeholder="" readonly>
-                    </div>
-                    <div class="form-group col-lg-11 mb-3">
-                        <input type="text" class="form-control" name="" value="{{ $order->memo_order }}"
-                            placeholder="" readonly>
-                    </div>
-                </div>
-                <strong><label class="form-label">No. SPK</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
-                        placeholder="" readonly>
-                </div>
-                <strong><label class="form-label">Nota Penyerahan</label></strong>
-                <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
-                        value="{{ $nota }}" readonly>
-                </div>
-            @elseif($order->do_order != null && $order->memo_order != null)
                 <strong><label class="form-label">DO</label></strong>
                 <div class="row">
                     <div class="form-group col-lg-1 mb-3">
@@ -161,30 +220,70 @@
                 </div>
                 <strong><label class="form-label">Nota Penyerahan</label></strong>
                 <div class="form-group mb-3">
-                    <input type="text" class="form-control" name="nota_penyerahan" placeholder=""
-                        value="{{ $nota }}" readonly>
+                    <input type="text" class="form-control" name="nota_penyerahan"
+                        placeholder=""@if ($order->nota_penyerahan != null) value="{{ $order->nota_penyerahan }}" readonly
+                    @else
+                        value="{{ $order->nota_penyerahan }}" @endif>
+                </div>
+                @if ($order->nota_penyerahan == null)
+                    <strong><label class="form-label">Delivery Type</label></strong>
+                    <input type="text" class="form-control" name="" placeholder=""
+                        value="Delievered by Other Party" readonly>
+                    <div class="modal-footer">
+                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                        <button type="submit" href="" class="btn btn-primary"> Submit</button>
+                    </div>
+                @elseif($order->nota_penyerahan != null)
+                    <strong><label class="form-label">Delivery Type</label></strong>
+                    <input type="text" class="form-control" name="" placeholder=""
+                        value="Delievered by Other Party" readonly>
+                    <div class="modal-footer">
+                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                    </div>
+                @endif
+            @elseif($order->do_order == null)
+                <strong><label class="form-label">Memo DO</label></strong>
+                <div class="row">
+                    <div class="form-group col-lg-1 mb-3">
+                        <input type="text" class="form-control" name="" value="DO" placeholder=""
+                            readonly>
+                    </div>
+                    <div class="form-group col-lg-11 mb-3">
+                        <input type="text" class="form-control" name="" value="{{ $order->memo_order }}"
+                            placeholder="" readonly>
+                    </div>
+                </div>
+                <strong><label class="form-label">No. SPK</label></strong>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="" value="{{ $order->spk_order }}"
+                        placeholder="" readonly>
                 </div>
                 <strong><label class="form-label">Surat Jalan</label></strong>
                 <div class="form-group mb-3">
                     <input type="text" class="form-control" name="surat_jalan" placeholder=""
-                        value="{{ $surat_jalan }}" readonly>
+                        @if ($order->surat_jalan != null) value="{{ $order->surat_jalan }}" readonly
+                        @else
+                                value="{{ $order->surat_jalan }}" @endif>
                 </div>
+                @if ($order->surat_jalan == null)
+                    <strong><label class="form-label">Delivery Type</label></strong>
+                    <input type="text" class="form-control" name="" placeholder=""
+                        value="Delievered by Other Party" readonly>
+                    <div class="modal-footer">
+                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                        <button type="submit" href="" class="btn btn-primary"> Submit</button>
+                    </div>
+                @elseif($order->surat_jalan != null)
+                    <strong><label class="form-label">Delivery Type</label></strong>
+                    <input type="text" class="form-control" name="" placeholder=""
+                        value="Delievered by Other Party" readonly>
+                    <div class="modal-footer">
+                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                    </div>
+                @endif
             @endif
-            <strong><label class="form-label">Input Technician</label></strong>
-            <select class="form-control with-bordered" id="select-technician" placeholder="Enter Technician Name"
-                name="id_technician">
-                <option value="Pilih Teknisi" placeholder="Pilih Teknisi">
-                    @foreach ($technician as $tech)
-                <option
-                    value="{{ $tech['id_technician'] }}"@if ($order->technician) selected={{ $tech['nama_technician'] == $order->technician->nama_technician ? 'true' : 'false' }} @endif>
-                    {{ $tech['nama_technician'] }}
-                </option>
-            </select>
-            @endforeach
-            <div class="modal-footer">
-                <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
-                <button type="submit" href="" class="btn btn-primary"> Submit</button>
-            </div>
+
+            @endif
     </form>
     </div>
     </div>

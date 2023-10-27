@@ -64,33 +64,44 @@
                     <div class="item mb-5">
                         <div class="mb-3 row  ">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                            <div class=" d-flex gap-2">
+                            <<<<<<< HEAD <div class=" d-flex gap-2">
                                 <select class="form-select category-select" placeholder="Enter Customer Name"
                                     name="stocks[]" id="category">
-                                    <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($category as $category)
-                                        <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
-                                    @endforeach
-                                </select>
-                                <div class="col d-flex align-items-center mx-3 text-right"><strong>qty</strong></div>
-                                <div class="col">
-                                    <input class=" form-control  mx-3 " name="qty[]" value="0">
-                                </div>
-                                <div class="col ">
-                                    <input class="form-control mx-3" name="dim" disabled>
-                                </div>
+                                    =======
+                                    <div class="d-flex">
+                                        <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
+                                            name="category" id="category">
+                                            >>>>>>> 31eac2a39efbdff0af5a1e8cfeef53d6d37e8023
+                                            <option value="" selected disabled>-- Pilih Sparepart --</option>
+                                            @foreach ($category as $category)
+                                                <option value="{{ $category->id_category }}">{{ $category->nama_category }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="col d-flex align-items-center mx-3 text-right"><strong>qty</strong>
+                                        </div>
+                                        <div class="col">
+                                            <input class=" form-control  mx-3 " name="qty[]" value="0">
+                                        </div>
+                                        <div class="col ">
+                                            <input class="form-control mx-3" name="dim" disabled>
+                                        </div>
 
-                                <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">Delete
+                                        <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">Delete
 
-                                </div>
+                                        </div>
 
-                            </div>
+                                    </div>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Specification</label>
-                            <select name="stock[]" id="stock" class="form-select specification-select"
-                                onchange="updateItem(this)">
-                            </select>
+                            <<<<<<< HEAD <label for="exampleFormControlInput1" class="form-label">Specification</label>
+                                <select name="stock[]" id="stock" class="form-select specification-select"=======<label
+                                    for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
+                                    <select name="stocks[]" id="stock"
+                                        class="form-control specification-select">>>>>>>
+                                        31eac2a39efbdff0af5a1e8cfeef53d6d37e8023
+                                        onchange="updateItem(this)">
+                                    </select>
                         </div>
                     </div>
                 </div>
@@ -187,7 +198,7 @@
                 // Update IDs and names for the new elements
                 newDiv.querySelectorAll('.category-select').forEach((select) => {
                     select.id = `category${itemCount}`;
-                    select.name = `stocks[]`;
+                    select.name = `category`;
                 });
 
                 newDiv.querySelector('.specification-select').innerHTML = '';
