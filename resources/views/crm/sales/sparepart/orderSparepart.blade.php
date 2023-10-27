@@ -47,7 +47,7 @@
                                     </b>
                                 @endif
                             </td>
-                            <td class="table-plus">{{$order->spk_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>
+                            <td class="table-plus">{{$order->do_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>
                             <td class="table-plus">{{$order->spk_order?$order->spk_order:'-'}}</td>
                             <td>
                                 <a href="/sales/sparepart/order/{{$order->id_order}}" class="pdf-link btn" type="button">

@@ -7,6 +7,7 @@ use App\Models\order;
 use App\Models\revisi;
 use App\Models\stockSparepart;
 use App\Models\technician;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -33,17 +34,29 @@ class technicianController extends Controller
     public function viewOrder($id_order)
     {
         $order = order::all()->where('id_order', $id_order)->first();
-        $stocks = stockSparepart::all();
+        $stocks = stockSparepart::where('id_store', $order->id_store)->with('sparepart.category')->get();
+        $categories = [];
+        $stocks->each(function ($stock) use (&$categories) {
+            $category = $stock->sparepart->category;
+            if ($category) {
+                $categories[] = $category;
+            }
+        });
+        $categories = new Collection($categories);
+        $categories = $categories->unique('id');
+        // $return = booked::all()->where('id_revisi', $order->revisi->id_revisi);
         return view('sparepart.technician.returTechnician', [
             'order' => $order,
-            'stocks' => $stocks
+            'stocks' => $stocks,
+            'category' => $categories,
+            // 'return' => $return,
         ]);
     }
     public function returnOrder($id_order, Request $request)
     {
         $validatedData = $request->validate([
             'qty_booked' => 'sometimes',
-            'stock' => 'sometimes',
+            'stocks' => 'sometimes',
             'qty' => 'sometimes',
             'id_stock' => 'required',
             'id_technician' => 'required',
@@ -58,7 +71,7 @@ class technicianController extends Controller
         $book = strtoupper($book);
         $condition1 = false;
         $condition2 = false;
-        if (isset($validatedData['stock'])) $condition2 = true;
+        if (isset($validatedData['stocks'])) $condition2 = true;
 
         foreach ($validatedData['qty_booked'] as $qty) {
             if ($qty != 0) $condition1 = true;
@@ -69,10 +82,12 @@ class technicianController extends Controller
             $revisi->id_technician = $validatedData['id_technician'];
             $revisi->id_order = $id_order;
             $revisi->id_revisi = $rev;
-            $revisi->status = 'On-Progres';
+            $revisi->status = false;
+
 
             $revisi->save();
-
+            $revisi->order->status = 'revisi';
+            $revisi->order->save();
             if ($condition1) {
                 foreach ($validatedData['qty_booked'] as $no => $qty) {
                     if ($qty != 0) {
@@ -81,7 +96,6 @@ class technicianController extends Controller
                         $booked->id_stock = $validatedData['id_stock'][$no];
                         $booked->id_booked = $book . Str::uuid() . '/' . date('Ymd');
                         $booked->id_revisi = $rev;
-
                         $booked->save();
                     }
                 }
@@ -91,10 +105,9 @@ class technicianController extends Controller
                     if ($qty != 0) {
                         $booked = new booked();
                         $booked->qty_booked = $qty;
-                        $booked->id_stock = $validatedData['stock'][$no];
+                        $booked->id_stock = $validatedData['stocks'][$no];
                         $booked->id_booked = $book . Str::uuid() . '/' . date('Ymd');
                         $booked->id_revisi = $rev;
-
                         $booked->save();
                     }
                 }
