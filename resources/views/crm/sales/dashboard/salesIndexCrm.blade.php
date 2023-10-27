@@ -21,10 +21,20 @@
             Statistik Sales Profit
         </x-page-heading>
 
-        <div class="row p-3">
-            <div class="col-md-7 bg-white p-3 rounded shadow-sm">
-                <canvas id="chartSales"></canvas>
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="bg-white shadow-sm rounded">
+                    <canvas id="chartSales"></canvas>
+                </div>
+
             </div>
+            <div class="col-md-8 ">
+                <div class="bg-white shadow-sm rounded">
+                    <canvas id="chartSalesLine"></canvas>
+                </div>
+
+            </div>
+
         </div>
     </div>
 @endsection

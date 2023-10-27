@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
     {{-- STYLE CUSTOM --}}
     <style>
         .bd-placeholder-img {
@@ -30,9 +33,7 @@
             }
         }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
 </head>
 
 <body class="bg-secondary-subtle">
@@ -82,13 +83,13 @@
             @extends('template.sales_sidebar')
 
             {{-- CONTENTS --}}
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3 ">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-2 ">
                 {{-- MAIN --}}
                 @yield('contents')
                 {{-- Footers --}}
 
             </main>
-            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-bg-danger opacity-80 p-4 mt-4">
+            <div class="col-md-9 ms-sm-auto col-lg-10 px-md-1 text-bg-light p-4 mt-4">
                 <footer class="sticky-footer">
                     <div class="container my-auto">
                         <div class="copyright my-auto text-center">
@@ -100,137 +101,13 @@
         </div>
     </div>
 
-
-
     {{-- SCRIPT CDN --}}
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
-    <script>
-        // TOAST SUCCESS
-        const toastTrigger = document.getElementById('trigger')
-        const toastLiveExample = document.getElementById('liveToast')
-
-        if (toastTrigger) {
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-            toastBootstrap.show()
-        }
-
-        // CHART JS
-        var ctx = document.getElementById('chartSales').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: [
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'july',
-                    'agustus',
-                    'september',
-                    'october',
-                    'novermber',
-                    'december'
-                ],
-                datasets: [{
-                    label: 'Sales SpareParts',
-                    data: [12, 19, 3, 5, 2, 3, 8, 9, 10, 11, 4, 5, 6],
-                    backgroundColor: [
-                        '#186F65',
-                        '#1F618D',
-                        '#F1C40F',
-                        '#27AE60',
-                        '#884EA0',
-                        '#D35400',
-                        '#D80032',
-                        '#BEADFA',
-                        '#FFCC70',
-                        '#94A684',
-                        '#5C5470',
-                        '#ACFADF',
-                    ],
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        // CHART JS SECONDS
-        var ctx = document.getElementById('chartSalesBar').getContext('2d');
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    title: {
-                        display: true,
-                        text: 'Chart.js Floating Bar Chart'
-                    }
-                }
-            }
-        };
-        const DATA_COUNT = 7;
-        const NUMBER_CFG = {
-            count: DATA_COUNT,
-            min: -100,
-            max: 100
-        };
-
-        const labels = Utils.months({
-            count: 7
-        });
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Dataset 1',
-                    data: labels.map(() => {
-                        return [Utils.rand(-100, 100), Utils.rand(-100, 100)];
-                    }),
-                    backgroundColor: Utils.CHART_COLORS.red,
-                },
-                {
-                    label: 'Dataset 2',
-                    data: labels.map(() => {
-                        return [Utils.rand(-100, 100), Utils.rand(-100, 100)];
-                    }),
-                    backgroundColor: Utils.CHART_COLORS.blue,
-                },
-            ]
-        };
-        const actions = [{
-            name: 'Randomize',
-            handler(chart) {
-                chart.data.datasets.forEach(dataset => {
-                    dataset.data = chart.data.labels.map(() => {
-                        return [Utils.rand(-100, 100), Utils.rand(-100, 100)];
-                    });
-                });
-                chart.update();
-            }
-        }, ];
-    </script>
+    <script src="{{ asset('/js/new-layout.js') }}"></script>
 </body>
 
 </html>
