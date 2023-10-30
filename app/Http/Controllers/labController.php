@@ -24,10 +24,17 @@ class labController extends Controller
 
     public function viewitem($no_so_solab)
     {
-        $salesorderoil = solab::all()->where('no_so_solab', $no_so_solab);
+        $salesorderoil = solab::where('no_so_solab', $no_so_solab)->with('project.trafo')->get()->first();
         $sample = sample::all();
         // dd($salesorderoil);
         return view('oilab.lab.order_list1', compact('salesorderoil', 'sample'));
+    }
+
+    public function addtrafo($id_solab){
+        $salesorderoil = solab::where('no_so_solab', $id_solab)->with('project.trafo')->get()->first();
+        return view('oilab.lab.form_add_data',[
+            'salesorderoil'=>$salesorderoil,
+        ]);
     }
 
     public function storetrafo(Request $request)
@@ -37,6 +44,7 @@ class labController extends Controller
         // @dd($request->all());
         $validated = $request->validate([
             'serial_number' => 'required',
+            'id_project'=>'required',
             'kva' => 'required',
             'merk' => 'required',
             'year' => 'required',
@@ -57,7 +65,7 @@ class labController extends Controller
             $trafos->vg = $validated['vg'];
             $trafos->tag_number = $validated['tag_number'];
             $trafos->volume_oil = $validated['volume_oil'];
-            $trafos->id_project = '1';
+            $trafos->id_project = $validated['id_project'];
             $trafos->save();
 
             $salesorderoil = Solab::whereNotNull('id_project')->get();

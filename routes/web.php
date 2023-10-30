@@ -122,11 +122,9 @@ Route::middleware(['auth', 'laboil'])->group(function () {
         return view('oilab.lab.order_list1');
     });
     Route::get('/orderlist', [labController::class, 'viewOrder']);
-    Route::get('/order_list1/{no_so_solab}', [labController::class, 'viewitem']);
-    Route::get('/form_add_data', function () {
-        return view('oilab.lab.form_add_data');
-    });
-    Route::post('/form_add_data/add', [labController::class, 'storetrafo']);
+    Route::get('/orderlist/{no_so_solab}', [labController::class, 'viewitem']);
+    Route::get('/orderlist/{id_solab}/add', [labController::class,'addtrafo']);
+    Route::post('/orderlist/{id_solab}/add', [labController::class, 'storetrafo']);
 
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');

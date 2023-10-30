@@ -4,26 +4,24 @@
     <div class="col-md-12">
         <div class="card rounded-4" style="border-left-color: red; border-left-width: 10px;">
             <div class="card-body shadow">
-                <!-- @foreach($salesorderoil as $solab) -->
                 <div class="row">
                     <div class="col-6">
                         <div class="text-merah"><strong>No So</strong></div>
-                        <div class="text-black"><strong>{{ $solab->no_so_solab }}</strong></div>
+                        <div class="text-black"><strong>{{ $salesorderoil->no_so_solab }}</strong></div>
                     </div>
                     <div class="col-6">
                         <div class="text-merah"><strong>Project</strong></div>
-                        <div class="text-black"><strong>{{ $solab->project->nama_project }}</strong></div>
+                        <div class="text-black"><strong>{{ $salesorderoil->project->nama_project }}</strong></div>
                     </div>
                     <div class="col-6">
                         <div class="text-merah"><strong>Customer Name</strong></div>
-                        <div class="text-black"><strong>{{ $solab->project->customer->nama_customer }}</strong></div>
+                        <div class="text-black"><strong>{{ $salesorderoil->project->customer->nama_customer }}</strong></div>
                     </div>
                     <div class="col-6">
                         <div class="text-merah"><strong>Sales Name</strong></div>
-                        <div class="text-black"><strong>{{ $solab->sales->nama_sales }}</strong></div>
+                        <div class="text-black"><strong>{{ $salesorderoil->sales->nama_sales }}</strong></div>
                     </div>
                 </div>
-                <!-- @endforeach -->
             </div>
         </div>
     </div>
@@ -35,7 +33,7 @@
         <div class="card p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="text-start text-dark my-4" style="font-weight: bold;">list Order</h3>
-                <a href="/form_add_data" type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i class="fa-regular fa-square-plus ml-2 "></i></a>
+                <a href="/orderlist/{{$salesorderoil->no_so_solab}}/add" type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i class="fa-regular fa-square-plus ml-2 "></i></a>
             </div>
             <hr class="mt-1" style="background-color: black;">
             </thead>
@@ -53,16 +51,16 @@
                         </tr>
                     </thead>
                     <tbody class="text-center ">
-                        @foreach($salesorderoil as $solab)
-                        <td>{{ $solab->project->trafo->serial_number }}</td>
-                        <td>{{ $solab->trafo?->kva }}</td>
-                        <td>{{ $solab->trafo?->merk }}</td>
+                        @foreach($salesorderoil->project->trafo as $trafo)
+                        <td>{{ $trafo->serial_number }}</td>
+                        <td>{{ $trafo->kva }}</td>
+                        <td>{{ $trafo->merk }}</td>
                         <td>
                             <div>sesuaikan</div>
                         </td>
                         <td class="text-center align-middle">
                             <div>
-                                @foreach($solab->samples as $sample)
+                                @foreach($salesorderoil->samples as $sample)
                                 @if($sample->scope->nama_scope === 'DGA')
                                 <div>
                                     <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
