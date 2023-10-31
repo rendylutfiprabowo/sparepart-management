@@ -10,6 +10,7 @@ class category extends Model
 {
     use HasFactory;
     protected $table = 'category';
+    public $timestamps = false;
 
     protected $fillable = [
         'id_category',
