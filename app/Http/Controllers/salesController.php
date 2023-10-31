@@ -147,27 +147,27 @@ class salesController extends Controller
                 $categories[] = $category;
             }
         });
-        $categories= new Collection($categories);
+        $categories = new Collection($categories);
         $categories = $categories->unique('id');
         $type = ($order->do_order) ? 'DO' : (($order->memo_order) ? 'MEMO' : NULL);
         return view('crm.sales.sparepart.detailOrderSparepart', [
             'order' => $order,
             'stocks' => $stocks,
             'type' => $type,
-            'category'=>$categories
+            'category' => $categories
         ]);
     }
 
     public function revisionSparepart()
     {
         $orders = order::has('revisi')->get();
-        return view('crm.sales.sparepart.revisionSparepart',[
+        return view('crm.sales.sparepart.revisionSparepart', [
             'orders' => $orders,
         ]);
     }
     public function detailRevisionSparepart($id_order)
     {
-        $order = order::all()->where('id_order',$id_order)->first();
+        $order = order::all()->where('id_order', $id_order)->first();
 
         $revision_booked = $order->revisi->booked;
         $order_booked = $order->booked;
@@ -181,11 +181,11 @@ class salesController extends Controller
         if ($order->revisi->memo_order) $type = 'MEMO';
         if ($order->revisi->do_order) $type = 'DO';
 
-        return view('crm.sales.sparepart.detailRevisionSparepart',[
-            'order'=>$order,
-            'revision'=>$revision,
-            'new'=>$new,
-            'type'=>$type
+        return view('crm.sales.sparepart.detailRevisionSparepart', [
+            'order' => $order,
+            'revision' => $revision,
+            'new' => $new,
+            'type' => $type
         ]);
     }
 
@@ -207,7 +207,7 @@ class salesController extends Controller
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
-    // Detail Customer
+    // GET BY ID CUSTOMERS
     public function detailCustomer($id_customer)
     {
         $dataCust = customer::where('id_customer', $id_customer)->first();
@@ -218,7 +218,7 @@ class salesController extends Controller
         }
     }
 
-    // Tambahkan Customer
+    // ADD CUSTOMERS
     public function addCust(Request $request)
     {
         $customers = $request->validate([
@@ -241,10 +241,9 @@ class salesController extends Controller
         return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
-    // EMAILS
-
-    public function emails()
+    // CHANNELS
+    public function channelsIndex()
     {
-        return view('crm.sales.emails.indexEmails');
+        return view('crm.sales.channels.indexChannels');
     }
 }
