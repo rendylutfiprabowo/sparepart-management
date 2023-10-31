@@ -24,15 +24,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div>
-                        <div class="input-group mb-3 me-auto">
-                            <input type="text" class="form-control border-danger form-control-sm" placeholder="Cari"
-                                aria-label="Cari..." aria-describedby="basic-addon2">
-                            <a href="#" class="input-group-text bg-danger text-white" id="basic-addon2"><i
-                                    class="bi bi-search"></i></a>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 

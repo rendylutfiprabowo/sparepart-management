@@ -1,4 +1,7 @@
 @extends('template.new_layout')
+
+@section('title', 'Detail Revision ')
+
 @section('contents')
     <div class="col-md-12">
         <div>
@@ -164,7 +167,7 @@
                         <select name="do-memo" id="" class="form-control">
                             <option value="1">DO</option>
                         </select>
-                     </div>
+                    </div>
                     <div class="col">
                         <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
                             value="{{ $order->do_order }}" readonly>
