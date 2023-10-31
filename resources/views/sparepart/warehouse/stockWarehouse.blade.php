@@ -32,13 +32,14 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <table class="table-bordered table" width="100%" cellspacing="0">
+            <table class="table-bordered table" width="100%" cellspacing="">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Name</th>
                         <th scope="col">Code Material</th>
+                        <th scope="col">Name</th>
                         <th scope="col">Qty</th>
+                        <th scope="col">Spesification</th>
                         <th scope="col">Branch</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -47,9 +48,10 @@
                     @foreach ($spareparts as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
+                            <td class="table-plus" style="width:40%">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
                             {{-- @dd($stock->sparepart) --}}
                             <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
@@ -97,6 +99,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $spareparts->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $spareparts->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $spareparts->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $spareparts->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     {{-- create modal --}}
@@ -143,8 +159,8 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Product Name</label>
-                                <input type="text" class="form-control" name="nama_sparepart"
-                                    value="{{ old('nama_sparepart') }}" placeholder="Masukkan Nama Product">
+                                <input type="text" class="form-control" name="nama_category"
+                                    value="{{ old('nama_category') }}" placeholder="Masukkan Nama Product">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Spesifikasi</label>

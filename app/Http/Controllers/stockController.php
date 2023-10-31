@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\sparepart;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
@@ -24,7 +25,7 @@ class stockController extends Controller
     }
     public function viewStockWarehouse()
     {
-        $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart',)->paginate(10);
         $stores = storeSparepart::all();
         return view(
             'sparepart.warehouse.stockWarehouse',
@@ -37,7 +38,7 @@ class stockController extends Controller
     public function viewStockWarehouseToko($id_store)
     {
 
-        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store)->get();
+        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store)->paginate(10);
         $stores = storeSparepart::all();
         // Mengirimkan nilai $id_store ke tampilan
         return view('sparepart.warehouse.stockWarehouseCabang', [
@@ -72,27 +73,39 @@ class stockController extends Controller
     {
         $validatedData = $request->validate([
             'codematerial_sparepart' => 'required',
-            'nama_sparepart' => 'required',
+            'nama_category' => 'required',
             'spesifikasi_sparepart' => 'required',
             'satuan' => 'required',
 
         ]);
 
+        $lowercaseCategoryName = strtolower($validatedData['nama_category']); // Mengubah nama menjadi lowercase
+
+        // Cari kategori berdasarkan nama (setelah diubah menjadi lowercase)
+        $category = Category::firstOrNew(['nama_category' => $lowercaseCategoryName]);
+
+        // Jika kategori belum ada, maka simpan
+        if (!$category->exists) {
+            $category->id_category = 'CAT-' . rand(1, 999);
+            $category->nama_category = $validatedData['nama_category'];
+            $category->save();
+        }
+
         $sparepart = sparepart::create([
             'codematerial_sparepart' => $validatedData['codematerial_sparepart'],
-            'nama_sparepart' => $validatedData['nama_sparepart'],
             'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
             'satuan' => $validatedData['satuan'],
-
+            'id_category' => $category->id_category,
         ]);
 
         $stock = stockSparepart::create([
             'id_stock' => 'STK-' . rand(1, 999),
             'id_sparepart' => $validatedData['codematerial_sparepart'],
-            'id_store' => 'STR-01',
+            'id_store' => 'CTR',
             'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
             'qty_stock' => 0
         ]);
+
         session()->flash('success', 'Stock berhasil ditambahkan');
 
         return redirect('/warehouse/stock');
