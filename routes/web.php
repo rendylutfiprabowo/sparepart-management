@@ -36,8 +36,8 @@ Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('/get/stock/{id_category}/{id_store}',[categoryController::class,'getStock']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/get/stock/{id_category}/{id_store}', [categoryController::class, 'getStock']);
 });
 
 //Role Sales
@@ -77,7 +77,7 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/index', [technicianController::class, 'viewDashboard']);
     Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
     Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
-    Route::post('/technician/listspk/{id_order}/return', [technicianController::class, 'returnOrder']);
+    Route::post('/technician/listspk/{id_order}/return', [revisionController::class, 'returnOrder']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {

@@ -38,6 +38,7 @@
                                 <td class="table-plus">
                                     <b
                                         class="@if ($spks->status == 'closed') text-success
+                                    @elseif ($spks->status == 'closed-memo-do-revisi' || $spks->status == 'memo-closed') text-primary
                                     @elseif($spks->status == 'on-warehouse' || $spks->status == 'on-technician')
                                         text-secondary
                                     @elseif($spks->status == 'revisi')
