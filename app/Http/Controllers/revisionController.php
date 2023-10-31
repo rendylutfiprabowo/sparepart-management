@@ -21,8 +21,7 @@ class revisionController extends Controller
             $revisi->status = TRUE;
             $revisi->order->status = 'closed';
             $revisi->order->save();
-        }
-        elseif($revisi->order->memo_order){
+        } elseif ($revisi->order->memo_order) {
             $revisi->memo_order = $validated['no-do-memo'];
             $revisi->status = FALSE;
             $revisi->order->status = 'closed-memo-do-revisi';
@@ -92,6 +91,15 @@ class revisionController extends Controller
                         $booked->save();
                     }
                 }
+            }
+        } else {
+            if ($orders->do_order != NULL) {
+
+                $orders->status = 'closed';
+                $orders->save();
+            } elseif ($orders->memo_order != NULL) {
+                $orders->status = 'memo-closed';
+                $orders->save();
             }
         }
 
