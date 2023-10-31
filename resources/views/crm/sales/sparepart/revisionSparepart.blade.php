@@ -22,24 +22,24 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach (range(1, 10) as $i)
+                    @foreach ($orders as $key => $order)
                         <tr>
-                            <td class="table-plus">{{ $i }}</td>
-                            <td class="table-plus">Erlangga Maman Agus</td>
-                            <td class="table-plus"><x-status_badge>Rejected</x-status_badge>
+                            <td class="table-plus">{{ $key }}</td>
+                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
+                            <td class="table-plus"><x-status_badge>{{$order->status}}</x-status_badge>
                             </td>
-                            <td class="table-plus">DO</td>
-                            <td class="table-plus">03SA0039214</td>
+                            <td class="table-plus">{{($order->do_order)?$order->do_order:$order->memo_order}}</td>
+                            <td class="table-plus">{{$order->spk_order}}</td>
                             <td>
                                 <div class="row">
-                                    <div class="col">
+                                    {{-- <div class="col">
                                         <a href="" class="pdf-link " type="button">
                                             <i class="fa-solid fa-square-check fa-lg"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col">
-                                        <a href="" class="pdf-link " type="button">
+                                        <a href="/sales/sparepart/revision/{{$order->id_order}}" class="pdf-link " type="button">
                                             <i class="fa-solid fa-file fa-lg"></i>
                                         </a>
                                     </div>

@@ -14,6 +14,7 @@ use App\Http\Controllers\solabController;
 use App\Http\Controllers\labController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
+use App\Http\Controllers\revisionController;
 use App\Models\tools;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,8 +36,8 @@ Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('/get/stock/{id_category}/{id_store}',[categoryController::class,'getStock']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/get/stock/{id_category}/{id_store}', [categoryController::class, 'getStock']);
 });
 
 //Role Sales
@@ -67,8 +68,11 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::post('/sales/sparepart/order/{id_order}/add-item', [bookedController::class, 'store']);
     Route::get('/sales/sparepart/revision', [salesController::class, 'revisionSparepart']);
     Route::get('/sales/sparepart/revision/{id}', [salesController::class, 'detailRevisionSparepart']);
+    Route::post('/sales/sparepart/revision/{id}', [revisionController::class, 'update']);
     Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'updateSales']);
+    // Emails
+    Route::get('/sales/emails/indexEmails', [salesController::class, 'emails']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {

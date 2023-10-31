@@ -119,14 +119,14 @@ class salesController extends Controller
                 $categories[] = $category;
             }
         });
-        $categories= new Collection($categories);
+        $categories = new Collection($categories);
         $categories = $categories->unique('id');
-            
+
         $customers = customer::all();
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
-            'category'=>$categories,
+            'category' => $categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
@@ -160,11 +160,33 @@ class salesController extends Controller
 
     public function revisionSparepart()
     {
-        return view('crm.sales.sparepart.revisionSparepart');
+        $orders = order::has('revisi')->get();
+        return view('crm.sales.sparepart.revisionSparepart',[
+            'orders' => $orders,
+        ]);
     }
-    public function detailRevisionSparepart()
+    public function detailRevisionSparepart($id_order)
     {
-        return view('crm.sales.sparepart.detailRevisionSparepart');
+        $order = order::all()->where('id_order',$id_order)->first();
+
+        $revision_booked = $order->revisi->booked;
+        $order_booked = $order->booked;
+
+        $id_stock_values = $order_booked->pluck('id_stock')->toArray();
+
+        $revision = $revision_booked->whereIn('id_stock', $id_stock_values);
+        $new = $revision_booked->whereNotIn('id_stock', $id_stock_values);
+
+        $type = NULL;
+        if ($order->revisi->memo_order) $type = 'MEMO';
+        if ($order->revisi->do_order) $type = 'DO';
+
+        return view('crm.sales.sparepart.detailRevisionSparepart',[
+            'order'=>$order,
+            'revision'=>$revision,
+            'new'=>$new,
+            'type'=>$type
+        ]);
     }
 
     // ================ DASHBOARD SALES CRM =======================
@@ -217,5 +239,12 @@ class salesController extends Controller
         $customers->save();
 
         return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
+    }
+
+    // EMAILS
+
+    public function emails()
+    {
+        return view('crm.sales.emails.indexEmails');
     }
 }

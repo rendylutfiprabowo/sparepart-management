@@ -16,17 +16,14 @@
             <x-cards judulcard="Top" angkaPersen="92" bulan="September"
                 infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
         </div>
-        <hr>
+        <br>
         <x-page-heading>
             Statistik Sales Profit
         </x-page-heading>
 
-        <div class="row">
-            <div class="col-md-7">
+        <div class="row p-3">
+            <div class="col-md-7 bg-white p-3 rounded shadow-sm">
                 <canvas id="chartSales"></canvas>
-            </div>
-            <div class="col-md-5">
-                <canvas id="chartSalesBar"></canvas>
             </div>
         </div>
     </div>

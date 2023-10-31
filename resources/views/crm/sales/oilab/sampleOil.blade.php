@@ -38,22 +38,20 @@
                 <div>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</div>
                 @endforeach
             </td>
-            <td><button href="#" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $solab['no_so_solab'] }}"><i class="bi bi-file-earmark"></i></button></td>
+            <td><button href="#" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $solab['no_so_solab'] }}"><i class="fa-regular fa-file fa-xl"></i></button></td>
         </tr>
         @endforeach
     </tbody>
 </table>
 <!-- Modal -->
 @foreach ($salesorderoil as $solab)
-<div class="modal fade" id="exampleModal{{ $solab['no_so_solab'] }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{ $solab['no_so_solab'] }}" tabindex="-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header merah">
                 <h4 class="modal-title btn merah text-putih" id="exampleModalLabel" style="font-weight: bold;">Notes
                 </h4>
-                <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; width: 24px; height: 24px; padding: 0; border: 0; font-size: 10px;"></button>
             </div>
             <div class="modal-body">
                 @foreach ($reportSample as $report)
