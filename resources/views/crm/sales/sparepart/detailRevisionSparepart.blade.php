@@ -115,9 +115,9 @@
             <thead class="text-center">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Code Material</th>
                     <th scope="col">Items Name</th>
                     <th scope="col">Specification</th>
-                    <th scope="col">Code Material</th>
                     <th scope="col">Qty</th>
                 </tr>
             </thead>
@@ -125,9 +125,9 @@
                 <tbody class="text-center">
                     <tr>
                         <td class="table-plus">{{ $key + 1 }}</td>
+                        <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                         <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
                         <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
-                        <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                         <td class="table-plus">{{ $booking->qty_booked }}</td>
                     </tr>
                 </tbody>
@@ -141,16 +141,19 @@
                     <div class="row my-5">
                         <div class="col-3">
                             <select name="do-memo" id="" class="form-control">
-                                <option value="1" {{ $type == 'MEMO' ? "selected='true'" : '' }}>DO</option>
-                                <option value="2">MEMO/DO</option>
+                                @if($order->do_order)
+                                    <option value="1">DO</option>
+                                @elseif($order->memo_order)
+                                    <option value="2">MEMO/DO</option>
+                                @endif
                             </select>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
-                                @if ($type == 'DO') value="{{ $order->do_order }}" readonly
+                                @if ($type == 'DO') value="{{ $order->revisi->do_order }}" readonly
                                 
                             @else
-                                value="{{ $order->memo_order }}" @endif>
+                                value="{{ $order->revisi->memo_order }}" @endif>
                         </div>
                     </div>
                     <div class="modal-footer my-3">
@@ -174,7 +177,7 @@
                     </div>
                 </div>
                 <div class="modal-footer my-3">
-                    <a href="/sales/sparepart/revision" class="btn merah text-white"> Back</a>
+                    <a href="/sales/sparepart/revision" class="btn merah btn-danger text-white"> Back</a>
                 </div>
             @endif
         </div>

@@ -34,4 +34,18 @@ class booked extends Model
     {
         return $this->BelongsTo(order::class, 'id_revisi', 'id_revisi');
     }
+
+    public function vice(){
+        if ($this->id_order){
+            if($this->order->revisi){
+                return ($this->order->revisi->booked->where('id_stock',$this->id_stock)->first());
+            }
+        }
+        else if($this->id_revisi){
+            if($this->revisi->order){
+                return ($this->order->revisi->booked->where('id_stock',$this->id_stock)->first());
+            }
+        }
+        else return null;
+    }
 }

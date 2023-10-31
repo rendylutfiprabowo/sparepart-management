@@ -43,7 +43,7 @@
                         <h3>Booking Status</h3>
                         <hr>
                         <div class="badge-primary badge">
-                            <h5>In Progress</h5>
+                            <h5>{{ $order->status }}</h5>
                         </div>
                     </div>
                     <div class="col rounded bg-white p-2 shadow-sm">

@@ -1,6 +1,6 @@
 @extends('template.teknisiSparepart')
 @section('content')
-    @if ($order->status != 'revisi')
+    @if ($order->status == 'on-technician')
         <form method="POST" action="/technician/listspk/{{ $order->id_order }}/return">
             @csrf
             <div class="card rounded-4 p-4">
@@ -188,87 +188,170 @@
                         placeholder="" readonly>
                 </div>
             @endif
-            <thead>
-                <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List SPK</h3>
-                </tr>
-                <hr class="mt-1" style="background-color: black;">
-            </thead>
-            <table class="table-bordered table" width="100%" cellspacing="0">
-                <thead class="text-center">
+            @if ($order->revisi == null)
+                <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Code Material</th>
-                        <th scope="col">Items Name</th>
-                        <th scope="col">Spesifikasi</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Return</th>
+                        <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List SPK</h3>
                     </tr>
+                    <hr class="mt-1" style="background-color: black;">
                 </thead>
-                {{-- @dd($return) --}}
-                @foreach ($order->booked as $no => $booking)
-                    <tbody class="text-center">
+                <table class="table-bordered table" width="100%" cellspacing="0">
+                    <thead class="text-center">
                         <tr>
-                            <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
-                            <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
-                            <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
-                            <input hidden type="text" name="id_stock[]" value="{{ $booking->stock->id_sparepart }}"
-                                id="">
-                            <td class="table-plus">{{ $booking->qty_booked }}</td>
-                            {{-- @dd($return->where('id_stock', $booking->id_stock)) --}}
-                            <td class="table-plus">
-                                <input style="text-align:center;" type="number" name="qty_booked[]"
-                                    value="{{ $return->where('id_stock', $booking->id_stock) }}" min="0"
-                                    max="{{ $booking->qty_booked }}">
-                            </td>
+                            <th scope="col">No</th>
+                            <th scope="col">Code Material</th>
+                            <th scope="col">Items Name</th>
+                            <th scope="col">Spesifikasi</th>
+                            <th scope="col">Qty</th>
                         </tr>
-                    </tbody>
-                @endforeach
-                <input hidden type="text" name="id_technician" value="{{ $order->id_technician }}">
-            </table>
+                    </thead>
+                    @foreach ($order->booked as $no => $booking)
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="table-plus">{{ $no + 1 }}</td>
+                                <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
+                                <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
+                                <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
+                                <input hidden type="text" name="id_stock[]"
+                                    value="{{ $booking->stock->id_sparepart }}" id="">
+                                <td class="table-plus">{{ $booking->qty_booked }}</td>
+                            </tr>
+                        </tbody>
+                    @endforeach
 
-            <div class="items mt-5">
-                <strong><label class="form-label mt-5">Material Diluar Scope</label></strong>
-                <strong><label class="form-label">Store Name</label></strong>
-                <div class="item mb-5">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                        <div class="d-flex">
-                            <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
-                                name="category" id="category">
-                                <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                @foreach ($category as $category)
-                                    <option value="{{ $category->id_category }}">{{ $category->nama_category }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="col d-flex align-items-center mx-3 text-right">qty</div>
-                            <input class="col form-control mx-3" name="qty[]" value="0">
-                            <input class="col form-control mx-3" name="dim" readonly>
-                            <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
+
+                    <input hidden type="text" name="id_technician" value="{{ $order->id_technician }}">
+                </table>
+                <div class="modal-footer">
+                    <a href="/technician/listspk" class="btn merah text-white"> back</a>
+                </div>
+            @else
+                <thead>
+                    <tr>
+                        <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List SPK</h3>
+                    </tr>
+                    <hr class="mt-1" style="background-color: black;">
+                </thead>
+                <table class="table-bordered table" width="100%" cellspacing="0">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Code Material</th>
+                            <th scope="col">Items Name</th>
+                            <th scope="col">Spesifikasi</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Return</th>
+                        </tr>
+                    </thead>
+                    @foreach ($order->booked as $no => $booking)
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="table-plus">{{ $no + 1 }}</td>
+                                <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
+                                <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
+                                <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
+                                <input hidden type="text" name="id_stock[]"
+                                    value="{{ $booking->stock->id_sparepart }}" id="">
+                                <td class="table-plus">{{ $booking->qty_booked }}</td>
+                                <td class="table-plus">
+                                    @if ($order->revisi != null)
+                                        @if ($booking->vice())
+                                            {{ $booking->vice()->qty_booked }}
+                                        @else
+                                            0
+                                        @endif
+                                    @else
+                                        <input style="text-align:center;" type="number" name="qty_booked[]"
+                                            value="0" min="0" max="{{ $booking->qty_booked }}">
+                                    @endif
+                                    </>
+                            </tr>
+                        </tbody>
+                    @endforeach
+
+
+                    <input hidden type="text" name="id_technician" value="{{ $order->id_technician }}">
+                </table>
+
+                <div class="items mt-5">
+                    <strong><label class="form-label mt-5">Material Diluar Scope</label></strong>
+                    <div></div>
+                    <strong><label class="form-label">Store Name</label></strong>
+                    @if ($new == null)
+                        <div class="item mb-5">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
+                                <div class="d-flex">
+                                    <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
+                                        name="category" id="category">
+                                        <option value="" selected disabled>-- Pilih Sparepart --</option>
+                                        @foreach ($category as $category)
+                                            <option value="{{ $category->id_category }}">{{ $category->nama_category }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="col d-flex align-items-center mx-3 text-right">qty</div>
+                                    <input class="col form-control mx-3" name="qty[]" value="0">
+                                    <input class="col form-control mx-3" name="dim" readonly>
+                                    <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
+                                <select name="stocks[]" id="stock" class="form-control specification-select"
+                                    onchange="updateItem(this)">
+                                </select>
+                            </div>
+                        </div>
+                    @else
+                        <table class="table-bordered table" width="100%" cellspacing="0">
+                            <thead class="text-center">
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Code Material</th>
+                                    <th scope="col">Items Name</th>
+                                    <th scope="col">Specification</th>
+                                    <th scope="col">Qty</th>
+                                </tr>
+                            </thead>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($new as $booking)
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td class="table-plus">{{ $no++ }}</td>
+                                        <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
+                                        <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}
+                                        </td>
+                                        <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}
+                                        </td>
+                                        <td class="table-plus">{{ $booking->qty_booked }}</td>
+                                    </tr>
+                                </tbody>
+                            @endforeach
+                        </table>
+                    @endif
+                </div>
+                @if ($new == null)
+                    <div class="d-flex justify-content-center my-3 mb-3">
+                        <div onclick="addNewItem()" class="btn btn-secondary">Add Item
+
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                        <select name="stocks[]" id="stock" class="form-control specification-select"
-                            onchange="updateItem(this)">
-                        </select>
+
+
+                    <div class="modal-footer">
+                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                        <button type="submit" class="btn btn-primary"> Submit</button>
                     </div>
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-center my-3 mb-3">
-                <div onclick="addNewItem()" class="btn btn-secondary">Add Item
-
-                </div>
-            </div>
-
-
-            <div class="modal-footer">
-                <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
-                <button type="submit" class="btn btn-primary"> Submit</button>
-            </div>
+                @else
+                    <div class="modal-footer">
+                        <a href="/technician/listspk" class="btn merah text-white"> back</a>
+                    </div>
+                @endif
+            @endif
     @endif
     </div>
     </div>

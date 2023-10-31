@@ -87,9 +87,9 @@
             <thead class="text-center">
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Code Material</th>
                     <th scope="col">Items Name</th>
                     <th scope="col">Specification</th>
-                    <th scope="col">Code Material</th>
                     <th scope="col">Qty</th>
                     @if ($type == null)
                         <th scope="col">Hapus</th>
@@ -100,9 +100,9 @@
                 <tbody class="text-center">
                     <tr>
                         <td class="table-plus">{{ $no + 1 }}</td>
+                        <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                         <td class="table-plus">{{ $booking->stock->sparepart->category->nama_category }}</td>
                         <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
-                        <td class="table-plus">{{ $booking->stock->id_sparepart }}</td>
                         <td class="table-plus">{{ $booking->qty_booked }}</td>
                         @if ($type == null)
                             <td class="table-plus"><a

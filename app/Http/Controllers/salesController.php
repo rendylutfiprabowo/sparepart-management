@@ -126,7 +126,7 @@ class salesController extends Controller
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
-            'category' => $categories,
+            'categories' => $categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
@@ -178,8 +178,8 @@ class salesController extends Controller
         $new = $revision_booked->whereNotIn('id_stock', $id_stock_values);
 
         $type = NULL;
-        if ($order->revisi->memo_order) $type = 'MEMO';
         if ($order->revisi->do_order) $type = 'DO';
+        elseif ($order->revisi->memo_order) $type = 'MEMO';
 
         return view('crm.sales.sparepart.detailRevisionSparepart', [
             'order' => $order,
