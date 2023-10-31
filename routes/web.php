@@ -15,6 +15,7 @@ use App\Http\Controllers\labController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
 use App\Http\Controllers\revisionController;
+use App\Http\Controllers\superadminController;
 use App\Models\tools;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,11 @@ Route::post('/logout', [loginController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/get/stock/{id_category}/{id_store}', [categoryController::class, 'getStock']);
+});
+
+//Role Superadmin
+Route::middleware(['auth', 'superadmin'])->group(function () {
+    Route::get('/superadmin/dashboard', [superadminController::class, 'index'])->name('dashboardSuperadmin');
 });
 
 //Role Sales
@@ -127,7 +133,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     });
     Route::get('/orderlist', [labController::class, 'viewOrder']);
     Route::get('/orderlist/{no_so_solab}', [labController::class, 'viewitem']);
-    Route::get('/orderlist/{id_solab}/add', [labController::class,'addtrafo']);
+    Route::get('/orderlist/{id_solab}/add', [labController::class, 'addtrafo']);
     Route::post('/orderlist/{id_solab}/add', [labController::class, 'storetrafo']);
 
     Route::get('/history_lab', function () {
