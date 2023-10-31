@@ -16,6 +16,7 @@ class categoryController extends Controller
             
         foreach ($spareparts as $item) {
             $item->id_stock = stockSparepart::where('id_sparepart',$item->codematerial_sparepart)->where('id_store',$id_store)->firstOrFail()->id_stock;
+            $item->qty = stockSparepart::where('id_sparepart',$item->codematerial_sparepart)->where('id_store',$id_store)->firstOrFail()->qty_stock;
         }
 
         return response()->json($spareparts);

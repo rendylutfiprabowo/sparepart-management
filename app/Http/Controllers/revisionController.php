@@ -22,7 +22,7 @@ class revisionController extends Controller
             $revisi->order->status = 'closed';
             $revisi->order->save();
         }
-        if ($revisi->order->memo_order) {
+        elseif($revisi->order->memo_order){
             $revisi->memo_order = $validated['no-do-memo'];
             $revisi->status = FALSE;
             $revisi->order->status = 'closed-memo-do-revisi';
