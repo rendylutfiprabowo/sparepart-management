@@ -54,6 +54,23 @@ class customerseeder extends Seeder
             'jenisusaha_customer' => 'pembuat komik',
             'id_user' => NULL,
         ]);
+        customer::create([
+            'id_customer' => '60007596',
+            'nama_customer' => 'PT Maju Jaya Bersama',
+            'phone_customer' => '0856027555XXX',
+            'email_customer' => 'maju@gmail.com',
+            'jenisusaha_customer' => 'Retail',
+            'id_user' => NULL,
+        ]);
+        customer::create([
+            'id_customer' => '60542254',
+            'nama_customer' => 'PT Semesta Inti Sari',
+            'phone_customer' => '0856025555XXX',
+            'email_customer' => 'semestainti@gmail.com',
+            'jenisusaha_customer' => 'Food & Baverage',
+            'id_user' => NULL,
+        ]);
+
         role::create([
             'nama_role' => 'Warehouse',
         ]);

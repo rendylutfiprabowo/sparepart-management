@@ -71,8 +71,8 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::post('/sales/sparepart/revision/{id}', [revisionController::class, 'update']);
     Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'updateSales']);
-    // Emails
-    Route::get('/sales/emails/indexEmails', [salesController::class, 'emails']);
+    // Channels
+    Route::get('/sales/channels/indexChannels', [salesController::class, 'channelsIndex']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {

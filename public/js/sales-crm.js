@@ -1,26 +1,12 @@
 // CHART PIE
-var ctx = document.getElementById("chartSales").getContext("2d");
+var ctx = document.getElementById("chartSales");
 var myChart = new Chart(ctx, {
     type: "pie",
     data: {
-        labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "july",
-            "agustus",
-            "september",
-            "october",
-            "novermber",
-            "december",
-        ],
         datasets: [
             {
-                label: "Sales SpareParts",
-                data: [12, 19, 3, 5, 2, 3, 8, 9, 10, 11, 4, 5, 6],
+                labels: ["Red", "Blue", "Yellow", "Red", "blue", "Ol"],
+                data: [12, 19, 3, 5, 2, 3],
                 backgroundColor: [
                     "#186F65",
                     "#1F618D",
@@ -28,12 +14,6 @@ var myChart = new Chart(ctx, {
                     "#27AE60",
                     "#884EA0",
                     "#D35400",
-                    "#D80032",
-                    "#BEADFA",
-                    "#FFCC70",
-                    "#94A684",
-                    "#5C5470",
-                    "#ACFADF",
                 ],
                 borderWidth: 2,
             },
@@ -46,7 +26,13 @@ var myChart = new Chart(ctx, {
             },
         },
         layout: {
-            padding: 20,
+            padding: 10,
+        },
+        plugins: {
+            title: {
+                display: true,
+                text: "Customer Registration",
+            },
         },
     },
 });
@@ -102,7 +88,7 @@ new Chart(ctxLines, {
             },
         },
         layout: {
-            padding: 20,
+            padding: 10,
         },
     },
 });

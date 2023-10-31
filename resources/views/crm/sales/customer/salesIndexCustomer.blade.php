@@ -9,7 +9,7 @@
         <!-- Card Data User -->
         <div class="row">
             <x-cards judulcard="Total Customer" angkaPersen="{{ count($dataCust) }}" bulan="Juni"
-                infoCard="Customer Seluruh Indonesia Terdaftar" jam="13:00" />
+                infoCard="Customer Seluruh Indonesia Terdaftar" tanggal="13 oct 2023" />
         </div>
         <br>
         {{-- TABLE DATA CUSTOMER --}}
@@ -37,7 +37,8 @@
                                             href="{{ url('/sales/customer/customerDetails/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                     </td>
                                     <td>{{ $dataTable->phone_customer }}</td>
-                                    <td> <a href="#" class="text-decoration-none">{{ $dataTable->email_customer }}</a>
+                                    <td> <a href="mailto:{{ $dataTable->email_customer }}"
+                                            class="text-decoration-none">{{ $dataTable->email_customer }}</a>
                                     </td>
                                     <td>{{ $dataTable->jenisusaha_customer }}</td>
                                 </tr>

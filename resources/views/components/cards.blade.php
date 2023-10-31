@@ -9,7 +9,7 @@
             </div>
 
             <div>
-                <i class="bi bi-bookmark text-danger"></i>
+                <i class="bi bi-bookmark-fill text-danger"></i>
             </div>
         </div>
         <div class="card-body pt-0">
@@ -20,11 +20,11 @@
                     </div>
                     <div class="widget-49-meeting-info">
                         <span class="widget-49-pro-title">{{ $infoCard }}</span>
-                        <span class="widget-49-meeting-time">{{ $jam }}</span>
+                        <span class="widget-49-meeting-time">{{ $tanggal }}</span>
                     </div>
                 </div>
                 <div class="widget-49-meeting-action">
-                    <a href="#" class="btn btn-sm btn-danger">Detail</a>
+                    <a href="#" class="btn btn-sm btn-danger btn-block">Detail</a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,12 @@
         background-color: #ffffff;
         background-clip: border-box;
         border: 1px solid #e6e4e9;
-        border-radius: 8px;
+        border-radius: 6px;
+        transition: transform 0.1s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
     }
 
     .card .card-header.no-border {
