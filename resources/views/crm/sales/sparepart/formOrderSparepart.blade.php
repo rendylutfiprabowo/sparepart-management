@@ -37,15 +37,15 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_number" readonly>
+                    <input type="text" class="form-control" name="phone_number" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" readonly>
+                    <input type="text" class="form-control" name="address" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-                    <input type="text" class="form-control" name="sales_name" readonly value="Ahmad Sumbul">
+                    <input type="text" class="form-control" name="sales_name" disabled value="Ahmad Sumbul">
                     <input type="hidden" value="1" name="id_sales">
                 </div>
                 <div class="mb-3">
@@ -56,7 +56,7 @@
                 <div class="mb-3">
                     <label for="dateInput">Store</label>
                     <input class="form-control" type="text" id="dateInput" name="nama_store"
-                        value="{{ $store->nama_store }}" readonly>
+                        value="{{ $store->nama_store }}" disabled>
                     <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
                 <div class=" mt-4 items">

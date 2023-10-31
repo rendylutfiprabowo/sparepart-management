@@ -10,11 +10,11 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="py-2">
-                <a class="btn btn-success" href="/sales/sparepart/order/add">+ Add Order</a>
+            <div class="">
+                <a class="btn btn-success btn-sm" href="/sales/sparepart/order/add">+ Add Order</a>
             </div>
-            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
-                <thead class="text-center">
+            <table class="table-bordered table mt-3" id="dataTable" width="100%" cellspacing="0">
+                <thead class="text-center table-secondary">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Customer Name</th>
@@ -28,30 +28,32 @@
                     @foreach ($orders as $key => $order)
                         <tr>
                             <td class="table-plus">{{ $key }}</td>
-                            <td class="table-plus">{{$order->customer->nama_customer}}</td>
+                            <td class="table-plus">{{ $order->customer->nama_customer }}</td>
                             <td class="table-plus text-danger">
-                                @if($order->status == NULL)
-                                    <b class="text-warning">{{$now->diffInDays($order->date_order).' Days left'}}</b>
-                                @else    
-                                    <b class="
-                                    @if($order->status == 'closed')
-                                        text-success
+                                @if ($order->status == null)
+                                    <b
+                                        class="badge text-bg-primary">{{ $now->diffInDays($order->date_order) . ' Days left' }}</b>
+                                @else
+                                    <b
+                                        class="
+                                    @if ($order->status == 'closed') badge text-bg-success
                                     @elseif($order->status == 'on-warehouse' || $order->status == 'on-technician')
-                                        text-secondary
+                                    badge text-bg-secondary
                                     @elseif($order->status == 'revisi')
-                                        text-info
+                                    badge text-bg-info
                                     @elseif($order->status == 'canceled')
-                                        text-danger
-                                    @endif
-                                    ">{{$order->status}}
+                                    badge text-bg-danger @endif
+                                    ">{{ $order->status }}
                                     </b>
                                 @endif
                             </td>
-                            <td class="table-plus">{{$order->do_order?$order->do_order:($order->memo_order?$order->memo_order:'-')}}</td>
-                            <td class="table-plus">{{$order->spk_order?$order->spk_order:'-'}}</td>
+                            <td class="table-plus fw-medium">
+                                {{ $order->do_order ? $order->do_order : ($order->memo_order ? $order->memo_order : '-') }}
+                            </td>
+                            <td class="table-plus fw-medium">{{ $order->spk_order ? $order->spk_order : '-' }}</td>
                             <td>
-                                <a href="/sales/sparepart/order/{{$order->id_order}}" class="pdf-link btn" type="button">
-                                    <i class="fa-regular fa-file fa-lg"></i></a>
+                                <a href="/sales/sparepart/order/{{ $order->id_order }}" class="pdf-link btn" type="button">
+                                    <i class="bi bi-file-earmark-text"></i></a>
                             </td>
                         </tr>
                     @endforeach

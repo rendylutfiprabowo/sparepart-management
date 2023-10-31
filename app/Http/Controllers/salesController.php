@@ -246,4 +246,12 @@ class salesController extends Controller
     {
         return view('crm.sales.channels.indexChannels');
     }
+
+    // SearchStokSpareParts
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $products = stockSparepart::where('name', 'like', "%$search%")->get();
+        return view('products.index', compact('products'));
+    }
 }
