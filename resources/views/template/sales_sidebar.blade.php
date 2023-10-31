@@ -1,6 +1,7 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar border-end collapse">
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
+            {{-- DASHBOARD --}}
             <li class="nav-item ">
                 <a class="nav-link {{ Request::is('sales/dashboard/salesIndexCrm') ? 'text-white active rounded' : '' }}"
                     href="/sales/dashboard/salesIndexCrm">
@@ -8,6 +9,7 @@
                     Dashboard
                 </a>
             </li>
+            {{-- CUSTOMER --}}
             <li class="nav-item ">
                 <a class="nav-link {{ Request::is('sales/customer/salesIndexCustomer') ? 'text-white active rounded' : '' }}"
                     href="/sales/customer/salesIndexCustomer">
@@ -15,8 +17,9 @@
                     Customer
                 </a>
             </li>
+
             {{-- SPAREPARTS --}}
-            <li class="nav-item hover-gray ">
+            <li class="nav-item ">
                 <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
                     data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
                     <div class="me-auto">
@@ -51,6 +54,7 @@
                     </ul>
                 </div>
             </li>
+
             {{-- LAB OIL --}}
             <li class="nav-item ">
                 <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
@@ -60,7 +64,6 @@
                         Oil Lab
                     </div>
                     <div>
-
                         <i class="bi bi-caret-down-fill"></i>
                     </div>
                 </a>
@@ -108,7 +111,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/sales/emails/indexEmails">
                     <span><i class="bi bi-envelope-at-fill"></i></span>
                     Emails
                 </a>
