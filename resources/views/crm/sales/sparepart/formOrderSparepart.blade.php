@@ -68,7 +68,7 @@
                                 <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
                                     name="category" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($category as $category)
+                                    @foreach ($categories as $category)
                                         <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
                                     @endforeach
                                 </select>
@@ -80,13 +80,13 @@
                                     <input class="form-control mx-3" name="dim" disabled>
                                 </div>
                            <div class=" d-flex gap-2">
-                                <select class="form-select category-select" placeholder="Enter Customer Name"
-                                    name="stocks[]" id="category">
+                                {{-- <select class="form-select category-select" placeholder="Enter Customer Name"
+                                    name="stocks[]" id="category"> --}}
                                     <div class="d-flex">
                                         <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
                                             name="category" id="category">
                                             <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                            @foreach ($category as $category)
+                                            @foreach ($categories as $category)
                                                 <option value="{{ $category->id_category }}">{{ $category->nama_category }}
                                                 </option>
                                             @endforeach

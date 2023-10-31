@@ -126,7 +126,7 @@ class salesController extends Controller
         $now = Carbon::now();
         return view('crm.sales.sparepart.formOrderSparepart', [
             'customers' => $customers,
-            'category' => $categories,
+            'categories' => $categories,
             'store' => $store,
             'stocks' => $stocks,
             'now' => $now,
