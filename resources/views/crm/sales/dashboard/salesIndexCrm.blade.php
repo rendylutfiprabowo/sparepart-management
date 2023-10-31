@@ -10,11 +10,11 @@
         <!-- Content Row Card -->
         <div class="row">
             <x-cards judulcard="Project" angkaPersen="12" bulan="Juni" infoCard="Sales Profit Pada Penjualan Bulan Ini"
-                jam="13:00" classIcon="bi bi-bounding-box" />
+                tanggal="15 oct 2023" classIcon="bi bi-bounding-box" />
             <x-cards judulcard="Trafo Sales" angkaPersen="42" bulan="September"
-                infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
-            <x-cards judulcard="Top" angkaPersen="92" bulan="September"
-                infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" jam="13:00" />
+                infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" tanggal="15 oct 2023" />
+            <x-cards judulcard="Top Customer" angkaPersen="1" bulan="September" infoCard="PT. Makmur Jaya Abadi"
+                tanggal="11 oct 2023" />
         </div>
         <br>
         <x-page-heading>
@@ -36,4 +36,6 @@
 
         </div>
     </div>
+
+
 @endsection

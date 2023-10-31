@@ -18,10 +18,10 @@
                 </a>
             </li>
 
-            {{-- SPAREPARTS --}}
+            {{-- SPAREPARTS COLLAPSE MENU --}}
             <li class="nav-item ">
                 <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
-                    data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
+                    data-bs-target="#dashboard-collapse-sp" aria-expanded="false" data-bs-delay='{"show":0,"hide":150}'>
                     <div class="me-auto">
                         <i class="bi bi-tools"></i> SpareParts
                     </div>
@@ -39,23 +39,23 @@
                                     class="bi bi-house-gear-fill me-1"></i> <span class="me-2">Dashboard</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/stock"
-                                class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/stock') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/stock') ? 'text-white active' : '' }}"><i
                                     class="bi bi-box-seam-fill me-1"></i> <span class="me-2">Stock</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/revision"
-                                class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/revision') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/revision') ? 'text-white active' : '' }}"><i
                                     class="bi bi-file-earmark-diff-fill me-1"></i> <span class="me-2">Pengajuan
                                     Revisi</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/order"
-                                class=" nav-link link-body-emphasis d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/order') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/order') ? 'text-white active' : '' }}"><i
                                     class="bi bi-cart-plus-fill me-1"></i> <span class="me-2">Pemesanan</span></a>
                         </li>
                     </ul>
                 </div>
             </li>
 
-            {{-- LAB OIL --}}
+            {{-- LAB OIL COLLAPSE MENU --}}
             <li class="nav-item ">
                 <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
                     data-bs-target="#dashboard-collapse-oil" aria-expanded="false">
@@ -105,15 +105,9 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/sales/channels/indexChannels">
                     <span><i class="bi bi-pip-fill"></i></span>
                     Channels
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/sales/emails/indexEmails">
-                    <span><i class="bi bi-envelope-at-fill"></i></span>
-                    Emails
                 </a>
             </li>
         </ul>

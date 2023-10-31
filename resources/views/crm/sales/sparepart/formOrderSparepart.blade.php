@@ -2,7 +2,7 @@
 
 @section('title', 'SpareParts Dashboard ')
 @section('contents')
-    <div class="card mb-3">
+    <div class="card mb-3 shadow-sm">
         <div class="card-header merah text-light mb-3 pt-3">
             <h6>Add Orders</h6>
         </div>
@@ -13,13 +13,13 @@
         @endif
         <form method="post" action="/sales/sparepart/order/add">
             @csrf
-            <div class="container-fluid">
-                <h3 class="my-1 mb-3 text-center">Data Pelanggan</h3>
+            <div class="container">
+                <h3 class="my-1 mb-4 text-muted text-center">Data Pelanggan</h3>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Jenis Layanan</label>
+                    <label for="exampleFormControlInput1" class="form-label">Delivery Type</label>
                     <select class="form-select" name="jenis_layanan">
-                        <option value="1">Jasa</option>
-                        <option value="2">Material</option>
+                        <option value="1">Delivered by Technician</option>
+                        <option value="2">Delievered by Other Party</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -60,60 +60,43 @@
                     <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
                 <div class=" mt-4 items">
-                    <h3 class="my-1 text-center">Spareparts</h3>
-                    <div class="item mb-5">
-                        <div class="mb-3 row  ">
+                    <h3 class="my-1 text-muted text-center">Spareparts</h3>
+                    <div class="item mt-4">
+                        <div>
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                            <div class="d-flex">
-                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
+                        </div>
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-8">
+                                <select class="form-select category-select" placeholder="Enter Customer Name"
                                     name="category" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($categories as $category)
+                                    @foreach ($category as $category)
                                         <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
                                     @endforeach
                                 </select>
-                                <div class="col d-flex align-items-center mx-3 text-right"><strong>qty</strong></div>
-                                <div class="col">
-                                    <input type="number" class=" form-control  mx-3 " name="qty[]" value="0">
+                            </div>
+                            <div class="col">
+                                <strong>qty</strong>
+                            </div>
+                            <div class="col">
+                                <input class=" form-control   " name="qty[]" value="0">
+                            </div>
+                            <div class="col">
+                                <input class="form-control " name="dim" disabled>
+                            </div>
+                            <div class="col">
+                                <div class=" btn btn-danger form-control " onclick="deleteItem(this)"><i
+                                        class="bi bi-trash-fill"></i>
+
                                 </div>
-                                <div class="col ">
-                                    <input class="form-control mx-3" name="dim" disabled>
-                                </div>
-                           <div class=" d-flex gap-2">
-                                {{-- <select class="form-select category-select" placeholder="Enter Customer Name"
-                                    name="stocks[]" id="category"> --}}
-                                    <div class="d-flex">
-                                        <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
-                                            name="category" id="category">
-                                            <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id_category }}">{{ $category->nama_category }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="col d-flex align-items-center mx-3 text-right"><strong>qty</strong>
-                                        </div>
-                                        <div class="col">
-                                            <input type="number" class=" form-control  mx-3 " name="qty[]" value="0">
-                                        </div>
-                                        <div class="col ">
-                                            <input class="form-control mx-3" name="dim" disabled>
-                                        </div>
-
-                                        <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">Delete
-
-                                        </div>
-
-                                    </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Specification</label>
-                                <select name="stock[]" id="stock" class="form-select specification-select"<label
-                                    for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                                    <select name="stocks[]" id="stock"
-                                        class="form-control specification-select"
-                                        onchange="updateItem(this)">
-                                    </select>
+
+                        <div class="mb-3 mt-4">
+                            <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
+                            <select name="stocks[]" id="stock" class="form-select specification-select"
+                                onchange="updateItem(this)">
+                            </select>
                         </div>
                     </div>
                 </div>
