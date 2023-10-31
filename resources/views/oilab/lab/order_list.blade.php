@@ -39,7 +39,7 @@
                             <td>{{$solab['no_so_solab']}}</td>
                             <td>{{$solab->project->customer->nama_customer}}</td>
                             <td>In Progress</td>
-                            <td><a href="/order_list1" type="button" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/orderlist/{{$solab->no_so_solab}}" type="button" class="btn merah text-putih">detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>

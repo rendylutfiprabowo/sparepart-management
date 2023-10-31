@@ -31,4 +31,5 @@ class trafo extends Model
     {
         return $this->belongsTo(project::class, 'id_project', 'id_project');
     }
+
 }

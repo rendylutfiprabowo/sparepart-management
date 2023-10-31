@@ -37,7 +37,7 @@
                             <td>1</td>
                             <td>0098923783</td>
                             <td>12 Februari 2023</td>
-                            <td><a href="/sales/oil/history/detail" class="btn merah text-putih">detail</a></td>
+                            <td><a href="/sales/oil/history/detail" class="btn btn-danger text-putih">detail</a></td>
                         </tr>
                     </tbody>
                 </table>

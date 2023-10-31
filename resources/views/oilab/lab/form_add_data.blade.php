@@ -10,12 +10,17 @@
     <!-- form salesorder -->
     <div>
         <div>
-            <form method="post" action="/form_add_data/add">
+            <form method="post" action="/orderlist/{{$salesorderoil->no_so_solab}}/add">
                 @csrf
                 <div class="container-fluid">
                     <div class="mb-3">
                         <label for="serial_number" class="form-label">Serial Number</label>
                         <input type="text" class="form-control" id="serial_number" name="serial_number" placeholder="Enter No Serial Number">
+                    </div>
+                    <div class="mb-3">
+                        <label for="serial_number" class="form-label">Project</label>
+                        <input type="text" class="form-control" id="serial_number" name="nama_project" placeholder="Enter No Serial Number" value="{{$salesorderoil->project->nama_project}}">
+                        <input type="hidden" class="form-control" id="serial_number" name="id_project" placeholder="Enter No Serial Number" value="{{$salesorderoil->project->id_project}}">
                     </div>
                     <div class="mb-3">
                         <label for="kva" class="form-label">KVA</label>
@@ -117,7 +122,7 @@
                             <!-- COLLAPSE OA -->
                             <div>
                                 <button class="btn btn-white dropdown-toggle mt-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <strong>Oil Analaysis</strong>
+                                    <strong>Oil Analysis</strong>
                                 </button>
                             </div>
                             <div class="collapse" id="collapseExample">
@@ -184,21 +189,23 @@
                             </div>
                         </div>
                     </div>
-                </div>
-        </div>
-        <!-- button back -->
-        <div class="row mb-5">
-            <div class="d-flex col justify-content-start">
-                <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                    Back
-                </a>
-            </div>
-            <div class="d-flex col justify-content-end">
-                <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                    Submit
-                </button>
-            </div>
+                    <!-- button back -->
+                    <div class="row mb-5">
+                        <div class="d-flex col justify-content-start">
+                            <a href="/orderlist" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                                Back
+                            </a>
+                        </div>
+                        <div class="d-flex col justify-content-end">
+                            <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+            </form>
         </div>
     </div>
+
+</div>
 </div>
 @endsection
