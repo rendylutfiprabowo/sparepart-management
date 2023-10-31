@@ -16,6 +16,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
 use App\Http\Controllers\revisionController;
 use App\Models\tools;
+use App\Models\booked;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -32,6 +33,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/', [loginController::class, 'home']);
+Route::get('/test', [loginController::class, 'test']);
 Route::get('/home', [loginController::class, 'home']);
 Route::post('/login', [loginController::class, 'verifyLogin']);
 Route::post('/logout', [loginController::class, 'logout']);
