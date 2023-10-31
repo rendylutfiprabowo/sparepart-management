@@ -52,4 +52,9 @@ class solab extends Model
     {
         return $this->hasMany(reportSample::class, 'no_so_solab', 'no_so_solab');
     }
+
+    public function trafo()
+    {
+        return $this->hasMany(trafo::class, 'id_project', 'id_project');
+    }
 }
