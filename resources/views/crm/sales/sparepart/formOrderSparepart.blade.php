@@ -71,7 +71,7 @@
                                     @endforeach
                                 </select>
                                 <div class="col d-flex align-items-center mx-3 text-right">qty</div>
-                                <input class="col form-control mx-3" name="qty[]" value="0">
+                                <input type="number" class="col form-control mx-3" name="qty[]" value="0">
                                 <input class="col form-control mx-3" name="dim" readonly>
                                 <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
                             </div>
@@ -123,10 +123,12 @@
             function updateItem(select) {
                 var selectedOption = $(select).find(":selected");
                 var dimension = $(select).closest(".item").find('input[name="dim"]');
+                var quantity = $(select).closest(".item").find('input[name="qty[]"]');
 
                 var dataDim = selectedOption.data("dim");
+                var dataMax = selectedOption.data("qty");
                 dimension.val(dataDim);
-                console.log(dimension.val());
+                quantity.attr('max',dataMax);
             }
         </script>
 
@@ -149,6 +151,10 @@
 
                     // Clear existing options
                     specificationSelect.innerHTML = '';
+                    const temp = document.createElement('option');
+                    temp.value = '';
+                    temp.text = '-- Pilih Spesifikasi --';
+                    specificationSelect.appendChild(temp);
 
                     if (categoryId) {
                         // Fetch specifications based on the selected category and store using an AJAX request
@@ -164,6 +170,7 @@
                                     option.text = stock.spesifikasi_sparepart;
 
                                     option.setAttribute('data-dim', stock.satuan);
+                                    option.setAttribute('data-qty', stock.qty);
                                     specificationSelect.appendChild(option);
                                 });
                             }

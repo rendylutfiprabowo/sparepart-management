@@ -40,8 +40,9 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Name</th>
                         <th scope="col">Code Material</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Spec</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Branch</th>
                         <th scope="col">Action</th>
@@ -51,8 +52,9 @@
                     @foreach ($stocks as $no => $stock)
                         <tr>
                             <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->nama_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->qty_stock }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
                             <td>

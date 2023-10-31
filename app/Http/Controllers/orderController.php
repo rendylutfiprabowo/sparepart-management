@@ -20,6 +20,9 @@ class orderController extends Controller
         if($validated['do-memo']==1){
             $order->spk_order = $validated['no-spk'];
             $order->do_order = $validated['no-do-memo'];
+            if($order->memo_order && $order->revisi){
+                $order->revisi->do_order = $validated['no-do-memo'];
+            }
         }
         elseif($validated['do-memo']==2){
             $order->spk_order = $validated['no-spk'];
