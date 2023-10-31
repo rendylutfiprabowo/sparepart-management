@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>No seri</th>
+                            <th>Serial Number</th>
                             <th>Tanggal Masuk</th>
                             <th>Report</th>
                         </tr>

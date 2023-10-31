@@ -20,7 +20,6 @@
         <x-page-heading>
             Statistik Sales Profit
         </x-page-heading>
-
         <div class="row">
             <div class="col-md-4 ">
                 <div class="bg-white shadow-sm rounded">

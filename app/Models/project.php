@@ -31,6 +31,6 @@ class project extends Model
 
     public function trafo(): HasMany
     {
-        return $this->hasMany(trafo::class, 'id_trafo', 'id_trafo');
+        return $this->hasMany(trafo::class, 'id_project', 'id_project');
     }
 }

@@ -64,14 +64,12 @@
                     <div class="item mb-5">
                         <div class="mb-3 row  ">
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                            <<<<<<< HEAD <div class=" d-flex gap-2">
+                           <div class=" d-flex gap-2">
                                 <select class="form-select category-select" placeholder="Enter Customer Name"
                                     name="stocks[]" id="category">
-                                    =======
                                     <div class="d-flex">
                                         <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
                                             name="category" id="category">
-                                            >>>>>>> 31eac2a39efbdff0af5a1e8cfeef53d6d37e8023
                                             <option value="" selected disabled>-- Pilih Sparepart --</option>
                                             @foreach ($category as $category)
                                                 <option value="{{ $category->id_category }}">{{ $category->nama_category }}
@@ -94,12 +92,11 @@
                                     </div>
                         </div>
                         <div class="mb-3">
-                            <<<<<<< HEAD <label for="exampleFormControlInput1" class="form-label">Specification</label>
-                                <select name="stock[]" id="stock" class="form-select specification-select"=======<label
+                            <label for="exampleFormControlInput1" class="form-label">Specification</label>
+                                <select name="stock[]" id="stock" class="form-select specification-select"<label
                                     for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
                                     <select name="stocks[]" id="stock"
-                                        class="form-control specification-select">>>>>>>
-                                        31eac2a39efbdff0af5a1e8cfeef53d6d37e8023
+                                        class="form-control specification-select"
                                         onchange="updateItem(this)">
                                     </select>
                         </div>
