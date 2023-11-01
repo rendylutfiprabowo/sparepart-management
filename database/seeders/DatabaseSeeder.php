@@ -127,6 +127,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'id_role' => '6'
         ]);
+        User::create([
+            'id_user' => 'USR-55',
+            'username' => 'sukaikan',
+            'email' => 'sukaikan@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '7'
+        ]);
         warehouse::create([
             'id_warehouse' => 'WAR-001',
             'nama_warehouse' => 'Calvin',
@@ -389,6 +396,16 @@ class DatabaseSeeder extends Seeder
         role::create([
             'nama_role' => 'Technician',
         ]);
+        role::create([
+            'nama_role' => 'Modlab',
+        ]);
+        role::create([
+            'nama_role' => 'Adminlab',
+        ]);
+        role::create([
+            'nama_role' => 'Superadmin',
+        ]);
+
 
         form::create([
             'id_form' => '1',

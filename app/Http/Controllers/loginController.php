@@ -25,6 +25,8 @@ class loginController extends Controller
                 return redirect('/index_modlab');
             else if (Auth::user()->id_role == 6)
                 return redirect('/index_adminlab');
+            else if (Auth::user()->id_role == 7)
+                return redirect('/superadmin/dashboard');
         }
         return redirect('/login');
     }
@@ -47,6 +49,12 @@ class loginController extends Controller
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
                 return redirect('/technician/index');
+            else if (Auth::user()->id_role == 5)
+                return redirect('/index_modlab');
+            else if (Auth::user()->id_role == 6)
+                return redirect('/index_adminlab');
+            else if (Auth::user()->id_role == 7)
+                return redirect('/superadmin/dashboard');
         }
 
         // Jika gagal login berdasarkan email, coba login berdasarkan username
@@ -61,6 +69,12 @@ class loginController extends Controller
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
                 return redirect('/technician/index');
+            else if (Auth::user()->id_role == 5)
+                return redirect('/index_modlab');
+            else if (Auth::user()->id_role == 6)
+                return redirect('/index_adminlab');
+            else if (Auth::user()->id_role == 7)
+                return redirect('/superadmin/dashboard');
         }
 
         // Jika kedua percobaan di atas gagal, kembalikan ke halaman login
