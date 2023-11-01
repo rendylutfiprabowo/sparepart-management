@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solab', function (Blueprint $table) {
+        Schema::create('history', function (Blueprint $table) {
             $table->id();
-            $table->string('no_so_solab');
-            $table->string('no_spk_solab');
-            $table->string('alamat_solab');
-            // $table->string('tahun_solab');
-            $table->string('id_project');
-            $table->string('id_sales');
+            $table->string('id_trafo')->nullable();
+            $table->string('id_project')->nullable();
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solab');
+        Schema::dropIfExists('history');
     }
 };

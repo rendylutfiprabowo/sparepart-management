@@ -16,6 +16,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
 use App\Http\Controllers\revisionController;
 use App\Http\Controllers\superadminController;
+use App\Http\Controllers\sampleContoller;
 use App\Models\tools;
 use App\Models\booked;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +62,9 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
     Route::get('/sales/oil/salesorder/add', [salesController::class, 'createSalesOrderOil']);
     Route::post('/sales/oil/salesorder/add', [solabController::class, 'store']);
+    Route::get('/sales/oil/salesorder/{id_project}', [salesController::class, 'detailSalesOrderOil']);
+    Route::get('/sales/oil/salesorder/{id_project}/{id_history}', [salesController::class, 'addScopeSalesOrderOil']);
+    Route::post('/sales/oil/salesorder/{id_project}/{id_history}', [sampleContoller::class, 'store']);
     Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
     Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
     Route::get('/sales/oil/history', [salesController::class, 'historyOil']);

@@ -41,10 +41,10 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Transformer Units</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Traformer units" name="tahun_solab">
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Traformer units" name="qty_trafo">
             </div>
             <!-- form input scope -->
-            <div>
+            {{-- <div>
                 <label for="exampleFormControlTextarea1" class="form-label">Input Scope</label>
             </div>
             <div class="row mb-3 border p-3" style="background-color: white;">
@@ -201,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
     </form>
 
     <!-- button back -->

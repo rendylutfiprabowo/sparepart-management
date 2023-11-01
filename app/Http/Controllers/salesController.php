@@ -10,6 +10,7 @@ use App\Models\sample;
 use App\Models\order;
 use App\Models\solab;
 use App\Models\category;
+use App\Models\history;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
@@ -36,6 +37,20 @@ class salesController extends Controller
 
         $salesorderoil = solab::all()->whereNotNull('id_project');
         return view('crm.sales.oilab.salesOrderOil', compact('salesorderoil'));
+    }
+    public function detailSalesOrderOil($id_project)
+    {
+
+
+        $project = project::where('id_project',$id_project)->firstOrFail();
+        $salesorderoil = $project->solab;
+        return view('crm.sales.oilab.detailSalesOrderOil', compact('salesorderoil','project'));
+    }
+    public function addScopeSalesOrderOil($id_project,$id_history)
+    {
+        $project = project::where('id_project',$id_project)->firstOrFail();
+        $history = history::where('id',$id_history)->firstOrFail();
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history','project'));
     }
 
     public function createSalesOrderOil()

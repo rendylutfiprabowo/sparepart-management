@@ -20,7 +20,7 @@
                     <td>{{ $solab->project->customer->nama_customer }}</td>
                     <td>{{ $solab['project']['nama_project'] }}</td>
                     <td>
-                        @foreach ($solab->samples as $sample)
+                        @foreach ($solab->project->history->first()->samples as $sample)
                             <div>{{ $sample->scope->nama_scope }}</div>
                         @endforeach
                     </td>

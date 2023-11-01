@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('trafo', function (Blueprint $table) {
             $table->id();
-            $table->string('id_trafo');
-            $table->string('serial_number');
-            $table->string('kva');
-            $table->string('merk');
-            $table->string('year');
-            $table->string('voltage');
-            $table->string('vg');
-            $table->string('tag_number');
-            $table->string('temperatur_oil');
-            $table->string('volume_oil');
+            $table->string('id_trafo')->nullable();
+            $table->string('serial_number')->nullable();
+            $table->string('kva')->nullable();
+            $table->string('merk')->nullable();
+            $table->string('year')->nullable();
+            $table->string('voltage')->nullable();
+            $table->string('vg')->nullable();
+            $table->string('tag_number')->nullable();
+            $table->string('temperatur_oil')->nullable();
+            $table->string('volume_oil')->nullable();
             $table->string('id_customer');
         });
     }
