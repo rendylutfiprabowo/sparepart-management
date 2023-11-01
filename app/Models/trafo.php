@@ -23,8 +23,9 @@ class trafo extends Model
         'voltage',
         'vg',
         'tag_number',
+        'temperatur_oil',
         'volume_oil',
-        'id_project',
+        'id_customer',
     ];
 
     public function project(): BelongsTo

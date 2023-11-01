@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('voltage');
             $table->string('vg');
             $table->string('tag_number');
+            $table->string('temperatur_oil');
             $table->string('volume_oil');
-            $table->string('id_project');
+            $table->string('id_customer');
         });
     }
 

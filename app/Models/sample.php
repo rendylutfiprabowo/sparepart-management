@@ -18,8 +18,13 @@ class sample extends Model
         'id_sample',
         'jumlah_sample',
         'status_sample',
-        'no_so_solab',
-        'id_scope'
+        'tanggal_sampling',
+        'tanggal_kedatangan',
+        'tanggal_pengujian',
+        'tanggal_pembuatanlaporan',
+        'tanggal_kedatanganlaporan',
+        'id_scope',
+        'id_project'
     ];
 
     public function formReport(): HasOne

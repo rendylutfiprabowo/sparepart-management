@@ -536,8 +536,9 @@ class DatabaseSeeder extends Seeder
             'voltage' => '1212',
             'vg' => '1222',
             'tag_number' => '11',
+            'temperatur_oil' => '2323',
             'volume_oil' => '60',
-            'id_project' => '833',
+            'id_customer' => '12',
         ]);
         trafo::create([
             'id_trafo' => $faker->numberBetween(100, 999),
@@ -547,21 +548,10 @@ class DatabaseSeeder extends Seeder
             'year' => '2012',
             'voltage' => '1234',
             'vg' => '5543',
-            'tag_number' => '23',
-            'volume_oil' => '32',
-            'id_project' => '435',
-        ]);
-        trafo::create([
-            'id_trafo' => $faker->numberBetween(100, 999),
-            'serial_number' => '232',
-            'kva' => '544',
-            'merk' => 'ranger trafo',
-            'year' => '2998',
-            'voltage' => '1233',
-            'vg' => '98298',
-            'tag_number' => '34',
-            'volume_oil' => '56',
-            'id_project' => '911',
+            'tag_number' => '11',
+            'temperatur_oil' => '556',
+            'volume_oil' => '60',
+            'id_customer' => '23',
         ]);
     }
 }

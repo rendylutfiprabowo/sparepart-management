@@ -8,7 +8,7 @@
                 <th scope="col">No SO</th>
                 <th scope="col">Customer</th>
                 <th scope="col">Project</th>
-                <th scope="col">Test Item</th>
+                <th scope="col">Item Test</th>
                 <th scope="col">Progress</th>
                 <th scope="col">Report</th>
             </tr>

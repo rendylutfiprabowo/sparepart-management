@@ -72,7 +72,7 @@ class solabController extends Controller
             $dga->id_sample = $faker->numberBetween(100, 999);;
             $dga->jumlah_sample = $validated['dga_qty'];
             $dga->status_sample = false;
-            $dga->no_so_solab = $solab->no_so_solab;
+            $dga->id_project = $project->id_project;
             $dga->id_scope = '220';
             $dga->save();
 
@@ -92,7 +92,7 @@ class solabController extends Controller
             $furan->id_sample = $faker->numberBetween(100, 999);;
             $furan->jumlah_sample = $validated['furan_qty'];
             $furan->status_sample = false;
-            $furan->no_so_solab = $solab->no_so_solab;
+            $furan->id_project = $project->id_project;
             $furan->id_scope = '842';
             $furan->save();
 
@@ -112,7 +112,7 @@ class solabController extends Controller
             $oa->id_sample = $faker->numberBetween(100, 999);;
             $oa->jumlah_sample = $validated['oa_qty'];
             $oa->status_sample = false;
-            $oa->no_so_solab = $solab->no_so_solab;
+            $oa->id_project = $project->id_project;
             $oa->id_scope = '399';
             $oa->save();
 

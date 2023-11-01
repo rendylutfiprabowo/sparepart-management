@@ -16,8 +16,13 @@ return new class extends Migration
             $table->string('id_sample');
             $table->string('jumlah_sample');
             $table->string('status_sample');
-            $table->string('no_so_solab');
+            $table->date('tanggal_sampling')->nullable();
+            $table->date('tanggal_kedatangan')->nullable();
+            $table->date('tanggal_pengujian')->nullable();
+            $table->date('tanggal_pembuatanlaporan')->nullable();
+            $table->date('tanggal_pengirimanlaporan')->nullable();
             $table->string('id_scope');
+            $table->string('id_project');
         });
     }
 
