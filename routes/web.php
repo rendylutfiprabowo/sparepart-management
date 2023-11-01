@@ -97,6 +97,9 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
     Route::get('/warehouse/view-order/branch/{id_order}', [warehouseController::class, 'viewOrderBranch']);
     Route::post('/warehouse/add-worker/branch/{id_order}', [warehouseController::class, 'addWorkerBranch']);
+    Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
+    Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
+    Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
 });
 
 //Role Manager Sparepart

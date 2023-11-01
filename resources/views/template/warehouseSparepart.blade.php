@@ -19,8 +19,8 @@
             <i class="fa-solid fa-file-circle-check"></i>
             <span>List SPK</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
+    <li class="nav-item {{ Request::is('warehouse/branch/returItem*') ? 'active' : '' }}">
+        <a class="nav-link" href="/warehouse/branch/returItem">
             <i class="fa-solid fa-tent-arrow-turn-left"></i>
             <span>Return Item</span></a>
     </li>
