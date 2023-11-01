@@ -28,9 +28,12 @@ class trafo extends Model
         'id_customer',
     ];
 
-    public function project(): BelongsTo
+    public function customer(): BelongsTo
     {
-        return $this->belongsTo(project::class, 'id_project', 'id_project');
+        return $this->belongsTo(customer::class, 'id_customer', 'id_customer');
+    }
+    public function samples($id_project)
+    {
     }
 
 }

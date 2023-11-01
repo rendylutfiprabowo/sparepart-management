@@ -31,6 +31,7 @@
                     <div class="text-merah putih mb-3 mt-5 px-2 rounded" style="font-size: 1.1vw;">
                         <b>{{ $solab['no_so_solab'] }}</b>
                     </div>
+                    <a href="/sales/oil/salesorder/{{$solab->project->id_project}}" class="btn btn-light mb-2">Detail</a>
                 </div>
             @endforeach
         </div>

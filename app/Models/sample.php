@@ -24,7 +24,7 @@ class sample extends Model
         'tanggal_pembuatanlaporan',
         'tanggal_kedatanganlaporan',
         'id_scope',
-        'id_project'
+        'id_history'
     ];
 
     public function formReport(): HasOne
@@ -40,4 +40,10 @@ class sample extends Model
     {
         return $this->belongsTo(scope::class, 'id_scope', 'id_scope');
     }
+    public function history(): BelongsTo
+    {
+        return $this->belongsTo(history::class, 'id_history', 'id');
+    }
+
+
 }

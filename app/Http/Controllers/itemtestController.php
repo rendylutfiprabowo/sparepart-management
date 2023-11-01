@@ -33,6 +33,7 @@ class itemtestController extends Controller
             "notes_reportsample" => "required",
         ]);
         $faker = Faker::create();
+        $project  = solab::where('no_so_solab',$no_so_solab)->firstOrFail()->project;
 
         if ($validated) {
             // Simpan catatan
@@ -43,7 +44,8 @@ class itemtestController extends Controller
             $note->save();
 
             // Update status sample ke "Completed"
-            $samples = sample::all()->where('no_so_solab', $no_so_solab);
+            dd($project->history->samples);
+            $samples = $project->samples;
             foreach ($samples as $sample) {
                 $sample->status_sample = true;
                 $sample->save();
