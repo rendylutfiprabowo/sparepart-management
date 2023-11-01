@@ -60,6 +60,35 @@ class warehouseController extends Controller
             'technician' => technician::all(),
         ]);
     }
+    public function returItem()
+    {
+        $order = order::has('revisi')->get();
+        return view('sparepart.branch.returBranchWarehouse', [
+            'order' => $order,
+        ]);
+    }
+
+    public function detailReturItem($id_order)
+    {
+        $order = order::all()->where('id_order', $id_order)->first();
+
+        $revision_booked = $order->revisi->booked;
+        $order_booked = $order->booked;
+
+        $id_stock_values = $order_booked->pluck('id_stock')->toArray();
+
+        $revision = $revision_booked->whereIn('id_stock', $id_stock_values);
+
+        $type = NULL;
+        if ($order->do_order) $type = 'DO';
+        elseif ($order->memo_order) $type = 'MEMO';
+
+        return view('sparepart.branch.detailReturBranchWarehouse', [
+            'order' => $order,
+            'revision' => $revision,
+            'type' => $type
+        ]);
+    }
     public function viewOrderBranch($id_order)
     {
         $order = order::all()->where('id_order', $id_order)->first();

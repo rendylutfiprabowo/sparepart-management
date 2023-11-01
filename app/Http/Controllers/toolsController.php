@@ -33,6 +33,29 @@ class toolsController extends Controller
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
         ]);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_tools' => 'required',
+            'id_store' => 'required'
+        ]);
+
+        $id_tools = 'TOOLS-' . rand(0, 99);
+
+        $tools = tools::create([
+            'nama_tools' => $validatedData['nama_tools'],
+            'id_store' => $validatedData['id_store'],
+            'id_tools' => $id_tools,
+            'qty_tools' => 0
+        ]);
+
+        $tools->save();
+
+        session()->flash('success', 'Tools berhasil ditambahkan');
+
+        return redirect('/warehouse/branch/tools.');
+    }
     public function viewToolsBranchWarehouse()
     {
         $id_store = Auth::User()->warehouse->id_store;

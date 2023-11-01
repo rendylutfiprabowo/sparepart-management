@@ -9,19 +9,10 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="row">
-                <div class="dropdown mb-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        List Cabang
-                    </button>
-                    <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/warehouse/tools">Semua Toko</a>
-                        @foreach ($stores as $store)
-                            <a class="dropdown-item"
-                                href="/warehouse/tools/{{ $store->id_store }}">{{ $store->nama_store }}</a>
-                        @endforeach
-                    </div>
+            <div class="row mb-2">
+                <div class="col-md-3">
+                    <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
+                            class="fa-solid fa-plus"></i> Add Tools</a>
                 </div>
             </div>
             @if (session('success'))
@@ -53,6 +44,61 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+    <!--Add Product Modal -->
+    <div class="modal fade" id="addproduct" tabindex="-1" role="dialog" aria-labelledby="addproductLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header merah text-putih">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Tools</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/warehouse/branch/stock/store">
+                        @csrf
+                        <div class="card-body">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <div class="alert-title">
+                                        <h4>Whoops!</h4>
+                                    </div>
+                                    There are some problems with your input.
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @if (session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
+
+                            @if (session('error'))
+                                <div class="alert alert-danger">{{ session('error') }}</div>
+                            @endif
+                            <div class="form-group mb-3">
+                                <label class="form-label">Tools Name</label>
+                                <input type="text" class="form-control" name="nama_tools" value="{{ old('nama_tools') }}"
+                                    placeholder="Masukkan Nama Tools">
+                            </div>
+                            <div class="form-group mb-3">
+                                <input hidden type="text" class="form-control" name="id_store"
+                                    value="{{ $id_store }}" placeholder="Masukkan Nama Tools">
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection
