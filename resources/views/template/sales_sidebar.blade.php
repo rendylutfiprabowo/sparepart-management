@@ -21,7 +21,7 @@
             {{-- SPAREPARTS COLLAPSE MENU --}}
             <li class="nav-item ">
                 <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
-                    data-bs-target="#dashboard-collapse-sp" aria-expanded="false" data-bs-delay='{"show":0,"hide":150}'>
+                    data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
                     <div class="me-auto">
                         <i class="bi bi-tools"></i> SpareParts
                     </div>

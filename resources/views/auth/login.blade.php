@@ -8,18 +8,12 @@
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <title>Transformer Solution System - Login</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <style>
-        body {
-            background-image: url('/Asset/powerindo.jpg');
+        /* body {
+            background-image: url('/Asset/trafindo-bg.jpeg');
             background-size: cover;
             height: 100vh;
             margin: 0;
@@ -27,14 +21,122 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(px);
+        } */
+
+        .login-block {
+            background: #DE6262;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to bottom, #9A4444, #9A4444);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to bottom, #9A4444, #9A4444);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            float: left;
+            width: 100%;
+            padding: 50px 0;
+        }
+
+        .banner-sec {
+            background-size: cover;
+            min-height: 500px;
+            border-radius: 0 10px 10px 0;
+            padding: 0;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 8px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-inner {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .carousel-caption {
+            text-align: left;
+            left: 5%;
+        }
+
+        .login-sec {
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        .login-sec .copy-text {
+            position: absolute;
+            width: 80%;
+            bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .login-sec .copy-text i {
+            color: #FEB58A;
+        }
+
+        .login-sec .copy-text a {
+            color: #E36262;
+        }
+
+        .login-sec h2 {
+            margin-bottom: 30px;
+            font-weight: 800;
+            font-size: 30px;
+        }
+
+        .login-sec h2:after {
+            content: " ";
+            width: 100px;
+            height: 5px;
+            background: #D80032;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .btn-login {
+            background: #D80032;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .banner-text {
+            position: absolute;
+            bottom: 30px;
+            padding-left: 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .banner-text h2 {
+            color: #fff;
+            font-weight: 600;
+            z-index: 5;
+        }
+
+        .banner-text h2:after {
+            content: " ";
+            width: 80px;
+            height: 5px;
+            background: #FFF;
+            display: block;
+            margin-top: 20px;
+            border-radius: 3px;
+            z-index: 5;
+        }
+
+        .banner-text p {
+            color: #fff;
+            z-index: 5;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    {{-- <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-6 col-md-9">
                 <div class="card o-hidden my-5 border-0 shadow-lg">
@@ -42,9 +144,9 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="p-4">
-                                    <div class="text-center">
-                                        <h1 class="font-weight-bold mb-4 text-gray-800">Welcome To <span
-                                                class="text-danger">Trafoindo</span> Solution System
+                                    <div class="text-center mb-3">
+                                        <h1 class="text-gray-800"><span class="text-danger">Trafoindo</span>
+                                            Solution System
                                         </h1>
                                     </div>
                                     <div>
@@ -92,14 +194,105 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    {{-- ============ ALL --}}
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/sb-admin-2.min.js"></script>
+    <section class="login-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 login-sec">
+                    <h2 class="text-center">Welcome To Trafindo Solution System</h2>
+                    <div>
+                        @if (session('error'))
+                            <x-error_message text="Username/Email & Password Salah" />
+                        @endif
+                    </div>
+                    <form class="login-form" method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-muted">Username / email</label>
+                            <input type="text" class="form-control" id="email_or_username" name="email_or_username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-muted">Password</label>
+                            <input type="password" class="form-control" name="password" id="password">
+                        </div>
+                        <br>
+                        <div class="">
+                            <button class="btn btn-danger btn-block">Login</button>
+                        </div>
+                    </form>
+                    <div class="copy-text text-muted">Copyright @Trafindo 2023 </div>
+                </div>
+                <div class="col-md-7 banner-sec">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-md-block" src="/Asset/trafindo-bg.jpeg" alt="First slide" width="auto"
+                                    height="500">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>MANUFACTURING</h2>
+                                        <ul>
+                                            <li>Integrated manufacturing</li>
+                                            <li>Robust Engineering Infrastructure</li>
+                                            <li>End-to-end quality control</li>
+                                            <li>Customised product development & solutions</li>
+                                            <li>Technical & life-cycle service</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-md-block" src="https://www.trafoindonesia.com/img/ctvtthumb1.jpg"
+                                    alt="second slide" height="500" width="800">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>CT & VT PRODUCTS</h2>
+                                        <ul>
+                                            <li>Quality and Reliability for global M&Es</li>
+                                            <li>CE Marking (Cert IAS/IDN/10144)</li>
+                                            <li>Customization for local & export specifications</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-md-block"
+                                    src="https://mikmargracindo.com/wp-content/uploads/2018/07/trafo-trafindo.jpg"
+                                    alt="Third slide" height="500" width="800">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>TRANSFORMERS</h2>
+                                        <ul>
+                                            <li>Quality product design</li>
+                                            <li>Efficient manufacturing and delivery</li>
+                                            <li>Customised product development</li>
+                                            <li>Wide range of technical support solutions</li>
+                                            <li>V-Cycle documentation for government utility and multi-national
+                                                industries</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
 
     <script>
         // Erro Login Message
@@ -108,7 +301,7 @@
 
             setTimeout(() => {
                 errorMessage.style.display = 'none';
-            }, 8000);
+            }, 5000);
         }
     </script>
 
