@@ -1,15 +1,41 @@
 @extends('template.new_layout')
-@section('title', 'Sales Customer')
+
+@section('title', 'Sales Customers')
 
 @section('contents')
     <div class="container-fluid">
         <x-page-heading>
-            Dashboard Customer
+            Top Customers
         </x-page-heading>
-        <!-- Card Data User -->
+        <br>
+        {{-- CARD TOP CUSTOMER --}}
         <div class="row">
-            <x-cards judulcard="Total Customer" angkaPersen="{{ count($dataCust) }}" bulan="Juni"
-                infoCard="Customer Seluruh Indonesia Terdaftar" tanggal="13 oct 2023" />
+            <div class="mains-card">
+                <ul class="cards">
+                    <li class="cards_item">
+                        <div class="card shadow-sm">
+                            <div class="card_image">
+                                <span class="note">Top Loyal Customers</span>
+                                <img src="https://images.unsplash.com/photo-1568084680786-a84f91d1153c?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    alt="image-card-top-cust" />
+                                <span class="card_price"><span></span>1st</span>
+                            </div>
+                            <div class="card_content">
+                                <h2 class="card_title">PT. DEVELOPER HOTEL INDONESIA</h2>
+                                <div class="card_text">
+                                    <p><span class="me-2"><i class="bi bi-geo-alt-fill"></i></span> Jl. Lampung selatan,
+                                        Tanggamus,
+                                        Indonesia
+                                    </p>
+                                    <p><span class="me-2"><i class="bi bi-buildings-fill"></i></span> Apartement & Hotel
+                                        (Property)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
         <br>
         {{-- TABLE DATA CUSTOMER --}}
@@ -18,7 +44,7 @@
         </x-page-heading>
 
         <div class="row">
-            <div>
+            <div class="mt-3">
                 <button type="button" class="btn btn-success shadow-sm" data-bs-toggle="modal"
                     data-bs-target="#addCustModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
@@ -102,7 +128,7 @@
                             </div>
                             <br>
                             <div>
-                                <button class=" btn btn-danger w-100" type="submit">Tambahkan</button>
+                                <button class=" btn btn-outline-danger w-100 " type="submit">Tambahkan</button>
                             </div>
                             @if (session('status'))
                                 <div id="trigger"></div>
@@ -115,7 +141,8 @@
     </div>
     {{-- TOAST SUCCESS --}}
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast text-bg-success rounded" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="liveToast" class="toast text-bg-success rounded" role="alert" aria-live="assertive"
+            aria-atomic="true">
             <div class="toast-body">
                 Data Customer Berhasil Ditambahkan !
             </div>

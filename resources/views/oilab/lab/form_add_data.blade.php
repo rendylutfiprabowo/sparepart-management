@@ -48,7 +48,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="temp_oil" class="form-label">Temp. Oil (°C)</label>
-                        <input type="text" class="form-control" id="temp_oil" name="temp_oil" placeholder="Enter Temp Oil">
+                        <input type="text" class="form-control" id="temperatur_oil" name="temperatur_oil" placeholder="Enter Temperatur Oil">
                     </div>
                     <div class="mb-3">
                         <label for="volume_oil" class="form-label">Volume Oil (Liter)</label>

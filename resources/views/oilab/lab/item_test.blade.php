@@ -17,8 +17,8 @@
                             <th scope="col">Customer</th>
                             <th scope="col">Project</th>
                             <th scope="col">Sales Name</th>
-                            <th scope="col">Test Item</th>
-                            <th scope="col">Sample</th>
+                            <th scope="col">Item Test</th>
+                            {{-- <th scope="col">Sample</th> --}}
                             <th scope="col">Progress</th>
                             <th scope="col">Notes</th>
                         </tr>
@@ -31,17 +31,17 @@
                             <td>{{ $solab['project']['nama_project'] }}</td>
                             <td>{{ $solab['sales']['nama_sales'] }}</td>
                             <td>
-                                @foreach ($solab->samples as $sample)
+                                @foreach ($solab->project->history->first()->samples as $sample)
                                 <div>{{ $sample->scope->nama_scope }}</div>
                                 @endforeach
                             </td>
-                            <td>
+                            {{-- <td>
                                 @foreach ($solab->samples as $sample)
                                 <div>{{ $sample->jumlah_sample }}</div>
                                 @endforeach
-                            </td>
+                            </td> --}}
                             <td>
-                                @foreach ($solab->samples as $sample)
+                                @foreach ($solab->project->history->first()->samples as $sample)
                                 <div>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</div>
                                 @endforeach
                             </td>

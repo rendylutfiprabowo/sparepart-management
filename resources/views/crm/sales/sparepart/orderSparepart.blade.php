@@ -29,7 +29,7 @@
                         <tr>
                             <td class="table-plus">{{ $key }}</td>
                             <td class="table-plus">{{ $order->customer->nama_customer }}</td>
-                            <td class="table-plus text-danger">
+                            <td class="table-plus">
                                 @if ($order->status == null)
                                     <b
                                         class="badge text-bg-primary">{{ $now->diffInDays($order->date_order) . ' Days left' }}</b>
@@ -38,7 +38,7 @@
                                         class="
                                     @if ($order->status == 'closed') badge text-bg-success
                                     @elseif($order->status == 'on-warehouse' || $order->status == 'on-technician')
-                                    badge text-bg-secondary
+                                    badge text-bg-warning
                                     @elseif($order->status == 'revisi')
                                     badge text-bg-info
                                     @elseif($order->status == 'canceled')
@@ -52,7 +52,7 @@
                             </td>
                             <td class="table-plus fw-medium">{{ $order->spk_order ? $order->spk_order : '-' }}</td>
                             <td>
-                                <a href="/sales/sparepart/order/{{ $order->id_order }}" class="pdf-link btn" type="button">
+                                <a href="/sales/sparepart/order/{{ $order->id_order }}" class=" btn" type="button">
                                     <i class="bi bi-file-earmark-text"></i></a>
                             </td>
                         </tr>

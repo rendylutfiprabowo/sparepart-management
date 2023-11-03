@@ -44,7 +44,7 @@
                             <th scope="col">No</th>
                             <th scope="col">No SO</th>
                             <th scope="col">No SPK</th>
-                            <th scope="col">Test Item</th>
+                            <th scope="col">Item Test</th>
                             <th scope="col">Report</th>
                         </tr>
                     </thead>

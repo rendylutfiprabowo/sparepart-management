@@ -8,7 +8,7 @@
                 <th scope="col">No SO</th>
                 <th scope="col">Customer</th>
                 <th scope="col">Project</th>
-                <th scope="col">Test Item</th>
+                <th scope="col">Item Test</th>
                 <th scope="col">Progress</th>
                 <th scope="col">Report</th>
             </tr>
@@ -20,7 +20,7 @@
                     <td>{{ $solab->project->customer->nama_customer }}</td>
                     <td>{{ $solab['project']['nama_project'] }}</td>
                     <td>
-                        @foreach ($solab->samples as $sample)
+                        @foreach ($solab->project->history->first()->samples as $sample)
                             <div>{{ $sample->scope->nama_scope }}</div>
                         @endforeach
                     </td>

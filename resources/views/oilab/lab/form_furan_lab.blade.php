@@ -21,44 +21,36 @@
                 </a>
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Color / Appereance</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Color / Appereance">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>5HMF</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5HMF">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Breakdown Voltage (Dielectric Strength)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Breakdown Voltage">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>2FOL</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FOL">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Interfacial Tension</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Interfacial Tension">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>2FAL</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FAL">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Total Acid Number (TAN)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Acid Number">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>2ACF</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2ACF">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Water Content</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Water Content">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>5MEF</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5MEF">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Oil Quality Index (OQIN)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Oil Quality Index (OQIN)">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>Total 2FAL</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total 2FAL">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Sediment & Sludge</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Sediment & Sludge">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>Total Furan</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Furan">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Density</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Density">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Corrosive Sulfur</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Corrosive Sulfur">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label"> <strong>Flash Point</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Flash Point">
+                <label for="exampleFormControlInput1" class="form-label"> <strong>Estimate DP</strong></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Estimate DP">
             </div>
 
             <!-- button back -->
@@ -78,4 +70,4 @@
     </div>
 </div>
 
-    @endsection
+@endsection
