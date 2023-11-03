@@ -68,4 +68,29 @@ class toolsController extends Controller
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
         ]);
     }
+
+    public function viewToolsTechnician()
+    {
+        $toolsWarehouse = tools::all();
+        $stores = storeSparepart::all();
+        return view(
+            'sparepart.technician.toolsTechnician',
+            [
+                'tools' => $toolsWarehouse,
+                'stores' => $stores
+            ]
+        );
+    }
+
+    public function viewToolsToko($id_store)
+    {
+        $tools = tools::with('store')->where('id_store', $id_store)->get();
+        $stores = storeSparepart::all();
+        return view('sparepart.technician.toolsCabang', [
+            'tools' => $tools,
+            'stores' => $stores,
+            'id_store' => $id_store,
+            'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
+        ]);
+    }
 }

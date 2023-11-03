@@ -88,6 +88,8 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
     Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
     Route::post('/technician/listspk/{id_order}/return', [revisionController::class, 'returnOrder']);
+    Route::get('/technician/tools', [toolsController::class, 'viewToolsTechnician']);
+    Route::get('/technician/tools/{id_store}', [toolsController::class, 'viewToolsToko']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
