@@ -48,7 +48,7 @@
                                 <tr>
                                     <td scope="row" class="text-secondary">{{ $dataTable->id_customer }}</th>
                                     <td><a class="text-decoration-none"
-                                            href="{{ url('/sales/customer/customerDetails/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
+                                            href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                     </td>
                                     <td>{{ $dataTable->phone_customer }}</td>
                                     <td> <a href="mailto:{{ $dataTable->email_customer }}"

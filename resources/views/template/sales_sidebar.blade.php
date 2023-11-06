@@ -19,8 +19,8 @@
             </li>
             {{-- CUSTOMER --}}
             <li class="nav-item ">
-                <a class="nav-link {{ Request::is('sales/customer/salesIndexCustomer') ? 'text-white active rounded' : '' }}"
-                    href="/sales/customer/salesIndexCustomer">
+                <a class="nav-link {{ Request::is('sales/customer') ? 'text-white active rounded' : '' }}"
+                    href="/sales/customer">
                     <i class="bi bi-people-fill"></i>
                     Customer
                 </a>
