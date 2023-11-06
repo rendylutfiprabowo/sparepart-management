@@ -3,8 +3,8 @@
         <ul class="nav flex-column">
             {{-- DASHBOARD --}}
             <li class="nav-item ">
-                <a class="nav-link {{ Request::is('sales/dashboard/salesIndexCrm') ? 'text-white active rounded' : '' }}"
-                    href="/sales/dashboard/salesIndexCrm">
+                <a class="nav-link {{ Request::is('sales/dashboard/') ? 'text-white active rounded' : '' }}"
+                    href="/sales/dashboard/">
                     <i class="bi bi-grid-fill"></i>
                     Dashboard
                 </a>
