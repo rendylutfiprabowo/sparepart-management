@@ -179,7 +179,7 @@
                                     const option = document.createElement('option');
                                     // option.data-dim=stock.satuan;
                                     option.value = stock.id_stock;
-                                    option.text = stock.spesifikasi_sparepart;
+                                    option.text = stock.spesifikasi_sparepart + (` (tersisa ${stock.qty} ${stock.satuan})`);
 
                                     option.setAttribute('data-dim', stock.satuan);
                                     option.setAttribute('data-qty', stock.qty);

@@ -52,7 +52,7 @@ Route::middleware(['auth', 'superadmin'])->group(function () {
 //Role Sales
 Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
-    Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
+    Route::get('/sales/dashboard', [salesController::class, 'dashboardSalesCrm']);
     // Dashboard Sales Customer CRM
     Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
     Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
@@ -72,6 +72,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     //Spareparts sales
     Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
     Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
+    Route::get('/sales/sparepart/stock/{id_store}', [salesController::class, 'stockSparepartStore']);
     Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
     Route::get('/sales/sparepart/order/add/{id_store}', [salesController::class, 'createOrderSparepart']);
     Route::get('/sales/sparepart/order/add', [salesController::class, 'selectStore']);

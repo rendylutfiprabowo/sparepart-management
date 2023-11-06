@@ -95,12 +95,59 @@ class salesController extends Controller
 
     public function stockSparepart()
     {
-        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        $stores = storeSparepart::all();
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart');
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
+            'stores'=> $stores,
         ]);
     }
+
+    public function stockSparepartStore($id_store){
+        $stores = storeSparepart::all();
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->where('id_store',$id_store);
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
+
+        return view('crm.sales.sparepart.stockSparepart', [
+            'stocks' => $stocks,
+            'stores'=> $stores,
+        ]);
+    }
+
     public function orderSparepart()
     {
         $orders = order::all();

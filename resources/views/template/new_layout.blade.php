@@ -50,7 +50,6 @@
         </div>
 
         {{-- SEARCH BAR --}}
-        <x-searchbar />
 
         {{-- NOTIFICATION --}}
         <div>
