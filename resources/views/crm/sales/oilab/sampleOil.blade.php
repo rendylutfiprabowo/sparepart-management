@@ -8,8 +8,8 @@
             <th scope="col">Customer</th>
             <th scope="col">Project</th>
             <th scope="col">Sales Name</th>
+            <th scope="col">Trafo</th>
             <th scope="col">Item Test</th>
-            <th scope="col">Sample</th>
             <th scope="col">Progress</th>
             <th scope="col">Notes</th>
         </tr>
@@ -24,28 +24,39 @@
             <td>{{ $solab['project']['nama_project'] }}</td>
             <td>{{ $solab['sales']['nama_sales'] }}</td>
             <td>
-                @foreach ($solab->samples as $sample)
+                @foreach($solab->project->history as $key => $history)
+                <div>{{$key+1}}</div>
+                @endforeach
+            </td>
+            <td>
+                @foreach ($solab->project->history as $history)
+                @foreach($history->samples as $sample)
                 <div>{{ $sample->scope->nama_scope }}</div>
                 @endforeach
-            </td>
-            <td>
-                @foreach ($solab->samples as $sample)
-                <div>{{ $sample->jumlah_sample }}</div>
                 @endforeach
             </td>
             <td>
-                @foreach ($solab->samples as $sample)
+                @foreach ($solab->project->history as $history)
+                @foreach($history->samples as $sample)
                 <div>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</div>
                 @endforeach
+                @endforeach
             </td>
-            <td><button href="#" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $solab['no_so_solab'] }}"><i class="fa-regular fa-file fa-xl"></i></button></td>
+            <td>
+                @foreach ($solab->project->history as $history)
+                <button href="#" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $history->id }}">
+                    <i class="fa-regular fa-file fa-xl"></i>
+                </button>
+                @endforeach
+            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 <!-- Modal -->
 @foreach ($salesorderoil as $solab)
-<div class="modal fade" id="exampleModal{{ $solab['no_so_solab'] }}" tabindex="-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($solab->project->history as $history)
+<div class="modal fade" id="exampleModal{{ $history->id }}" tabindex="-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header merah">
@@ -55,9 +66,11 @@
             </div>
             <div class="modal-body">
                 @foreach ($reportSample as $report)
-                @if ($report['no_so_solab'] == $solab['no_so_solab'])
+                @foreach($report->solab->project->history as $trafo)
+                @if ($report['no_so_solab'] == $solab->no_so_solab && $trafo['id_trafo'])
                 <div>{{ $report['notes_reportsample'] }}</div>
                 @endif
+                @endforeach
                 @endforeach
             </div>
             <div class="modal-footer">
@@ -66,5 +79,6 @@
         </div>
     </div>
 </div>
+@endforeach
 @endforeach
 @endsection

@@ -25,7 +25,7 @@ class history extends Model
     }
     public function project(): BelongsTo
     {
-        return $this->belongsTo(project::class, 'id_trafo', 'id_trafo');
+        return $this->belongsTo(project::class, 'id_project', 'id_project');
     }
     public function samples(): HasMany
     {
