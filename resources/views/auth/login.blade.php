@@ -136,65 +136,6 @@
 </head>
 
 <body>
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-6 col-md-9">
-                <div class="card o-hidden my-5 border-0 shadow-lg">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="p-4">
-                                    <div class="text-center mb-3">
-                                        <h1 class="text-gray-800"><span class="text-danger">Trafoindo</span>
-                                            Solution System
-                                        </h1>
-                                    </div>
-                                    <div>
-                                        @if (session('error'))
-                                            <x-error_message text="Username/Email & Password Salah" />
-                                        @endif
-                                    </div>
-                                    <form method="post" class="user" action="{{ route('login') }}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="email_or_username" aria-describedby="emailHelp"
-                                                name="email_or_username"
-                                                placeholder="Masukkan Email atau Username anda">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password"
-                                                name="password" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <button id="button-submit" type="submit"
-                                            class="btn btn-danger btn-user btn-block font-weight-bold">
-                                            Login
-                                        </button>
-
-                                        <hr />
-                                    </form>
-                                    <div class="text-center">
-                                        <a class="small" href="#">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="#">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 d-none d-lg-block bg-login-image"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <section class="login-block">
         <div class="container">

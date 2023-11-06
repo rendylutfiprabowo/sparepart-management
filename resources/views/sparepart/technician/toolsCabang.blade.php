@@ -1,7 +1,7 @@
 @extends('template.teknisiSparepart')
 @section('content')
     <div class="col-md-12">
-        <div class="card rounded-4 p-4">
+        <div class="card rounded-4 mb-4 p-4">
             <thead>
                 <tr>
                     <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Tools Warehouse {{ $namaStore }}
@@ -10,7 +10,7 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="dropdown mb-3">
+                <div class="col-md-3 dropdown mb-3">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         List Cabang
@@ -24,19 +24,13 @@
                     </div>
                 </div>
             </div>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
+            <table class="table-bordered table" width="100%" cellspacing="0">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Branch</th>
-                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
@@ -46,11 +40,38 @@
                             <td class="table-plus">{{ $tool->nama_tools }}</td>
                             <td class="table-plus">{{ $tool->qty_tools }}</td>
                             <td class="table-plus">{{ $tool->store->nama_store }}</td>
-                            {{-- @dd($stock->sparepart) --}}
-                            <td>
                             </td>
                         </tr>
                     @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="card rounded-4 mb-4 p-4">
+            <thead>
+                <tr>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Tools Warehouse
+                    </h3>
+                </tr>
+                <hr class="mt-1" style="background-color: black;">
+            </thead>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <a class="btn btn-primary" data-target="" href="/technician/tools/request/add"><i
+                            class="fa-solid fa-plus"></i> Request
+                        Tools</a>
+                </div>
+            </div>
+            <table class="table-bordered table" width="100%" cellspacing="0">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Spk</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
                 </tbody>
             </table>
         </div>
