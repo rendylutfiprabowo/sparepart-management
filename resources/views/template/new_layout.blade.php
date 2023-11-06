@@ -33,14 +33,8 @@
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> <img src="/Asset/LogoTrafoindo.png"
                     width="120" height="50" class="d-inline-block" alt="LOGO"></a>
         </div>
+        {{-- SEARCH BAR --}}
 
-        <div id="searchNavbar">
-            <div class="input-group">
-                <input type="text" class="form-control rounded  bg-secondary-subtle" placeholder="Search"
-                    aria-label="Search sidebars">
-                <button class="btn btn-danger" type="button"><i class="bi bi-search"></i></button>
-            </div>
-        </div>
         {{-- NOTIFICATION --}}
         <div>
             <x-notification />

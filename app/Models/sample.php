@@ -44,6 +44,7 @@ class sample extends Model
     {
         return $this->belongsTo(history::class, 'id_history', 'id');
     }
+    
 
 
 }

@@ -56,12 +56,12 @@
                 <a class="collapse-item {{ Request::is('sales/oil/salesorder*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/salesorder"><i class="fa-solid fa-cart-shopping"></i>
                     <span>Sales Order</span></a>
-                <a class="collapse-item {{ Request::is('sales/oil/report*') ? 'merah text-white' : '' }}"
+                <!-- <a class="collapse-item {{ Request::is('sales/oil/report*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/report"><i class="fa-solid fa-file-circle-check"></i>
-                    <span>Report</span></a>
+                    <span>Report</span></a> -->
                 <a class="collapse-item {{ Request::is('sales/oil/sample*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/sample"><i class="fa-solid fa-vials"></i>
-                    <span>Sample</span></a>
+                    <span>Report Sample</span></a>
                 <a class="collapse-item {{ Request::is('sales/oil/history*') ? 'merah text-white' : '' }}"
                     href="/sales/oil/history"><i class="fa-solid fa-file-invoice"></i>
                     <span>History</span></a>
