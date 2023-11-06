@@ -43,6 +43,7 @@
                             <th scope="col">Serial Number</th>
                             <th scope="col">KVA</th>
                             <th scope="col">Merk Trafo</th>
+                            <th scope="col">Trafo</th>
                             <th scope="col">Item Test</th>
                             <th scope="col">Report</th>
                             <th scope="col">Status</th>
@@ -56,10 +57,12 @@
                             <td>{{ $history->trafo->serial_number }}</td>
                             <td>{{ $history->trafo->kva }}</td>
                             <td>{{ $history->trafo->merk }}</td>
+                            <td>-</td>
                             <td>
                                 <div>sesuaikan</div>
                             </td>
                             @else
+                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>

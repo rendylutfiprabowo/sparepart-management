@@ -12,6 +12,7 @@
             <th scope="col">Item Test</th>
             <th scope="col">Progress</th>
             <th scope="col">Notes</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody class="text-center">
@@ -25,7 +26,9 @@
             <td>{{ $solab['sales']['nama_sales'] }}</td>
             <td>
                 @foreach($solab->project->history as $key => $history)
-                <div>{{$key+1}}</div>
+                <div>
+                    {{$key+1}}
+                </div>
                 @endforeach
             </td>
             <td>
@@ -49,6 +52,7 @@
                 </button>
                 @endforeach
             </td>
+            <td><button type="button" class="btn merah text-putih">download</button></td>
         </tr>
         @endforeach
     </tbody>
