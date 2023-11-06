@@ -6,7 +6,7 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Warehouse & Store</h3>
+                    <h3 class="text-dark my-2 text-start">List Stock Warehouse & Store</h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>

@@ -17,21 +17,6 @@
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     {{-- STYLE CUSTOM --}}
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
 
 </head>
 
@@ -48,16 +33,16 @@
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> <img src="/Asset/LogoTrafoindo.png"
                     width="120" height="50" class="d-inline-block" alt="LOGO"></a>
         </div>
-
         {{-- SEARCH BAR --}}
 
         {{-- NOTIFICATION --}}
         <div>
             <x-notification />
         </div>
+
         {{-- USER MENU --}}
         <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+            <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{ Auth::user()->username }}
             </button>
@@ -99,9 +84,7 @@
         </div>
     </div>
 
-
-
-    {{-- SCRIPT CDN --}}
+    {{-- SCRIPT --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

@@ -1,6 +1,14 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar border-end collapse">
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
+            {{-- Sidebar Search --}}
+            <li class="nav-item sidebar-search d-md-none">
+                <div class="input-group">
+                    <input type="text" class="form-control  bg-secondary-subtle" placeholder="Search"
+                        aria-label="Search sidebars">
+                    <button class="btn btn-danger" type="button"><i class="bi bi-search"></i></button>
+                </div>
+            </li>
             {{-- DASHBOARD --}}
             <li class="nav-item ">
                 <a class="nav-link {{ Request::is('sales/dashboard*') ? 'text-white active rounded' : '' }}"

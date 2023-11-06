@@ -3,69 +3,89 @@
 @section('title', 'Detail Order Sparepart ')
 
 @section('contents')
-    <div class="col-md-12">
-        <div>
-            <div class="row cols-2 mb-4">
-                <div class="col d-md-flex">
-                    <div class="">
-                        <div class="card text-bg-light shadow-sm">
-                            <div class="card-header fw-bold">Information SpareParts</div>
-                            <div class="card-body">
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="col"><span><i class="bi bi-person"></i></span> Customer Name</th>
-                                            <td> : {{ $order->id_customer }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col"><span><i class="bi bi-123"></i></span> Order Number</th>
-                                            <td> : {{ $order->id_order }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col"><span><i class="bi bi-calendar-check"></i></span> Order Date
-                                            </th>
-                                            <td> : {{ $order->date_order }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col"><span><i class="bi bi-geo-alt"></i></span> Address</th>
-                                            <td> : Jakarta Barat, Kembangan Puri Indah, Dekat Kampus Mercu Buana</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col"><span><i class="bi bi-shop-window"></i></span> Store</th>
-                                            <td> : {{ $order->id_store }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
+    <div class="d-flex align-items-center">
+        <div class="">
+            <a href="/sales/sparepart/order" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="ms-3">
+            <h3 class="text-muted">Detail Customer</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="row mb-4">
                     <div class="col">
-                        <div class="card text-bg-light shadow-sm">
-                            <div class="card-header fw-bold">Status </div>
-                            <div class="card-body">
-                                <h5 class="card-title text-bg-danger text-center rounded p-2">{{ $order->status }}</h5>
+                        <div class="">
+                            <div class="card text-bg-light shadow-sm">
+                                <div class="card-header fw-bold">Information SpareParts</div>
+                                <div class="card-body">
+                                    <table class="table table-borderless ">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-person"></i></span> Customer Name
+                                                </th>
+                                                <td> : {{ $order->customer->nama_customer }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-123"></i></span> Order Number</th>
+                                                <td> : {{ $order->id_order }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-calendar-check"></i></span> Order
+                                                    Date
+                                                </th>
+                                                <td> : {{ $order->date_order }}</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-shop-window"></i></span> Store</th>
+                                                <td> : {{ $order->id_store }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-geo-alt"></i></span> Address</th>
+                                                <td><small>: Jakarta Barat, Kembangan Puri Indah, Dekat Kampus Mercu
+                                                        Buana</small> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col ">
-                        <div class="card text-bg-light mt-2 shadow-sm">
-                            <div class="card-header fw-bold">Total Items</div>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    @php
-                                        $sum = 0;
-                                        foreach ($order->booked as $booked) {
-                                            $sum += $booked->qty_booked;
-                                        }
-                                    @endphp
-                                    {{ $sum }}
-                                </h5>
 
+                    <div class="col">
+                        <div class="col">
+                            <div class="card text-bg-light shadow-sm">
+                                <div class="card-header fw-bold">Status </div>
+                                <div class="card-body">
+                                    @if ($order->status)
+                                        <h5 class="card-title text-bg-danger text-center rounded p-2">{{ $order->status }}
+                                        </h5>
+                                    @else
+                                        <h5 class="card-title text-center p-2"> - </h5>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                        {{-- <h3>Total Item</h3>
+                        <div class="col ">
+                            <div class="card text-bg-light mt-2 shadow-sm">
+                                <div class="card-header fw-bold">Total Items</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        @php
+                                            $sum = 0;
+                                            foreach ($order->booked as $booked) {
+                                                $sum += $booked->qty_booked;
+                                            }
+                                        @endphp
+                                        {{ $sum }}
+                                    </h5>
+
+                                </div>
+                            </div>
+                            {{-- <h3>Total Item</h3>
                         @php
                             $sum = 0;
                             foreach ($order->booked as $booked) {
@@ -75,6 +95,7 @@
                         <div class="badge badge-danger">
                             <h5>{{ $sum }}</h5>
                         </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,12 +115,12 @@
         @enderror
         <thead>
             <tr>
-                <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List SPK</h3>
+                <h3 class="text-dark my-2 text-start">List SPK</h3>
             </tr>
-            <hr class="mt-1" style="background-color: black;">
+            <br>
         </thead>
-        <table class="table-bordered table" width="100%" cellspacing="0">
-            <thead class="text-center">
+        <table class="table-bordered table">
+            <thead class="text-center table-light">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Code Material</th>
@@ -144,14 +165,14 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <div class="col d-flex align-items-center mx-3 text-right">qty</div>
+                                <div class="col d-flex align-items-center mx-3 text-right fw-bold">qty</div>
                                 <input class="form-control mx-3" name="qty" value="0">
                                 <input class="form-control mx-3" name="dim" disabled>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <select name="stock" id="stock" class="form-control specification-select"
+                            <select name="stock" id="stock" class="form-select specification-select"
                                 onchange="updateItem(this)">
 
                             </select>
@@ -170,7 +191,7 @@
                     <label for=""><b>Input No. DO/Memo DO</b> </label>
                     <div class="row my-2">
                         <div class="col-3">
-                            <select name="do-memo" id="" class="form-control">
+                            <select name="do-memo" id="" class="form-select">
                                 <option value="1" {{ $type == 'MEMO' ? "selected='true'" : '' }}>DO</option>
                                 <option value="2">MEMO/DO</option>
                             </select>
