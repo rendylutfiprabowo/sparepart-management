@@ -133,7 +133,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
         return view('oilab.lab.item_test');
     });
     Route::get('/item_test', [itemtestController::class, 'notesitem']);
-    Route::post('/item_test/add/{no_so_solab}', [itemtestController::class, 'storenotes']);
+    Route::post('/item_test/add/{id}', [itemtestController::class, 'storenotes']);
 
     Route::get('/orderlist', function () {
         return view('oilab.lab.order_list');

@@ -78,14 +78,14 @@
                                     class="bi bi-bag-plus-fill me-1"></i> <span class="me-2">Sales
                                     Order</span></a>
                         </li>
-                        <li class="ms-4"><a href="/sales/oil/report"
+                        <!-- <li class="ms-4"><a href="/sales/oil/report"
                                 class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active' : '' }}"><i
                                     class="bi bi-file-earmark-check-fill me-1"></i> <span
                                     class="me-2">Report</span></a>
-                        </li>
+                        </li> -->
                         <li class="ms-4"><a href="/sales/oil/sample"
                                 class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/sample*') ? 'text-white active' : '' }}"><i
-                                    class="bi bi-droplet-half me-1"></i> <span class="me-2">Sample</span></a>
+                                    class="bi bi-droplet-half me-1"></i> <span class="me-2">Report Sample</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/oil/history"
                                 class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/history*') ? 'text-white active' : '' }}"><i

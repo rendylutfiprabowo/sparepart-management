@@ -33,7 +33,6 @@
         <div class="card p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="text-start text-dark my-4" style="font-weight: bold;">list Order</h3>
-                <a href="/orderlist/{{$salesorderoil->no_so_solab}}/add" type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i class="fa-regular fa-square-plus ml-2 "></i></a>
             </div>
             <hr class="mt-1" style="background-color: black;">
             </thead>
@@ -44,6 +43,7 @@
                             <th scope="col">Serial Number</th>
                             <th scope="col">KVA</th>
                             <th scope="col">Merk Trafo</th>
+                            <th scope="col">Trafo</th>
                             <th scope="col">Item Test</th>
                             <th scope="col">Report</th>
                             <th scope="col">Status</th>
@@ -51,39 +51,53 @@
                         </tr>
                     </thead>
                     <tbody class="text-center ">
-                        @foreach($salesorderoil->project->trafo as $trafo)
-                        <td>{{ $trafo->serial_number }}</td>
-                        <td>{{ $trafo->kva }}</td>
-                        <td>{{ $trafo->merk }}</td>
-                        <td>
-                            <div>sesuaikan</div>
-                        </td>
-                        <td class="text-center align-middle">
-                            <div>
-                                @foreach($salesorderoil->samples as $sample)
-                                @if($sample->scope->nama_scope === 'DGA')
+                        @foreach($salesorderoil->project->history as $history)
+                        <tr>
+                            @if($history->trafo)
+                            <td>{{ $history->trafo->serial_number }}</td>
+                            <td>{{ $history->trafo->kva }}</td>
+                            <td>{{ $history->trafo->merk }}</td>
+                            <td>-</td>
+                            <td>
+                                <div>sesuaikan</div>
+                            </td>
+                            @else
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <div>sesuaikan</div>
+                            </td>
+                            @endif
+
+                            <td class="text-center align-middle">
                                 <div>
-                                    <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                    @foreach($history->samples as $sample)
+                                    @if($sample->scope->nama_scope === 'DGA')
+                                    <div>
+                                        <a href="/form_dga_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                    </div>
+                                    @elseif($sample->scope->nama_scope === 'Furan')
+                                    <div>
+                                        <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                    </div>
+                                    @elseif($sample->scope->nama_scope === 'OA')
+                                    <div>
+                                        <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                    </div>
+                                    @endif
+                                    @endforeach
                                 </div>
-                                @elseif($sample->scope->nama_scope === 'Furan')
+                            </td>
+                            <td class="text-center align-middle">
                                 <div>
-                                    <a href="/form_furan_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                    <strong>Checking</strong>
                                 </div>
-                                @elseif($sample->scope->nama_scope === 'OA')
-                                <div>
-                                    <a href="/form_oa_lab" class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                                @endif
-                                @endforeach
-                            </div>
-                        </td>
-                        <td class="text-center align-middle">
-                            <div>
-                                <strong>Checking</strong>
-                            </div>
-                        </td>
-                        <!-- button modal -->
-                        <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                            </td>
+                            <!-- button modal -->
+                            <td class="text-center align-middle"><a href="/order_list" class="btn" type="button" data-toggle="modal" data-target="#exampleModal1"><i class="fa-regular fa-file fa-xl"></i></a></td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
