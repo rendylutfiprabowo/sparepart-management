@@ -1,6 +1,3 @@
-{{-- INI COMPONENT CARD UNTUK CRM ATAU LAINNYA, CARANYA : 
-    <x-cards judul="text" angkaPersen="text" infoCard="text" jam="text" /> (Tipe Datanya String)  --}}
-
 <div class="col-lg-4">
     <div class="card card-margin shadow-sm">
         <div class="card-header no-border d-flex justify-content-between ">
@@ -24,7 +21,7 @@
                     </div>
                 </div>
                 <div class="widget-49-meeting-action">
-                    <a href="#" class="btn btn-sm btn-danger btn-block">Detail</a>
+                    <x-button-primary>Detail</x-button-primary>
                 </div>
             </div>
         </div>
