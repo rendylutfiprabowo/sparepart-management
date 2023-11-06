@@ -42,15 +42,15 @@ class salesController extends Controller
     {
 
 
-        $project = project::where('id_project',$id_project)->firstOrFail();
+        $project = project::where('id_project', $id_project)->firstOrFail();
         $salesorderoil = $project->solab;
-        return view('crm.sales.oilab.detailSalesOrderOil', compact('salesorderoil','project'));
+        return view('crm.sales.oilab.detailSalesOrderOil', compact('salesorderoil', 'project'));
     }
-    public function addScopeSalesOrderOil($id_project,$id_history)
+    public function addScopeSalesOrderOil($id_project, $id_history)
     {
-        $project = project::where('id_project',$id_project)->firstOrFail();
-        $history = history::where('id',$id_history)->firstOrFail();
-        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history','project'));
+        $project = project::where('id_project', $id_project)->firstOrFail();
+        $history = history::where('id', $id_history)->firstOrFail();
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project'));
     }
 
     public function createSalesOrderOil()
