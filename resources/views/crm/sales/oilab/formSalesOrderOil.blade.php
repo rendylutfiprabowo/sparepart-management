@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 @section('contents')
 <!-- lOGO TRAFOINDO -->
 <div class="container d-flex justify-content-center align-items-center">

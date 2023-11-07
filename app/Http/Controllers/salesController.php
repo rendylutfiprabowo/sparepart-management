@@ -113,7 +113,7 @@ class salesController extends Controller
                     });
             });
         }
-        $stocks = $stocks->paginate(10);
+        $stocks = $stocks->paginate(10);    
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
@@ -300,7 +300,7 @@ class salesController extends Controller
 
         $customers->save();
 
-        return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
+        return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
     // CHANNELS

@@ -63,7 +63,8 @@
     <div class="container-fluid">
         <div class="row">
             {{-- SIDEBARS --}}
-            @extends('template.sales_sidebar')
+            {{-- @extends('template.sales_sidebar') --}}
+            @yield('sidebar')
 
             {{-- CONTENTS --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-3 ">

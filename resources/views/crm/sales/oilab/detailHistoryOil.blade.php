@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 @section('title', 'Oil Detailed History')
 @section('contents')
     <p style="font-size: 23px; color: black;">REPORT TEST HISTORY</p>

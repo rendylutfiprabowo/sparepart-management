@@ -54,9 +54,9 @@ Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
     Route::get('/sales/dashboard', [salesController::class, 'dashboardSalesCrm']);
     // Dashboard Sales Customer CRM
-    Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
-    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
-    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust'])->name('addCust');
+    Route::get('/sales/customer', [salesController::class, 'dashboardCustomerCrm']);
+    Route::get('/sales/customer/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
+    Route::post('/sales/customer', [salesController::class, 'addCust'])->name('addCust');
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
