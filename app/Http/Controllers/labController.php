@@ -31,13 +31,13 @@ class labController extends Controller
         return view('oilab.lab.order_list1', compact('salesorderoil', 'sample'));
     }
 
-    public function addTrafo($id_solab)
+    public function addTrafo($id_solab,$id_history)
     {
         $salesorderoil = Solab::where('no_so_solab', $id_solab)->first(); 
-        return view('oilab.lab.form_add_data', compact('salesorderoil'));
+        return view('oilab.lab.form_add_data', compact('salesorderoil','id_history'));
     }
 
-    public function storeTrafo(Request $request, $no_so_solab)
+    public function storeTrafo(Request $request, $no_so_solab,$id_history)
     {
         $faker = Faker::create();
         // dd($request->all());
@@ -57,7 +57,6 @@ class labController extends Controller
             'tanggal_pengujian' => 'required',
             'tanggal_pembuatanlaporan' => 'required',
             'tanggal_pengirimanlaporan' => 'required',
-            // 'id_customer' => 'required',
         ]);
 
         if ($validated) {
@@ -72,27 +71,20 @@ class labController extends Controller
             $trafos->tag_number = $validated['tag_number'];
             $trafos->temperatur_oil = $validated['temperatur_oil'];
             $trafos->volume_oil = $validated['volume_oil'];
-            // $trafos->tanggal_sampling = $validated['tanggal_sampling'];
-            // $trafos->tanggal_kedatangan = $validated['tanggal_kedatangan'];
-            // $trafos->tanggal_pengujian = $validated['tanggal_pengujian'];
-            // $trafos->tanggal_pembuatanlaporan = $validated['tanggal_pembuatanlaporan'];
-            // $trafos->tanggal_pengirimanlaporan = $validated['tanggal_pengirimanlaporan'];
             $trafos->id_customer = 0;
             $trafos->save();
 
-            $history =  history::where('id_project', $request->id_project )->first();
-            $history->id_trafo = $trafos->id;
+            $history =  history::where('id_project', $request->id_project )->where('id',$id_history)->firstOrFail();
+            $history->id_trafo = $trafos->id_trafo;
             $history->save();
             $salesorderoil = Solab::whereNotNull('id_project')->get();
             $sample = Sample::where('id_history', $history->id)->first();
-
-$sample->tanggal_sampling = $validated['tanggal_sampling'];
-$sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
-$sample->tanggal_pengujian = $validated['tanggal_pengujian'];
-$sample->tanggal_pembuatanlaporan = $validated['tanggal_pembuatanlaporan'];
-$sample->tanggal_pengirimanlaporan = $validated['tanggal_pengirimanlaporan'];
-
-$sample->save();
+            $sample->tanggal_sampling = $validated['tanggal_sampling'];
+            $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
+            $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
+            $sample->tanggal_pembuatanlaporan = $validated['tanggal_pembuatanlaporan'];
+            $sample->tanggal_pengirimanlaporan = $validated['tanggal_pengirimanlaporan'];
+            $sample->save();
 
             return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));
         }

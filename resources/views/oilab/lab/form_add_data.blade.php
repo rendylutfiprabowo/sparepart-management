@@ -9,7 +9,7 @@
         <!-- form salesorder -->
         <div>
             <div>
-                <form method="post" action="/orderlist/{{ $salesorderoil->no_so_solab }}/add">
+                <form method="post" action="/orderlist/{{ $salesorderoil->no_so_solab }}/{{$id_history}}/add">
                     @csrf
                     <div class="container-fluid">
                         <div class="mb-3">
