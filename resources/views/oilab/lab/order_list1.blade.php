@@ -37,6 +37,7 @@
             <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="table-responsive">
+
                 <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr class="text-center">
@@ -46,6 +47,7 @@
                             <th scope="col">Trafo</th>
                             <th scope="col">Item Test</th>
                             <th scope="col">Report</th>
+                            <th scope="col">Add Data</th>
                             <th scope="col">Status</th>
                             <th scope="col">Note</th>
                         </tr>
@@ -57,9 +59,13 @@
                             <td>{{ $history->trafo->serial_number }}</td>
                             <td>{{ $history->trafo->kva }}</td>
                             <td>{{ $history->trafo->merk }}</td>
-                            <td>-</td>
                             <td>
-                                <div>sesuaikan</div>
+
+                            </td>
+                            <td>
+                                @foreach ($history->samples as $sample)
+                                <div>{{ $sample->scope->nama_scope }}</div>
+                                @endforeach
                             </td>
                             @else
                             <td>-</td>
@@ -67,7 +73,9 @@
                             <td>-</td>
                             <td>-</td>
                             <td>
-                                <div>sesuaikan</div>
+                                @foreach ($history->samples as $sample)
+                                <div>{{ $sample->scope->nama_scope }}</div>
+                                @endforeach
                             </td>
                             @endif
 
@@ -89,6 +97,9 @@
                                     @endif
                                     @endforeach
                                 </div>
+                            </td>
+                            <td class="text center line middle">
+                                <a href="/orderlist/{{$salesorderoil->no_so_solab}}/add" type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i class="fa-regular fa-square-plus ml-2 "></i></a>
                             </td>
                             <td class="text-center align-middle">
                                 <div>

@@ -553,5 +553,18 @@ class DatabaseSeeder extends Seeder
             'volume_oil' => '60',
             'id_customer' => '23',
         ]);
+
+        sample::create([
+            'id_sample' => $faker->numberBetween(100, 999),
+            'jumlah_sample' => '5',
+            'status_sample' => 'Pending',
+            'tanggal_sampling' => '2023-11-07',
+            'tanggal_kedatangan' => '2023-11-08',
+            'tanggal_pengujian' => '2023-11-10',
+            'tanggal_pembuatanlaporan' => '2023-11-12',
+            'tanggal_pengirimanlaporan' => '2023-11-15',
+            'id_scope' => '2893782',
+            'id_history' => '8833948',
+        ]);
     }
 }
