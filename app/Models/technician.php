@@ -18,7 +18,7 @@ class technician extends Model
 
 
     protected $fillable = [
-        'id_technician',
+    'id_technician',
         'nama_technician',
         'phone_technician',
         'nip_technician',

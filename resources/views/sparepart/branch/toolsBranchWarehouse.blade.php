@@ -1,7 +1,7 @@
 @extends('template.warehouseBranchSparepart')
 @section('content')
     <div class="col-md-12">
-        <div class="card rounded-4 p-4">
+        <div class="card rounded-4 mb-4 p-4">
             <thead>
                 <tr>
                     <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Tools Warehouse {{ $namaStore }}
@@ -39,6 +39,78 @@
                             <td class="table-plus">{{ $tool->store->nama_store }}</td>
                             {{-- @dd($stock->sparepart) --}}
                             <td>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card rounded-4 p-4">
+            <thead>
+                <tr>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Request Tools Warehouse
+                        {{ $namaStore }}
+                    </h3>
+                </tr>
+                <hr class="mt-1" style="background-color: black;">
+            </thead>
+            <div class="row mb-2">
+            </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Technician</th>
+                        <th scope="col">Items</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Finish Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach ($reqTools as $no => $req)
+                        <tr>
+                            <td class="table-plus">{{ $no + 1 }}</td>
+                            <td class="table-plus">{{ $req->technician->nama_technician }}</td>
+                            <td class="table-plus">{{ $req->tools->nama_tools }}</td>
+                            <td class="table-plus">{{ $req->qty_technician_tools }}</td>
+                            <td class="table-plus">{{ $req->status }}</td>
+                            <td class="table-plus">{{ $req->start_date }}</td>
+                            <td class="table-plus">{{ $req->finish_date ? $req->finish_date : '-' }}</td>
+                            <td class="table-plus">
+                                <div class="row justify-content-center">
+
+                                    @if ($req->status == 'waiting')
+                                        <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
+                                            @csrf
+                                            <input type="hidden" name="status" value="on-technician">
+                                            <button type="submit" class="btn btn-link"><i
+                                                    class="fa-solid fa-circle-check"></i>
+                                            </button>
+                                        </form>
+                                        <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
+                                            @csrf
+                                            <input type="hidden" name="status" value="rejected">
+                                            <button type="submit" class="btn btn-link"><i
+                                                    class="fa-regular fa-circle-xmark"></i></button>
+                                        </form>
+                                    @elseif($req->status == 'return')
+                                        <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
+                                            @csrf
+                                            <input type="hidden" name="status" value="closed">
+                                            <button type="submit" class="btn btn-success">Accept
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -84,8 +156,8 @@
                             @endif
                             <div class="form-group mb-3">
                                 <label class="form-label">Tools Name</label>
-                                <input type="text" class="form-control" name="nama_tools" value="{{ old('nama_tools') }}"
-                                    placeholder="Masukkan Nama Tools">
+                                <input type="text" class="form-control" name="nama_tools"
+                                    value="{{ old('nama_tools') }}" placeholder="Masukkan Nama Tools">
                             </div>
                             <div class="form-group mb-3">
                                 <input hidden type="text" class="form-control" name="id_store"

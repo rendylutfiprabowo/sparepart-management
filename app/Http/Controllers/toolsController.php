@@ -8,6 +8,8 @@ use App\Models\tools;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class toolsController extends Controller
 {
@@ -62,11 +64,15 @@ class toolsController extends Controller
     {
         $id_store = Auth::User()->warehouse->id_store;
         $tools = Auth::User()->warehouse->store->tools;
+        $id_tools = Auth::user()->warehouse->store->tools->pluck('id_tools')->all();
+        $reqTools =  technician_tools::whereIn('id_tools', $id_tools)->get();
+        // @dd($reqTools);
         $stores = storeSparepart::all();
         return view('sparepart.branch.toolsBranchWarehouse', [
             'tools' => $tools,
             'stores' => $stores,
             'id_store' => $id_store,
+            'reqTools' => $reqTools,
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
         ]);
     }
@@ -74,12 +80,14 @@ class toolsController extends Controller
     public function viewToolsTechnician()
     {
         $toolsWarehouse = tools::all();
+        $techTools = technician_tools::all()->where('id_technician', Auth::user()->technician->id_technician);
         $stores = storeSparepart::all();
         return view(
             'sparepart.technician.toolsTechnician',
             [
                 'tools' => $toolsWarehouse,
-                'stores' => $stores
+                'stores' => $stores,
+                'techTools' => $techTools
             ]
         );
     }
@@ -129,5 +137,50 @@ class toolsController extends Controller
             // Redirect atau tampilkan pesan berhasil
             return redirect('/technician/tools');
         }
+    }
+    public function validasiRequest(Request $request, $id_tools)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+
+        $techTools = technician_tools::where('id_tools', $id_tools)->firstOrFail();
+        $techTools->status = $validatedData['status'];
+        $techTools->start_date = Carbon::today();
+        $techTools->save();
+
+        session()->flash('success', 'Data Berhasil di Perbaharui');
+
+        return redirect('/warehouse/branch/tools');
+    }
+    public function returnRequest(Request $request, $id_tools)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+        $techTools = technician_tools::where('id_tools', $id_tools)->firstOrFail();
+        $techTools->status = $validatedData['status'];
+        $techTools->finish_date = Carbon::today();
+        $techTools->save();
+
+
+        session()->flash('success', 'Data Berhasil di Perbaharui');
+
+        return redirect('/technician/tools');
+    }
+    public function closedRequest(Request $request, $id_tools)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+        $techTools = technician_tools::where('id_tools', $id_tools)->firstOrFail();
+        $techTools->status = $validatedData['status'];
+        $techTools->finish_date = Carbon::today();
+        $techTools->save();
+
+
+        session()->flash('success', 'Data Berhasil di Perbaharui');
+
+        return redirect('/warehouse/branch/tools');
     }
 }

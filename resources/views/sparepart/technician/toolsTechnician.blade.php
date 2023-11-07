@@ -61,27 +61,51 @@
                         Tools</a>
                 </div>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <table class="table-bordered table" width="100%" cellspacing="0">
                 <thead class="text-center">
                     <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Spk</th>
+                        <th scope="col">Tools Name</th>
                         <th scope="col">Qty</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Finish Date</th>
                         <th scope="col">Branch</th>
-                        <th scope="col">Action</th>
+                        @if ($techTools->first()->status == 'on-technician')
+                            <th scope="col">Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    @foreach ($techTools as $no => $tech)
+                        <tr>
+                            <td class="table-plus">{{ $no + 1 }}</td>
+                            <td class="table-plus">{{ $tech->tools->nama_tools }}</td>
+                            <td class="table-plus">{{ $tech->qty_technician_tools }}</td>
+                            <td class="table-plus">{{ $tech->status }}</td>
+                            <td class="table-plus">{{ $tech->start_date }}</td>
+                            <td class="table-plus">{{ $tech->finish_date ? $tech->finish_date : '-' }}</td>
+                            <td class="table-plus">{{ $tech->tools->store->nama_store }}</td>
+                            <td class="table-plus">
+                                <div class="row justify-content-center">
+
+                                    @if ($tech->status == 'on-technician')
+                                        <form method="post" action="/technician/tools/return/{{ $tech->id_tools }}">
+                                            @csrf
+                                            <input type="hidden" name="status" value="return">
+                                            <button type="submit" class="btn btn-primary">Return</button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
-                @foreach ($tools as $no => $tool)
-                    <tr>
-                        <td class="table-plus">{{ $no + 1 }}</td>
-                        <td class="table-plus">{{ $tool->nama_tools }}</td>
-                        <td class="table-plus">{{ $tool->qty_tools }}</td>
-                        <td class="table-plus">{{ $tool->store->nama_store }}</td>
-                        </td>
-                    </tr>
-                @endforeach
             </table>
         </div>
     </div>

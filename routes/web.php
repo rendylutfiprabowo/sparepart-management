@@ -98,6 +98,7 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/tools/request/add', [toolsController::class, 'selectStore']);
     Route::post('/technician/tools/request/add2', [toolsController::class, 'storeTools']);
     Route::get('/technician/tools/request/add/{id_store}', [technicianController::class, 'createRequestTools']);
+    Route::post('/technician/tools/return/{id_tools}', [toolsController::class, 'returnRequest']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
@@ -110,6 +111,8 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
     Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
+    Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
+    Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
 });
 
 //Role Manager Sparepart
