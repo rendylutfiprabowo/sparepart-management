@@ -50,13 +50,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function sales(): HasMany
+    public function sales(): HasOne
     {
-        return $this->hasMany(salesSparepart::class, 'id_user', 'id_user');
+        return $this->HasOne(sales::class, 'id_user', 'id_user');
     }
-    public function technician(): HasMany
+    public function technician(): HasOne
     {
-        return $this->hasMany(technician::class, 'id_user', 'id_user');
+        return $this->HasOne(technician::class, 'id_user', 'id_user');
     }
     public function role(): BelongsTo
     {
