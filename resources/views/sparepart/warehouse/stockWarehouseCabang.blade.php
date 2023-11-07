@@ -10,7 +10,7 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="dropdown mb-3">
+                <div class="dropdown col-md-1 mb-3 mr-5">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         List Cabang

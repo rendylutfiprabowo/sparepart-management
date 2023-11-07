@@ -12,7 +12,7 @@
             <th scope="col">Item Test</th>
             <th scope="col">Progress</th>
             <th scope="col">Notes</th>
-            <th scope="col">Action</th>
+            <th scope="row">Action</th>
         </tr>
     </thead>
     <tbody class="text-center">
@@ -45,10 +45,10 @@
                 @endforeach
                 @endforeach
             </td>
-            <td>
+            <td class="d-flex flex-column ">
                 @foreach ($solab->project->history as $history)
-                <button href="#" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $history->id }}">
-                    <i class="fa-regular fa-file fa-xl"></i>
+                <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $history->id }}">
+                    <i class="fa-regular fa-file "></i>
                 </button>
                 @endforeach
             </td>

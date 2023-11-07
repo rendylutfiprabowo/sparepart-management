@@ -1,5 +1,4 @@
 @extends('template.salesCrm')
-
 @section('title', 'Dashboard Sales')
 
 @section('contents')
@@ -21,14 +20,14 @@
             Statistik Sales Profit
         </x-page-heading>
         <div class="row">
-            <div class="col-md-4 ">
-                <div class="bg-white shadow-sm rounded">
+            <div class="col-md-4">
+                <div class="rounded bg-white shadow-sm">
                     <canvas id="chartSales"></canvas>
                 </div>
 
             </div>
-            <div class="col-md-8 ">
-                <div class="bg-white shadow-sm rounded">
+            <div class="col-md-8">
+                <div class="rounded bg-white shadow-sm">
                     <canvas id="chartSalesLine"></canvas>
                 </div>
 

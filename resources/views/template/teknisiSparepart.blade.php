@@ -12,8 +12,8 @@
             <i class="fa-solid fa-file-circle-check"></i>
             <span>List SPK</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ Request::is('technician/tools*') ? 'active' : '' }}">
+        <a class="nav-link" href="/technician/tools">
             <i class="fa-solid fa-screwdriver-wrench"></i>
             <span>Request Tools</span></a>
     </li>
