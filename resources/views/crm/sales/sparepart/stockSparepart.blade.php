@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 
 @section('title', 'SpareParts | Stock')
 
@@ -36,6 +36,7 @@
             </div>
 
             <div class="table-responsive">
+                @if($stocks->count()!=0)
                 <table class="table" id="dataTable">
                     <thead>
                         <tr>
@@ -94,7 +95,11 @@
                         </a>
                     </li>
                 </ul>
+                @else
+                <h4 class="text-center"> Result for "{{request()->input('search')}}" not found </h4>
+                @endif
             </div>
+
         </div>
     </div>
 @endsection

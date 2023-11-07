@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 
 @section('title', 'Dashboard Sales')
 

@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 
 @section('title', 'Oil Sales Report')
 @section('contents')

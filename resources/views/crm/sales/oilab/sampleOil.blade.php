@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 @section('title', 'Oil Sales Sample')
 @section('contents')
 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

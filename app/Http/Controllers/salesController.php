@@ -113,7 +113,7 @@ class salesController extends Controller
                     });
             });
         }
-        $stocks = $stocks->paginate(10);
+        $stocks = $stocks->paginate(10);    
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
