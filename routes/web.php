@@ -93,6 +93,12 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
     Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
     Route::post('/technician/listspk/{id_order}/return', [revisionController::class, 'returnOrder']);
+    Route::get('/technician/tools', [toolsController::class, 'viewToolsTechnician']);
+    Route::get('/technician/tools/{id_store}', [toolsController::class, 'viewToolsToko']);
+    Route::get('/technician/tools/request/add', [toolsController::class, 'selectStore']);
+    Route::post('/technician/tools/request/add2', [toolsController::class, 'storeTools']);
+    Route::get('/technician/tools/request/add/{id_store}', [technicianController::class, 'createRequestTools']);
+    Route::post('/technician/tools/return/{id_tools}', [toolsController::class, 'returnRequest']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
@@ -105,6 +111,8 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
     Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
+    Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
+    Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
 });
 
 //Role Manager Sparepart
@@ -143,8 +151,8 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     });
     Route::get('/orderlist', [labController::class, 'viewOrder']);
     Route::get('/orderlist/{no_so_solab}', [labController::class, 'viewitem']);
-    Route::get('/orderlist/{id_solab}/add', [labController::class, 'addtrafo']);
-    Route::post('/orderlist/{id_solab}/add', [labController::class, 'storetrafo']);
+    Route::get('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'addtrafo']);
+    Route::post('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'storetrafo']);
 
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');

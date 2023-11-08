@@ -9,7 +9,7 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="dropdown mb-3">
+                <div class="col-md-3 dropdown mb-3">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         List Cabang
@@ -25,6 +25,8 @@
                 <div class="col-md-3">
                     <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
                             class="fa-solid fa-plus"></i> Add Product</a>
+                </div>
+                <div class="col-md-6">
                 </div>
             </div>
             @if (session('success'))
