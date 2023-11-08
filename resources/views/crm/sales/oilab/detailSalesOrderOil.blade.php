@@ -1,5 +1,5 @@
 @extends('template.salesCrm ')
-@section('content')
+@section('contents')
 <div class="row mt-5">
     <div class="col-md-12">
         <div class="card rounded-4" style="border-left-color: red; border-left-width: 10px;">
@@ -33,7 +33,6 @@
         <div class="card p-4 rounded-4">
             <div class="d-flex justify-content-between align-items-center">
                 <h3 class="text-start text-dark my-4" style="font-weight: bold;">list Order</h3>
-                <a href="/orderlist/{{$salesorderoil->no_so_solab}}/add" type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i class="fa-regular fa-square-plus ml-2 "></i></a>
             </div>
             <hr class="mt-1" style="background-color: black;">
             </thead>
