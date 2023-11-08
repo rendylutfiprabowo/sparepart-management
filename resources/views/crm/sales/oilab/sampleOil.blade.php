@@ -45,7 +45,7 @@
                 @endforeach
                 @endforeach
             </td>
-            <td class="d-flex flex-column ">
+            <td class="">
                 @foreach ($solab->project->history as $history)
                 <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $history->id }}">
                     <i class="fa-regular fa-file "></i>

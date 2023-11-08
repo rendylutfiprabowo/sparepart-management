@@ -69,7 +69,6 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>-</td>
                                         <td>
                                             @foreach ($history->samples as $sample)
                                                 <div>{{ $sample->scope->nama_scope }}</div>
@@ -99,9 +98,9 @@
                                             @endforeach
                                         </div>
                                     </td>
-                                    <td class="text center line middle">
+                                    <td class="text center align-middle"> 
                                         <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{ $history->id }}/add"
-                                            type="button" class="btn-sm btn merah text-putih mt-5 mb-1">Add Data<i
+                                            type="button" class="btn-sm btn merah text-putih mx-auto">Add Data<i
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
                                     </td>
                                     <td class="text-center align-middle">
