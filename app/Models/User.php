@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\salesSparepart;
+use App\Models\sales;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function sales(): HasMany
     {
-        return $this->hasMany(salesSparepart::class, 'id_user', 'id_user');
+        return $this->hasMany(sales::class, 'id_user', 'id_user');
     }
     public function technician(): HasMany
     {

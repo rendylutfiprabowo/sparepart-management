@@ -56,7 +56,7 @@ class salesController extends Controller
     public function createSalesOrderOil()
     {
         $customers = customer::all();
-        $sales = sales::find('1');
+        $sales = auth()->user()->sales;
         // dd($sales);
         return view('crm.sales.oilab.formSalesOrderOil', compact('customers', 'sales'));
     }

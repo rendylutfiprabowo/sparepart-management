@@ -1,5 +1,5 @@
 @extends('template.salesCrm')
-@section('content')
+@section('contents')
 
 <div>
     <!-- lOGO TRAFOINDO -->
