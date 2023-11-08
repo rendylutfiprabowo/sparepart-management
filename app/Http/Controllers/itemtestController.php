@@ -38,14 +38,9 @@ class itemtestController extends Controller
 
         if ($validated) {
             // Simpan catatan
-            $note = new reportSample();
-            $note->id_reportsample = $faker->numberBetween(100, 999);
-            $note->notes_reportsample = $validated['notes_reportsample'];
-            $note->no_so_solab = $history->project->solab->no_so_solab; // Menggunakan nomor SO yang diterima dari parameter
-            $note->save();
+            $history->note = $validated['notes_reportsample'];
+            $history->save();
 
-            // Update status sample ke "Completed"
-            // dd($project->history->samples);
             if ($history->samples) {
                 foreach ($history->samples as $sample) {
                     $sample->status_sample = true;

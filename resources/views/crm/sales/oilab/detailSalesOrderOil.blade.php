@@ -26,8 +26,6 @@
         </div>
     </div>
 </div>
-</div>
-
 <div class="row mt-5">
     <div class="col-md-12">
         <div class="card p-4 rounded-4">
@@ -69,5 +67,8 @@
         </div>
     </div>
 </div>
+</div>
+
+
 
 @endsection

@@ -69,13 +69,7 @@
                 <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; width: 24px; height: 24px; padding: 0; border: 0; font-size: 10px;"></button>
             </div>
             <div class="modal-body">
-                @foreach ($reportSample as $report)
-                @foreach($report->solab->project->history as $trafo)
-                @if ($report['no_so_solab'] == $solab->no_so_solab && $trafo['id_trafo'])
-                <div>{{ $report['notes_reportsample'] }}</div>
-                @endif
-                @endforeach
-                @endforeach
+                {{$history->note}}
             </div>
             <div class="modal-footer">
                 <a href="/sales/oil/sample" type="button" class="btn merah text-putih" style="font-weight: bold;">Back</a>

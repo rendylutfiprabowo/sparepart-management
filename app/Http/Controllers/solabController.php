@@ -35,8 +35,6 @@ class solabController extends Controller
             // "oa_qty" => "required",
         ]);
 
-        // dd($validated);
-
         $faker = Faker::create();
     
         $project = new project();

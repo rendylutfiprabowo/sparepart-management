@@ -30,7 +30,7 @@
 
             {{-- SPAREPARTS COLLAPSE MENU --}}
             <li class="nav-item ">
-                <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
+                <a href="#" class="nav-link d-flex rounded border-0 collapsed {{ Request::is('sales/sparepart*') ? 'text-white active rounded' : '' }}" data-bs-toggle="collapse"
                     data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
                     <div class="me-auto">
                         <i class="bi bi-tools"></i> SpareParts
@@ -45,20 +45,20 @@
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li class="ms-4">
                             <a href="/sales/sparepart/index"
-                                class="nav-link d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/index') ? 'text-white active' : '' }}"><i
+                                class="nav-link d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/index*') ? 'text-white active' : '' }}"><i
                                     class="bi bi-house-gear-fill me-1"></i> <span class="me-2">Dashboard</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/stock"
-                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/stock') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/stock*') ? 'text-white active' : '' }}"><i
                                     class="bi bi-box-seam-fill me-1"></i> <span class="me-2">Stock</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/revision"
-                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/revision') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/revision*') ? 'text-white active' : '' }}"><i
                                     class="bi bi-file-earmark-diff-fill me-1"></i> <span class="me-2">Pengajuan
                                     Revisi</span></a>
                         </li>
                         <li class="ms-4"><a href="/sales/sparepart/order"
-                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/order') ? 'text-white active' : '' }}"><i
+                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/sparepart/order*') ? 'text-white active' : '' }}"><i
                                     class="bi bi-cart-plus-fill me-1"></i> <span class="me-2">Pemesanan</span></a>
                         </li>
                     </ul>
@@ -67,7 +67,7 @@
 
             {{-- LAB OIL COLLAPSE MENU --}}
             <li class="nav-item ">
-                <a href="#" class="nav-link d-flex rounded border-0 collapsed " data-bs-toggle="collapse"
+                <a href="#" class="nav-link d-flex rounded border-0 collapsed {{ Request::is('sales/oil*') ? 'text-white active rounded' : '' }}" data-bs-toggle="collapse"
                     data-bs-target="#dashboard-collapse-oil" aria-expanded="false">
                     <div class="me-auto">
                         <i class="bi bi-droplet-fill"></i>

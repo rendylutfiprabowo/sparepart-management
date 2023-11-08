@@ -43,15 +43,15 @@ class solab extends Model
         return $this->belongsTo(sales::class, 'id_sales', 'id_sales');
     }
 
-    public function reportsample(): BelongsTo
-    {
-        return $this->belongsTo(reportSample::class, 'id_reportsample', 'id_reportsample');
-    }
+    // public function reportsample(): BelongsTo
+    // {
+    //     return $this->belongsTo(reportSample::class, 'id_reportsample', 'id_reportsample');
+    // }
 
-    public function reportSamples()
-    {
-        return $this->hasMany(reportSample::class, 'no_so_solab', 'no_so_solab');
-    }
+    // public function reportSamples()
+    // {
+    //     return $this->hasMany(reportSample::class, 'no_so_solab', 'no_so_solab');
+    // }
 
     public function trafo()
     {
