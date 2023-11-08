@@ -69,7 +69,6 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
-                                        <td>-</td>
                                         <td>
                                             @foreach ($history->samples as $sample)
                                                 <div>{{ $sample->scope->nama_scope }}</div>
