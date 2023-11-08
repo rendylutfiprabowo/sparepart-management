@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.salesCrm')
 
 @section('title', 'SpareParts | Stock')
 
@@ -20,16 +20,23 @@
                                 List Cabang
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item"
+                                        href="/sales/sparepart/stock">Semua Store</a>
+                                </li>
+                                @foreach ($stores as $store)
+                                    <li><a class="dropdown-item"
+                                            href="/sales/sparepart/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
+                    <x-searchbar url="/{{ request()->path() }}" value="{{request()->input('search')}}"/>
                 </div>
             </div>
 
             <div class="table-responsive">
+                @if($stocks->count()!=0)
                 <table class="table" id="dataTable">
                     <thead>
                         <tr>
@@ -43,9 +50,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($stocks as $no => $stock)
+                        @php
+                            $no = ($stocks->currentPage() - 1) * $stocks->perPage();
+                        @endphp
+
+                        @foreach ($stocks as $stock)
                             <tr>
-                                <th class="" scope="row">{{ $no + 1 }}</th>
+                                <th class="" scope="row">{{ ++$no }}</th>
                                 <td class="" scope="col">{{ $stock->sparepart->codematerial_sparepart }}</td>
                                 <td class="" scope="col">{{ $stock->sparepart->category->nama_category }}</td>
                                 <td class="" scope="col">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
@@ -70,7 +81,25 @@
                         @endforeach
                     </tbody>
                 </table>
+                <ul class="pagination">
+                    <li class="page-item {{ $stocks->onFirstPage() ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ $stocks->previousPageUrl() }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item {{ $stocks->hasMorePages() ? '' : 'disabled' }}">
+                        <a class="page-link" href="{{ $stocks->nextPageUrl() }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+                @else
+                <h4 class="text-center"> Result for "{{request()->input('search')}}" not found </h4>
+                @endif
             </div>
+
         </div>
     </div>
 @endsection

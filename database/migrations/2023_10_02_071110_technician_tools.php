@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('qty_technician_tools');
             $table->string('status');
             $table->date('start_date');
-            $table->date('finish_date');
+            $table->date('finish_date')->nullable();
         });
     }
 

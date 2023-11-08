@@ -42,15 +42,15 @@ class salesController extends Controller
     {
 
 
-        $project = project::where('id_project',$id_project)->firstOrFail();
+        $project = project::where('id_project', $id_project)->firstOrFail();
         $salesorderoil = $project->solab;
-        return view('crm.sales.oilab.detailSalesOrderOil', compact('salesorderoil','project'));
+        return view('crm.sales.oilab.detailSalesOrderOil', compact('salesorderoil', 'project'));
     }
-    public function addScopeSalesOrderOil($id_project,$id_history)
+    public function addScopeSalesOrderOil($id_project, $id_history)
     {
-        $project = project::where('id_project',$id_project)->firstOrFail();
-        $history = history::where('id',$id_history)->firstOrFail();
-        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history','project'));
+        $project = project::where('id_project', $id_project)->firstOrFail();
+        $history = history::where('id', $id_history)->firstOrFail();
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project'));
     }
 
     public function createSalesOrderOil()
@@ -95,12 +95,59 @@ class salesController extends Controller
 
     public function stockSparepart()
     {
-        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->get();
+        $stores = storeSparepart::all();
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart');
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);    
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
+            'stores'=> $stores,
         ]);
     }
+
+    public function stockSparepartStore($id_store){
+        $stores = storeSparepart::all();
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->where('id_store',$id_store);
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
+
+        return view('crm.sales.sparepart.stockSparepart', [
+            'stocks' => $stocks,
+            'stores'=> $stores,
+        ]);
+    }
+
     public function orderSparepart()
     {
         $orders = order::all();
@@ -253,7 +300,7 @@ class salesController extends Controller
 
         $customers->save();
 
-        return redirect('sales/customer/salesIndexCustomer')->with('status', 'Data Customer Berhasil Ditambahkan !');
+        return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
     // CHANNELS

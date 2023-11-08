@@ -6,7 +6,9 @@ use App\Models\booked;
 use App\Models\order;
 use App\Models\revisi;
 use App\Models\stockSparepart;
+use App\Models\storeSparepart;
 use App\Models\technician;
+use App\Models\tools;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +62,18 @@ class technicianController extends Controller
             'new' => isset($new) ? $new : null,
 
             // 'return' => $return,
+        ]);
+    }
+
+    public function createRequestTools($id_store)
+    {
+        $store = storeSparepart::all()->where('id_store', $id_store)->first();
+        $tools = tools::all()->where('id_store', $id_store);
+        $user   = auth()->user();
+        return view('sparepart.technician.formRequestTools', [
+            'store' => $store,
+            'tools' => $tools,
+            'user' => $user,
         ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class reportSample extends Model
 {
@@ -17,6 +18,11 @@ class reportSample extends Model
         'notes_reportsample',
         'no_so_solab'
     ];
+
+    public function soLab(): BelongsTo
+    {
+        return $this->belongsTo(solab::class, 'no_so_solab', 'no_so_solab');
+    }
 
     
 }

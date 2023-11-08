@@ -33,6 +33,9 @@
             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"> <img src="/Asset/LogoTrafoindo.png"
                     width="120" height="50" class="d-inline-block" alt="LOGO"></a>
         </div>
+        {{-- SEARCH BAR --}}
+
+        {{-- NOTIFICATION --}}
         <div>
             <x-notification />
         </div>
@@ -96,7 +99,8 @@
     <div class="container-fluid">
         <div class="row">
             {{-- SIDEBARS --}}
-            @extends('template.sales_sidebar')
+            {{-- @extends('template.sales_sidebar') --}}
+            @yield('sidebar')
 
             {{-- WRAP CONTENTS --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-3 mb-5">

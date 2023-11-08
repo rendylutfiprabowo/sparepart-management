@@ -52,11 +52,11 @@ Route::middleware(['auth', 'superadmin'])->group(function () {
 //Role Sales
 Route::middleware(['auth', 'sales'])->group(function () {
     // Dashboard Sales CRM
-    Route::get('/sales/dashboard/salesIndexCrm', [salesController::class, 'dashboardSalesCrm']);
+    Route::get('/sales/dashboard', [salesController::class, 'dashboardSalesCrm']);
     // Dashboard Sales Customer CRM
-    Route::get('/sales/customer/salesIndexCustomer', [salesController::class, 'dashboardCustomerCrm']);
-    Route::get('/sales/customer/customerDetails/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
-    Route::post('/sales/customer/salesIndexCustomer', [salesController::class, 'addCust'])->name('addCust');
+    Route::get('/sales/customer', [salesController::class, 'dashboardCustomerCrm']);
+    Route::get('/sales/customer/{id}', [salesController::class, 'detailCustomer'])->name('detailCustomer');
+    Route::post('/sales/customer', [salesController::class, 'addCust'])->name('addCust');
     //Oilab sales
     Route::get('/sales/oil/index', [salesController::class, 'indexOil']);
     Route::get('/sales/oil/salesorder', [salesController::class, 'salesOrderOil']);
@@ -72,6 +72,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     //Spareparts sales
     Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
     Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
+    Route::get('/sales/sparepart/stock/{id_store}', [salesController::class, 'stockSparepartStore']);
     Route::get('/sales/sparepart/order', [salesController::class, 'orderSparepart']);
     Route::get('/sales/sparepart/order/add/{id_store}', [salesController::class, 'createOrderSparepart']);
     Route::get('/sales/sparepart/order/add', [salesController::class, 'selectStore']);
@@ -92,6 +93,12 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/listspk', [technicianController::class, 'viewSpk']);
     Route::get('/technician/listspk/{id_order}', [technicianController::class, 'viewOrder']);
     Route::post('/technician/listspk/{id_order}/return', [revisionController::class, 'returnOrder']);
+    Route::get('/technician/tools', [toolsController::class, 'viewToolsTechnician']);
+    Route::get('/technician/tools/{id_store}', [toolsController::class, 'viewToolsToko']);
+    Route::get('/technician/tools/request/add', [toolsController::class, 'selectStore']);
+    Route::post('/technician/tools/request/add2', [toolsController::class, 'storeTools']);
+    Route::get('/technician/tools/request/add/{id_store}', [technicianController::class, 'createRequestTools']);
+    Route::post('/technician/tools/return/{id_tools}', [toolsController::class, 'returnRequest']);
 });
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
@@ -104,6 +111,8 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
     Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
+    Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
+    Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
 });
 
 //Role Manager Sparepart
@@ -132,7 +141,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
         return view('oilab.lab.item_test');
     });
     Route::get('/item_test', [itemtestController::class, 'notesitem']);
-    Route::post('/item_test/add/{no_so_solab}', [itemtestController::class, 'storenotes']);
+    Route::post('/item_test/add/{id}', [itemtestController::class, 'storenotes']);
 
     Route::get('/orderlist', function () {
         return view('oilab.lab.order_list');
@@ -142,8 +151,8 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     });
     Route::get('/orderlist', [labController::class, 'viewOrder']);
     Route::get('/orderlist/{no_so_solab}', [labController::class, 'viewitem']);
-    Route::get('/orderlist/{id_solab}/add', [labController::class, 'addtrafo']);
-    Route::post('/orderlist/{id_solab}/add', [labController::class, 'storetrafo']);
+    Route::get('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'addtrafo']);
+    Route::post('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'storetrafo']);
 
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');

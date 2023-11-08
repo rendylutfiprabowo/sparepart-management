@@ -1,5 +1,4 @@
-@extends('template.new_layout')
-
+@extends('template.salesCrm')
 @section('title', 'Dashboard Sales')
 
 @section('contents')
@@ -127,6 +126,11 @@
         <x-page-heading>
             Statistik Sales Profit
         </x-page-heading>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="rounded bg-white shadow-sm">
+                    <canvas id="chartSales"></canvas>
+                </div>
 
         <div class="row gy-4">
             <!-- Total Profit Chart & Last month balance -->
