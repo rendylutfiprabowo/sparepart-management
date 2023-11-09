@@ -21,7 +21,9 @@
 
         <div class="row">
             <div class="mt-3">
-                <button type="button" class="btn btn-success shadow-sm" data-bs-toggle="modal" data-bs-target="#addCustModal">
+                {{-- Button Modal Add Customer --}}
+                <button type="button" class="btn shadow-sm text-white" data-bs-toggle="modal" data-bs-target="#addCustModal"
+                    style="background-color: #4E9F3D">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
                         class="bi bi-person-fill-add" viewBox="0 0 16 16">
                         <path
@@ -31,9 +33,9 @@
                     </svg>
                 </button>
             </div>
-            <div class="col bg-white p-3 rounded shadow-sm mt-3">
-                <table class="table table-striped">
-                    <thead>
+            <div class="table-responsive mt-3 bg-white p-2 rounded shadow-sm">
+                <table class="table table-borderless">
+                    <thead class=" border-bottom table-light">
                         <tr>
                             <th scope="col">ID Customer</th>
                             <th scope="col">Nama Customer</th>
@@ -46,7 +48,7 @@
                         @if (count($dataCust) > 0)
                             @foreach ($dataCust as $dataTable)
                                 <tr>
-                                    <td scope="row" class="text-secondary">{{ $dataTable->id_customer }}</th>
+                                    <td>{{ $dataTable->id_customer }}</th>
                                     <td><a class="text-decoration-none"
                                             href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                     </td>

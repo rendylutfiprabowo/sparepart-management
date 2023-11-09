@@ -1,4 +1,4 @@
-@extends('template.layout')
+@extends('template.new_layout')
 @section('sidebar')
     <li class="nav-item {{ Request::is('warehouse/dashboard*') ? 'active' : '' }}">
         <a class="nav-link" href="#">

@@ -20,6 +20,13 @@
             <x-page-heading>
                 Statistik In Out SpareParts
             </x-page-heading>
+            <div class="row">
+                <div class="col">
+                    <div class="p-3 rounded bg-white shadow-sm">
+                        <div id="stockCharts"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

@@ -1,10 +1,10 @@
 @extends('template.warehouseBranchSparepart')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabang {{ $namaStore }}
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Cabangs {{ $namaStore }}
                     </h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
