@@ -22,8 +22,7 @@
         <div class="row">
             <div class="mt-3">
                 {{-- Button Modal Add Customer --}}
-                <button type="button" class="btn shadow-sm text-white" data-bs-toggle="modal" data-bs-target="#addCustModal"
-                    style="background-color: #4E9F3D">
+                <button type="button" class="btn shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
                         class="bi bi-person-fill-add" viewBox="0 0 16 16">
                         <path
@@ -69,7 +68,7 @@
     </div>
     <!-- Modal Add Customer -->
     <div class="modal fade" id="addCustModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahkan Data Customer</h1>
@@ -100,12 +99,12 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="Jenis Usaha" class="form-label">Jenis Usaha </label>
-                                    <input type="text" class="form-control" id="JjenisUsaha" name="jenisusaha_customer">
+                                    <input type="text" class="form-control" id="JenisUsaha" name="jenisusaha_customer">
                                 </div>
                             </div>
                             <br>
                             <div>
-                                <button class=" btn btn-outline-danger w-100 " type="submit">Tambahkan</button>
+                                <button class=" btn btn-outline-danger w-100 " type="submit">Submit</button>
                             </div>
                             @if (session('status'))
                                 <div id="trigger"></div>
@@ -113,14 +112,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    {{-- TOAST SUCCESS --}}
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast text-bg-success rounded" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-body">
-                Data Customer Berhasil Ditambahkan !
             </div>
         </div>
     </div>

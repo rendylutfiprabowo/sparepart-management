@@ -1,4 +1,4 @@
-@extends('template.new_layout')
+@extends('template.warehouseBranchSparepart')
 @section('contents')
     <p style="font-size: 23px; color: black;">Dashboard</p>
     <div class="row">

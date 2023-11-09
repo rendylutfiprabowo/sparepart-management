@@ -226,3 +226,11 @@ zingchart.render({
     id: "stockCharts",
     data: myConfigStock,
 });
+
+// Toast JS
+
+function showAlerts() {
+    alertify.notify("custom message.", "custom", 2, function () {
+        console.log("dismissed");
+    });
+}

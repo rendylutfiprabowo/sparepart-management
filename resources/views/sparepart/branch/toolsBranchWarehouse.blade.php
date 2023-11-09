@@ -1,5 +1,7 @@
 @extends('template.warehouseBranchSparepart')
-@section('content')
+
+@section('title', 'Tools Warehouse')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 mb-4 p-4">
             <thead>
@@ -11,7 +13,7 @@
             </thead>
             <div class="row mb-2">
                 <div class="col-md-3">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
+                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct" href="#"><i
                             class="fa-solid fa-plus"></i> Add Tools</a>
                 </div>
             </div>
@@ -125,8 +127,8 @@
             <div class="modal-content">
                 <div class="modal-header merah text-putih">
                     <h5 class="modal-title" id="exampleModalLabel">Add Tools</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -166,8 +168,8 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
                 </div>
                 </form>
             </div>
