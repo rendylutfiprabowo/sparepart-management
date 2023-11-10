@@ -9,21 +9,22 @@
     <div class="row mt-4">
         <div class="col-md-3">
             <div class="card">
-                <div class="card-body shadow">
+                <div class="card-body shadow">  
                     <h1 class="text-center font-weight-bold ">35</h1>
                     <p class="text-center text-muted font-weight-bold">TEST IN PROGRESS</p>
                     <hr>
                     <div class="row">
                         <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate ">DGA : 12</p>
+                            <p class="text-right text-muted font-weight-bold text-truncate">DGA : {{ App\Models\Sample::where('id_scope', 220)->count() }}</p>
                         </div>
                         <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate">Furan : 10</p>
+                            <p class="text-right text-muted font-weight-bold text-truncate">Furan : {{ App\Models\Sample::where('id_scope', 842)->count() }}</p>
                         </div>
                         <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate">OA : 30</p>
+                            <p class="text-right text-muted font-weight-bold text-truncate">OA : {{ App\Models\Sample::where('id_scope', 399)->count() }}</p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -58,7 +59,10 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body merah shadow">
-                    <h1 class="text-center text-putih font-weight-bold ">30</h1>
+                    <?php
+                    $jumlahProject = App\Models\solab::count();
+                    ?>
+                    <h1 class="text-center text-putih font-weight-bold ">{{ $jumlahProject }}</h1>
                     <p class="text-center text-putih font-weight-bold">PROJECT</p>
                     <hr style="background-color: #FFFFFF;">
                     <div class="row">
@@ -70,7 +74,6 @@
             </div>
         </div>
     </div>
-
     <div class="d-sm-flex align-items-center justify-content-between mt-4">
         <h1 class="h3 mb-0 text-gray-800">Analytics Overview</h1>
     </div>
