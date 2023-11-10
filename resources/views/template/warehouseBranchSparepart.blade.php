@@ -29,8 +29,8 @@
             <i class="fa-solid fa-screwdriver-wrench"></i>
             <span>Tools</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/">
+    <li class="nav-item {{ Request::is('warehouse/branch/request-item*') ? 'active' : '' }}">
+        <a class="nav-link" href="/warehouse/branch/request-item">
             <i class="fa-solid fa-receipt"></i>
             <span>Request Item</span></a>
     </li>

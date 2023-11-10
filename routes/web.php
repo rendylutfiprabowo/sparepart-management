@@ -103,6 +103,8 @@ Route::middleware(['auth', 'technician'])->group(function () {
 //Role Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/request-item', [warehouseController::class, 'viewDistribution']);
+    Route::get('/warehouse/branch/request-item/{id_store}', [warehouseController::class, 'reqDistribution']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
     Route::get('/warehouse/branch/listspk', [warehouseController::class, 'viewSpkBranch']);
     Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
@@ -113,6 +115,7 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
+    Route::post('/warehouse/tools/request-item/distribution', [warehouseController::class, 'storeDistribution']);
 });
 
 //Role Manager Sparepart
