@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
 </head>
 
