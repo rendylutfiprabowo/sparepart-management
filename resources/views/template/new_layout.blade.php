@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css">
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -40,22 +40,7 @@
             <x-notification />
         </div>
 
-        {{-- <div class="btn-group">
-            <button type="button" class="btn btn-danger me-2" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-fill"></i> {{ Auth::user()->username }}
-            </button>
-            <ul class="dropdown-menu dropdown-menu-lg-end">
-                <li><button class="dropdown-item" type="button">Profile</button></li>
-                <li><button class="dropdown-item" type="button">Setting</button></li>
-                <li><a class="dropdown-item" href="#"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                            class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a></li>
-                <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </ul>
-        </div> --}}
-
+        {{-- USER MENU --}}
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                 data-bs-display="static" aria-expanded="false">
@@ -109,7 +94,7 @@
                 {{-- Footers --}}
             </main>
 
-            <div class="col-md-9 ms-sm-auto col-lg-10 p-2 footer-custom bg-white">
+            <div class="col-md-9 ms-sm-auto col-lg-10 p-2 footer-custom bg-white border-top border-1">
                 <div class=" text-center">
                     <div class="">
                         <small class="text-secondary">&copy; 2023 PT. Trafindo, All rights reserved.</small>
@@ -129,10 +114,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <script src="{{ asset('/js/sales-crm.js') }}"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </body>
 
 </html>

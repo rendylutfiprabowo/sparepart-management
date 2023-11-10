@@ -192,7 +192,7 @@
                     <div class="modal-footer gap-2">
                         <a href="/sales/sparepart/order" class="btn btn-primary mt-2"> Back</a>
                         @if ($type != 'DO')
-                            <button type="submit" class="btn btn-danger"> Submit</button>
+                            <button type="submit" class="btn btn-outline-danger"> Submit</button>
                         @endif
 
                     </div>

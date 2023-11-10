@@ -1,5 +1,5 @@
 @extends('template.warehouseBranchSparepart')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div>
             <div class="row cols-2 mb-4">
