@@ -22,35 +22,35 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>5HMF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5HMF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5HMF" name="5MHF">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2FOL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FOL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FOL" name="2FOL">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2FAL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FAL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FAL" name="2FAL">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2ACF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2ACF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2ACF" name="2ACF">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>5MEF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5MEF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5MEF" name="5MEF">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Total 2FAL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total 2FAL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total 2FAL" name="Total 2FAL">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Total Furan</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Furan">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Furan" name="Total Furan">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Estimate DP</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Estimate DP">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Estimate DP" name="Estimate DP">
             </div>
 
             <!-- button back -->

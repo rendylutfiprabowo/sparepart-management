@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_trafo')->nullable();
             $table->string('id_project')->nullable();
+            $table->string('note')->nullable();
         });
     }
 

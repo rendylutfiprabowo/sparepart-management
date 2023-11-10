@@ -56,7 +56,7 @@ class salesController extends Controller
     public function createSalesOrderOil()
     {
         $customers = customer::all();
-        $sales = sales::find('1');
+        $sales = auth()->user()->sales;
         // dd($sales);
         return view('crm.sales.oilab.formSalesOrderOil', compact('customers', 'sales'));
     }
@@ -75,10 +75,11 @@ class salesController extends Controller
     public function sampleOil()
     {
         $salesorderoil = solab::all()->whereNotNull('id_project');
+        $histories = history::all();
         $sample = sample::all();
-        $reportSample = reportSample::all();
+        // $reportSample = reportSample::all();
         // dd($reportSample);
-        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'reportSample'));
+        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample','histories'));
     }
 
     public function detailHistoryOil()

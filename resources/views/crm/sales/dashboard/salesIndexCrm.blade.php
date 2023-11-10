@@ -126,110 +126,26 @@
         <x-page-heading>
             Statistik Sales Profit
         </x-page-heading>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="rounded bg-white shadow-sm">
-                    <canvas id="chartSales"></canvas>
+        <div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Selling</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Visitor</button>
                 </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active shadow-sm bg-white rounded p-2" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-home-tab">
+                    <div id="profitCharts"></div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div id="visitorCharts"></div>
+                </div>
+            </div>
 
-        <div class="row gy-4">
-            <!-- Total Profit Chart & Last month balance -->
-            <div class="col-xl-8">
-                <div class="card h-100">
-                    <div class="row">
-                        <div class="col-md-7 pe-md-0">
-                            <div class="card-header">
-                                <h5 class="mb-0">Total Profit</h5>
-                            </div>
-                            <div class="card-body">
-                                <div id="totalProfitChart"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 border-start ps-md-0">
-                            <hr class="d-block d-md-none my-0">
-                            <div class="card-header">
-                                <div class="d-flex justify-content-between">
-                                    <h5 class="mb-1 display-6">Rp. 987k</h5>
-                                    <div class="dropdown">
-                                        <button class="btn p-0" type="button" id="totalProfit" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-dots-vertical mdi-24px"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="totalProfit">
-                                            <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-body mb-0">Last month balance Rp.234k</p>
-                            </div>
-                            <div class="card-body pt-3">
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="avatar">
-                                        <div class="avatar-initial bg-label-success rounded">
-                                            <i class="mdi mdi-trending-up mdi-24px"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-3 d-flex flex-column">
-                                        <h6 class="mb-1">$48,568.20</h6>
-                                        <small>Total Profit</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="avatar">
-                                        <div class="avatar-initial bg-label-primary rounded">
-                                            <i class="mdi mdi-account-outline mdi-24px"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-3 d-flex flex-column">
-                                        <h6 class="mb-1">$38,453.25</h6>
-                                        <small>Total Income</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <div class="avatar">
-                                        <div class="avatar-initial bg-label-secondary rounded">
-                                            <i class="mdi mdi-cellphone-link mdi-24px"></i>
-                                        </div>
-                                    </div>
-                                    <div class="ms-3 d-flex flex-column">
-                                        <h6 class="mb-1">$2,453.45</h6>
-                                        <small>Total Expense</small>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary w-100" type="button">View Report</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Total Visitors Chart -->
-            <div class="col-xl-4 col-md-6">
-                <div class="card">
-                    <div class="card-header pb-1">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="mb-0">Total Visitors</h5>
-                            <div class="dropdown">
-                                <button class="btn p-0" type="button" id="totalVisitorsDropdown"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="mdi mdi-dots-vertical mdi-24px"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="totalVisitorsDropdown">
-                                    <a class="dropdown-item" href="#">Refresh</a>
-                                    <a class="dropdown-item" href="#">Share</a>
-                                    <a class="dropdown-item" href="#">Update</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="totalVisitorsChart"></div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
-@endsection
+
+
+    @endsection

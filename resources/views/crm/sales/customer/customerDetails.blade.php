@@ -6,12 +6,11 @@
     <div>
         <div class="d-flex align-items-center">
             <div class="">
-                <a href="/sales/customer/salesIndexCustomer" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
+                <a href="/sales/customer" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
             </div>
             <div class="ms-3">
                 <h3 class="text-muted">Detail Customer</h3>
             </div>
-
         </div>
 
         <div class="row">
@@ -19,9 +18,6 @@
                 <div class="bg-white rounded shadow-sm text-center p-2">
                     <img src="https://th.bing.com/th/id/R.19fa7497013a87bd77f7adb96beaf768?rik=144XvMigWWj2bw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fUser-Profile-PNG-High-Quality-Image.png&ehk=%2bat%2brmqQuJrWL609bAlrUPYgzj%2b%2f7L1ErXRTN6ZyxR0%3d&risl=&pid=ImgRaw&r=0"
                         class="bd-placeholder-img rounded-circle mt-4" width="140" height="140">
-
-
-
                     <h3>{{ $dataCust->nama_customer }}</h3>
                     <p class="text-secondary">ID : {{ $dataCust->id_customer }}</p>
                     <p><a class="btn btn-danger btn-sm" href="#">Contact &raquo;</a></p>
@@ -92,7 +88,6 @@
                             <div class="progress-bar bg-danger" style="width: 85%"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
