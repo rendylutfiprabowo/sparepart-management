@@ -110,18 +110,6 @@
                     Submit
                 </button>
         </form>
-        {{-- <script>
-            function addNewItem() {
-                const formContainer = document.querySelector(".items");
-                const originalDiv = formContainer.querySelector(".item");
-                const newDiv = originalDiv.cloneNode(true);
-                formContainer.appendChild(newDiv);
-            }
-
-            function deleteItem(element) {
-                element.parentElement.parentElement.parentElement.remove();
-            }
-        </script> --}}
         <script>
             function updateForm(sel) {
                 var selectedOption = $('#select-customer').find('option:selected');

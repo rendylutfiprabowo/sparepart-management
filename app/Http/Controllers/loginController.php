@@ -16,7 +16,7 @@ class loginController extends Controller
             else if (auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
-                return redirect('/sales/oil/index');
+                return redirect('/sales/dashboard');
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
@@ -44,7 +44,7 @@ class loginController extends Controller
             else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
-                return redirect('/sales/oil/index');
+                return redirect('/sales/dashboard');
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
@@ -64,7 +64,7 @@ class loginController extends Controller
             else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
-                return redirect('/sales/oil/index');
+                return redirect('/sales/dashboard');
             else if (Auth::user()->id_role == 3)
                 return redirect('/index_lab');
             else if (Auth::user()->id_role == 4)
