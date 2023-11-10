@@ -1,22 +1,66 @@
 @extends('template.salesCrm')
 @section('title', 'Oil Sales Sample')
 @section('contents')
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <table class="table table-bordered align-middle text-center" id="dataTable" width="100%" cellspacing="0">
         <thead class="text-center">
             <tr>
-                <th scope="col">No SO</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Project</th>
-                <th scope="col">Sales Name</th>
-                <th scope="col">Trafo</th>
-                <th scope="col">Item Test</th>
-                <th scope="col">Progress</th>
-                <th scope="col">Notes</th>
-                <th scope="row">Action</th>
+                <th scope="col" >No.</th>
+                <th scope="col" >No SO</th>
+                <th scope="col" >Customer</th>
+                <th scope="col" >Project</th>
+                <th scope="col" >Sales Name</th>
+                <th scope="col" >Trafo</th>
+                <th scope="col" >Item Test</th>
+                <th scope="col" >Progress</th>
+                <th scope="col" >Notes</th>
+                <th scope="col" >Action</th>
             </tr>
         </thead>
         <tbody class="text-center">
-            @foreach ($salesorderoil as $solab)
+            @foreach ($salesorderoil as $no => $solab)
+                @foreach ($solab->project->history as $key => $history)
+                    <tr>
+                        @if ($key == 0)
+                        <td rowspan="{{$solab->project->history->count()}}">{{$no+1}}</td>
+                        <td rowspan="{{$solab->project->history->count()}}">{{$solab->no_so_solab}}</td>
+                        <td rowspan="{{$solab->project->history->count()}}">{{$solab->project->customer->nama_customer}}</td>
+                        <td rowspan="{{$solab->project->history->count()}}">{{$solab->project->nama_project}}</td>
+                        <td rowspan="{{$solab->project->history->count()}}">{{$solab->sales->nama_sales}}</td>
+                        @endif
+                        <td>
+                            @if ($history->trafo)
+                                {{$history->trafo->serial_number}}
+                            @else
+                                -
+                            @endif
+                        </td>
+                        <td>
+                            <div class="row">
+                                @foreach ($history->samples as $sample)
+                                    <span>{{$sample->scope->nama_scope}}</span>
+                                @endforeach
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                                @foreach ($history->samples as $sample)
+                                    <span>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</span>
+                                @endforeach
+                            </div>
+                        </td>
+                        <td>
+                            <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal{{ $history->id }}">
+                                <i class="fa-regular fa-file "></i>
+                            </button>
+                        </td>
+                        @if ($key==0)
+                        <td rowspan="{{$solab->project->history->count()}}"><button type="button" class="btn merah text-putih">download</button></td>
+                        @endif
+                    </tr>
+                @endforeach
+            @endforeach
+            {{-- @foreach ($salesorderoil as $solab)
                 <tr>
                     <td>
                         {{ $solab['no_so_solab'] }}
@@ -45,7 +89,7 @@
                             @endforeach
                         @endforeach
                     </td>
-                    <td class="">
+                    <td class="d-flex flex-column ">
                         @foreach ($solab->project->history as $history)
                             <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal{{ $history->id }}">
@@ -55,7 +99,7 @@
                     </td>
                     <td><button type="button" class="btn merah text-putih">download</button></td>
                 </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
     <!-- Modal -->
