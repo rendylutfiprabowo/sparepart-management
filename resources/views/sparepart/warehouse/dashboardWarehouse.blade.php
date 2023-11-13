@@ -1,4 +1,4 @@
-@extends('template.warehouseBranchSparepart')
+@extends('template.warehouseSparepart')
 @section('contents')
     <p style="font-size: 23px; color: black;">Dashboard</p>
     <div class="row">

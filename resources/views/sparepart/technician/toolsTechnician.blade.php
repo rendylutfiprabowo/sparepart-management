@@ -76,9 +76,7 @@
                         <th scope="col">Start Date</th>
                         <th scope="col">Finish Date</th>
                         <th scope="col">Branch</th>
-                        @if ($techTools->first()->status == 'on-technician')
-                            <th scope="col">Action</th>
-                        @endif
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">

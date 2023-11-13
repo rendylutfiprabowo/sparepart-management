@@ -83,13 +83,13 @@
                 </table>
                 <ul class="pagination">
                     <li class="page-item {{ $stocks->onFirstPage() ? 'disabled' : '' }}">
-                        <a class="page-link" href="{{ $stocks->previousPageUrl() }}" aria-label="Previous">
+                        <a class="page-link" href="{{ $stocks->previousPageUrl() }}{{(request()->input('search')!=null)?'&search='.request()->input('search'):''}}" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
                     <li class="page-item {{ $stocks->hasMorePages() ? '' : 'disabled' }}">
-                        <a class="page-link" href="{{ $stocks->nextPageUrl() }}" aria-label="Next">
+                        <a class="page-link" href="{{ $stocks->nextPageUrl() }}{{(request()->input('search')!=null)?'&search='.request()->input('search'):''}}" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>

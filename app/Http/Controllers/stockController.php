@@ -99,7 +99,7 @@ class stockController extends Controller
         ]);
 
         $stock = stockSparepart::create([
-            'id_stock' => 'STK-' . rand(1, 999),
+            'id_stock' => 'STK-' . rand(10000, 999999),
             'id_sparepart' => $validatedData['codematerial_sparepart'],
             'id_store' => 'CTR',
             'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
