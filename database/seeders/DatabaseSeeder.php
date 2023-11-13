@@ -533,11 +533,14 @@ class DatabaseSeeder extends Seeder
             'kva' => '872',
             'merk' => 'trafindo',
             'year' => '2020',
+            'tegangan_hv' => '2034',
+            'tegangan_lv' => '2034',
             'voltage' => '1212',
             'vg' => '1222',
             'tag_number' => '11',
             'temperatur_oil' => '2323',
             'volume_oil' => '60',
+            'Warna_oil' => 'merah',
             'id_customer' => '12',
         ]);
         trafo::create([
