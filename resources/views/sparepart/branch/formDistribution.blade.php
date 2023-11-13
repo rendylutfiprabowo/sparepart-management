@@ -1,66 +1,30 @@
-@extends('template.salesCrm')
+@extends('template.warehouseBranchSparepart')
 
-@section('title', 'SpareParts Dashboard ')
 @section('contents')
     <div class="card mb-3 shadow-sm">
         <div class="card-header merah text-light mb-3 pt-3">
-            <h6>Add Orders</h6>
+            <h6>Add Orders Distribution</h6>
         </div>
         @if (session('error'))
             <div class="mx-3">
                 <x-error_message text="{{ session('error') }}" />
             </div>
         @endif
-        <form method="post" action="/sales/sparepart/order/add">
+        <form method="post" action="/warehouse/tools/request-item/distribution">
             @csrf
             <div class="container">
-                <h3 class="my-1 mb-4 text-muted text-center">Data Pelanggan</h3>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Delivery Type</label>
-                    <select class="form-select" name="jenis_layanan">
-                        <option value="1">Delivered by Technician</option>
-                        <option value="2">Delievered by Other Party</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-                    <select class="form-select select-search" id="select-customer" name="id_customer"
-                        onchange="updateForm(this)">
-                        <option value="" selected disabled>-- Pilih Customer --</option>
-                        @foreach ($customers as $customer)
-                            <option value="{{ $customer->id_customer }}" data-phone="{{ $customer->phone_customer }}"
-                                data-address="{{ $customer->jenisusaha_customer }}">
-                                {{ $customer->nama_customer }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" name="phone_number" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-                    <input type="text" class="form-control" name="sales_name" disabled value="Ahmad Sumbul">
-                    <input type="hidden" value="1" name="id_sales">
-                </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
-                    <input class="form-control" type="date" id="dateInput" name="date"
+                    <input class="form-control" type="date" id="dateInput" name="order_date"
                         value="{{ $now->toDateString() }}">
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Store</label>
                     <input class="form-control" type="text" id="dateInput" name="nama_store"
                         value="{{ $store->nama_store }}" disabled>
-                    <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
-                <div class=" mt-4 items">
-                    <h3 class="my-1 text-muted text-center">Spareparts</h3>
+                <div class="items mt-4">
+                    <h3 class="text-muted my-1 text-center">Spareparts</h3>
                     <div class="item mt-4">
                         <div>
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
@@ -79,13 +43,13 @@
                                 <strong>qty</strong>
                             </div>
                             <div class="col">
-                                <input class=" form-control   " name="qty[]" value="0">
+                                <input class="form-control" name="qty[]" value="0">
                             </div>
                             <div class="col">
-                                <input class="form-control " name="dim" disabled>
+                                <input class="form-control" name="dim" disabled>
                             </div>
                             <div class="col">
-                                <div class=" btn btn-danger form-control " onclick="deleteItem(this)"><i
+                                <div class="btn btn-danger form-control" onclick="deleteItem(this)"><i
                                         class="bi bi-trash-fill"></i>
 
                                 </div>
@@ -110,6 +74,18 @@
                     Submit
                 </button>
         </form>
+        {{-- <script>
+            function addNewItem() {
+                const formContainer = document.querySelector(".items");
+                const originalDiv = formContainer.querySelector(".item");
+                const newDiv = originalDiv.cloneNode(true);
+                formContainer.appendChild(newDiv);
+            }
+
+            function deleteItem(element) {
+                element.parentElement.parentElement.parentElement.remove();
+            }
+        </script> --}}
         <script>
             function updateForm(sel) {
                 var selectedOption = $('#select-customer').find('option:selected');
@@ -129,7 +105,7 @@
                 var dataDim = selectedOption.data("dim");
                 var dataMax = selectedOption.data("qty");
                 dimension.val(dataDim);
-                quantity.attr('max',dataMax);
+                quantity.attr('max', dataMax);
             }
         </script>
 
@@ -167,7 +143,8 @@
                                     const option = document.createElement('option');
                                     // option.data-dim=stock.satuan;
                                     option.value = stock.id_stock;
-                                    option.text = stock.spesifikasi_sparepart + (` (tersisa ${stock.qty} ${stock.satuan})`);
+                                    option.text = stock.spesifikasi_sparepart + (
+                                        ` (tersisa ${stock.qty} ${stock.satuan})`);
 
                                     option.setAttribute('data-dim', stock.satuan);
                                     option.setAttribute('data-qty', stock.qty);

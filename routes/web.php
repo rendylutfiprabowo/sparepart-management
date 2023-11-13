@@ -100,9 +100,11 @@ Route::middleware(['auth', 'technician'])->group(function () {
     Route::get('/technician/tools/request/add/{id_store}', [technicianController::class, 'createRequestTools']);
     Route::post('/technician/tools/return/{id_tools}', [toolsController::class, 'returnRequest']);
 });
-//Role Warehouse Sparepart
+//Role Branch Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/request-item', [warehouseController::class, 'viewDistribution']);
+    Route::get('/warehouse/branch/request-item/{id_store}', [warehouseController::class, 'reqDistribution']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
     Route::get('/warehouse/branch/listspk', [warehouseController::class, 'viewSpkBranch']);
     Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
@@ -113,9 +115,10 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
+    Route::post('/warehouse/tools/request-item/distribution', [warehouseController::class, 'storeDistribution']);
 });
 
-//Role Manager Sparepart
+//Role Manager Center
 Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
@@ -123,7 +126,6 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::get('/warehouse/listspk', [warehouseController::class, 'viewSpk']);
     Route::get('/warehouse/view-order/{id_order}', [warehouseController::class, 'viewOrder']);
     Route::post('/warehouse/add-worker/{id_order}', [warehouseController::class, 'addWorker']);
-    Route::get('/warehouse/stock/{$id}', [stockController::class, 'detailStock']);
     Route::post('/warehouse/stock/store', [stockController::class, 'store']);
     Route::post('/warehouse/stock/{id_stock}', [stockController::class, 'addStock']);
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
@@ -172,6 +174,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/form_dga1_lab', function () {
         return view('oilab.lab.form_dga1_lab');
     });
+    Route::get('generate-pdf', [pdfController::class, 'generatePdf']);
 });
 
 

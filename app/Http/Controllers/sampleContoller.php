@@ -77,35 +77,35 @@ class sampleContoller extends Controller
 
             $data = (array)json_decode(form::where('id_scope', '399')->get()->first()->field_form);
             // @dd($data);
-            if (isset($validated['check']['oa']['bdv'])) {
-                $data['Breakdown Voltage (Dieclectric Strength)'] = '1';
+            if (!isset($validated['check']['oa']['bdv'])) {
+                $data['Breakdown Voltage (Dieclectric Strength)'] = '-1';
             };
-            if (isset($validated['check']['oa']['ift'])) {
-                $data['Interfacial Tension'] = '1';
+            if (!isset($validated['check']['oa']['ift'])) {
+                $data['Interfacial Tension'] = '-1';
             };
-            if (isset($validated['check']['oa']['water_content'])) {
-                $data['Water Content'] = '1';
+            if (!isset($validated['check']['oa']['water_content'])) {
+                $data['Water Content'] = '-1';
             };
-            if (isset($validated['check']['oa']['tan'])) {
-                $data['Total Acid Number (TAN)'] = '1';
+            if (!isset($validated['check']['oa']['tan'])) {
+                $data['Total Acid Number (TAN)'] = '-1';
             };
-            if (isset($validated['check']['oa']['sediment_and_sludge'])) {
-                $data['Sediment & Sludge'] = '1';
+            if (!isset($validated['check']['oa']['sediment_and_sludge'])) {
+                $data['Sediment & Sludge'] = '-1';
             };
-            if (isset($validated['check']['oa']['corrosive_sulfur'])) {
-                $data['Corrosive Sulfur'] = '1';
+            if (!isset($validated['check']['oa']['corrosive_sulfur'])) {
+                $data['Corrosive Sulfur'] = '-1';
             };
-            if (isset($validated['check']['oa']['flash_point'])) {
-                $data['Flash Point'] = '1';
+            if (!isset($validated['check']['oa']['flash_point'])) {
+                $data['Flash Point'] = '-1';
             };
-            if (isset($validated['check']['oa']['pcb'])) {
-                $data['PCB'] = '1';
+            if (!isset($validated['check']['oa']['pcb'])) {
+                $data['PCB'] = '-1';
             };
-            if (isset($validated['check']['oa']['color'])) {
-                $data['Color / Appreance'] = '1';
+            if (!isset($validated['check']['oa']['color'])) {
+                $data['Color / Appreance'] = '-1';
             };
-            if (isset($validated['check']['oa']['density'])) {
-                $data['Density'] = '1';
+            if (!isset($validated['check']['oa']['density'])) {
+                $data['Density'] = '-1';
             };
 
             $form_oa->field_formreport = json_encode($data);

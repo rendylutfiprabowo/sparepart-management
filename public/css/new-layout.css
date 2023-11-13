@@ -17,7 +17,7 @@ body {
     padding: 48px 0 0; /* Height of navbar */
 }
 
-.active {
+.active-sidebar-link {
     background-color: #d12226;
     margin: 3px;
 }

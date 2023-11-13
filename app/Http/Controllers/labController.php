@@ -47,11 +47,14 @@ class labController extends Controller
             'kva' => 'required',
             'merk' => 'required',
             'year' => 'required',
+            'tegangan_hv' => 'required',
+            'tegangan_lv' => 'required',
             'voltage' => 'required',
             'vg' => 'required',
             'tag_number' => 'required',
             'temperatur_oil' => 'required',
             'volume_oil' => 'required',
+            'warna_oil' => 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
@@ -66,11 +69,14 @@ class labController extends Controller
             $trafos->kva = $validated['kva'];
             $trafos->merk = $validated['merk'];
             $trafos->year = $validated['year'];
+            $trafos->tegangan_hv = $validated['tegangan_hv'];
+            $trafos->tegangan_lv = $validated['tegangan_lv'];
             $trafos->voltage = $validated['voltage'];
             $trafos->vg = $validated['vg'];
             $trafos->tag_number = $validated['tag_number'];
             $trafos->temperatur_oil = $validated['temperatur_oil'];
             $trafos->volume_oil = $validated['volume_oil'];
+            $trafos->warna_oil = $validated['warna_oil'];
             $trafos->id_customer = 0;
             $trafos->save();
 

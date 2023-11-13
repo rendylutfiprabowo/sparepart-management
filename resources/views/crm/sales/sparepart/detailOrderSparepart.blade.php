@@ -4,7 +4,7 @@
 
 @section('contents')
     <div class="d-flex align-items-center">
-        <div class="">
+        <div>
             <a href="/sales/sparepart/order" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
         </div>
         <div class="ms-3">
@@ -104,7 +104,7 @@
 
     <div class="card rounded-4 mb-3 p-4">
         @if (session('success'))
-            <div class="bg-success text-light rounded text-center">
+            <div class="alert alert-success" role="alert">
                 {{ session('success') }}
             </div>
         @endif
@@ -128,7 +128,7 @@
                     <th scope="col">Specification</th>
                     <th scope="col">Qty</th>
                     @if ($type == null)
-                        <th scope="col">Hapus</th>
+                        <th scope="col">Delete</th>
                     @endif
                 </tr>
             </thead>
@@ -141,9 +141,8 @@
                         <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
                         <td class="table-plus">{{ $booking->qty_booked }}</td>
                         @if ($type == null)
-                            <td class="table-plus "><a
-                                    href="/sales/sparepart/order/remove-item/{{ $booking->id_booked }}"><i
-                                        class="bi bi-trash-fill text-danger"></i></a></td>
+                            <td class="table-plus "><a href="/sales/sparepart/order/remove-item/{{ $booking->id_booked }}"
+                                    id="liveToastBtn"><i class="bi bi-trash text-danger"></i></a></td>
                         @endif
                     </tr>
                 </tbody>
@@ -178,13 +177,14 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-success" type="submit">Tambahkan Item</button>
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Add Item</button>
                         </div>
+
                     </div>
                 </div>
             </form>
         @endif
-        <div class="">
+        <div>
             @if ($type == null || $type == 'MEMO')
                 <form action="/sales/sparepart/order/{{ $order->id_order }}/add-do" method="post">
                     @csrf
@@ -210,10 +210,10 @@
                                 readonly @endif>
 
 
-                    <div class="modal-footer gap-2">
-                        <a href="/sales/sparepart/order" class="btn btn-primary mt-2"> Back</a>
+                    <div class="modal-footer gap-2 pt-4">
+                        <a href="/sales/sparepart/order" class="btn btn-secondary"> Back</a>
                         @if ($type != 'DO')
-                            <button type="submit" class="btn btn-danger"> Submit</button>
+                            <button type="submit" class="btn btn-success"> Submit</button>
                         @endif
 
                     </div>
@@ -241,8 +241,6 @@
         </div>
     </div>
 
-    </div>
-
     <script>
         function updateItem(select) {
             var selectedOption = $(select).find(":selected");
@@ -254,7 +252,8 @@
         }
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script>
         let itemCount = 1;
 

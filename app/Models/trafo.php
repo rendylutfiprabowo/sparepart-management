@@ -20,11 +20,14 @@ class trafo extends Model
         'kva',
         'merk',
         'year',
+        'tegangan_hv',
+        'tegangan_lv',
         'voltage',
         'vg',
         'tag_number',
         'temperatur_oil',
         'volume_oil',
+        'warna_oil',
         'id_customer',
     ];
 

@@ -1,12 +1,13 @@
 @extends('template.warehouseBranchSparepart')
-@section('content')
+@section('title', 'List SPK')
+@section('contents')
     <div class="col-md-12">
-        <div class="card rounded-4 p-4">
+        <div class="card rounded p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">Sparepart Transaction Data: </h3>
+                    <h3 class="my-2 text-start">Sparepart Transaction Data: </h3>
                 </tr>
-                <hr class="mt-1" style="background-color: black;">
+                <br>
             </thead>
             @if (session('success'))
                 <div class="alert alert-success">
@@ -14,7 +15,7 @@
                 </div>
             @endif
             <table class="table-bordered table" id="dataTable" width="100%" cellspacing="0">
-                <thead class="text-center">
+                <thead class="text-center table-light">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Customer Name</th>
@@ -37,22 +38,22 @@
 
                                 <td class="table-plus">
                                     <b
-                                        class="@if ($spks->status == 'closed') text-success
-                                    @elseif ($spks->status == 'closed-memo-do-revisi' || $spks->status == 'memo-closed') text-primary
+                                        class="@if ($spks->status == 'closed') badge text-bg-success
+                                    @elseif ($spks->status == 'closed-memo-do-revisi' || $spks->status == 'memo-closed') badge text-bg-primary
                                     @elseif($spks->status == 'on-warehouse' || $spks->status == 'on-technician')
-                                        text-secondary
+                                    badge text-bg-warning
                                     @elseif($spks->status == 'revisi')
-                                        text-info
+                                    badge text-bg-info
                                     @elseif($spks->status == 'canceled')
-                                        text-danger @endif">{{ $spks->status }}
+                                       badge text-bg-danger @endif">{{ $spks->status }}
                                     </b>
                                 </td>
                                 <td class="table-plus">
                                     {{ $spks->do_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
                                 </td>
                                 <td class="table-plus">{{ $spks->spk_order }}</td>
-                                <td><a href="/warehouse/view-order/branch/{{ $spks->id_order }}" class="btn btn-dark"
-                                        type="button"><i class="fa-regular fa-file fa-lg"></i></a>
+                                <td><a href="/warehouse/view-order/branch/{{ $spks->id_order }}"
+                                        class="btn btn-outline-danger" type="button"><i class="bi bi-file-text"></i></a>
                                 </td>
                             @endif
                         </tr>
