@@ -226,106 +226,6 @@ class warehouseController extends Controller
         return view('sparepart.warehouse.dashboardWarehouse');
     }
 
-    // public function storeDistribution(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'order_date' => 'required',
-    //         'stocks' => 'required',
-    //         'qty' => 'required',
-    //     ]);
-
-    //     // Ambil data toko yang terkait dengan pengguna yang login
-    //     $tokoUser = storeSparepart::where('id_store', Auth::user()->warehouse->store->id_store)->first();
-    //     $uuid = Str::uuid();
-
-    //     foreach ($validated['stocks'] as $key => $stockId) {
-    //         // Temukan id_sparepart berdasarkan stockId
-    //         $sparepart = stockSparepart::with('sparepart')->find($stockId);
-    //         if (!$sparepart) {
-    //             return redirect()->back()->with('error', 'Stok tidak tersedia dalam toko Anda.');
-    //         }
-
-    //         // Cari semua id_stock yang terhubung dengan id_sparepart ini
-    //         $idStocks = stockSparepart::where('id_sparepart', $sparepart->id_sparepart)
-    //             ->pluck('id_stock')
-    //             ->toArray();
-    //         // Periksa setiap id_stock
-
-    //         foreach ($idStocks as $idStock) {
-    //             // Temukan stockSparepart yang cocok dengan id_stock dan toko dari pengguna yang login
-    //             $stockUser = stockSparepart::where('id_stock', $idStock)
-    //                 ->where('id_store', $tokoUser->id_store)
-    //                 ->first();
-
-    //             if ($stockUser) {
-    //                 // Jika $stockUser ditemukan, berarti Anda telah menemukan id_stock yang sesuai.
-    //                 // Anda dapat menggunakannya dalam pembuatan pesanan distribusi.
-    //                 $id_stock = $stockUser->id_stock;
-
-    //                 // Lanjutkan dengan pembuatan pesanan distribusi
-    //                 $distribution = new distribution();
-    //                 $distribution->id_distribution = $uuid;
-    //                 $distribution->id_stock = $id_stock;
-    //                 $distribution->qty_distribution = $validated['qty'][$key];
-    //                 $distribution->order_date = $validated['order_date'];
-    //                 $distribution->status = 'waiting for approval';
-    //                 $distribution->save();
-    //             }
-    //         }
-    //         return redirect('/warehouse/branch/request-item');
-    //     }
-
-
-    // foreach ($validated['stocks'] as $key => $stockId) {
-    //     // Temukan data stock yang sesuai berdasarkan id_sparepart
-    //     $stockUser = stockSparepart::whereHas('sparepart', function ($query) use ($tokoUser, $stockId) {
-    //         // Filter berdasarkan toko yang dimiliki oleh user yang sedang login
-    //         $query->where('id_store', $tokoUser->id_store);
-    //         // Juga Anda perlu mencocokkan id_sparepart yang sesuai dengan id_sparepart dari form input
-    //         $query->where('id_sparepart', $stockId);
-    //     })->first();
-
-    // if ($stockUser) {
-    // Stok ditemukan dalam toko pengguna yang login
-    // $distribution = new distribution();
-    // $distribution->id_distribution = $uuid;
-    // $distribution->id_stock = $stockUser->id_stock;
-    // $distribution->qty_distribution = $validated['qty'][$key];
-    // $distribution->order_date = $validated['order_date'];
-    // $distribution->status = 'waiting for approval';
-    // $distribution->save();
-    // } else {
-    // ID stock tidak ditemukan dalam toko pengguna yang login
-    // Buat data stok dan suku cadang baru
-    // $newStock = new stocksparepart();
-    // $newStock->id_sparepart = $stockId;
-    // $newStock->qty_stock = $validated['qty'][$key];
-    // $newStock->id_store = $tokoUser->id_store;
-    // $newStock->safety_stock = 10;
-    // $newStock->save();
-
-    // Buat suku cadang baru dengan data toko yang sesuai
-    // $newSparepart = new sparepart();
-    // $newSparepart->id_category = $newStock->sparepart->category->id_category;
-    // $newSparepart->codematerial_sparepart = $newStock->sparepart->codematerial_sparepart;
-    // $newSparepart->spesifikasi_sparepart = $newStock->sparepart->spesifikasi_sparepart;
-    // $newSparepart->satuan = $newStock->sparepart->satuan;
-    // $newSparepart->id_store = $tokoUser->id_store;
-    // $newSparepart->save();
-
-    // Lanjutkan dengan pembuatan pesanan distribusi dengan stok dan suku cadang yang baru dibuat
-    // $distribution = new distribution();
-    // $distribution->id_distribution = $uuid;
-    // $distribution->id_stock = $newStock->id;
-    // $distribution->qty_distribution = $validated['qty'][$key];
-    // $distribution->order_date = $validated['order_date'];
-    // $distribution->status = 'waiting for approval';
-    // $distribution->save();
-    // return redirect()->back()->with('error', 'Stok tidak tersedia dalam toko Anda.');
-    // }
-
-    // return redirect('/warehouse/branch/request-item');
-    // }
     public function storeDistribution(Request $request)
     {
         $validated = $request->validate([
@@ -333,24 +233,54 @@ class warehouseController extends Controller
             'stocks' => 'required',
             'qty' => 'required',
         ]);
+        $uuid = Str::uuid();
+        $randomNumber = rand(10000, 999999);
 
         // Ambil data toko yang terkait dengan pengguna yang login
-        $tokoUser = storeSparepart::where('id_store', Auth::user()->warehouse->store->id_store)->first();
-        $uuid = Str::uuid();
-
         foreach ($validated['stocks'] as $key => $stockId) {
             $sparepart = stockSparepart::with('sparepart')->where('id_stock', $stockId)->firstOrFail();
             $id_sparepart = $sparepart->id_sparepart;
             $store = Auth::user()->warehouse->store->stock->where('id_sparepart', $id_sparepart)->first();
-            @dd($store);
+            // @dd($store->id_stock);
+            // @dd($store);
 
-            // Temukan stock sparepart yang memiliki id_sparepart yang sama dengan $sparepart dan terkait dengan toko dari pengguna yang login
-            // $store = stockSparepart::whereHas('store_sparepart', function ($query) use ($tokoUser) {
-            //     $query->where('id_store', $tokoUser->id_store);
-            // })->where('id_sparepart', $id_sparepart)->first();
+            if ($store == null) {
+                // ID stock tidak ditemukan dalam toko pengguna yang login
+                // Buat data stok dan suku cadang baru
+                $newStock = new stocksparepart();
+                $newStock->id_stock = 'STK-' . $randomNumber;
+                $newStock->id_sparepart = $id_sparepart;
+                $newStock->qty_stock = $validated['qty'][$key];
+                $newStock->id_store = Auth::user()->warehouse->store->id_store;
+                $newStock->safety_stock = 10;
+                $newStock->qty_stock = 0;
+                $newStock->save();
 
-            // Di sini Anda memiliki $store yang merupakan stock sparepart yang sesuai dengan $sparepart
-            // dan terkait dengan toko dari pengguna yang login.
+                // Buat suku cadang baru dengan data toko yang sesuai
+                $newSparepart = new sparepart();
+                $newSparepart->id_category = $sparepart->sparepart->id_category;
+                $newSparepart->codematerial_sparepart = $sparepart->sparepart->codematerial_sparepart;
+                $newSparepart->spesifikasi_sparepart = $sparepart->sparepart->spesifikasi_sparepart;
+                $newSparepart->satuan = $sparepart->sparepart->satuan;
+                $newSparepart->save();
+
+                // Lanjutkan dengan pembuatan pesanan distribusi dengan stok dan suku cadang yang baru dibuat
+                $distribution = new distribution();
+                $distribution->id_distribution = $uuid;
+                $distribution->id_stock = $newStock->id_stock;
+                $distribution->qty_distribution = $validated['qty'][$key];
+                $distribution->order_date = $validated['order_date'];
+                $distribution->status = 'waiting for approval';
+                $distribution->save();
+            } else {
+                $distribution = new distribution();
+                $distribution->id_distribution = $uuid;
+                $distribution->id_stock = $store->id_stock;
+                $distribution->qty_distribution = $validated['qty'][$key];
+                $distribution->order_date = $validated['order_date'];
+                $distribution->status = 'waiting for approval';
+                $distribution->save();
+            }
         }
         return redirect('/warehouse/branch/request-item');
     }

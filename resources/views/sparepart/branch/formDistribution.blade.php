@@ -1,6 +1,6 @@
 @extends('template.warehouseBranchSparepart')
 
-@section('content')
+@section('contents')
     <div class="card mb-3 shadow-sm">
         <div class="card-header merah text-light mb-3 pt-3">
             <h6>Add Orders Distribution</h6>

@@ -1,5 +1,7 @@
 @extends('template.warehouseBranchSparepart')
-@section('content')
+
+@section('title', 'Tools Warehouse')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 mb-4 p-4">
             <thead>
@@ -28,7 +30,6 @@
                         <th scope="col">No</th>
                         <th scope="col">Name</th>
                         <th scope="col">Qty</th>
-                        <th scope="col">Branch</th>
                         <th scope="col">Status</th>
                         <th scope="col">Order date</th>
                         <th scope="col">Received date</th>
@@ -41,7 +42,6 @@
                             <td class="table-plus">{{ $no + 1 }}</td>
                             <td class="table-plus">{{ $dis->id_stock }}</td>
                             <td class="table-plus">{{ $dis->qty_distribution }}</td>
-                            <td class="table-plus">{{ $store->nama_store }}</td>
                             <td class="table-plus">{{ $dis->status }}</td>
                             <td class="table-plus">{{ $dis->order_date }}</td>
                             <td class="table-plus">{{ $dis->recieved_date }}</td>
