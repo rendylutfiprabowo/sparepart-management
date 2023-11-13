@@ -172,6 +172,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/form_dga1_lab', function () {
         return view('oilab.lab.form_dga1_lab');
     });
+    Route::get('generate-pdf', [pdfController::class, 'generatePdf']);
 });
 
 

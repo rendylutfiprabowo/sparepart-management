@@ -10,8 +10,8 @@
                     <hr class="mt-1" style="background-color: black;">
                 </thead>
                 <div class="table-responsive">
-                    <table class="table table-bordered align-middle text-center" id="dataTable"
-                        cellspacing="0" style="outline: 1px solid">
+                    <table class="table table-bordered align-middle text-center" id="dataTable" cellspacing="0"
+                        style="outline: 1px solid">
                         <thead class="text-center">
                             <tr>
                                 <th scope="col">No.</th>
@@ -48,7 +48,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <div >
+                                            <div>
                                                 @foreach ($history->samples as $sample)
                                                     <div>{{ $sample->scope->nama_scope }}</div>
                                                 @endforeach
@@ -57,39 +57,29 @@
                                         <td>
                                             <div>
                                                 @foreach ($history->samples as $sample)
-                                                    <div>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</div>
+                                                    <div>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         </td>
                                         <td class="d-flex flex-column ">
+                                            @if ($history->note != null)
+                                                <span><i class="fa-solid fa-check"></i></span>
+                                            @else
                                                 <button class="btn" type="button pt-0" data-toggle="modal"
                                                     data-target="#note-{{ $history->id }}">
                                                     <i class="fa-regular fa-file fa-xl"></i>
                                                 </button>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
                             @endforeach
                         </tbody>
                     </table>
-                    <!-- <table border="1">
-                                    <tr>
-                                        <td>Row 1, Col 1</td>
-                                        <td rowspan="3">Merged<br>Row 1 & 2 & 3, Col 2</td>
-                                        <td>Row 1, Col 3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Row 2, Col 1</td>
-                                        <td>Row 2, Col 3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Row 3, Col 1</td>
-                                        <td>Row 3, Col 3</td>
-                                    </tr>
-                                </table> -->
                 </div>
 
-                <!-- Modal -->
+                {{-- <!-- Modal -->
                 @foreach ($salesorderoil as $solab)
                     @foreach ($solab->project->history as $history)
                         <div class="modal fade" id="note-{{ $history->id }}" tabindex="-1"
@@ -121,11 +111,56 @@
                                     </div>
                                 </div>
                             </div>
+                        </div> --}}
+
+                <!-- Modal -->
+                @foreach ($salesorderoil as $solab)
+                    @foreach ($solab->project->history as $history)
+                        <div class="modal fade" id="note-{{ $history->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header merah">
+                                        <h5 class="modal-title text-putih" id="exampleModalLabel">Input Notes</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="/item_test/add/{{ $history->id }}">
+                                            @csrf
+                                            <input type="hidden" value="{{ $solab->no_so_solab }}" name="no_so_solab">
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Message:</label>
+                                                <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
+                                            </div>
+                                            @if (session('error'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
+
+                                            @if (session('success'))
+                                                <div class="alert alert-success">
+                                                    {{ session('success') }}
+                                                </div>
+                                            @endif
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn merah text-putih">Save changes</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    @endforeach
+                @endforeach
+
             </div>
         </div>
     </div>
     </div>
-    @endforeach
-    @endforeach
 @endsection
