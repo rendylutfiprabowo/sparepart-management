@@ -1,5 +1,5 @@
 @extends('template.warehouseSparepart')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
             <thead>
@@ -10,22 +10,24 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="dropdown col-md-1 mb-3 mr-5">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="col-md-3 dropdown mb-3">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         List Cabang
-                    </button>
-                    <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
                         @foreach ($stores as $store)
                             <a class="dropdown-item"
                                 href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
                         @endforeach
-                    </div>
+                    </ul>
                 </div>
                 <div class="col-md-3">
-                    <a class="btn btn-primary" data-toggle="modal" data-target="#addproduct" href=""><i
-                            class="fa-solid fa-plus"></i> Add Product</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
+                            class="fa-solid fa-plus"></i> Add Product
+                    </button>
                 </div>
             </div>
             @if (session('success'))
@@ -54,14 +56,17 @@
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
                             <td class="table-plus"style="width:40%">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
-                            <td><a href="/warehouse/stock/{$id}"data-toggle="modal"
-                                    data-target="#detailproduct-{{ $stock->id }}" class="btn btn-dark" type="button"><i
-                                        class="fa-regular fa-file fa-lg"></i></a>
-                                <a data-toggle="modal" data-target="#addstock-{{ $stock->id }}" class="btn btn-primary"
-                                    href="/warehouse/stock/{id_sparepart}"><i class="fa-solid fa-plus"></i></a>
-                                <a data-toggle="modal" data-target="#editsafetystock-{{ $stock->id }}"
-                                    class="btn btn-success" href="/warehouse/stock/safety-stock/{id_sparepart}"><i
-                                        class="fa-solid fa-shield-heart"></i></a>
+                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                    data-bs-target="#detailproduct-{{ $stock->id }}"><i
+                                        class="fa-regular fa-file fa-lg"></i>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#addstock-{{ $stock->id }}"><i class="fa-solid fa-plus"></i>
+                                </button>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#editsafetystock-{{ $stock->id }}"><i
+                                        class="fa-solid fa-shield-heart"></i>
+                                </button>
                             </td>
                             @if ($stock->qty_stock <= 0)
                                 <div class="alert alert-danger">
@@ -113,15 +118,12 @@
     </div>
     {{-- create modal --}}
     <!--Add Product Modal -->
-    <div class="modal fade" id="addproduct" tabindex="-1" role="dialog" aria-labelledby="addproductLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header merah text-putih">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form method="post" action="/warehouse/stock/store">
@@ -155,8 +157,8 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Product Name</label>
-                                <input type="text" class="form-control" name="nama_sparepart"
-                                    value="{{ old('nama_sparepart') }}" placeholder="Masukkan Nama Product">
+                                <input type="text" class="form-control" name="nama_category"
+                                    value="{{ old('nama_category') }}" placeholder="Masukkan Nama Product">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Spesifikasi</label>
@@ -171,7 +173,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 </form>
@@ -180,15 +182,13 @@
     </div>
     <!--Add Stock Modal -->
     @foreach ($spareparts as $stock)
-        <div class="modal fade" id="addstock-{{ $stock->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="addstockLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="addstock-{{ $stock->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header merah text-putih">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Stock</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form method="post" action="/warehouse/stock/{{ $stock->id }}">
@@ -218,19 +218,19 @@
                                 <div class="form-group mb-3">
                                     <label class="form-label">Code Material</label>
                                     <input type="text" class="form-control" name="codematerial_sparepart"
-                                        value="{{ $stock->sparepart->codematerial_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->codematerial_sparepart }}" disabled
                                         placeholder="Masukkan Code Material">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Product Name</label>
                                     <input type="text" class="form-control" name="nama_sparepart"
-                                        value="{{ $stock->sparepart->nama_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->category->nama_category }}" disabled
                                         placeholder="Masukkan Nama Product">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Spesifikasi</label>
                                     <input type="text" class="form-control" name="spesifikasi_sparepart"
-                                        value="{{ $stock->sparepart->spesifikasi_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->spesifikasi_sparepart }}" disabled
                                         placeholder="Masukkan Spesifikasi">
                                 </div>
                                 <div class="form-group mb-1">
@@ -243,15 +243,15 @@
                                     </div>
                                     <div class="form-group col-md-3 mb-1">
                                         <input type="text" class="form-control" name="satuan"
-                                            value="{{ $stock->sparepart->satuan }}" readonly
+                                            value="{{ $stock->sparepart->satuan }}" disabled
                                             placeholder="Masukkan Satuan">
                                     </div>
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -260,15 +260,13 @@
     @endforeach
     <!--Edit Safety Stock Modal -->
     @foreach ($spareparts as $stock)
-        <div class="modal fade" id="editsafetystock-{{ $stock->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="editsafetystockLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="editsafetystock-{{ $stock->id }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header merah text-putih">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Safety Stock</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Safety Stock</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form method="post" action="/warehouse/stock/safety-stock/{{ $stock->id }}">
@@ -298,19 +296,19 @@
                                 <div class="form-group mb-3">
                                     <label class="form-label">Code Material</label>
                                     <input type="text" class="form-control" name="codematerial_sparepart"
-                                        value="{{ $stock->sparepart->codematerial_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->codematerial_sparepart }}" disabled
                                         placeholder="Masukkan Code Material">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Product Name</label>
                                     <input type="text" class="form-control" name="nama_sparepart"
-                                        value="{{ $stock->sparepart->nama_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->category->nama_category }}" disabled
                                         placeholder="Masukkan Nama Product">
                                 </div>
                                 <div class="form-group mb-3">
                                     <label class="form-label">Spesifikasi</label>
                                     <input type="text" class="form-control" name="spesifikasi_sparepart"
-                                        value="{{ $stock->sparepart->spesifikasi_sparepart }}" readonly
+                                        value="{{ $stock->sparepart->spesifikasi_sparepart }}" disabled
                                         placeholder="Masukkan Spesifikasi">
                                 </div>
                                 <div class="form-group mb-1">
@@ -324,15 +322,15 @@
                                     </div>
                                     <div class="form-group col-md-3 mb-1">
                                         <input type="text" class="form-control" name="satuan"
-                                            value="{{ $stock->sparepart->satuan }}" readonly
+                                            value="{{ $stock->sparepart->satuan }}" disabled
                                             placeholder="Masukkan Satuan">
                                     </div>
                                 </div>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                     </form>
                 </div>
@@ -340,16 +338,15 @@
         </div>
     @endforeach
     <!--Detail Modal -->
+
     @foreach ($spareparts as $stock)
-        <div class="modal fade" id="detailproduct-{{ $stock->id }}" tabindex="-1" role="dialog"
-            aria-labelledby="detailproductLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="detailproduct-{{ $stock->id }}" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header merah text-putih">
-                        <h5 class="modal-title" id="exampleModalLabel">Detail Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Detail Product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="card-body">
@@ -363,7 +360,7 @@
                             <div>
                                 <strong class="form-label">Product Name</strong>
                                 <div>
-                                    <label>{{ $stock->sparepart->nama_sparepart }} </label>
+                                    <label>{{ $stock->sparepart->category->nama_category }} </label>
                                 </div>
                             </div>
                             <div>
@@ -381,7 +378,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn merah text-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
