@@ -17,6 +17,7 @@ use App\Models\sales;
 use App\Models\sample;
 use App\Models\trafo;
 use App\Models\form;
+use App\Models\formReport;
 use App\Models\order;
 use App\Models\revisi;
 use App\Models\scope;
@@ -407,50 +408,105 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        formReport::create([
+            'id_formreport' => $faker->numberBetween(100, 999),
+            'field_formreport' => json_encode([
+                'hidrogen' => 0,
+                'etana' => 0,
+                'etilena' => 0,
+                'asetilena' => 0,
+                'karbonDioksida' => 0,
+                'metana' => 0,
+                'karbonMonoksida' => 0,
+                'co2coRatio' => 0
+            ]),
+            'id_sample' => '67',
+            'id_lab'=> '5',
+        ]);
+
+        formReport::create([
+            'id_formreport' => $faker->numberBetween(100, 999),
+            'field_formreport' => json_encode([
+                '5mhf' => 0,
+                '2fol' => 0,
+                '2fal' => 0,
+                '2acf' => 0,
+                '5mef' => 0,
+                'total_2fal' => 0,
+                'total_furan' => 0,
+                'estimate_dp' => 0
+            ]),
+            'id_sample' => '77',
+            'id_lab'=> '6',
+        ]);
+
+        formReport::create([
+            'id_formreport' => $faker->numberBetween(100, 999),
+            'field_formreport' => json_encode([
+                'Color' => 0,
+                'bdv' => 0,
+                'ift' => 0,
+                'tan' => 0,
+                'wc' => 0,
+                'oqin' => 0,
+                'sediment_and_sludge' => 0,
+                'density' => 0,
+                'pcb' => 0,
+                'corrosive_sulfur' => 0,
+                'flash_point' => 0,
+                'kategoriHasil_oa' => 0,
+                'rekomendasi_oa' => 0,
+            ]),
+            'id_sample' => '87',
+            'id_lab'=> '7',
+        ]);
+
         form::create([
-            'id_form' => '1',
+            'id_form' => '22',
             'field_form' => json_encode([
-                'Hidrogen (H2)' => 0,
-                'Etana (C2H6)' => 0,
-                'Etilena (C2H4)' => 0,
-                'Asetilena (C2H2)' => 0,
-                'Karbon Dioksida (CO2)' => 0,
-                'Metana (CH4)' => 0,
-                'Karbon Monoksida (CO)' => 0,
-                'CO2/CO ratio' => 0
+                'hidrogen' => 0,
+                'etana' => 0,
+                'etilena' => 0,
+                'asetilena' => 0,
+                'karbonDioksida' => 0,
+                'metana' => 0,
+                'karbonMonoksida' => 0,
+                'co2coRatio' => 0
             ]),
             'id_scope' => '220',
         ]);
 
         form::create([
-            'id_form' => '2',
+            'id_form' => '23',
             'field_form' => json_encode([
-                '5MHF' => 0,
-                '2FOL' => 0,
-                '2FAL' => 0,
-                '2ACF' => 0,
-                '5MEF' => 0,
-                'Total 2FAL' => 0,
-                'Total Furan' => 0,
-                'Estimate DP' => 0
+                '5mhf' => 0,
+                '2fol' => 0,
+                '2fal' => 0,
+                '2acf' => 0,
+                '5mef' => 0,
+                'total_2fal' => 0,
+                'total_furan' => 0,
+                'estimate_dp' => 0
             ]),
             'id_scope' => '842',
         ]);
 
         form::create([
-            'id_form' => '3',
+            'id_form' => '24',
             'field_form' => json_encode([
-                'Color / Appearance' => 0,
-                'Breakdown Voltage (Dieclectric Strength)' => 0,
-                'Interfacial Tension' => 0,
-                'Total Acid Number (TAN)' => 0,
-                'Water Content' => 0,
-                'Oil Quality Index (OQIN)' => 0,
-                'Sediment & Sludge' => 0,
-                'Density' => 0,
-                'PCB' => 0,
-                'Corrosive Sulfur' => 0,
-                'Flash Point' => 0,
+                'Color' => 0,
+                'bdv' => 0,
+                'ift' => 0,
+                'tan' => 0,
+                'wc' => 0,
+                'oqin' => 0,
+                'sediment_and_sludge' => 0,
+                'density' => 0,
+                'pcb' => 0,
+                'corrosive_sulfur' => 0,
+                'flash_point' => 0,
+                'kategoriHasil_oa' => 0,
+                'rekomendasi_oa' => 0,
             ]),
             'id_scope' => '399',
         ]);
@@ -533,8 +589,8 @@ class DatabaseSeeder extends Seeder
             'kva' => '872',
             'merk' => 'trafindo',
             'year' => '2020',
-            'tegangan_hv' => '2034',
-            'tegangan_lv' => '2034',
+            // 'tegangan_hv' => '2034',
+            // 'tegangan_lv' => '2034',
             'voltage' => '1212',
             'vg' => '1222',
             'tag_number' => '11',
@@ -554,6 +610,7 @@ class DatabaseSeeder extends Seeder
             'tag_number' => '11',
             'temperatur_oil' => '556',
             'volume_oil' => '60',
+            'Warna_oil' => 'merah',
             'id_customer' => '23',
         ]);
 

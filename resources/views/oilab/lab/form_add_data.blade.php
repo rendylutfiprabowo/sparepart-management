@@ -9,12 +9,12 @@
         <!-- form salesorder -->
         <div>
             <div>
-                <form method="post" action="/orderlist/{{ $salesorderoil->no_so_solab }}/{{$id_history}}/add">
+                <form method="post" action="/orderlist/{{ $salesorderoil->no_so_solab }}/{{ $id_history }}/add">
                     @csrf
                     <div class="container-fluid">
                         <div class="mb-3">
                             <label for="serial_number" class="form-label">Serial Number</label>
-                            <input type="text" class="form-control" id="serial_number" name="serial_number"
+                            <input type="number" class="form-control" id="serial_number" name="serial_number"
                                 placeholder="Enter No Serial Number">
                         </div>
                         <div class="mb-3">
@@ -32,24 +32,24 @@
                         </div>
                         <div class="mb-3">
                             <label for="merk" class="form-label">Merk</label>
-                            <input class="form-control" list="datalistOptions" id="merk" name="merk"
+                            <input type="text" class="form-control" list="datalistOptions" id="merk" name="merk"
                                 placeholder="Enter Merk">
                         </div>
                         <div class="mb-3">
                             <label for="year" class="form-label">Trafo Year</label>
-                            <input type="text" class="form-control" id="year" name="year"
+                            <input type="number" class="form-control" id="year" name="year"
                                 placeholder="Enter Trafo Year">
                         </div>
-                        <div class="mb-3">
-                            <label for="tegangan_hv" class="form-label">Tegangan HV</label>
-                            <input type="number" class="form-control" id="tegangan_hv" name="tegangan_hv"
+                        {{-- <div class="mb-3">
+                            <label for="tegangan_hv" class="form-label">Tegangan</label>
+                            <input type="number" class="form-control" id="tegangan" name="tegangan_hv"
                                 placeholder="Enter Tegangan HV">
                         </div>
                         <div class="mb-3">
                             <label for="tegangan_lv" class="form-label">Tegangan LV</label>
                             <input type="number" class="form-control" id="tegangan_lv" name="tegangan_lv"
                                 placeholder="Enter Tegangan LV">
-                        </div>
+                        </div> --}}
                         <div class="mb-3">
                             <label for="voltage" class="form-label">Voltage</label>
                             <input type="text" class="form-control" id="voltage" name="voltage"
@@ -61,8 +61,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="tag_number" class="form-label">Tag Number</label>
-                            <input type="number" class="form-control" list="datatagnumber" id="tag_number" name="tag_number"
-                                placeholder="Enter Tag Number">
+                            <input type="number" class="form-control" list="datatagnumber" id="tag_number"
+                                name="tag_number" placeholder="Enter Tag Number">
                         </div>
                         <div class="mb-3">
                             <label for="temp_oil" class="form-label">Temp. Oil (°C)</label>

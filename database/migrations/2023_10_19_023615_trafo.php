@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('kva')->nullable();
             $table->string('merk')->nullable();
             $table->string('year')->nullable();
-            $table->string('tegangan_hv')->nullable();
-            $table->string('tegangan_lv')->nullable();
+            // $table->string('tegangan_hv')->nullable();
+            // $table->string('tegangan_lv')->nullable();
             $table->string('voltage')->nullable();
             $table->string('vg')->nullable();
             $table->string('tag_number')->nullable();

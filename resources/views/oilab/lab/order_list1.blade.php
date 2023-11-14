@@ -81,17 +81,17 @@
                                             @foreach ($history->samples as $sample)
                                                 @if ($sample->scope->nama_scope === 'DGA')
                                                     <div>
-                                                        <a href="/form_dga_lab" class="pdf-link"><i
+                                                        <a href="/form_dga_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
                                                                 class="fa-regular fa-file fa-lg"></i></a>
                                                     </div>
                                                 @elseif($sample->scope->nama_scope === 'Furan')
                                                     <div>
-                                                        <a href="/form_furan_lab" class="pdf-link"><i
+                                                        <a href="/form_furan_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
                                                                 class="fa-regular fa-file fa-lg"></i></a>
                                                     </div>
                                                 @elseif($sample->scope->nama_scope === 'OA')
                                                     <div>
-                                                        <a href="/form_oa_lab" class="pdf-link"><i
+                                                        <a href="/form_oa_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
                                                                 class="fa-regular fa-file fa-lg"></i></a>
                                                     </div>
                                                 @endif
