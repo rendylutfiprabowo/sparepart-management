@@ -160,19 +160,19 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
-    Route::get('/form_dga_lab', function () {
+    Route::get('/form_dga_lab/{id}', function () {
         return view('oilab.lab.form_dga_lab');
     });
-    Route::get('/form_furan_lab', function () {
-        return view('oilab.lab.form_furan_lab');
-    });
-    Route::get('/form_oa_lab', function () {
-        return view('oilab.lab.form_oa_lab');
-    });
-    Route::get('/form_dga1_lab', function () {
+        Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
-    Route::get('generate-pdf', [pdfController::class, 'generatePdf']);
+    Route::get('/form_furan_lab/{id}', function () {
+        return view('oilab.lab.form_furan_lab');
+    });
+    Route::get('/form_oa_lab/{id}', function () {
+        return view('oilab.lab.form_oa_lab');
+    });
+    Route::get('generate-pdf', [pdfController::class, 'generatepdf']);
 });
 
 

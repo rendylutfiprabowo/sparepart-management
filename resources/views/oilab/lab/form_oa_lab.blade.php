@@ -26,61 +26,71 @@
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Breakdown Voltage (Dielectric
                             Strength)</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Breakdown Voltage" name="Breakdown Voltage (Dielectric Strength">
-                        
+                        placeholder="Enter Result Breakdown Voltage" name="bdv">
+
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Color / Appereance</strong></label>
                     <input type="text" class="form-control" i 2d="exampleFormControlInput1"
-                        placeholder="Enter Result Color / Appereance" name="Color / Appearance">
+                        placeholder="Enter Result Color / Appereance" name="color">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Interfacial Tension</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Interfacial Tension" name="Interfacial Tension">
+                        placeholder="Enter Result Interfacial Tension" name="ift">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Total Acid Number
                             (TAN)</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Total Acid Number" name="Total Acid Number (TAN)">
+                        placeholder="Enter Result Total Acid Number" name="tan">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Water Content</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Water Content" name="Water Content">
+                        placeholder="Enter Result Water Content" name="wc">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Oil Quality Index
                             (OQIN)</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Oil Quality Index (OQIN)" name="Oil Quality Index (OQIN)">
+                        placeholder="Enter Result Oil Quality Index (OQIN)" name="oqin">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Sediment & Sludge</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Sediment & Sludge" name="Sediment & Sludge">
+                        placeholder="Enter Result Sediment & Sludge" name="sediment_and_sludge">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Density</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Density" name="Density">
+                        placeholder="Enter Result Density" name="density">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>PCB</strong></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result PCB" name="PCB">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result PCB"
+                        name="pcb">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Corrosive Sulfur</strong></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter Result Corrosive Sulfur" name="Corrosive Sulfur">
+                        placeholder="Enter Result Corrosive Sulfur" name="corrosive_sulfur">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label"> <strong>Flash Point</strong></label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Flash Point" name="Flash Point">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Flash Point"
+                        name="flash_point">
                 </div>
-
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"> <strong>Kategori Hasil OA</strong></label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter kategori Hasil OA"
+                        name="kategorihasil_oa">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"> <strong>Rekomendasi OA</strong></label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter rekomendasi OA"
+                        name="rekomendasi_oa">
+                </div>
                 <!-- button back -->
                 <div class="row mb-5">
                     <div class="d-flex col justify-content-start">

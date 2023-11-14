@@ -16,7 +16,6 @@ class formReport extends Model
     protected $fillable = [
         'id_formreport',
         'field_formreport',
-        'value_formreport',
         'id_sample',
         'id_lab'
     ];

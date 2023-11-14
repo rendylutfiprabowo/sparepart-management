@@ -16,35 +16,35 @@
         <div class="card p-4 rounded-4" style="border: 2px solid red;">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Hidrogen </strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Hidrogen" name="Hidrogen (H2)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Hidrogen" name="hidrogen">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Etana (C2H6)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Etana" name="Etana (C2H6)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Etana" name="etana">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Etilena (C2H4)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Etilena" name="Etilena (C2H4)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Etilena" name="etilena">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Asetilena (C2H2)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Asetilena" name="Asetilena (C2H2)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Asetilena" name="asetilena">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Karbon Dioksida (CO2)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Karbon Dioksida" name="Karbon Dioksida (CO2)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Karbon Dioksida" name="karbonDioksida">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Metana (CH4)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Metana" name="Metana (CH4)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Metana" name="metana">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Karbon Monoksida (CH4)</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Karbon Monoksida" name="Karbon Monoksida (CO)">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Karbon Monoksida" name="karbonMonoksida">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>CO2/CO Ratio</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Ratio" name="CO2/CO ratio">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Ratio" name="co2coRatio">
             </div>
 
             <!-- button back -->
@@ -55,7 +55,7 @@
                     </a>
                 </div>
                 <div class="d-flex col justify-content-end">
-                    <a href="/form_dga1_lab" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    <button class="submit"></button>
                         Next
                     </a>
                 </div>

@@ -47,8 +47,8 @@ class labController extends Controller
             'kva' => 'required',
             'merk' => 'required',
             'year' => 'required',
-            'tegangan_hv' => 'required',
-            'tegangan_lv' => 'required',
+            // 'tegangan_hv' => 'required',
+            // 'tegangan_lv' => 'required',
             'voltage' => 'required',
             'vg' => 'required',
             'tag_number' => 'required',
@@ -69,8 +69,8 @@ class labController extends Controller
             $trafos->kva = $validated['kva'];
             $trafos->merk = $validated['merk'];
             $trafos->year = $validated['year'];
-            $trafos->tegangan_hv = $validated['tegangan_hv'];
-            $trafos->tegangan_lv = $validated['tegangan_lv'];
+            // $trafos->tegangan_hv = $validated['tegangan_hv'];
+            // $trafos->tegangan_lv = $validated['tegangan_lv'];
             $trafos->voltage = $validated['voltage'];
             $trafos->vg = $validated['vg'];
             $trafos->tag_number = $validated['tag_number'];

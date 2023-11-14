@@ -22,35 +22,35 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>5HMF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5HMF" name="5MHF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5HMF" name="5mhf">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2FOL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FOL" name="2FOL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FOL" name="2fol">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2FAL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FAL" name="2FAL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2FAL" name="2fal">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>2ACF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2ACF" name="2ACF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 2ACF" name="2acf">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>5MEF</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5MEF" name="5MEF">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result 5MEF" name="5mef">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Total 2FAL</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total 2FAL" name="Total 2FAL">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total 2FAL" name="total_2fal">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Total Furan</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Furan" name="Total Furan">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Total Furan" name="total_furan">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label"> <strong>Estimate DP</strong></label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Estimate DP" name="Estimate DP">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Result Estimate DP" name="estimate_dp">
             </div>
 
             <!-- button back -->
