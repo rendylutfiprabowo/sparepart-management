@@ -41,6 +41,16 @@
                                 placeholder="Enter Trafo Year">
                         </div>
                         <div class="mb-3">
+                            <label for="tegangan_hv" class="form-label">Tegangan HV</label>
+                            <input type="number" class="form-control" id="tegangan_hv" name="tegangan_hv"
+                                placeholder="Enter Tegangan HV">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tegangan_lv" class="form-label">Tegangan LV</label>
+                            <input type="number" class="form-control" id="tegangan_lv" name="tegangan_lv"
+                                placeholder="Enter Tegangan LV">
+                        </div>
+                        <div class="mb-3">
                             <label for="voltage" class="form-label">Voltage</label>
                             <input type="text" class="form-control" id="voltage" name="voltage"
                                 placeholder="Enter Voltage">
@@ -63,6 +73,11 @@
                             <label for="volume_oil" class="form-label">Volume Oil (Liter)</label>
                             <input type="number" class="form-control" id="volume_oil" name="volume_oil"
                                 placeholder="Enter Volume Oil">
+                        </div>
+                        <div class="mb-3">
+                            <label for="warna_oil" class="form-label">Warna Oil</label>
+                            <input type="text" class="form-control" id="warna_oil" name="warna_oil"
+                                placeholder="Enter Warna Oil">
                         </div>
                         <div>
 

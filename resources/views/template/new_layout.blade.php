@@ -18,7 +18,6 @@
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
-    
 </head>
 
 <body class="bg-secondary-subtle">

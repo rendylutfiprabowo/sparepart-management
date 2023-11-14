@@ -19,7 +19,9 @@ class itemtestController extends Controller
     {
         return view('oilab.lab.index_lab');
     }
+    
 
+    
     public function notesitem()
     {
         $salesorderoil = solab::all()->whereNotNull('id_project');
@@ -28,26 +30,28 @@ class itemtestController extends Controller
     }
 
     public function storenotes(Request $request, $id)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            "notes_reportsample" => "required",
-        ]);
-        $faker = Faker::create();
-        $history  = history::findOrFail($id);
+{
+    $history = history::findOrFail($id);
+    if (!empty($history->note)) {
+        return redirect('/item_test')->with('error', 'Catatan sudah ada.');
+    }
 
-        if ($validated) {
-            // Simpan catatan
-            $history->note = $validated['notes_reportsample'];
-            $history->save();
+    // Validasi input
+    $validated = $request->validate([
+        "notes_reportsample" => "required",
+    ]);
 
-            if ($history->samples) {
-                foreach ($history->samples as $sample) {
-                    $sample->status_sample = true;
-                    $sample->save();
-                }
+    if ($validated) {
+        $history->note = $validated['notes_reportsample'];
+        $history->save();
+
+        if ($history->samples) {
+            foreach ($history->samples as $sample) {
+                $sample->status_sample = true;
+                $sample->save();
             }
-            return redirect('/item_test');
         }
+        return redirect('/item_test')->with('success', 'Catatan berhasil disimpan.');
+     }
     }
 }
