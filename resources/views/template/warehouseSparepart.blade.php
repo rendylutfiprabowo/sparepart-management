@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/warehouse/stock*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
+                    <a class="nav-link {{ Request::is('warehouse/stock*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
                         href="/warehouse/stock">
                         <i class="bi bi-box"></i>
                         Stock
@@ -40,8 +40,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('warehouse/branch/request-item*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
-                        href="#">
+                    <a class="nav-link {{ Request::is('warehouse/distribution*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
+                        href="/warehouse/distribution">
                         <i class="bi bi-clipboard2-plus"></i>
                         Request Items
                     </a>

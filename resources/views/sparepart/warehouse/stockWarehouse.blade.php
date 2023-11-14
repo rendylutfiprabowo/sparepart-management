@@ -9,27 +9,34 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="col-md-3 dropdown mb-3">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        List Cabang
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
-                        @foreach ($stores as $store)
-                            <a class="dropdown-item"
-                                href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
-                        @endforeach
-                    </ul>
+                <div class="col">
+                    <div class="d-flex justify-content-start">
+                        <div class="dropdown mb-3 me-3">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                List Cabang
+                            </a>
+                            <div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
+                                    @foreach ($stores as $store)
+                                        <a class="dropdown-item"
+                                            href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addproduct"><i class="fa-solid fa-plus"></i> Add Product
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
-                            class="fa-solid fa-plus"></i> Add Product
-                    </button>
-                </div>
-                <!-- Button trigger modal -->
-                <div class="col-md-6">
+                <div class="col">
+                    <div class="d-flex justify-content-end">
+                        <x-searchbar url="/{{ request()->path() }}" value="{{ request()->input('search') }}" />
+                    </div>
                 </div>
             </div>
             @if (session('success'))
@@ -50,61 +57,72 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($spareparts as $no => $stock)
+                    <div class="mt-3">
+                        @foreach ($notifs as $notif)
+                            {{-- @dd($notif->sparepart->category->nama_category) --}}
+                            @if ($notif->qty_stock == 0)
+                                <div class="alert alert-danger">
+                                    Stock{!! '<strong> ' .
+                                        $notif->sparepart->category->nama_category .
+                                        '</strong>' .
+                                        '<strong> ' .
+                                        $notif->qty_stock .
+                                        ' ' .
+                                        $notif->sparepart->satuan .
+                                        '</strong>' .
+                                        ' di store ' .
+                                        '<strong>' .
+                                        $notif->store_sparepart->nama_store .
+                                        '</strong>' !!}
+                                    abisss!!!!
+                                </div>
+                            @else
+                                <div class="alert alert-danger">
+                                    Stock{!! '<strong> ' .
+                                        $notif->sparepart->category->nama_category .
+                                        '</strong>' .
+                                        ' sisa ' .
+                                        ' ' .
+                                        '<strong> ' .
+                                        $notif->qty_stock .
+                                        ' ' .
+                                        $notif->sparepart->satuan .
+                                        '</strong>' .
+                                        ' di store ' .
+                                        '<strong>' .
+                                        $notif->store_sparepart->nama_store .
+                                        '</strong>' !!}
+                                    mau
+                                    abisss!!!!
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    @php
+                        $no = ($spareparts->currentPage() - 1) * $spareparts->perPage();
+                    @endphp
+                    @foreach ($spareparts as $stock)
                         <tr>
-                            <td class="table-plus">{{ $no + 1 }}</td>
+                            <td class="table-plus">{{ ++$no }}</td>
                             <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
                             <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
                             <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
                             <td class="table-plus" style="width:40%">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
                             <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
-                            {{-- @dd($stock->sparepart) --}}
                             <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
                                     data-bs-target="#detailproduct-{{ $stock->id }}"><i
                                         class="fa-regular fa-file fa-lg"></i>
                                 </button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#addstock-{{ $stock->id }}"><i class="fa-solid fa-plus"></i>
-                                </button>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#editsafetystock-{{ $stock->id }}"><i
-                                        class="fa-solid fa-shield-heart"></i>
-                                </button>
-
-
+                                @if ($stock->id_store == Auth::user()->warehouse->store->id_store)
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addstock-{{ $stock->id }}"><i class="fa-solid fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#editsafetystock-{{ $stock->id }}"><i
+                                            class="fa-solid fa-shield-heart"></i>
+                                    </button>
+                                @endif
                             </td>
-                            @if ($stock->qty_stock <= 0)
-                                <div class="alert alert-danger">
-                                    Stock{!! '<strong> ' .
-                                        $stock->sparepart->nama_sparepart .
-                                        '</strong>' .
-                                        '<strong> ' .
-                                        $stock->qty_stock .
-                                        ' ' .
-                                        $stock->sparepart->satuan .
-                                        '</strong>' !!}
-                                    abisss!!!!
-                                </div>
-                            @elseif ($stock->isBelowSafetyStock())
-                                <div class="alert alert-danger">
-                                    Stock{!! '<strong> ' .
-                                        $stock->sparepart->nama_sparepart .
-                                        '</strong>' .
-                                        ' sisa ' .
-                                        ' ' .
-                                        '<strong> ' .
-                                        $stock->qty_stock .
-                                        ' ' .
-                                        $stock->sparepart->satuan .
-                                        '</strong>' .
-                                        ' di ' .
-                                        '<strong> ' .
-                                        $stock->store_sparepart->nama_store .
-                                        '</strong> ' !!}
-                                    mau
-                                    abisss!!!!
-                                </div>
-                            @endif
                         </tr>
                     @endforeach
                 </tbody>
@@ -259,8 +277,8 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -338,8 +356,8 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -387,7 +405,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

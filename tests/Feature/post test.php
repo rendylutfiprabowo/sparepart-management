@@ -13,7 +13,5 @@ class post test extends TestCase
      */
     public function test_example(): void
     {
-    
-        
     }
 }
