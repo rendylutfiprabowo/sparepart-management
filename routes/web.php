@@ -116,6 +116,9 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
     Route::post('/warehouse/tools/request-item/distribution', [warehouseController::class, 'storeDistribution']);
+    Route::post('/warehouse/stock/branch/{id_stock}', [stockController::class, 'addStockBranch']);
+    Route::post('/warehouse/branch/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStockBranch']);
+
 });
 
 //Role Manager Center
@@ -131,6 +134,7 @@ Route::middleware(['auth', 'warehouse-center'])->group(function () {
     Route::post('/warehouse/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStock']);
     Route::get('/warehouse/stock/{id_store}', [stockController::class, 'viewStockWarehouseToko']);
     Route::get('/warehouse/tools', [toolsController::class, 'viewToolsWarehouse']);
+    Route::get('/warehouse/distribution', [warehouseController::class, 'viewReqDistribution']);
     Route::get('/warehouse/tools/{id_store}', [toolsController::class, 'viewToolsWarehouseToko']);
 });
 

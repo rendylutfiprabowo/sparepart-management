@@ -34,13 +34,37 @@ class warehouseController extends Controller
     public function viewStockBranchId()
     {
         $id_store = Auth::User()->warehouse->id_store;
-        $stockSparepart = Auth::User()->warehouse->store->stock()->paginate(10);
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = Auth::User()->warehouse->store->stock()->with('sparepart', 'store_sparepart');
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
+        $stockSparepart = Auth::User()->warehouse->store->stock;
         $stores = storeSparepart::all();
+
+        $Notif = stockSparepart::where('id_store', $id_store)->whereColumn('safety_stock', '>=', 'qty_stock')->with('sparepart.category')
+            ->get();
+
         return view(
             'sparepart.branch.stockBranchWarehouse',
             [
                 'spareparts' => $stockSparepart,
+                'stocks' => $stocks,
                 'stores' => $stores,
+                'notifs' => $Notif,
                 'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
 
             ]
@@ -283,6 +307,14 @@ class warehouseController extends Controller
             }
         }
         return redirect('/warehouse/branch/request-item');
+    }
+
+    public function viewReqDistribution()
+    {
+        $distribution = distribution::all();
+        return view('sparepart.warehouse.distribution', [
+            'distribution' => $distribution,
+        ]);
     }
 
 
