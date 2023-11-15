@@ -91,10 +91,10 @@
                                         Order</span></a>
                             </li>
                             <!-- <li class="ms-4"><a href="/sales/oil/report"
-                                                                                                        class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
-                                                                                                            class="bi bi-file-earmark-check me-1"></i> <span
-                                                                                                            class="me-2">Report</span></a>
-                                                                                                </li> -->
+                                                                                                                        class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
+                                                                                                                            class="bi bi-file-earmark-check me-1"></i> <span
+                                                                                                                            class="me-2">Report</span></a>
+                                                                                                                </li> -->
                             <li class="ms-4"><a href="/sales/oil/sample"
                                     class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/sample*') ? 'text-white active-sidebar-link' : 'fw-normal' }}"><i
                                         class="bi bi-droplet-half me-1"></i> <span class="me-2">Report Sample</span></a>
@@ -108,12 +108,10 @@
                 </li>
             </ul>
 
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-4 mt-4 mb-3 text-muted">
                 <span class="text-secondary">Menu Lainnya</span>
-                <a class="link-secondary" href="#" aria-label="Add a new report">
-                    <span data-feather="plus-circle"></span>
-                </a>
             </h6>
+
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
                     <a class="nav-link rounded {{ Request::is('sales/channels/indexChannels') ? 'text-white active-sidebar-link' : 'fw-normal' }} "
