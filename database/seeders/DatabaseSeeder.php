@@ -589,6 +589,7 @@ class DatabaseSeeder extends Seeder
             'kva' => '872',
             'merk' => 'trafindo',
             'year' => '2020',
+            'area' => 'area 1',
             // 'tegangan_hv' => '2034',
             // 'tegangan_lv' => '2034',
             'voltage' => '1212',

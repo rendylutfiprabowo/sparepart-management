@@ -36,7 +36,7 @@ class sampleContoller extends Controller
             $form_dga = new formReport();
             $form_dga->id_formreport = $dga->id_sample . '-220';
             $form_dga->field_formreport = form::where('id_scope', '220')->get()->first()->field_form;
-            $form_dga->value_formreport = $form_dga->field_formreport;
+            // $form_dga->value_formreport = $form_dga->field_formreport;
             $form_dga->id_sample = $dga->id_sample;
             $form_dga->id_lab = '1';
             $form_dga->save();
@@ -55,7 +55,7 @@ class sampleContoller extends Controller
             $form_furan = new formReport();
             $form_furan->id_formreport = $furan->id_sample . '-842';
             $form_furan->field_formreport = form::where('id_scope', '842')->get()->first()->field_form;
-            $form_furan->value_formreport = $form_furan->field_formreport;
+            // $form_furan->value_formreport = $form_furan->field_formreport;
             $form_furan->id_sample = $furan->id_sample;
             $form_furan->id_lab = '1';
             $form_furan->save();
@@ -109,7 +109,7 @@ class sampleContoller extends Controller
             };
 
             $form_oa->field_formreport = json_encode($data);
-            $form_oa->value_formreport = $form_oa->field_formreport;
+            // $form_oa->value_formreport = $form_oa->field_formreport;
             $form_oa->id_sample = $oa->id_sample;
             $form_oa->id_lab = '1';
             $form_oa->save();

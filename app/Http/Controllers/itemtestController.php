@@ -43,12 +43,12 @@ class itemtestController extends Controller
         $history->note = $validated['notes_reportsample'];
         $history->save();
 
-        if ($history->samples) {
-            foreach ($history->samples as $sample) {
-                $sample->status_sample = true;
-                $sample->save();
-            }
-        }
+        // if ($history->samples) {
+        //     foreach ($history->samples as $sample) {
+        //         $sample->status_sample = true;
+        //         $sample->save();
+        //     }
+        // }
         return redirect('/item_test')->with('success', 'Catatan berhasil disimpan.');
      }
     }

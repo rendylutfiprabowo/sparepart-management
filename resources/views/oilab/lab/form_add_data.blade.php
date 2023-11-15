@@ -40,6 +40,11 @@
                             <input type="number" class="form-control" id="year" name="year"
                                 placeholder="Enter Trafo Year">
                         </div>
+                        <div class="mb-3">
+                            <label for="area" class="form-label">Area</label>
+                            <input type="text" class="form-control" id="area" name="area"
+                                placeholder="Enter Area">
+                        </div>
                         {{-- <div class="mb-3">
                             <label for="tegangan_hv" class="form-label">Tegangan</label>
                             <input type="number" class="form-control" id="tegangan" name="tegangan_hv"
@@ -131,8 +136,7 @@
                             </div>
                             <div class="d-flex col justify-content-end">
                                 <button type="submit"
-                                    class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                                    Submit
+                                    class="btn mb-0 btn-success btn-md shadow-bottom font-weight-bold  align-items-center mt-5">submit
                                 </button>
                             </div>
                         </div>
