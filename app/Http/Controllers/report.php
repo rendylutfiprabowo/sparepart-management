@@ -77,7 +77,7 @@ class report extends Controller
 
             ]
         );
-        return redirect()->back();
+        return view('oilab.lab.order_list');
     }
 
     public function storeOA(Request $request)
@@ -122,6 +122,6 @@ class report extends Controller
 
             ]
         );
-        return redirect()->back();
+        return view('oilab.lab.order_list');
     }
 }

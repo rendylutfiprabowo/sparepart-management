@@ -1,50 +1,56 @@
 @extends('template.salesCrm')
 @section('contents')
-<!-- lOGO TRAFOINDO -->
-<div class="container d-flex justify-content-center align-items-center">
-    <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-</div>
+    <!-- lOGO TRAFOINDO -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
+    </div>
 
-<!-- form salesorder -->
-<div>
-    <form method="post" action="/sales/oil/salesorder/add">
-        @csrf
-        <div class="container-fluid">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">No SO</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SO" name="no_so_solab">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">No SPK</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SPK" name="no_spk_solab">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
-                <select class="form-control" id="select-customers" placeholder="Enter Customer Name" name="id_customer">
-                    @foreach($customers as $key)
-                    <option value="{{$key['id_customer']}}">{{$key['nama_customer']}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Project</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Project" name="nama_project">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-                <input class="form-control" type="text" placeholder="{{ $sales ? $sales->nama_sales : '' }}" aria-label="Disabled input example" value="{{ $sales ? $sales->nama_sales : '' }}" name="nama_sales" disabled>
-                <input type="hidden" name="id_sales" value="{{$sales->id_sales}}">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat_project"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Transformer Units</label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Enter Traformer units" name="qty_trafo">
-            </div>
-            <!-- form input scope -->
-            {{-- <div>
+    <!-- form salesorder -->
+    <div>
+        <form method="post" action="/sales/oil/salesorder/add">
+            @csrf
+            <div class="container-fluid">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">No SO</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SO"
+                        name="no_so_solab">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">No SPK</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter No SPK"
+                        name="no_spk_solab">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Customer Name</label>
+                    <select class="form-control" id="select-customers" placeholder="Enter Customer Name" name="id_customer">
+                        @foreach ($customers as $key)
+                            <option value="{{ $key['id_customer'] }}">{{ $key['nama_customer'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Project</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Project"
+                        name="nama_project">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
+                    <input class="form-control" type="text" placeholder="{{ $sales ? $sales->nama_sales : '' }}"
+                        aria-label="Disabled input example" value="{{ $sales ? $sales->nama_sales : '' }}" name="nama_sales"
+                        disabled>
+                    <input type="hidden" name="id_sales" value="{{ $sales->id_sales }}">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Addres</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat_project"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Transformer Units</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Enter Traformer units" name="qty_trafo">
+                </div>
+                <!-- form input scope -->
+                {{-- <div>
                 <label for="exampleFormControlTextarea1" class="form-label">Input Scope</label>
             </div>
             <div class="row mb-3 border p-3" style="background-color: white;">
@@ -202,78 +208,79 @@
                     </div>
                 </div>
             </div> --}}
-    </form>
+        </form>
 
-    <!-- button back -->
-    <div class="row  mb-5">
-        <div class="d-flex col justify-content-start">
-            <a href="/sales/oil/salesorder" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                Back
-            </a>
-        </div>
-        <div class="d-flex col justify-content-end">
-            <button type="submit" class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
-                Submit
-            </button>
+        <!-- button back -->
+        <div class="row  mb-5">
+            <div class="d-flex col justify-content-start">
+                <a href="/sales/oil/salesorder"
+                    class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                    Back
+                </a>
+            </div>
+            <div class="d-flex col justify-content-end">
+                <button type="submit"
+                    class="btn mb-0 btn-success btn-md shadow-bottom font-weight-bold  align-items-center mt-5">submit
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
 
-<script>
-    // Ambil elemen-elemen yang diperlukan
-    var quantityInput1 = document.getElementById("quantityInput1");
-    var minusButton1 = document.getElementById("minusButton1");
-    var plusButton1 = document.getElementById("plusButton1");
+    <script>
+        // Ambil elemen-elemen yang diperlukan
+        var quantityInput1 = document.getElementById("quantityInput1");
+        var minusButton1 = document.getElementById("minusButton1");
+        var plusButton1 = document.getElementById("plusButton1");
 
-    var quantityInput2 = document.getElementById("quantityInput2");
-    var minusButton2 = document.getElementById("minusButton2");
-    var plusButton2 = document.getElementById("plusButton2");
+        var quantityInput2 = document.getElementById("quantityInput2");
+        var minusButton2 = document.getElementById("minusButton2");
+        var plusButton2 = document.getElementById("plusButton2");
 
-    var quantityInput3 = document.getElementById("quantityInput3");
-    var minusButton3 = document.getElementById("minusButton3");
-    var plusButton3 = document.getElementById("plusButton3");
+        var quantityInput3 = document.getElementById("quantityInput3");
+        var minusButton3 = document.getElementById("minusButton3");
+        var plusButton3 = document.getElementById("plusButton3");
 
-    // Tambahkan event listener untuk tombol minus pada Baris Pertama
-    minusButton1.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput1.value);
-        if (currentValue > 0) {
-            quantityInput1.value = (currentValue - 1).toString();
-        }
-    });
+        // Tambahkan event listener untuk tombol minus pada Baris Pertama
+        minusButton1.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput1.value);
+            if (currentValue > 0) {
+                quantityInput1.value = (currentValue - 1).toString();
+            }
+        });
 
-    // Tambahkan event listener untuk tombol plus pada Baris Pertama
-    plusButton1.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput1.value);
-        quantityInput1.value = (currentValue + 1).toString();
-    });
+        // Tambahkan event listener untuk tombol plus pada Baris Pertama
+        plusButton1.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput1.value);
+            quantityInput1.value = (currentValue + 1).toString();
+        });
 
-    // Tambahkan event listener untuk tombol minus pada Baris Kedua
-    minusButton2.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput2.value);
-        if (currentValue > 0) {
-            quantityInput2.value = (currentValue - 1).toString();
-        }
-    });
+        // Tambahkan event listener untuk tombol minus pada Baris Kedua
+        minusButton2.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput2.value);
+            if (currentValue > 0) {
+                quantityInput2.value = (currentValue - 1).toString();
+            }
+        });
 
-    // Tambahkan event listener untuk tombol plus pada Baris Kedua
-    plusButton2.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput2.value);
-        quantityInput2.value = (currentValue + 1).toString();
-    });
+        // Tambahkan event listener untuk tombol plus pada Baris Kedua
+        plusButton2.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput2.value);
+            quantityInput2.value = (currentValue + 1).toString();
+        });
 
-    // Tambahkan event listener untuk tombol minus pada Baris Ketiga
-    minusButton3.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput3.value);
-        if (currentValue > 0) {
-            quantityInput3.value = (currentValue - 1).toString();
-        }
-    });
+        // Tambahkan event listener untuk tombol minus pada Baris Ketiga
+        minusButton3.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput3.value);
+            if (currentValue > 0) {
+                quantityInput3.value = (currentValue - 1).toString();
+            }
+        });
 
-    // Tambahkan event listener untuk tombol plus pada Baris Ketiga
-    plusButton3.addEventListener("click", function() {
-        var currentValue = parseInt(quantityInput3.value);
-        quantityInput3.value = (currentValue + 1).toString();
-    });
-</script>
+        // Tambahkan event listener untuk tombol plus pada Baris Ketiga
+        plusButton3.addEventListener("click", function() {
+            var currentValue = parseInt(quantityInput3.value);
+            quantityInput3.value = (currentValue + 1).toString();
+        });
+    </script>
 @endsection
