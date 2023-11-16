@@ -88,37 +88,41 @@
                             <td class="table-plus">{{ $req->start_date }}</td>
                             <td class="table-plus">{{ $req->finish_date ? $req->finish_date : '-' }}</td>
                             <td class="table-plus">
-                                <div class="row justify-content-center">
+                                <div class="d-flex justify-content-center">
+                                    <div>
+                                        @if ($req->status == 'waiting')
+                                            <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
+                                                @csrf
+                                                <input type="hidden" name="status" value="on-technician">
+                                                <button type="submit" class="btn btn-link"><i
+                                                        class="fa-solid fa-circle-check"></i>
+                                                </button>
+                                            </form>
+                                    </div>
+                                    <div>
 
-                                    @if ($req->status == 'waiting')
-                                        <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
-                                            @csrf
-                                            <input type="hidden" name="status" value="on-technician">
-                                            <button type="submit" class="btn btn-link"><i
-                                                    class="fa-solid fa-circle-check"></i>
-                                            </button>
-                                        </form>
                                         <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
                                             @csrf
                                             <input type="hidden" name="status" value="rejected">
                                             <button type="submit" class="btn btn-link"><i
                                                     class="fa-regular fa-circle-xmark"></i></button>
                                         </form>
-                                    @elseif($req->status == 'return')
-                                        <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
-                                            @csrf
-                                            <input type="hidden" name="status" value="closed">
-                                            <button type="submit" class="btn btn-success">Accept
-                                            </button>
-                                        </form>
-                                    @endif
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                                    </div>
+                                @elseif($req->status == 'return')
+                                    <form method="post" action="/warehouse/tools/validasi/{{ $req->id_tools }}">
+                                        @csrf
+                                        <input type="hidden" name="status" value="closed">
+                                        <button type="submit" class="btn btn-success">Accept
+                                        </button>
+                                    </form>
+                    @endif
         </div>
+        </td>
+        </tr>
+        @endforeach
+        </tbody>
+        </table>
+    </div>
     </div>
     <!--Add Product Modal -->
     <div class="modal fade" id="addproduct" tabindex="-1" role="dialog" aria-labelledby="addproductLabel"
