@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\formReport;
+use App\Models\sample;
 use Illuminate\Http\Request;
 use Faker\Factory as Faker;
 
-class report extends Controller
+class reportController extends Controller
 {
     public function storeDGA(Request $request)
     {
@@ -44,9 +45,10 @@ class report extends Controller
         return view('oilab.lab.form_dga1_lab');
     }
 
-    public function storeFuran(Request $request)
+    public function storeFuran($id_solab,$id_sample,Request $request)
     {
-        // dd($request->all());
+        $sample = sample::where('id_sample', $id_sample)->firstOrFail();
+        $form = $sample->formReport;
         $faker = Faker::create();
         $request->validate([
             "mhf" => "required",
@@ -58,13 +60,7 @@ class report extends Controller
             "total_furan" => "required",
             "estimate_dp" => "required"
         ]);
-
-        formReport::create(
-            [
-                'id_formreport' => $faker->numberBetween(100, 999),
-                'id_sample' => $faker->numberBetween(100, 0),
-                'id_lab' => 1,
-                'field_formreport' => json_encode([
+        $input = json_encode([
                     '5mhf' => $request->mhf,
                     '2fol' => $request->fol,
                     '2fal' => $request->fal,
@@ -73,11 +69,19 @@ class report extends Controller
                     'total_2fal' => $request->total_2fal,
                     'total_furan' => $request->total_furan,
                     'estimate_dp' => $request->estimate_dp
-                ]),
-
-            ]
-        );
-        return view('oilab.lab.order_list');
+        ]);
+        $form->field_formreport = json_encode([
+                    '5mhf' => $request->mhf,
+                    '2fol' => $request->fol,
+                    '2fal' => $request->fal,
+                    '2acf' => $request->acf,
+                    '5mef' => $request->mef,
+                    'total_2fal' => $request->total_2fal,
+                    'total_furan' => $request->total_furan,
+                    'estimate_dp' => $request->estimate_dp
+        ]);
+        $form->save();
+        return redirect('orderlist/'.$id_solab);
     }
 
     public function storeOA(Request $request)

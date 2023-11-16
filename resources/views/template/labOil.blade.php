@@ -15,7 +15,7 @@
 
 <!-- Nav Item - Order List -->
 <li class="nav-item {{ Request::is('orderlist') ? 'active' : '' }}">
-    <a class="nav-link" href="orderlist">
+    <a class="nav-link" href="/orderlist">
         <i class="fa-solid fa-file-circle-check"></i>
         <span>Order List</span></a>
 </li>

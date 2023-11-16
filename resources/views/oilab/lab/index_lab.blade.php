@@ -1,93 +1,141 @@
 @extends('template.laboil')
 @section('content')
-<div>
+    <div>
 
-    <!-- Judul dan card -->
-    <div class="d-sm-flex align-items-center justify-content-between mt-4">
-        <h1 class="h3 mb-0 text-gray-800">Performance Overview</h1>
-    </div>
-    <div class="row mt-4">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body shadow">
-                    <h1 class="text-center font-weight-bold ">35</h1>
-                    <p class="text-center text-muted font-weight-bold">TEST IN PROGRESS</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate ">DGA : 12</p>
-                        </div>
-                        <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate">Furan : 10</p>
-                        </div>
-                        <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-truncate">OA : 30</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Judul dan card -->
+        <div class="d-sm-flex align-items-center justify-content-between mt-4">
+            <h1 class="h3 mb-0 text-gray-800 ">Performance Overview</h1>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body shadow">
-                    <h1 class="text-center font-weight-bold ">190</h1>
-                    <p class="text-center text-muted font-weight-bold">TEST COMPLETED</p>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-right text-muted font-weight-bold text-center">Last Month : 212</p>
+        <div class="row mt-4 d-flex justify-content-between">
+            <div class="col-lg-3">
+                <div class="card merah text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between ">
+                            <div>
+                                <h4><b>DGA</b></h4>
+                            </div>
+                            <div>
+                                <h3><i class="fa-solid fa-droplet"></i></h3>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body merah shadow">
-                    <h1 class="text-center text-putih font-weight-bold ">35</h1>
-                    <p class="text-center text-putih font-weight-bold">CUSTOMER</p>
-                    <hr style="background-color: #FFFFFF;">
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-right text-putih font-weight-bold text-center">Last Month : 20</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body merah shadow">
-                    <h1 class="text-center text-putih font-weight-bold ">30</h1>
-                    <p class="text-center text-putih font-weight-bold">PROJECT</p>
-                    <hr style="background-color: #FFFFFF;">
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-right text-putih font-weight-bold text-center">Last Month : 30</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="d-sm-flex align-items-center justify-content-between mt-4">
-        <h1 class="h3 mb-0 text-gray-800">Analytics Overview</h1>
-    </div>
-
-    <!-- Area Chart -->
-    <div class="card shadow mb-4 mt-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-muted">TEST EACH MONTH</h6>
-        </div>
-        <div class="card-body">
-            <div class="chart-area">
-                <canvas id="myAreaChart"></canvas>
+                        <div class="text-center mt-5">
+                            <h2><b>4</b></h2>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <hr>
-            Styling for the area chart can be found in the
-            <code>/js/demo/chart-area-demo.js</code> file.
+            <div class="col-lg-3">
+                <div class="card merah text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between ">
+                            <div>
+                                <h4><b>Furan</b></h4>
+                            </div>
+                            <div>
+                                <h3><i class="fa-solid fa-droplet"></i></h3>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <h2><b>1</b></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card merah text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between ">
+                            <div>
+                                <h4><b>OA</b></h4>
+                            </div>
+                            <div>
+                                <h3><i class="fa-solid fa-droplet"></i></h3>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <h2><b>1</b></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card merah text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between ">
+                            <div>
+                                <h4><b>Customer</b></h4>
+                            </div>
+                            <div>
+                                <h3><i class="fa-regular fa-building"></i><h3>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <h2><b>1</b></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        {{-- <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between">
+                            <div>PROJECT</div>
+                            <div>KANAN</div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <h1>4</h1>
+                        </div>
+                    </div>
+                    <div class="card-footer merah">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body ">
+                        <div class="d-flex justify-content-between">
+                            <div>CUSTOMER</div>
+                            <div>KANAN</div>
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <h1>4</h1>
+                        </div>
+                    </div>
+                    <div class="card-footer merah">
+
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
+        <div class="d-sm-flex align-items-center justify-content-between mt-4">
+            <h1 class="h3 mb-0 text-gray-800">Analytics Overview</h1>
+        </div>
+
+        <!-- Area Chart -->
+        <div class="card shadow mb-4 mt-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-muted">TEST EACH MONTH</h6>
+            </div>
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="myAreaChart"></canvas>
+                </div>
+                <hr>
+                Styling for the area chart can be found in the
+                <code>/js/demo/chart-area-demo.js</code> file.
+            </div>
         </div>
     </div>
-</div>
 @endsection
