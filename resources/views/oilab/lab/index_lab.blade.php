@@ -33,7 +33,7 @@
                                 <h4><b>Furan</b></h4>
                             </div>
                             <div>
-                                <h3><i class="fa-solid fa-droplet"></i></h3>
+                                <h3><i class="fa-solid fa-flask"></i></h3>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 <h4><b>OA</b></h4>
                             </div>
                             <div>
-                                <h3><i class="fa-solid fa-droplet"></i></h3>
+                                <h3><i class="fa-solid fa-flask-vial"></i></h3>
                             </div>
                         </div>
 
@@ -69,7 +69,8 @@
                                 <h4><b>Customer</b></h4>
                             </div>
                             <div>
-                                <h3><i class="fa-regular fa-building"></i><h3>
+                                <h3><i class="fa-solid fa-users"></i>
+                                    <h3>
                             </div>
                         </div>
 

@@ -166,19 +166,19 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
-    Route::get('/form_dga_lab/{id}', function () {
-        return view('oilab.lab.form_dga_lab');
-    });
-    Route::post('/form_dga_lab/{id}', [report::class, 'storeDGA']);
+    // Route::get('/form_dga_lab/{id}', function () {
+    //     return view('oilab.lab.form_dga_lab');
+    // });
+    // Route::post('/form_dga_lab/{id}', [reportController::class, 'storeDGA']);
 
     Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
 
-    Route::get('/form_oa_lab/{id}', function () {
-        return view('oilab.lab.form_oa_lab');
-    });
-    Route::post('/form_oa_lab/{id}', [report::class, 'storeOA']);
+    // Route::get('/form_oa_lab/{id}', function () {
+    //     return view('oilab.lab.form_oa_lab');
+    // });
+    // Route::post('/form_oa_lab/{id}', [reportController::class, 'storeOA']);
 });
 
 

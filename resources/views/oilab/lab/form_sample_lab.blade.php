@@ -25,14 +25,28 @@
                 <form action="/orderlist/{{ $sample->history->project->solab->no_so_solab }}/{{ $sample->id_sample }}"
                     method="post">
                     @csrf
-                    @dd($form)
+                    {{-- @dd($form) --}}
                     @foreach ($form as $key => $field)
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"> <strong>{{$key}} </strong></label>
+                            <label for="exampleFormControlInput1" class="form-label"> <strong>{{ $key }}
+                                </strong></label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Enter Result {{$key}}" name="{{$key}}" @if($field==-1) readonly value="Tidak Diisi" @endif>
+                                placeholder="Enter Result {{ $key }}" name="{{ $key }}"
+                                @if ($field == -1) readonly value="Tidak Diisi" @endif>
                         </div>
                     @endforeach
+                    <div class="row mb-5">
+                        <div class="d-flex col justify-content-start">
+                            <a href="/orderlist"
+                                class="btn mb-0 merah btn-md shadow-bottom font-weight-bold text-putih align-items-center mt-5">
+                                Back
+                            </a>
+                        </div>
+                        <div class="d-flex col justify-content-end">
+                            <button type="submit"
+                                class="btn mb-0 btn-success btn-md shadow-bottom font-weight-bold  align-items-center mt-5">submit
+                            </button>
+                        </div>
                 </form>
                 {{-- <form action="/orderlist/{{ $sample->history->project->solab->no_so_solab }}/{{ $sample->id_sample }}"
                     method="post">
