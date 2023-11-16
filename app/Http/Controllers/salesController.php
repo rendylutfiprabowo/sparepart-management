@@ -24,7 +24,8 @@ class salesController extends Controller
     // ================ OIL LAB ============================
     public function indexOil()
     {
-        return view('crm.sales.oilab.indexOil');
+        $dataOilCustomers = solab::all();
+        return view('crm.sales.oilab.indexOil', compact('dataOilCustomers'));
     }
 
     public function historyOil()
@@ -79,7 +80,7 @@ class salesController extends Controller
         $sample = sample::all();
         // $reportSample = reportSample::all();
         // dd($reportSample);
-        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample','histories'));
+        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'histories'));
     }
 
     public function detailHistoryOil()
@@ -91,7 +92,9 @@ class salesController extends Controller
 
     public function indexSparepart()
     {
-        return view('crm.sales.sparepart.indexSparepart');
+        $dataOrder = order::all();
+        $dataStock = stockSparepart::count();
+        return view('crm.sales.sparepart.indexSparepart', compact('dataStock', 'dataOrder'));
     }
 
     public function stockSparepart()
@@ -114,20 +117,21 @@ class salesController extends Controller
                     });
             });
         }
-        $stocks = $stocks->paginate(10);    
+        $stocks = $stocks->paginate(10);
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
-            'stores'=> $stores,
+            'stores' => $stores,
         ]);
     }
 
-    public function stockSparepartStore($id_store){
+    public function stockSparepartStore($id_store)
+    {
         $stores = storeSparepart::all();
         $query = request()->input('search');
         $query = trim($query); // Remove leading/trailing whitespace
 
-        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->where('id_store',$id_store);
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store);
 
         if (!empty($query)) {
             $stocks->where(function ($queryBuilder) use ($query) {
@@ -145,7 +149,7 @@ class salesController extends Controller
 
         return view('crm.sales.sparepart.stockSparepart', [
             'stocks' => $stocks,
-            'stores'=> $stores,
+            'stores' => $stores,
         ]);
     }
 
@@ -256,9 +260,9 @@ class salesController extends Controller
 
     public function dashboardSalesCrm()
     {
-        // GET ALL DATA PROJECTS
-        $dataProjects = project::all();
-        return view('crm.sales.dashboard.salesIndexCrm', compact('dataProjects'));
+        $customersTotal = customer::count();
+        $projectsTotal = project::count();
+        return view('crm.sales.dashboard.salesIndexCrm', compact('customersTotal', 'projectsTotal'));
     }
 
     // ====================== CUSTOMER =============================

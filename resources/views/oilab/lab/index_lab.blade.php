@@ -1,7 +1,6 @@
 @extends('template.laboil')
 @section('content')
     <div>
-
         <!-- Judul dan card -->
         <div class="d-sm-flex align-items-center justify-content-between mt-4">
             <h1 class="h3 mb-0 text-gray-800 ">Performance Overview</h1>
@@ -41,6 +40,7 @@
                             <h2><b>1</b></h2>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="col-lg-3">
@@ -100,7 +100,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body ">
@@ -114,7 +113,6 @@
                         </div>
                     </div>
                     <div class="card-footer merah">
-
                     </div>
                 </div>
             </div>

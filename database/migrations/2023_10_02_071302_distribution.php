@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_stock');
             $table->integer('qty_distribution');
             $table->date('order_date');
-            $table->date('recieved_date');
+            $table->date('recieved_date')->nullable();
             $table->string('status');
         });
     }

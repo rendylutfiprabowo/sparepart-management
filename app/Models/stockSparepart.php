@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\distribution;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -27,6 +28,10 @@ class stockSparepart extends Model
     public function revisi(): HasMany
     {
         return $this->HasMany(revisi::class, 'id_stock', 'id_stock');
+    }
+    public function distribution(): HasMany
+    {
+        return $this->HasMany(distribution::class, 'id_stock', 'id_stock');
     }
     public function store_sparepart(): BelongsTo
     {

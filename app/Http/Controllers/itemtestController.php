@@ -19,7 +19,9 @@ class itemtestController extends Controller
     {
         return view('oilab.lab.index_lab');
     }
+    
 
+    
     public function notesitem()
     {
         $salesorderoil = solab::all()->whereNotNull('id_project');

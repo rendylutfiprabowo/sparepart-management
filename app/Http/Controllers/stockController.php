@@ -25,24 +25,61 @@ class stockController extends Controller
     }
     public function viewStockWarehouse()
     {
-        $stockSparepart = stockSparepart::with('sparepart', 'store_sparepart',)->paginate(10);
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart');
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
         $stores = storeSparepart::all();
+        $Notif = stockSparepart::whereColumn('safety_stock', '>=', 'qty_stock')->with('sparepart.category')
+            ->get();
+
         return view(
             'sparepart.warehouse.stockWarehouse',
             [
-                'spareparts' => $stockSparepart,
-                'stores' => $stores
+                'spareparts' => $stocks,
+                'stores' => $stores,
+                'notifs' => $Notif
             ]
         );
     }
     public function viewStockWarehouseToko($id_store)
     {
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
 
-        $stockSpareparts = StockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store)->paginate(10);
+        $stocks = stockSparepart::with('sparepart', 'store_sparepart')->where('id_store', $id_store);
+
+        if (!empty($query)) {
+            $stocks->where(function ($queryBuilder) use ($query) {
+                $queryBuilder
+                    ->whereHas('sparepart', function ($subQuery) use ($query) {
+                        $subQuery->where('codematerial_sparepart', 'like', '%' . $query . '%')
+                            ->orWhere('spesifikasi_sparepart', 'like', '%' . $query . '%');
+                    })
+                    ->orWhereHas('sparepart.category', function ($subQuery) use ($query) {
+                        $subQuery->where('nama_category', 'like', '%' . $query . '%');
+                    });
+            });
+        }
+        $stocks = $stocks->paginate(10);
         $stores = storeSparepart::all();
         // Mengirimkan nilai $id_store ke tampilan
         return view('sparepart.warehouse.stockWarehouseCabang', [
-            'spareparts' => $stockSpareparts,
+            'spareparts' => $stocks,
             'stores' => $stores,
             'id_store' => $id_store,
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
@@ -64,6 +101,21 @@ class stockController extends Controller
         session()->flash('success', 'Stock berhasil ditambahkan');
 
         return redirect('/warehouse/stock')->with('success', 'Stok berhasil ditambahkan.');
+    }
+    public function addStockBranch($id_stock, Request $request)
+    {
+        $validatedData = $request->validate([
+            'qty_stock' => 'required',
+        ]);
+
+        $spareparts = stockSparepart::find($id_stock);
+        $spareparts->qty_stock += $validatedData['qty_stock'];
+
+        $spareparts->save();
+
+        session()->flash('success', 'Stock berhasil ditambahkan');
+
+        return redirect('/warehouse/branch/stock')->with('success', 'Stok berhasil ditambahkan.');
     }
 
     /**
@@ -99,7 +151,7 @@ class stockController extends Controller
         ]);
 
         $stock = stockSparepart::create([
-            'id_stock' => 'STK-' . rand(1, 999),
+            'id_stock' => 'STK-' . rand(10000, 999999),
             'id_sparepart' => $validatedData['codematerial_sparepart'],
             'id_store' => 'CTR',
             'spesifikasi_sparepart' => $validatedData['spesifikasi_sparepart'],
@@ -124,6 +176,20 @@ class stockController extends Controller
         session()->flash('success', 'Stock berhasil ditambahkan');
 
         return redirect('/warehouse/stock')->with('success', 'Safety Stok berhasil diubah.');
+    }
+    public function safetyStockBranch($id_stock, Request $request)
+    {
+        $validatedData = $request->validate([
+            'safety_stock' => 'required',
+        ]);
+
+        $spareparts = stockSparepart::find($id_stock);
+        $spareparts->safety_stock = $validatedData['safety_stock'];
+
+        $spareparts->save();
+        session()->flash('success', 'Stock berhasil ditambahkan');
+
+        return redirect('/warehouse/branch/stock')->with('success', 'Safety Stok berhasil diubah.');
     }
 
     /**

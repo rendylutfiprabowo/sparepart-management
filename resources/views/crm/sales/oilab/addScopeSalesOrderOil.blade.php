@@ -1,11 +1,10 @@
 @extends('template.salesCrm')
 @section('contents')
-    <div>
-        <!-- lOGO TRAFOINDO -->
-        <div class="container d-flex justify-content-center align-items-center">
-            <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-        </div>
-
+<div>
+    <!-- lOGO TRAFOINDO -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
+    </div>
         <!-- form salesorder -->
         <div>
             <!-- form salesorder -->

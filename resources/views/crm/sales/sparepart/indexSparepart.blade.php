@@ -3,28 +3,22 @@
 @section('title', 'SpareParts Dashboard ')
 @section('contents')
     <div class="container-fluid">
-        <div>
-            <x-page-heading>
-                SpareParts Dashboard
-            </x-page-heading>
-            <!-- Content Row Card -->
-            <div class="row">
-                <x-cards judulcard="Memo" angkaPersen="12" bulan="Juni" infoCard="Memo Pada SpareParts" tanggal="13 oct 2023"
-                    classIcon="bi bi-bounding-box" />
-                <x-cards judulcard="Pengajuan Revisi" angkaPersen="42" bulan="September"
-                    infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" tanggal="13 oct 2023" />
-                <x-cards judulcard="DO" angkaPersen="92" bulan="September"
-                    infoCard="Sales Profit Trafo Pada Penjualan Bulan Ini" tanggal="13 oct 2023" />
-            </div>
-            <br />
-            <x-page-heading>
-                Statistik In Out SpareParts
-            </x-page-heading>
-            <div class="row">
-                <div class="col">
-                    <div class="p-3 rounded bg-white shadow-sm">
-                        <div id="stockCharts"></div>
-                    </div>
+        <x-page-heading>
+            SpareParts Dashboard
+        </x-page-heading>
+        <div class="row">
+            <x-card cardTitles="Memo" iconClass="bi-file-earmark-richtext" percents="159K" />
+            <x-card cardTitles="Do" iconClass="bi-file-earmark-richtext" percents="12K" />
+            <x-card cardTitles="Stock" iconClass="bi-box" percents="3k" />
+        </div>
+        <br />
+        <x-page-heading>
+            Statistik In Out SpareParts
+        </x-page-heading>
+        <div class="row">
+            <div class="col">
+                <div class="p-3 rounded bg-white shadow-sm">
+                    <div id="stockCharts"></div>
                 </div>
             </div>
         </div>

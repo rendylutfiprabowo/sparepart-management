@@ -19,7 +19,7 @@ body {
 
 .active-sidebar-link {
     background-color: #d12226;
-    margin: 3px;
+    margin: 3.5px;
 }
 
 .footer-custom {
@@ -104,12 +104,6 @@ body {
 .navbar .navbar-toggler {
     top: 0.25rem;
     right: 1rem;
-}
-
-.navbar .form-control {
-    padding: 0.75rem 1rem;
-    border-width: 0;
-    border-radius: 0;
 }
 
 /* COLOR BACKGROUND */
