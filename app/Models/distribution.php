@@ -27,6 +27,6 @@ extends Model
 
     public function stock(): BelongsTo
     {
-        return $this->belongsTo(sparepart::class, 'id_stock', 'id_stock');
+        return $this->belongsTo(stockSparepart::class, 'id_stock', 'id_stock');
     }
 }
