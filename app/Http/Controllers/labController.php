@@ -36,6 +36,15 @@ class labController extends Controller
         $salesorderoil = Solab::where('no_so_solab', $id_solab)->first(); 
         return view('oilab.lab.form_add_data', compact('salesorderoil','id_history'));
     }
+    public function formReport($id_solab,$id_sample){
+        $sample = sample::where('id_sample', $id_sample)->firstOrFail();
+        $form = json_decode($sample->formReport->field_formreport);
+
+        return view('oilab.lab.form_sample_lab',[
+                'sample'=>$sample,
+                'form'=>$form,
+        ]);
+    }
 
     public function storeTrafo(Request $request, $no_so_solab,$id_history)
     {
@@ -47,6 +56,7 @@ class labController extends Controller
             'kva' => 'required',
             'merk' => 'required',
             'year' => 'required',
+            'area' => 'required',
             // 'tegangan_hv' => 'required',
             // 'tegangan_lv' => 'required',
             'voltage' => 'required',
@@ -69,6 +79,7 @@ class labController extends Controller
             $trafos->kva = $validated['kva'];
             $trafos->merk = $validated['merk'];
             $trafos->year = $validated['year'];
+            $trafos->area = $validated['area'];
             // $trafos->tegangan_hv = $validated['tegangan_hv'];
             // $trafos->tegangan_lv = $validated['tegangan_lv'];
             $trafos->voltage = $validated['voltage'];

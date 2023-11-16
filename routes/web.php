@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\reportController;
 use App\Http\Controllers\toolsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -159,6 +160,11 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/orderlist/{no_so_solab}', [labController::class, 'viewitem']);
     Route::get('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'addtrafo']);
     Route::post('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'storetrafo']);
+    Route::get('/orderlist/{id_solab}/{id_sample}', [labController::class, 'formReport']);
+    Route::post('/orderlist/{id_solab}/{id_sample}', [reportController::class, 'storeFuran']);
+    // function () {
+    //     return view('oilab.lab.form_furan_lab');
+    // });
 
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');
@@ -166,19 +172,19 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
-    Route::get('/form_dga_lab/{id}', function () {
-        return view('oilab.lab.form_dga_lab');
-    });
-        Route::get('/form_dga1_lab/{id}', function () {
+    // Route::get('/form_dga_lab/{id}', function () {
+    //     return view('oilab.lab.form_dga_lab');
+    // });
+    // Route::post('/form_dga_lab/{id}', [reportController::class, 'storeDGA']);
+
+    Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
-    Route::get('/form_furan_lab/{id}', function () {
-        return view('oilab.lab.form_furan_lab');
-    });
-    Route::get('/form_oa_lab/{id}', function () {
-        return view('oilab.lab.form_oa_lab');
-    });
-    Route::get('generate-pdf', [pdfController::class, 'generatepdf']);
+
+    // Route::get('/form_oa_lab/{id}', function () {
+    //     return view('oilab.lab.form_oa_lab');
+    // });
+    // Route::post('/form_oa_lab/{id}', [reportController::class, 'storeOA']);
 });
 
 

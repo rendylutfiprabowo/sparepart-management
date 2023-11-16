@@ -29,7 +29,7 @@ class sample extends Model
 
     public function formReport(): HasOne
     {
-        return $this->hasOne(formReport::class, 'id_formreport', 'id_formreport');
+        return $this->hasOne(formReport::class, 'id_sample', 'id_sample');
     }
     public function soLab(): BelongsTo
     {

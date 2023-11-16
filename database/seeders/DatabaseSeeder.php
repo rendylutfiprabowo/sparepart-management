@@ -407,60 +407,60 @@ class DatabaseSeeder extends Seeder
             'nama_role' => 'Superadmin',
         ]);
 
+        //dga
+        // formReport::create([
+        //     'id_formreport' => $faker->numberBetween(100, 999),
+        //     'field_formreport' => json_encode([
+        //         'hidrogen' => 0,
+        //         'etana' => 0,
+        //         'etilena' => 0,
+        //         'asetilena' => 0,
+        //         'karbonDioksida' => 0,
+        //         'metana' => 0,
+        //         'karbonMonoksida' => 0,
+        //         'co2coRatio' => 0
+        //     ]),
+        //     'id_sample' => '67',
+        //     'id_lab'=> '5',
+        // ]);
 
-        formReport::create([
-            'id_formreport' => $faker->numberBetween(100, 999),
-            'field_formreport' => json_encode([
-                'hidrogen' => 0,
-                'etana' => 0,
-                'etilena' => 0,
-                'asetilena' => 0,
-                'karbonDioksida' => 0,
-                'metana' => 0,
-                'karbonMonoksida' => 0,
-                'co2coRatio' => 0
-            ]),
-            'id_sample' => '67',
-            'id_lab'=> '5',
-        ]);
+        // formReport::create([
+        //     'id_formreport' => $faker->numberBetween(100, 999),
+        //     'field_formreport' => json_encode([
+        //         '5mhf' => 0,
+        //         '2fol' => 0,
+        //         '2fal' => 0,
+        //         '2acf' => 0,
+        //         '5mef' => 0,
+        //         // 'total_2fal' => 0,
+        //         // 'total_furan' => 0,
+        //         // 'estimate_dp' => 0
+        //     ]),
+        //     'id_sample' => '77',
+        //     'id_lab'=> '6',
+        // ]);
 
-        formReport::create([
-            'id_formreport' => $faker->numberBetween(100, 999),
-            'field_formreport' => json_encode([
-                '5mhf' => 0,
-                '2fol' => 0,
-                '2fal' => 0,
-                '2acf' => 0,
-                '5mef' => 0,
-                'total_2fal' => 0,
-                'total_furan' => 0,
-                'estimate_dp' => 0
-            ]),
-            'id_sample' => '77',
-            'id_lab'=> '6',
-        ]);
-
-        formReport::create([
-            'id_formreport' => $faker->numberBetween(100, 999),
-            'field_formreport' => json_encode([
-                'Color' => 0,
-                'bdv' => 0,
-                'ift' => 0,
-                'tan' => 0,
-                'wc' => 0,
-                'oqin' => 0,
-                'sediment_and_sludge' => 0,
-                'density' => 0,
-                'pcb' => 0,
-                'corrosive_sulfur' => 0,
-                'flash_point' => 0,
-                'kategoriHasil_oa' => 0,
-                'rekomendasi_oa' => 0,
-            ]),
-            'id_sample' => '87',
-            'id_lab'=> '7',
-        ]);
-
+        // formReport::create([
+        //     'id_formreport' => $faker->numberBetween(100, 999),
+        //     'field_formreport' => json_encode([
+        //         'Color' => 0,
+        //         'bdv' => 0,
+        //         'ift' => 0,
+        //         'tan' => 0,
+        //         'wc' => 0,
+        //         'oqin' => 0,
+        //         'sediment_and_sludge' => 0,
+        //         'density' => 0,
+        //         'pcb' => 0,
+        //         'corrosive_sulfur' => 0,
+        //         'flash_point' => 0,
+        //         'kategoriHasil_oa' => 0,
+        //         'rekomendasi_oa' => 0,
+        //     ]),
+        //     'id_sample' => '87',
+        //     'id_lab'=> '7',
+        // ]);
+        //dga
         form::create([
             'id_form' => '22',
             'field_form' => json_encode([
@@ -475,7 +475,7 @@ class DatabaseSeeder extends Seeder
             ]),
             'id_scope' => '220',
         ]);
-
+        //furan
         form::create([
             'id_form' => '23',
             'field_form' => json_encode([
@@ -484,29 +484,27 @@ class DatabaseSeeder extends Seeder
                 '2fal' => 0,
                 '2acf' => 0,
                 '5mef' => 0,
-                'total_2fal' => 0,
-                'total_furan' => 0,
-                'estimate_dp' => 0
+                // 'total_2fal' => 0,
+                // 'total_furan' => 0,
+                // 'estimate_dp' => 0
             ]),
             'id_scope' => '842',
         ]);
-
+        //oa
         form::create([
             'id_form' => '24',
             'field_form' => json_encode([
-                'Color' => 0,
-                'bdv' => 0,
-                'ift' => 0,
-                'tan' => 0,
-                'wc' => 0,
-                'oqin' => 0,
-                'sediment_and_sludge' => 0,
-                'density' => 0,
-                'pcb' => 0,
-                'corrosive_sulfur' => 0,
-                'flash_point' => 0,
-                'kategoriHasil_oa' => 0,
-                'rekomendasi_oa' => 0,
+                'Color / Appreance' => 0,
+                'Breakdown Voltage (Dieclectric Strength)' => 0,
+                'Interfacial Tension' => 0,
+                'Total Acid Number (TAN)' => 0,
+                'Water Content' => 0,
+                'Oil Quality Index (OQIN)' => 0,
+                'Sendiment & Sludge' => 0,
+                'Density' => 0,
+                'PCB' => 0,
+                'Corrosive Sulfur' => 0,
+                'Flash Point' => 0,
             ]),
             'id_scope' => '399',
         ]);
@@ -589,6 +587,7 @@ class DatabaseSeeder extends Seeder
             'kva' => '872',
             'merk' => 'trafindo',
             'year' => '2020',
+            'area' => 'area 1',
             // 'tegangan_hv' => '2034',
             // 'tegangan_lv' => '2034',
             'voltage' => '1212',

@@ -60,7 +60,7 @@
                                         <td>{{ $history->trafo->kva }}</td>
                                         <td>{{ $history->trafo->merk }}</td>
 
-                                        <td>
+                                        <td class="text-center align-middle">
                                             @foreach ($history->samples as $sample)
                                                 <div>{{ $sample->scope->nama_scope }}</div>
                                             @endforeach
@@ -79,26 +79,14 @@
                                     <td class="text-center align-middle">
                                         <div>
                                             @foreach ($history->samples as $sample)
-                                                @if ($sample->scope->nama_scope === 'DGA')
                                                     <div>
-                                                        <a href="/form_dga_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
-                                                                class="fa-regular fa-file fa-lg"></i></a>
+                                                        <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{$sample->id_sample}}"
+                                                            class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
                                                     </div>
-                                                @elseif($sample->scope->nama_scope === 'Furan')
-                                                    <div>
-                                                        <a href="/form_furan_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
-                                                                class="fa-regular fa-file fa-lg"></i></a>
-                                                    </div>
-                                                @elseif($sample->scope->nama_scope === 'OA')
-                                                    <div>
-                                                        <a href="/form_oa_lab/{{ $salesorderoil->no_so_solab }}" class="pdf-link"><i
-                                                                class="fa-regular fa-file fa-lg"></i></a>
-                                                    </div>
-                                                @endif
                                             @endforeach
                                         </div>
                                     </td>
-                                    <td class="text center align-middle"> 
+                                    <td class="align-middle">
                                         <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{ $history->id }}/add"
                                             type="button" class="btn-sm btn merah text-putih mx-auto">Add Data<i
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
