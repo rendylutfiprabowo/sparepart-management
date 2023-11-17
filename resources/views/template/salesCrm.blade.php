@@ -34,7 +34,7 @@
                         class="nav-link d-flex rounded border-0 collapsed {{ Request::is('sales/sparepart*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
                         data-bs-toggle="collapse" data-bs-target="#dashboard-collapse-sp" aria-expanded="false">
                         <div class="me-auto">
-                            <i class="bi bi-tools"></i> SpareParts
+                            <i class="bi bi-tools"></i> Spareparts
                         </div>
                         <div>
                             <span class="ms-5">
@@ -91,10 +91,10 @@
                                         Order</span></a>
                             </li>
                             <!-- <li class="ms-4"><a href="/sales/oil/report"
-                                                                                                                        class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
-                                                                                                                            class="bi bi-file-earmark-check me-1"></i> <span
-                                                                                                                            class="me-2">Report</span></a>
-                                                                                                                </li> -->
+                                                                                                                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
+                                                                                                                                    class="bi bi-file-earmark-check me-1"></i> <span
+                                                                                                                                    class="me-2">Report</span></a>
+                                                                                                                        </li> -->
                             <li class="ms-4"><a href="/sales/oil/sample"
                                     class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/sample*') ? 'text-white active-sidebar-link' : 'fw-normal' }}"><i
                                         class="bi bi-droplet-half me-1"></i> <span class="me-2">Report Sample</span></a>

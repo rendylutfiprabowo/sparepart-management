@@ -1,4 +1,5 @@
 @extends('template.salesCrm')
+@section('title', 'Order Form')
 @section('contents')
     <!-- lOGO TRAFOINDO -->
     <div class="container d-flex justify-content-center align-items-center">

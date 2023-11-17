@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Trafindo - @yield('title')</title>
-
-
     {{-- LINK  --}}
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -16,6 +14,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    {{-- OTHER --}}
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
 </head>
@@ -43,7 +42,7 @@
                 <x-emails />
             </div>
             <div class="vr "></div>
-            <div class="btn-group">
+            <div class="dropdown">
                 <button type="button" class="btn  dropdown-toggle d-flex align-items-center gap-1 fw-medium"
                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     {{ Auth::user()->username }}
@@ -54,7 +53,7 @@
                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                     </svg>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end shadow">
                     <li>
                         <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

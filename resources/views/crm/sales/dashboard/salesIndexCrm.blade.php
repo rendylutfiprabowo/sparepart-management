@@ -9,7 +9,6 @@
 
         <div class="row">
             @php
-                // Customer Percentage
                 $numberPercent = 1000;
                 $percentageCustomers = ($customersTotal / $numberPercent) * 100;
                 $percentageProjects = ($projectsTotal / $numberPercent) * 100;
@@ -40,7 +39,7 @@
         </div>
         <br>
         <div class="row">
-            <x-card-list />
+            <x-card-list :salesData="$salesData" />
         </div>
 
 
