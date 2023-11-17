@@ -4,30 +4,40 @@
         <div class="card rounded-4 p-4">
             <thead>
                 <tr>
-                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Warehouse {{ $namaStore }}
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Stock Branch {{ $namaStore }}
                     </h3>
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <div class="row">
-                <div class="col-md-3 dropdown mb-3">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        List Cabang
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
-                        @foreach ($stores as $store)
-                            <a class="dropdown-item"
-                                href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
-                        @endforeach
-                    </ul>
+                <div class="col">
+                    <div class="d-flex justify-content-start">
+                        <div class="dropdown mb-3 me-3">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                List Cabang
+                            </a>
+                            <div>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="/warehouse/stock">Semua Toko</a>
+                                    @foreach ($stores as $store)
+                                        <a class="dropdown-item"
+                                            href="/warehouse/stock/{{ $store->id_store }}">{{ $store->nama_store }}</a>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addproduct"><i class="fa-solid fa-plus"></i> Add Product
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
-                            class="fa-solid fa-plus"></i> Add Product
-                    </button>
+                <div class="col">
+                    <div class="d-flex justify-content-end">
+                        <x-searchbar url="/{{ request()->path() }}" value="{{ request()->input('search') }}" />
+                    </div>
                 </div>
             </div>
             @if (session('success'))
@@ -48,67 +58,85 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($spareparts as $no => $stock)
-                        <tr>
-                            <td class="table-plus">{{ $no + 1 }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
-                            <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
-                            <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
-                            <td class="table-plus"style="width:40%">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
-                            <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
-                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                                    data-bs-target="#detailproduct-{{ $stock->id }}"><i
-                                        class="fa-regular fa-file fa-lg"></i>
-                                </button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#addstock-{{ $stock->id }}"><i class="fa-solid fa-plus"></i>
-                                </button>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#editsafetystock-{{ $stock->id }}"><i
-                                        class="fa-solid fa-shield-heart"></i>
-                                </button>
-                            </td>
-                            @if ($stock->qty_stock <= 0)
+                    <div class="mt-3">
+                        @foreach ($notifs as $notif)
+                            {{-- @dd($notif->sparepart->category->nama_category) --}}
+                            @if ($notif->qty_stock == 0)
                                 <div class="alert alert-danger">
                                     Stock{!! '<strong> ' .
-                                        $stock->sparepart->nama_sparepart .
+                                        $notif->sparepart->category->nama_category .
                                         '</strong>' .
                                         '<strong> ' .
-                                        $stock->qty_stock .
+                                        $notif->qty_stock .
                                         ' ' .
-                                        $stock->sparepart->satuan .
+                                        $notif->sparepart->satuan .
+                                        '</strong>' .
+                                        ' di store ' .
+                                        '<strong>' .
+                                        $notif->store_sparepart->nama_store .
                                         '</strong>' !!}
                                     abisss!!!!
                                 </div>
-                            @elseif ($stock->isBelowSafetyStock())
+                            @else
                                 <div class="alert alert-danger">
                                     Stock{!! '<strong> ' .
-                                        $stock->sparepart->nama_sparepart .
+                                        $notif->sparepart->category->nama_category .
                                         '</strong>' .
                                         ' sisa ' .
                                         ' ' .
                                         '<strong> ' .
-                                        $stock->qty_stock .
+                                        $notif->qty_stock .
                                         ' ' .
-                                        $stock->sparepart->satuan .
+                                        $notif->sparepart->satuan .
+                                        '</strong>' .
+                                        ' di store ' .
+                                        '<strong>' .
+                                        $notif->store_sparepart->nama_store .
                                         '</strong>' !!}
                                     mau
                                     abisss!!!!
                                 </div>
                             @endif
+                        @endforeach
+                    </div>
+                    @php
+                        $no = ($stocks->currentPage() - 1) * $stocks->perPage();
+                    @endphp
+                    @foreach ($stocks as $stock)
+                        <tr>
+                            <td class="table-plus">{{ ++$no }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->codematerial_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->sparepart->category->nama_category }}</td>
+                            <td class="table-plus">{{ $stock->qty_stock . ' ' . $stock->sparepart->satuan }}</td>
+                            <td class="table-plus" style="width:40%">{{ $stock->sparepart->spesifikasi_sparepart }}</td>
+                            <td class="table-plus">{{ $stock->store_sparepart->nama_store }}</td>
+                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                    data-bs-target="#detailproduct-{{ $stock->id }}"><i
+                                        class="fa-regular fa-file fa-lg"></i>
+                                </button>
+                                @if ($stock->id_store == Auth::user()->warehouse->store->id_store)
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addstock-{{ $stock->id }}"><i class="fa-solid fa-plus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#editsafetystock-{{ $stock->id }}"><i
+                                            class="fa-solid fa-shield-heart"></i>
+                                    </button>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <ul class="pagination">
-                <li class="page-item {{ $spareparts->onFirstPage() ? 'disabled' : '' }}">
-                    <a class="page-link" href="{{ $spareparts->previousPageUrl() }}" aria-label="Previous">
+                <li class="page-item {{ $stocks->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $stocks->previousPageUrl() }}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
-                <li class="page-item {{ $spareparts->hasMorePages() ? '' : 'disabled' }}">
-                    <a class="page-link" href="{{ $spareparts->nextPageUrl() }}" aria-label="Next">
+                <li class="page-item {{ $stocks->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $stocks->nextPageUrl() }}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -181,7 +209,7 @@
         </div>
     </div>
     <!--Add Stock Modal -->
-    @foreach ($spareparts as $stock)
+    @foreach ($stocks as $stock)
         <div class="modal fade" id="addstock-{{ $stock->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -250,8 +278,8 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -259,7 +287,7 @@
         </div>
     @endforeach
     <!--Edit Safety Stock Modal -->
-    @foreach ($spareparts as $stock)
+    @foreach ($stocks as $stock)
         <div class="modal fade" id="editsafetystock-{{ $stock->id }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -329,8 +357,8 @@
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -339,7 +367,7 @@
     @endforeach
     <!--Detail Modal -->
 
-    @foreach ($spareparts as $stock)
+    @foreach ($stocks as $stock)
         <div class="modal fade" id="detailproduct-{{ $stock->id }}" tabindex="-1"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -378,7 +406,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

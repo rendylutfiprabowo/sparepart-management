@@ -19,6 +19,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Technician Name</th>
+                        <th scope="col">Store Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">DO/Memo DO</th>
                         <th scope="col">No. SPK</th>
@@ -26,27 +27,36 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($spk as $no => $spks)
+                    @foreach ($order as $no => $orders)
                         <tr>
-                            @if ($spks->memo_order != null || ($spks->do_order && $spks->spk_order != null))
+                            @if ($orders->memo_order != null || ($orders->do_order && $orders->spk_order != null))
                                 <td class="table-plus">{{ $no + 1 }}</td>
-                                <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
-                                <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}
+                                <td class="table-plus">{{ $orders->customer->nama_customer }}</td>
+                                <td class="table-plus">
+                                    {{ $orders->technician ? $orders->technician->nama_technician : '-' }}
+                                </td>
+                                <td class="table-plus">
+                                    {{ $orders->store->nama_store }}
                                 </td>
 
                                 <td class="table-plus">
-                                    @if ($spks->status == 'on-progress')
-                                        <b class="text-warning">{{ $spks->status }}</b>
-                                    @elseif ($spks->status == 'completed')
-                                        <b class="text-success">{{ $spks->status }}</b>
-                                    @endif
+                                    <b
+                                        class="@if ($orders->status == 'closed') badge text-bg-success
+                                    @elseif ($orders->status == 'closed-memo-do-revisi' || $orders->status == 'memo-closed') badge text-bg-primary
+                                    @elseif($orders->status == 'on-warehouse' || $orders->status == 'on-technician')
+                                    badge text-bg-warning
+                                    @elseif($orders->status == 'revisi')
+                                    badge text-bg-info
+                                    @elseif($orders->status == 'canceled')
+                                       badge text-bg-danger @endif">{{ $orders->status }}
+                                    </b>
                                 </td>
 
                                 <td class="table-plus">
-                                    {{ $spks->spk_order ? $spks->do_order : ($spks->memo_order ? $spks->memo_order : '-') }}
+                                    {{ $orders->spk_order ? $orders->do_order : ($orders->memo_order ? $orders->memo_order : '-') }}
                                 </td>
-                                <td class="table-plus">{{ $spks->spk_order }}</td>
-                                <td><a href="/warehouse/view-order/{{ $spks->id_order }}" class="btn btn-dark"
+                                <td class="table-plus">{{ $orders->spk_order }}</td>
+                                <td><a href="/warehouse/view-order/{{ $orders->id_order }}" class="btn btn-dark"
                                         type="button"><i class="fa-regular fa-file fa-lg"></i></a>
                                 </td>
                             @endif

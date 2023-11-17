@@ -21,7 +21,7 @@
                             <div class="card text-bg-light shadow-sm">
                                 <div class="card-header fw-bold">Information SpareParts</div>
                                 <div class="card-body">
-                                    <table class="table table-borderless ">
+                                    <table class="table-borderless table">
                                         <tbody>
                                             <tr>
                                                 <th scope="col"><span><i class="bi bi-person"></i></span> Customer Name
@@ -61,15 +61,15 @@
                                 <div class="card-header fw-bold">Status </div>
                                 <div class="card-body">
                                     @if ($order->status)
-                                        <h5 class="card-title text-bg-danger text-center rounded p-2">{{ $order->status }}
+                                        <h5 class="card-title text-bg-danger rounded p-2 text-center">{{ $order->status }}
                                         </h5>
                                     @else
-                                        <h5 class="card-title text-center p-2"> - </h5>
+                                        <h5 class="card-title p-2 text-center"> - </h5>
                                     @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="col ">
+                        <div class="col">
                             <div class="card text-bg-light mt-2 shadow-sm">
                                 <div class="card-header fw-bold">Total Items</div>
                                 <div class="card-body">
@@ -86,15 +86,15 @@
                                 </div>
                             </div>
                             {{-- <h3>Total Item</h3>
-                        @php
-                            $sum = 0;
-                            foreach ($order->booked as $booked) {
-                                $sum += $booked->qty_booked;
-                            }
-                        @endphp
-                        <div class="badge badge-danger">
-                            <h5>{{ $sum }}</h5>
-                        </div> --}}
+                    @php
+                        $sum = 0;
+                        foreach ($order->booked as $booked) {
+                            $sum += $booked->qty_booked;
+                        }
+                    @endphp
+                    <div class="badge badge-danger">
+                        <h5>{{ $sum }}</h5>
+                    </div> --}}
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
             <br>
         </thead>
         <table class="table-bordered table">
-            <thead class="text-center table-light">
+            <thead class="table-light text-center">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Code Material</th>
@@ -141,7 +141,7 @@
                         <td class="table-plus">{{ $booking->stock->sparepart->spesifikasi_sparepart }}</td>
                         <td class="table-plus">{{ $booking->qty_booked }}</td>
                         @if ($type == null)
-                            <td class="table-plus "><a href="/sales/sparepart/order/remove-item/{{ $booking->id_booked }}"
+                            <td class="table-plus"><a href="/sales/sparepart/order/remove-item/{{ $booking->id_booked }}"
                                     id="liveToastBtn"><i class="bi bi-trash text-danger"></i></a></td>
                         @endif
                     </tr>
@@ -164,7 +164,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <div class="col d-flex align-items-center mx-3 text-right fw-bold">qty</div>
+                                <div class="col d-flex align-items-center fw-bold mx-3 text-right">qty</div>
                                 <input class="form-control mx-3" name="qty" value="0">
                                 <input class="form-control mx-3" name="dim" disabled>
                             </div>

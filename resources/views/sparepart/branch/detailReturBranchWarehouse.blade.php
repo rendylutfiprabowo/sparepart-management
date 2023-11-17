@@ -2,62 +2,98 @@
 
 @section('contents')
 
-    <div class="col-md-12">
+    <div class="d-flex align-items-center">
         <div>
-            <div class="row cols-2 mb-4">
-                <div class="col d-sm-flex rounded bg-white shadow-sm">
-                    <div class="p-2">
-                        <i class="fa-solid fa-2x fa-circle-exclamation"></i>
-                    </div>
+            <a href="/sales/sparepart/order" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="ms-3">
+            <h3 class="text-muted">Detail Customer</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="">
+                            <div class="card text-bg-light shadow-sm">
+                                <div class="card-header fw-bold">Information SpareParts</div>
+                                <div class="card-body">
+                                    <table class="table-borderless table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-person"></i></span> Customer Name
+                                                </th>
+                                                <td> : {{ $order->customer->nama_customer }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-123"></i></span> Order Number</th>
+                                                <td> : {{ $order->id_order }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-calendar-check"></i></span> Order
+                                                    Date
+                                                </th>
+                                                <td> : {{ $order->date_order }}</td>
+                                            </tr>
 
-                    <div class="">
-                        <table class="table-sm table-borderless table">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Customer Name </th>
-                                    <td>: {{ $order->customer->nama_customer }}</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">Order Number </th>
-                                    <td>: 5858588585</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">Order Date</th>
-                                    <td>: {{ $order->date_order }}</td>
-
-                                </tr>
-                                <tr>
-                                    <th scope="row">Address</th>
-                                    <td>: Lampung Ujung Utara, Tanggamus, Kota Lampung Rt09/Rw7</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Store</th>
-                                    <td>: {{ $order->store->nama_store }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="col mb-3 rounded bg-white p-2 shadow-sm">
-                        <h3>Booking Status</h3>
-                        <hr>
-                        <div class="badge-primary badge">
-                            <h5>{{ $order->status }}</h5>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-shop-window"></i></span> Store</th>
+                                                <td> : {{ $order->store->nama_store }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col"><span><i class="bi bi-geo-alt"></i></span> Address</th>
+                                                <td><small>: Jakarta Barat, Kembangan Puri Indah, Dekat Kampus Mercu
+                                                        Buana</small> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col rounded bg-white p-2 shadow-sm">
-                        <h3>Total Item</h3>
-                        @php
-                            $sum = 0;
-                            foreach ($order->booked as $booked) {
-                                $sum += $booked->qty_booked;
-                            }
-                        @endphp
-                        <div class="badge badge-danger">
-                            <h5>{{ $sum }}</h5>
+
+                    <div class="col">
+                        <div class="col">
+                            <div class="card text-bg-light shadow-sm">
+                                <div class="card-header fw-bold">Status </div>
+                                <div class="card-body">
+                                    @if ($order->status)
+                                        <h5 class="card-title text-bg-danger rounded p-2 text-center">{{ $order->status }}
+                                        </h5>
+                                    @else
+                                        <h5 class="card-title p-2 text-center"> - </h5>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-bg-light mt-2 shadow-sm">
+                                <div class="card-header fw-bold">Total Items</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        @php
+                                            $sum = 0;
+                                            foreach ($order->booked as $booked) {
+                                                $sum += $booked->qty_booked;
+                                            }
+                                        @endphp
+                                        {{ $sum }}
+                                    </h5>
+
+                                </div>
+                            </div>
+                            {{-- <h3>Total Item</h3>
+                    @php
+                        $sum = 0;
+                        foreach ($order->booked as $booked) {
+                            $sum += $booked->qty_booked;
+                        }
+                    @endphp
+                    <div class="badge badge-danger">
+                        <h5>{{ $sum }}</h5>
+                    </div> --}}
                         </div>
                     </div>
                 </div>
@@ -127,10 +163,10 @@
                                 value="{{ $order->memo_order }}" @endif>
                         </div>
                     </div>
-                    <div class="modal-footer my-3">
-                        <a href="/warehouse/branch/returItem" class="btn merah me-2 text-white"> Back</a>
+                    <div class="modal-footer gap-2 pt-4">
+                        <a href="/warehouse/branch/returItem" class="btn btn-secondary"> Back</a>
                         @if ($type != 'DO')
-                            <button type="submit" class="btn btn-primary"> Submit</button>
+                            <button type="submit" class="btn btn-success"> Submit</button>
                         @endif
                     </div>
                 </form>
@@ -148,8 +184,8 @@
                     </div>
                 </div>
                 <div class="modal-footer my-3">
-                    <a href="/warehouse/branch/returItem" class="btn merah btn-danger text-white"> Back</a>
-                    <button type="submit" class="btn btn-primary"> Submit</button>
+                    <a href="/warehouse/branch/returItem" class="btn btn-secondary"> Back</a>
+                    <button type="submit" class="btn btn-success"> Submit</button>
                 </div>
             @endif
         </div>
