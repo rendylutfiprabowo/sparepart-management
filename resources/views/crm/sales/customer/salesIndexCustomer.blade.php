@@ -22,7 +22,7 @@
         <div class="row">
             <div class="mt-3">
                 {{-- Button Modal Add Customer --}}
-                <button type="button" class="btn shadow-sm btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
                         class="bi bi-person-fill-add" viewBox="0 0 16 16">
                         <path

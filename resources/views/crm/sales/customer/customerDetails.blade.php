@@ -20,7 +20,7 @@
                         class="bd-placeholder-img rounded-circle mt-4" width="140" height="140">
                     <h3>{{ $dataCust->nama_customer }}</h3>
                     <p class="text-secondary">ID : {{ $dataCust->id_customer }}</p>
-                    <p><a class="btn btn-danger btn-sm" href="#">Contact &raquo;</a></p>
+                    <br>
                 </div>
             </div>
             <div class="col-md-8 p-2">
@@ -61,6 +61,18 @@
                             aria-valuemin="0" aria-valuemax="100" style="height: 5px">
                             <div class="progress-bar bg-danger" style="width: 50%"></div>
                         </div>
+                        <br>
+                        <button class="btn btn-sm text-secondary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseHistory" aria-expanded="false" aria-controls="collapseExample">
+                            See more
+                            <i class="bi bi-arrow-down-short"></i>
+                        </button>
+                        <div class="collapse" id="collapseHistory">
+                            <div class="card card-body border-0">
+                                Some placeholder content for the collapse component. This panel is hidden by default but
+                                revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -74,6 +86,18 @@
                             aria-valuemin="0" aria-valuemax="100" style="height: 5px">
                             <div class="progress-bar bg-danger" style="width: 25%"></div>
                         </div>
+                        <br>
+                        <button class="btn btn-sm text-secondary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSpareParts" aria-expanded="false" aria-controls="collapseExample">
+                            See more
+                            <i class="bi bi-arrow-down-short"></i>
+                        </button>
+                        <div class="collapse" id="collapseSpareParts">
+                            <div class="card card-body border-0">
+                                Some placeholder content for the collapse component. This panel is hidden by default but
+                                revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -86,6 +110,18 @@
                         <div class="progress  mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100" style="height: 5px">
                             <div class="progress-bar bg-danger" style="width: 85%"></div>
+                        </div>
+                        <br>
+                        <button class="btn btn-sm text-secondary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOil" aria-expanded="false" aria-controls="collapseExample">
+                            See more
+                            <i class="bi bi-arrow-down-short"></i>
+                        </button>
+                        <div class="collapse" id="collapseOil">
+                            <div class="card card-body border-0">
+                                Some placeholder content for the collapse component. This panel is hidden by default but
+                                revealed when the user activates the relevant trigger.
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -34,9 +34,8 @@ class solabController extends Controller
             // "oa_check" => "sometimes",
             // "oa_qty" => "required",
         ]);
-
         $faker = Faker::create();
-    
+
         $project = new project();
         $project->id_project = $faker->numberBetween(100, 999);
         $generatedNumber = $faker->numberBetween(100, 999);
@@ -61,7 +60,7 @@ class solabController extends Controller
         $solab->alamat_solab = $validated['alamat_project'];
         $solab->save();
 
-        for ($i=0; $i < $validated['qty_trafo']; $i++) { 
+        for ($i = 0; $i < $validated['qty_trafo']; $i++) {
             $history = new history();
             $history->id_project = $project->id_project;
             $history->save();

@@ -1,7 +1,5 @@
 @extends('template.salesCrm')
-
 @section('title', 'Detail Order Sparepart ')
-
 @section('contents')
     <div class="col-md-12">
         <div>

@@ -262,7 +262,13 @@ class salesController extends Controller
     {
         $customersTotal = customer::count();
         $projectsTotal = project::count();
-        return view('crm.sales.dashboard.salesIndexCrm', compact('customersTotal', 'projectsTotal'));
+        $salesData = sales::all();
+
+        return view('crm.sales.dashboard.salesIndexCrm', compact(
+            'customersTotal',
+            'projectsTotal',
+            'salesData'
+        ));
     }
 
     // ====================== CUSTOMER =============================
