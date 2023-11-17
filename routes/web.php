@@ -18,6 +18,7 @@ use App\Http\Controllers\technicianController;
 use App\Http\Controllers\revisionController;
 use App\Http\Controllers\superadminController;
 use App\Http\Controllers\sampleContoller;
+use App\Http\Controllers\distributionController;
 use App\Models\tools;
 use App\Models\booked;
 use Illuminate\Support\Facades\Auth;
@@ -105,7 +106,7 @@ Route::middleware(['auth', 'technician'])->group(function () {
 Route::middleware(['auth', 'warehouse'])->group(function () {
     // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
     Route::get('/warehouse/branch/request-item', [warehouseController::class, 'viewDistribution']);
-    Route::get('/warehouse/branch/request-item/{id_store}', [warehouseController::class, 'reqDistribution']);
+    Route::get('/warehouse/branch/request-item/{id_store}', [distributionController::class, 'reqDistribution']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
     Route::get('/warehouse/branch/listspk', [warehouseController::class, 'viewSpkBranch']);
     Route::get('/warehouse/branch/tools', [toolsController::class, 'viewToolsBranchWarehouse']);
@@ -116,17 +117,18 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
-    Route::post('/warehouse/tools/request-item/distribution', [warehouseController::class, 'storeDistribution']);
+    Route::post('/warehouse/tools/request-item/distribution', [distributionController::class, 'storeDistribution']);
     Route::post('/warehouse/stock/branch/{id_stock}', [stockController::class, 'addStockBranch']);
     Route::post('/warehouse/branch/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStockBranch']);
-
 });
 
 //Role Manager Center
 Route::middleware(['auth', 'warehouse-center'])->group(function () {
+    Route::get('/warehouse/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItemCenter']);
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
     Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
+    Route::get('/warehouse/returItem', [warehouseController::class, 'returItemCenter']);
     Route::get('/warehouse/listspk', [warehouseController::class, 'viewSpk']);
     Route::get('/warehouse/view-order/{id_order}', [warehouseController::class, 'viewOrder']);
     Route::post('/warehouse/add-worker/{id_order}', [warehouseController::class, 'addWorker']);

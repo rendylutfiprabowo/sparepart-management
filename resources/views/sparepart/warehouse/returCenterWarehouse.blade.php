@@ -1,6 +1,6 @@
-@extends('template.warehouseBranchSparepart')
+@extends('template.warehouseSparepart')
 
-@section('title', 'ReturBranch')
+@section('title', 'ReturCenter')
 @section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 p-4">
@@ -21,6 +21,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Technician Name</th>
+                        <th scope="col">Store</th>
                         <th scope="col">Status</th>
                         <th scope="col">DO/Memo DO</th>
                         <th scope="col">No. SPK</th>
@@ -36,6 +37,9 @@
                                 <td class="table-plus">
                                     {{ $orders->technician ? $orders->technician->nama_technician : ($orders->status == 'closed' || $orders->status == 'memo-closed' ? 'Delievered by Other Party' : '-') }}
                                 </td>
+                                <td class="table-plus">
+                                    {{ $orders->store->nama_store }}
+                                </td>
 
                                 <td class="table-plus">
                                     <b
@@ -46,14 +50,14 @@
                                     @elseif($orders->status == 'revisi')
                                     badge text-bg-info
                                     @elseif($orders->status == 'canceled')
-                                    badge text-bg-danger @endif">{{ $orders->status }}
+                                       badge text-bg-danger @endif">{{ $orders->status }}
                                     </b>
                                 </td>
                                 <td class="table-plus">
                                     {{ $orders->do_order ? $orders->do_order : ($orders->memo_order ? $orders->memo_order : '-') }}
                                 </td>
                                 <td class="table-plus">{{ $orders->spk_order }}</td>
-                                <td><a href="/warehouse/branch/detailReturItem/{{ $orders->id_order }}" class="btn btn-dark"
+                                <td><a href="/warehouse/detailReturItem/{{ $orders->id_order }}" class="btn btn-dark"
                                         type="button"><i class="fa-regular fa-file fa-lg"></i></a>
                                 </td>
                             @endif

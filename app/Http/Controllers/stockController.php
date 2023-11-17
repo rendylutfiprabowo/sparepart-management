@@ -77,9 +77,12 @@ class stockController extends Controller
         }
         $stocks = $stocks->paginate(10);
         $stores = storeSparepart::all();
+        $Notif = stockSparepart::where('id_store', $id_store)->whereColumn('safety_stock', '>=', 'qty_stock')->with('sparepart.category')
+            ->get();
         // Mengirimkan nilai $id_store ke tampilan
         return view('sparepart.warehouse.stockWarehouseCabang', [
-            'spareparts' => $stocks,
+            'notifs' => $Notif,
+            'stocks' => $stocks,
             'stores' => $stores,
             'id_store' => $id_store,
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,

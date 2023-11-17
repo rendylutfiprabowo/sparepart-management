@@ -84,7 +84,16 @@
                             <td class="table-plus">{{ $req->technician->nama_technician }}</td>
                             <td class="table-plus">{{ $req->tools->nama_tools }}</td>
                             <td class="table-plus">{{ $req->qty_technician_tools }}</td>
-                            <td class="table-plus">{{ $req->status }}</td>
+                            <td class="table-plus"><b
+                                    class="@if ($req->status == 'closed') badge text-bg-success
+                            @elseif ($req->status == 'closed-memo-do-revisi' || $req->status == 'memo-closed') badge text-bg-primary
+                            @elseif($req->status == 'on-warehouse' || $req->status == 'on-technician')
+                            badge text-bg-warning
+                            @elseif($req->status == 'revisi')
+                            badge text-bg-info
+                            @elseif($req->status == 'canceled')
+                               badge text-bg-danger @endif">{{ $req->status }}
+                                </b></td>
                             <td class="table-plus">{{ $req->start_date }}</td>
                             <td class="table-plus">{{ $req->finish_date ? $req->finish_date : '-' }}</td>
                             <td class="table-plus">

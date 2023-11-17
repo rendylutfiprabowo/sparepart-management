@@ -26,8 +26,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('warehouse/branch/returItem*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
-                        href="/warehouse/branch/returItem">
+                    <a class="nav-link {{ Request::is('warehouse/returItem*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
+                        href="/warehouse/returItem">
                         <i class="bi bi-recycle"></i>
                         Return Item
                     </a>
