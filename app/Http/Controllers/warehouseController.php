@@ -24,20 +24,16 @@ class warehouseController extends Controller
     public function dashboardWarehouse()
     {
         $idStore = Auth::user()->warehouse->id_store;
-        $status = 'closed';
         $totalItem = stockSparepart::where('id_store', $idStore)->count();
         $totalOrder = order::where('id_store', $idStore)->count();
-        $orderClosed = order::where('id_store', $idStore)->where('status', $status)->count();
+        $orderClosed = order::where('id_store', $idStore)->where('status', 'closed')->count();
         $orderProgress = Order::where('id_store', $idStore)
-            ->where('status', $status)
-            ->whereNotNull('status') // Menambahkan kondisi status tidak sama dengan null
+            ->whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
             ->count();
-        $booking = Order::where('id_store', $idStore)
-            ->where(function ($query) use ($status) {
-                $query->where('status', $status)
-                    ->orWhereNull('status'); // Menambahkan kondisi status sama dengan null
-            })
-            ->count();
+        // @dd($orderClosed);
+        $booking = order::where('id_store', $idStore)->where('status', null)->count();
         return view('sparepart.warehouse.warehouseDashboard', [
             'totalItem' => $totalItem,
             'totalOrder' => $totalOrder,
@@ -257,7 +253,6 @@ class warehouseController extends Controller
             if ($orders->do_order != null) {
                 $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
                 $orders->status = 'closed';
-                $orders->technician_name = 'closed';
                 $orders->save();
             } elseif ($orders->do_order == null) {
                 $orders->surat_jalan = $validatedData['surat_jalan'];
@@ -295,7 +290,6 @@ class warehouseController extends Controller
             if ($orders->do_order != null) {
                 $orders->nota_penyerahan = $validatedData['nota_penyerahan'];
                 $orders->status = 'closed';
-                $orders->technician_name = 'closed';
                 $orders->save();
             } elseif ($orders->do_order == null) {
                 $orders->surat_jalan = $validatedData['surat_jalan'];

@@ -26,17 +26,14 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active rounded bg-white p-2 shadow-sm" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
-                    <div id="warehouseCenterSparepart"></div>
+                    <div id="warehouseCenterChart"></div>
                 </div>
             </div>
         </div>
         <br>
-        {{-- <div class="row">
-            <x-card-list :salesData="$salesData" />
-        </div> --}}
 
         <script>
-            let percentageSales = {{ $booking }}
+            let booking = {{ $booking }}
             let orderProgress = {{ $orderProgress }};
             let orderClosed = {{ $orderClosed }};
             let currentDate = new Date();
@@ -47,7 +44,7 @@
             let formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (date < 10 ? '0' + date :
                 date);
 
-            let myConfigProfit = {
+            let myConfigWarehouse = {
                 type: "bar",
                 title: {
                     text: "Order Result",
@@ -100,5 +97,9 @@
                     },
                 ],
             };
+            zingchart.render({
+                id: "warehouseCenterChart",
+                data: myConfigWarehouse,
+            });
         </script>
     @endsection
