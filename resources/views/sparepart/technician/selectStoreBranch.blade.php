@@ -1,6 +1,6 @@
 @extends('template.teknisiSparepart')
 
-@section('content')
+@section('contents')
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-7 mt-4 text-center">

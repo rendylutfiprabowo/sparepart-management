@@ -1,5 +1,5 @@
 @extends('template.teknisiSparepart')
-@section('content')
+@section('contents')
     <div class="col-md-12">
         <div class="card rounded-4 mb-4 p-4">
             <div class="card-header merah text-light mb-3 pt-3">
