@@ -21,6 +21,21 @@ class warehouseController extends Controller
      * Display a listing of the resource.
      */
 
+    public function dashboardWarehouse()
+    {
+        $idStore = Auth::user()->warehouse->id_store;
+        $status = 'closed';
+        $totalItem = stockSparepart::where('id_store', $idStore)->count();
+        $totalOrder = order::where('id_store', $idStore)->count();
+        $orderClosed = order::where('id_store', $idStore)->where('status', $status)->count();
+        return view('sparepart.warehouse.warehouseDashboard', [
+            'totalItem' => $totalItem,
+            'totalOrder' => $totalOrder,
+            'orderClosed' => $orderClosed
+        ]);
+        // ));
+    }
+
     public function viewSpkBranch()
     {
         $spks = Auth::User()->warehouse->store->order;
