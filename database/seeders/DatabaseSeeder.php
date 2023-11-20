@@ -464,14 +464,14 @@ class DatabaseSeeder extends Seeder
         form::create([
             'id_form' => '22',
             'field_form' => json_encode([
-                'hidrogen' => 0,
-                'etana' => 0,
-                'etilena' => 0,
-                'asetilena' => 0,
-                'karbonDioksida' => 0,
-                'metana' => 0,
-                'karbonMonoksida' => 0,
-                'co2coRatio' => 0
+                'Hidrogen (H2)' => 0,
+                'Etana (C2H6)' => 0,
+                'Etilena (C2H4)' => 0,
+                'Asetilena (C2H2)' => 0,
+                'Karbon Dioksida (CO2)' => 0,
+                'Metana (CH4)' => 0,
+                'Karbon Monoksida (CO)' => 0,
+                'CO2/CO ratio' => 0
             ]),
             'id_scope' => '220',
         ]);
@@ -505,6 +505,8 @@ class DatabaseSeeder extends Seeder
                 'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
+                // 'Kategori Hasil OA'=> 0,
+                // 'Rekomendasi OA' => 0,
             ]),
             'id_scope' => '399',
         ]);
