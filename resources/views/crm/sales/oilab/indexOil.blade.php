@@ -4,14 +4,14 @@
 @section('contents')
     <div class="container-fluid">
         <div class="row">
-            <x-card cardTitles="DGA " iconClass="bi-moisture" percents="155K" />
-            <x-card cardTitles="FURAN " iconClass="bi-moisture" percents="55K" />
-            <x-card cardTitles="OA" iconClass="bi-moisture" percents="9K" />
+            <x-card cardTitles="DGA " iconClass="bi-moisture" percents="155K" href="#" />
+            <x-card cardTitles="FURAN " iconClass="bi-moisture" percents="55K" href="#" />
+            <x-card cardTitles="OA" iconClass="bi-moisture" percents="9K" href="#" />
         </div>
         <br>
         <div class="table-responsive bg-white rounded p-2 shadow-sm">
             <table class="table text-center">
-                <thead class="table-light">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Customer</th>

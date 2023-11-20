@@ -1,61 +1,7 @@
-let myConfigProfit = {
-    type: "bar",
-    title: {
-        text: "Selling Profit Days",
-        fontSize: 18,
-    },
-    legend: {
-        draggable: true,
-    },
-    scaleX: {
-        // Set scale label
-        label: {
-            text: "Days",
-        },
-        // Convert text on scale indices
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    },
-    scaleY: {
-        // Scale label with unicode character
-        label: {
-            text: "Sales ",
-        },
-    },
-    plot: {
-        // Animation docs here:
-        // https://www.zingchart.com/docs/tutorials/styling/animation#effect
-        animation: {
-            effect: "ANIMATION_EXPAND_BOTTOM",
-            method: "ANIMATION_STRONG_EASE_OUT",
-            sequence: "ANIMATION_BY_NODE",
-            speed: 275,
-        },
-    },
-    series: [
-        {
-            // Plot 1 values, linear data
-            values: [23, 20, 27, 29, 25, 17, 15],
-            text: "Week 1",
-        },
-        {
-            // Plot 2 values, linear data
-            values: [35, 42, 33, 49, 35, 47, 35],
-            text: "Week 2",
-        },
-        {
-            // Plot 2 values, linear data
-            values: [15, 22, 13, 33, 44, 27, 31],
-            text: "Week 3",
-        },
-    ],
-};
-
 // Render Method[3]
 zingchart.render({
     id: "profitCharts",
     data: myConfigProfit,
-    height: 400,
-    width: "100%",
 });
 
 // Visitor Charts
@@ -86,7 +32,6 @@ let myConfigsVisitor = {
 zingchart.render({
     id: "visitorCharts",
     data: myConfigsVisitor,
-    height: 400,
     width: "100%",
 });
 
@@ -97,7 +42,7 @@ var myConfigStock = {
             type: "bar",
             "background-color": "white",
             title: {
-                text: "SpareParts First In First Out",
+                text: "SpareParts Stock Statistic",
                 "font-color": "#7E7E7E",
                 backgroundColor: "none",
                 "font-size": "20px",
@@ -156,7 +101,7 @@ var myConfigStock = {
                     visible: true,
                 },
                 label: {
-                    text: "Profit -> ",
+                    text: "Number ",
                     "font-family": "roboto",
                     bold: true,
                     "font-size": "14px",
@@ -226,11 +171,3 @@ zingchart.render({
     id: "stockCharts",
     data: myConfigStock,
 });
-
-// Toast JS
-
-function showAlerts() {
-    alertify.notify("custom message.", "custom", 2, function () {
-        console.log("dismissed");
-    });
-}

@@ -314,7 +314,7 @@ class salesController extends Controller
         return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
-    // CHANNELS
+    // ====================== CHANNEL =============================
     public function channelsIndex()
     {
         return view('crm.sales.channels.indexChannels');
@@ -326,5 +326,11 @@ class salesController extends Controller
         $search = $request->input('search');
         $products = stockSparepart::where('name', 'like', "%$search%")->get();
         return view('products.index', compact('products'));
+    }
+
+    // ====================== REPORTS =============================
+    public function reportsCrm()
+    {
+        return view('crm.sales.reports.indexReports');
     }
 }

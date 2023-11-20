@@ -92,9 +92,9 @@
         @enderror
         <thead>
             <tr>
-                <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List SPK</h3>
+                <h3 class="text-dark my-2 text-start">List SPK</h3>
             </tr>
-            <hr class="mt-1" style="background-color: black;">
+            <hr class="mt-1">
         </thead>
         <table class="table-bordered table" width="100%" cellspacing="0">
             <thead class="text-center">
@@ -132,7 +132,7 @@
                 <div class="items">
                     <div class="item mb-5">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
+                            <label for="exampleFormControlInput1" class="fw-bold">Nama Barang</label>
                             <div class="d-flex">
                                 <select class="form-select category-select" placeholder="Enter Customer Name"
                                     name="category" id="category">
