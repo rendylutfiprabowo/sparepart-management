@@ -127,9 +127,9 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
 
 //Role Manager Center
 Route::middleware(['auth', 'warehouse-center'])->group(function () {
+    Route::get('/warehouse/dashboard', [warehouseController::class, 'dashboardWarehouse']);
     Route::get('/warehouse/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItemCenter']);
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);
-    Route::get('/warehouse/dashboard', [warehouseController::class, 'index']);
     Route::get('/warehouse/stock', [stockController::class, 'viewStockWarehouse']);
     Route::get('/warehouse/returItem', [warehouseController::class, 'returItemCenter']);
     Route::get('/warehouse/listspk', [warehouseController::class, 'viewSpk']);
