@@ -1,5 +1,5 @@
 @extends('template.teknisiSparepart')
-@section('content')
+@section('contents')
     @if ($order->status == 'on-technician')
         <form method="POST" action="/technician/listspk/{{ $order->id_order }}/return">
             @csrf

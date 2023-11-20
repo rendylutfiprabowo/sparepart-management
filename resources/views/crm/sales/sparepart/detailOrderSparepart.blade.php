@@ -102,30 +102,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <div class="d-flex justify-content-around p-3 bg-white rounded shadow-sm text-center">
-                <h1>Order : {{ $order->id_order }}</h1>
-                <div class="">
-                    <h6>Customer</h6>
-                    <p>PT Sekian</p>
-                </div>
-                <div>
-                    <h6>Total Items</h6>
-                    <p>88</p>
-                </div>
-                <div>
-                    <h6>Status</h6>
-                    <p>On Going</p>
-                </div>
-                <div>
-                    <h6>Date</h6>
-                    <p>9/9/2023</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <br>
 
     {{-- FORM  --}}

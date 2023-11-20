@@ -12,7 +12,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle text-center" id="dataTable" cellspacing="0"
                         style="outline: 1px solid">
-                        <thead class="text-center">
+                        <thead class="text-center font-weight-bold" style="color: rgb(212, 26, 26);">
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">No SO</th>
@@ -24,6 +24,7 @@
                                 <th scope="col">Notes</th>
                             </tr>
                         </thead>
+
                         <tbody class="text-center ">
                             @foreach ($salesorderoil as $no => $solab)
                                 @foreach ($solab->project->history as $key => $history)
@@ -53,11 +54,11 @@
                                                 @endforeach
                                             </div>
                                         </td>
-                                        <td class="d-flex flex-column  ">
+                                        <td class="d-flex flex-column">
                                             @if ($history->note === 'lengkap')
-                                                <i class="fa-solid fa-check pt-2"></i>
+                                                <i class="fa-solid fa-check pt-2" style="color: rgba(0, 255, 0, 0.7);"></i>
                                             @elseif ($history->note === 'tidak lengkap')
-                                                <i class="fa-solid fa-times pt-2"></i>
+                                                <i class="fa-solid fa-times pt-2" style="color: rgba(255, 0, 0, 0.7);"></i>
                                             @else
                                                 <button class="btn" type="button" data-toggle="modal"
                                                     data-target="#note-{{ $history->id }}">
@@ -65,6 +66,7 @@
                                                 </button>
                                             @endif
                                         </td>
+
 
                                     </tr>
                                 @endforeach

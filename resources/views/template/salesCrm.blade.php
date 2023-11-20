@@ -91,10 +91,10 @@
                                         Order</span></a>
                             </li>
                             <!-- <li class="ms-4"><a href="/sales/oil/report"
-                                                                                                                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
-                                                                                                                                    class="bi bi-file-earmark-check me-1"></i> <span
-                                                                                                                                    class="me-2">Report</span></a>
-                                                                                                                        </li> -->
+                                                                                                                                                class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/report*') ? 'text-white active-sidebar-link' : '' }}"><i
+                                                                                                                                                    class="bi bi-file-earmark-check me-1"></i> <span
+                                                                                                                                                    class="me-2">Report</span></a>
+                                                                                                                                        </li> -->
                             <li class="ms-4"><a href="/sales/oil/sample"
                                     class=" nav-link  d-inline-flex text-decoration-none rounded {{ Request::is('sales/oil/sample*') ? 'text-white active-sidebar-link' : 'fw-normal' }}"><i
                                         class="bi bi-droplet-half me-1"></i> <span class="me-2">Report Sample</span></a>
@@ -121,7 +121,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-normal" href="#">
+                    <a class="nav-link rounded {{ Request::is('sales/reports/indexReports') ? 'text-white active-sidebar-link' : 'fw-normal' }}"
+                        href="/sales/reports/indexReports">
                         <span><i class="bi bi-file-text"></i></span>
                         Reports
                     </a>

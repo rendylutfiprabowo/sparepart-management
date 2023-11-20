@@ -7,14 +7,11 @@
             SpareParts Dashboard
         </x-page-heading>
         <div class="row">
-            <x-card cardTitles="Memo" iconClass="bi-file-earmark-richtext" percents="159K" />
-            <x-card cardTitles="Do" iconClass="bi-file-earmark-richtext" percents="12K" />
-            <x-card cardTitles="Stock" iconClass="bi-box" percents="3k" />
+            <x-card cardTitles="Memo" iconClass="bi-file-earmark-richtext" percents="159K" href="#" />
+            <x-card cardTitles="Do" iconClass="bi-file-earmark-richtext" percents="12K" href="#" />
+            <x-card cardTitles="Stock" iconClass="bi-box" percents="3k" href="#" />
         </div>
         <br />
-        <x-page-heading>
-            Statistik In Out SpareParts
-        </x-page-heading>
         <div class="row">
             <div class="col">
                 <div class="p-3 rounded bg-white shadow-sm">

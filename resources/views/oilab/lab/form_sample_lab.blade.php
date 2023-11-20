@@ -6,7 +6,7 @@
             <div class="card rounded-4" style="border-left-color: red; border-left-width: 10px;">
                 <div class="card-body shadow">
                     <h6 class="text-start font-weight-bold " style="color: black;">Form dibawah ini untuk menginput hasil
-                        pengetesan dari DGA Furan OA! </h6>
+                        pengetesan SAMPLE OIL! </h6>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                             <label for="exampleFormControlInput1" class="form-label"> <strong>{{ $key }}
                                 </strong></label>
                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Enter Result {{ $key }}" name="{{ $key }}"
+                                placeholder="Enter Result {{ $key }}" name="{{$key}}"
                                 @if ($field == -1) readonly value="Tidak Diisi" @endif>
                         </div>
                     @endforeach

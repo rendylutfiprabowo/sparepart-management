@@ -26,33 +26,34 @@
                     </h5>
                 </div>
                 <div class="ms-2">
-                    <a href="#" class="">
-                        <strong class="">WhatsApp API Business</strong>
+                    <a href="#" class="text-decoration-none fw-medium text-muted">
+                        WhatsApp API Business
                     </a>
                 </div>
             </div>
-            <div class="d-flex pt-2 align-items-center">
+            <div class="d-flex  align-items-center">
                 <div>
                     <h5>
                         <i class="bi bi-instagram"></i>
                     </h5>
                 </div>
                 <div class="ms-2">
-                    <a href="#" class="">
-                        <strong class="d-block text-gray-dark">Instagram</strong>
+                    <a href="https://www.instagram.com/trafindo_transformers/?hl=en"
+                        class="text-decoration-none fw-medium text-dark">
+                        Instagram
                     </a>
                 </div>
 
             </div>
-            <div class="d-flex pt-2 align-items-center">
+            <div class="d-flex  align-items-center">
                 <div>
                     <h5>
                         <i class="bi bi-youtube"></i>
                     </h5>
                 </div>
                 <div class="ms-2">
-                    <a href="#" class="">
-                        <strong class="d-block text-gray-dark">Youtube</strong>
+                    <a href="#" class="text-decoration-none fw-medium text-dark">
+                        Youtube
                     </a>
                 </div>
             </div>
@@ -79,7 +80,8 @@
                     </h5>
                 </div>
                 <div class="ms-2">
-                    <a href="#" class="">
+                    <a href="https://docs.google.com/forms/d/1SePzejtBUvjmbkCwIcszDcRQ1L-ssBDOPL-pD_rxbh0/edit"
+                        class="">
                         <strong class="d-block text-gray-dark">Survey</strong>
                     </a>
                 </div>

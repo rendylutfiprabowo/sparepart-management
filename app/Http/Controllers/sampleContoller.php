@@ -89,8 +89,11 @@ class sampleContoller extends Controller
             if (!isset($validated['check']['oa']['tan'])) {
                 $data['Total Acid Number (TAN)'] = '-1';
             };
+            if (!isset($validated['check']['oa']['oqin'])) {
+                $data['Oil Quality Index (OQIN)'] = '-1';
+            };
             if (!isset($validated['check']['oa']['sediment_and_sludge'])) {
-                $data['Sediment & Sludge'] = '-1';
+                $data['Sendiment & Sludge'] = '-1';
             };
             if (!isset($validated['check']['oa']['corrosive_sulfur'])) {
                 $data['Corrosive Sulfur'] = '-1';
@@ -107,7 +110,6 @@ class sampleContoller extends Controller
             if (!isset($validated['check']['oa']['density'])) {
                 $data['Density'] = '-1';
             };
-
             $form_oa->field_formreport = json_encode($data);
             // $form_oa->value_formreport = $form_oa->field_formreport;
             $form_oa->id_sample = $oa->id_sample;

@@ -48,7 +48,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Role Superadmin
 Route::middleware(['auth', 'superadmin'])->group(function () {
-    Route::get('/superadmin/dashboard', [superadminController::class, 'index'])->name('dashboardSuperadmin');
+    Route::get('/superadmin/dashboard', [superadminController::class, 'dashboard'])->name('dashboardSuperadmin');
+    Route::get('/superadmin/createaccount', [superadminController::class, 'createaccount'])->name('createaccountSuperadmin');
 });
 
 //Role Sales
@@ -86,8 +87,10 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::post('/sales/sparepart/revision/{id}', [revisionController::class, 'update']);
     Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'updateSales']);
-    // Channels
+    // Channels Sales
     Route::get('/sales/channels/indexChannels', [salesController::class, 'channelsIndex']);
+    // Reports Sales
+    Route::get('/sales/reports/indexReports', [salesController::class, 'reportsCrm']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {
@@ -163,10 +166,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'addtrafo']);
     Route::post('/orderlist/{id_solab}/{id_history}/add', [labController::class, 'storetrafo']);
     Route::get('/orderlist/{id_solab}/{id_sample}', [labController::class, 'formReport']);
-    Route::post('/orderlist/{id_solab}/{id_sample}', [reportController::class, 'storeFuran']);
-    // function () {
-    //     return view('oilab.lab.form_furan_lab');
-    // });
+    Route::post('/orderlist/{id_solab}/{id_sample}', [reportController::class, 'storeSample']);
 
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');
@@ -174,19 +174,9 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
-    // Route::get('/form_dga_lab/{id}', function () {
-    //     return view('oilab.lab.form_dga_lab');
-    // });
-    // Route::post('/form_dga_lab/{id}', [reportController::class, 'storeDGA']);
-
     Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
-
-    // Route::get('/form_oa_lab/{id}', function () {
-    //     return view('oilab.lab.form_oa_lab');
-    // });
-    // Route::post('/form_oa_lab/{id}', [reportController::class, 'storeOA']);
 });
 
 
