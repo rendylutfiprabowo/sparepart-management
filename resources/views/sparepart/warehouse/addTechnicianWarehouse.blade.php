@@ -261,7 +261,7 @@
                     </div>
                     @if ($order->nota_penyerahan == null)
                         <strong><label class="form-label">Delivery Type</label></strong>
-                        <input type="text" class="form-control" name="" placeholder=""
+                        <input type="text" class="form-control" name="technician_name" placeholder=""
                             value="Delievered by Other Party" readonly>
                         <div class="modal-footer gap-2 pt-4">
                             <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
@@ -269,7 +269,7 @@
                         </div>
                     @elseif($order->nota_penyerahan != null)
                         <strong><label class="form-label">Delivery Type</label></strong>
-                        <input type="text" class="form-control" name="" placeholder=""
+                        <input type="text" class="form-control" name="technician_name" placeholder=""
                             value="Delievered by Other Party" readonly>
                         <div class="modal-footer">
                             <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
@@ -301,7 +301,7 @@
                     </div>
                     @if ($order->surat_jalan == null)
                         <strong><label class="form-label">Delivery Type</label></strong>
-                        <input type="text" class="form-control" name="" placeholder=""
+                        <input type="text" class="form-control" name="technician_name" placeholder=""
                             value="Delievered by Other Party" readonly>
                         <div class="modal-footer gap-2 pt-4">
                             <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
@@ -309,7 +309,7 @@
                         </div>
                     @elseif($order->surat_jalan != null)
                         <strong><label class="form-label">Delivery Type</label></strong>
-                        <input type="text" class="form-control" name="" placeholder=""
+                        <input type="text" class="form-control" name="technician_name" placeholder=""
                             value="Delievered by Other Party" readonly>
                         <div class="modal-footer">
                             <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
@@ -478,14 +478,14 @@
                 </div>
                 @if ($order->nota_penyerahan == null)
                     <strong><label class="form-label">Delivery Type</label></strong>
-                    <input type="text" class="form-control" name="" placeholder=""
+                    <input type="text" class="form-control" name="technician_name" placeholder=""
                         value="Delievered by Other Party" disabled>
                     <div class="modal-footer">
                         <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
                     </div>
                 @elseif($order->nota_penyerahan != null)
                     <strong><label class="form-label">Delivery Type</label></strong>
-                    <input type="text" class="form-control" name="" placeholder=""
+                    <input type="text" class="form-control" name="technician_name" placeholder=""
                         value="Delievered by Other Party" disabled>
                     <div class="modal-footer">
                         <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
@@ -517,17 +517,17 @@
                 </div>
                 @if ($order->surat_jalan == null)
                     <strong><label class="form-label">Delivery Type</label></strong>
-                    <input type="text" class="form-control" name="" placeholder=""
+                    <input type="text" class="form-control" name="technician_name" placeholder=""
                         value="Delievered by Other Party" disabled>
                     <div class="modal-footer">
-                    <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
+                        <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
                     </div>
                 @elseif($order->surat_jalan != null)
                     <strong><label class="form-label">Delivery Type</label></strong>
-                    <input type="text" class="form-control" name="" placeholder=""
+                    <input type="text" class="form-control" name="technician_name" placeholder=""
                         value="Delievered by Other Party" disabled>
                     <div class="modal-footer">
-                    <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
+                        <a href="/warehouse/listspk" class="btn btn-secondary"> back</a>
                     </div>
                 @endif
             @endif
