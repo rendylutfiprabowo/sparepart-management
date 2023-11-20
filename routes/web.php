@@ -43,7 +43,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Role Superadmin
 Route::middleware(['auth', 'superadmin'])->group(function () {
-    Route::get('/superadmin/dashboard', [superadminController::class, 'index'])->name('dashboardSuperadmin');
+    Route::get('/superadmin/dashboard', [superadminController::class, 'dashboard'])->name('dashboardSuperadmin');
+    Route::get('/superadmin/createaccount', [superadminController::class, 'createaccount'])->name('createaccountSuperadmin');
 });
 
 //Role Sales
