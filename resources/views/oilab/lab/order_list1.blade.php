@@ -40,7 +40,7 @@
                 <div class="table-responsive">
 
                     <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="text-center font-weight-bold" style="color: rgb(212, 26, 26);">
                             <tr class="text-center">
                                 <th scope="col">Serial Number</th>
                                 <th scope="col">KVA</th>
@@ -79,10 +79,10 @@
                                     <td class="text-center align-middle">
                                         <div>
                                             @foreach ($history->samples as $sample)
-                                                    <div>
-                                                        <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{$sample->id_sample}}"
-                                                            class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
-                                                    </div>
+                                                <div>
+                                                    <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{ $sample->id_sample }}"
+                                                        class="pdf-link"><i class="fa-regular fa-file fa-lg"></i></a>
+                                                </div>
                                             @endforeach
                                         </div>
                                     </td>

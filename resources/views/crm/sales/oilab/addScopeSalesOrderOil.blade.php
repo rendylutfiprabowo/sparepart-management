@@ -1,10 +1,10 @@
 @extends('template.salesCrm')
 @section('contents')
-<div>
-    <!-- lOGO TRAFOINDO -->
-    <div class="container d-flex justify-content-center align-items-center">
-        <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-    </div>
+    <div>
+        <!-- lOGO TRAFOINDO -->
+        <div class="container d-flex justify-content-center align-items-center">
+            <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
+        </div>
         <!-- form salesorder -->
         <div>
             <!-- form salesorder -->
@@ -61,14 +61,14 @@
                                             <input class="form-check-input" type="checkbox" name="check[oa][bdv]"
                                                 id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>BDV</strong>
+                                                <strong>Breakdown Voltage (Dieclectric Strength)</strong>
                                             </label>
                                         </div>
                                         <div class="form-check ml-2">
                                             <input class="form-check-input" type="checkbox" name="check[oa][ift]"
                                                 id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>IFT</strong>
+                                                <strong>Interfacial Tension</strong>
                                             </label>
                                         </div>
                                         <div class="form-check ml-2">
@@ -86,8 +86,15 @@
                                             </label>
                                         </div>
                                         <div class="form-check ml-2">
+                                            <input class="form-check-input" type="checkbox" name="check[oa][oqin]"
+                                                id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <strong>Oil Quality Index (OQIN)</strong>
+                                            </label>
+                                        </div>
+                                        <div class="form-check ml-2">
                                             <input class="form-check-input" type="checkbox"
-                                                name="check[oa][sludge_and_sendiment]" id="flexCheckDefault">
+                                                name="check[oa][sediment_and_sludge]" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 <strong>Sludge & Sediment</strong>
                                             </label>
@@ -96,7 +103,7 @@
                                             <input class="form-check-input" type="checkbox"
                                                 name="check[oa][corrosif_sulfur]" id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Corrosif Sulfur</strong>
+                                                <strong>Corrosive Sulfur</strong>
                                             </label>
                                         </div>
                                         <div class="form-check ml-2">
@@ -117,7 +124,7 @@
                                             <input class="form-check-input" type="checkbox" name="check[oa][color]"
                                                 id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Color</strong>
+                                                <strong>Color / Appreance</strong>
                                             </label>
                                         </div>
                                         <div class="form-check ml-2">
