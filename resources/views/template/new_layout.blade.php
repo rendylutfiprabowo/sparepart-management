@@ -10,6 +10,9 @@
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -91,22 +94,18 @@
     {{-- WRAP CONTENT --}}
     <div class="container-fluid">
         <div class="row">
-            {{-- SIDEBARS --}}
-            {{-- @extends('template.sales_sidebar') --}}
+            {{-- SIDEBAR / HEADER --}}
             @yield('sidebar')
 
-            {{-- WRAP CONTENTS --}}
+            {{-- CONTENT --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-3 mb-5">
-                {{-- MAIN --}}
                 @yield('contents')
-                {{-- Footers --}}
             </main>
 
+            {{-- FOOTER --}}
             <div class="col-md-9 ms-sm-auto col-lg-10 p-2 footer-custom bg-white border-top border-1">
                 <div class=" text-center">
-                    <div class="">
-                        <small class="text-secondary">&copy; 2023 PT. Trafindo, All rights reserved.</small>
-                    </div>
+                    <small class="text-secondary">&copy; 2023 PT. Trafindo, All rights reserved.</small>
                 </div>
             </div>
         </div>

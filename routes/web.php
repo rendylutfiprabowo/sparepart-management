@@ -85,8 +85,10 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::post('/sales/sparepart/revision/{id}', [revisionController::class, 'update']);
     Route::post('/sales/sparepart/order/add', [orderController::class, 'store']);
     Route::post('/sales/sparepart/order/{id_order}/add-do', [orderController::class, 'updateSales']);
-    // Channels
+    // Channels Sales
     Route::get('/sales/channels/indexChannels', [salesController::class, 'channelsIndex']);
+    // Reports Sales
+    Route::get('/sales/reports/indexReports', [salesController::class, 'reportsCrm']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {
@@ -119,7 +121,6 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/tools/request-item/distribution', [warehouseController::class, 'storeDistribution']);
     Route::post('/warehouse/stock/branch/{id_stock}', [stockController::class, 'addStockBranch']);
     Route::post('/warehouse/branch/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStockBranch']);
-
 });
 
 //Role Manager Center

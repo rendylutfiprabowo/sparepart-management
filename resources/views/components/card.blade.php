@@ -3,7 +3,7 @@
         <div class="card-body d-flex justify-content-between">
             <h5 class="card-title">{{ $cardTitles }}</h5>
             <h1 class="text-secondary">
-                <i class="bi {{ $iconClass }}" style="color: #A9A9A9">
+                <i class="bi {{ $iconClass }}">
                     {{ $slot }}
                 </i>
             </h1>
@@ -11,7 +11,7 @@
         <div class="card-body">
             <h3 class="text-danger">{{ $percents }}</h3>
             <small class="text-secondary">For This Month</small>
-            <a href="#" class="float-end text-danger text-decoration-none">Detail
+            <a href="{{ $href }}" class="float-end text-danger text-decoration-none">Detail
                 <i class="bi bi-arrow-right-short"></i></a>
         </div>
     </div>

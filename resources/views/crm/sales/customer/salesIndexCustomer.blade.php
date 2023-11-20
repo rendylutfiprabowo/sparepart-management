@@ -5,7 +5,7 @@
 @section('contents')
     <div class="container-fluid">
         <x-page-heading>
-            Top Customers
+            Dashboard Customers
         </x-page-heading>
         <br>
         {{-- CARD TOP CUSTOMER --}}
@@ -24,7 +24,7 @@
                 {{-- Button Modal Add Customer --}}
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
-                        class="bi bi-person-fill-add" viewBox="0 0 16 16">
+                        class="bi bi-person-add" viewBox="0 0 16 16">
                         <path
                             d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         <path
@@ -36,24 +36,26 @@
                 <table class="table table-borderless">
                     <thead class=" border-bottom table-light">
                         <tr>
-                            <th scope="col">ID Customer</th>
-                            <th scope="col">Nama Customer</th>
-                            <th scope="col">No Hp</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Jenis Usaha</th>
+                            <th class="text-center">No</th>
+                            <th>ID Customer</th>
+                            <th>Nama Customer</th>
+                            <th>No Hp</th>
+                            <th>Email</th>
+                            <th>Jenis Usaha</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if (count($dataCust) > 0)
                             @foreach ($dataCust as $dataTable)
                                 <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $dataTable->id_customer }}</th>
-                                    <td><a class="text-decoration-none"
+                                    <td><a class="text-dark text-decoration-none fw-medium link-danger"
                                             href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                     </td>
                                     <td>{{ $dataTable->phone_customer }}</td>
-                                    <td> <a href="mailto:{{ $dataTable->email_customer }}"
-                                            class="text-decoration-none">{{ $dataTable->email_customer }}</a>
+                                    <td>
+                                        {{ $dataTable->email_customer }}
                                     </td>
                                     <td>{{ $dataTable->jenisusaha_customer }}</td>
                                 </tr>

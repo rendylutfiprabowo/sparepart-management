@@ -3,7 +3,8 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-title">Sales Team</h5>
-                <small><a href="#" class="text-decoration-none text-danger">Show more</a></small>
+                <small><a href="{{ $href }}" class="text-secondary link-danger text-decoration-none">Show
+                        more</a></small>
             </div>
             <br>
             @foreach ($salesData as $sales)
@@ -15,7 +16,7 @@
                             class="ms-2 mb-2 text-decoration-none text-dark fw-medium">{{ $sales->nama_sales }}</a>
                     </div>
                     <div>
-                        <small class="text-secondary">{{ $sales->nip_sales }}</small>
+                        <small>{{ $sales->phone_sales }}</small>
                     </div>
                 </div>
             @endforeach
