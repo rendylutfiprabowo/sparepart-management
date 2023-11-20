@@ -28,10 +28,22 @@ class warehouseController extends Controller
         $totalItem = stockSparepart::where('id_store', $idStore)->count();
         $totalOrder = order::where('id_store', $idStore)->count();
         $orderClosed = order::where('id_store', $idStore)->where('status', $status)->count();
+        $orderProgress = Order::where('id_store', $idStore)
+            ->where('status', $status)
+            ->whereNotNull('status') // Menambahkan kondisi status tidak sama dengan null
+            ->count();
+        $booking = Order::where('id_store', $idStore)
+            ->where(function ($query) use ($status) {
+                $query->where('status', $status)
+                    ->orWhereNull('status'); // Menambahkan kondisi status sama dengan null
+            })
+            ->count();
         return view('sparepart.warehouse.warehouseDashboard', [
             'totalItem' => $totalItem,
             'totalOrder' => $totalOrder,
-            'orderClosed' => $orderClosed
+            'orderClosed' => $orderClosed,
+            'orderProgress' => $orderProgress,
+            'booking' => $booking
         ]);
         // ));
     }
