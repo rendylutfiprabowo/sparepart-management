@@ -407,60 +407,6 @@ class DatabaseSeeder extends Seeder
             'nama_role' => 'Superadmin',
         ]);
 
-        //dga
-        // formReport::create([
-        //     'id_formreport' => $faker->numberBetween(100, 999),
-        //     'field_formreport' => json_encode([
-        //         'hidrogen' => 0,
-        //         'etana' => 0,
-        //         'etilena' => 0,
-        //         'asetilena' => 0,
-        //         'karbonDioksida' => 0,
-        //         'metana' => 0,
-        //         'karbonMonoksida' => 0,
-        //         'co2coRatio' => 0
-        //     ]),
-        //     'id_sample' => '67',
-        //     'id_lab'=> '5',
-        // ]);
-
-        // formReport::create([
-        //     'id_formreport' => $faker->numberBetween(100, 999),
-        //     'field_formreport' => json_encode([
-        //         '5mhf' => 0,
-        //         '2fol' => 0,
-        //         '2fal' => 0,
-        //         '2acf' => 0,
-        //         '5mef' => 0,
-        //         // 'total_2fal' => 0,
-        //         // 'total_furan' => 0,
-        //         // 'estimate_dp' => 0
-        //     ]),
-        //     'id_sample' => '77',
-        //     'id_lab'=> '6',
-        // ]);
-
-        // formReport::create([
-        //     'id_formreport' => $faker->numberBetween(100, 999),
-        //     'field_formreport' => json_encode([
-        //         'Color' => 0,
-        //         'bdv' => 0,
-        //         'ift' => 0,
-        //         'tan' => 0,
-        //         'wc' => 0,
-        //         'oqin' => 0,
-        //         'sediment_and_sludge' => 0,
-        //         'density' => 0,
-        //         'pcb' => 0,
-        //         'corrosive_sulfur' => 0,
-        //         'flash_point' => 0,
-        //         'kategoriHasil_oa' => 0,
-        //         'rekomendasi_oa' => 0,
-        //     ]),
-        //     'id_sample' => '87',
-        //     'id_lab'=> '7',
-        // ]);
-        //dga
         form::create([
             'id_form' => '22',
             'field_form' => json_encode([
@@ -590,8 +536,6 @@ class DatabaseSeeder extends Seeder
             'merk' => 'trafindo',
             'year' => '2020',
             'area' => 'area 1',
-            // 'tegangan_hv' => '2034',
-            // 'tegangan_lv' => '2034',
             'voltage' => '1212',
             'vg' => '1222',
             'tag_number' => '11',

@@ -48,7 +48,7 @@
                                 <th scope="col">Item Test</th>
                                 <th scope="col">Report</th>
                                 <th scope="col">Add Data</th>
-                                <th scope="col">Status</th>
+                                {{-- <th scope="col">Status</th> --}}
                                 <th scope="col">Note</th>
                             </tr>
                         </thead>
@@ -91,11 +91,11 @@
                                             type="button" class="btn-sm btn merah text-putih mx-auto">Add Data<i
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
                                     </td>
-                                    <td class="text-center align-middle">
+                                    {{-- <td class="text-center align-middle">
                                         <div>
                                             <strong>Checking</strong>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                     <!-- button modal -->
                                     <td class="text-center align-middle"><a href="/order_list" class="btn" type="button"
                                             data-toggle="modal" data-target="#exampleModal1"><i
