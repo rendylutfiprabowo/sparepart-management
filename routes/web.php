@@ -149,6 +149,8 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/index_lab', function () {
         return view('oilab.lab.index_lab');
     });
+    Route::get('/index_lab', [labController::class, 'index']);
+    
     Route::get('/item_test', function () {
         return view('oilab.lab.item_test');
     });

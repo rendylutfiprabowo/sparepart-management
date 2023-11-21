@@ -6,6 +6,7 @@ use App\Models\customer;
 use App\Models\history;
 use App\Models\reportSample;
 use App\Models\sales;
+use App\Models\scope;
 use App\Models\sample;
 use App\Models\solab;
 use App\Models\trafo;
@@ -17,6 +18,22 @@ use Illuminate\Auth\Events\Validated;
 
 class labController extends Controller
 {
+    public function index()
+    {
+        $totalDGA = Sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 220); // ID untuk DGA
+        })->count();
+        $totalFuran = Sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 842); // ID untuk Furan
+        })->count();
+        $totalOA = Sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 399); // ID untuk OA
+        })->count();
+        $totalAllSamples = $totalDGA + $totalFuran + $totalOA;
+
+        return view('oilab.lab.index_lab', compact('totalDGA', 'totalFuran', 'totalOA', 'totalAllSamples'));
+    }
+
     public function viewOrder()
     {
         $salesorderoil = Solab::whereNotNull('id_project')->get();
@@ -26,27 +43,28 @@ class labController extends Controller
 
     public function viewItem($no_so_solab)
     {
-        $salesorderoil = Solab::where('no_so_solab', $no_so_solab)->first(); 
+        $salesorderoil = Solab::where('no_so_solab', $no_so_solab)->first();
         $sample = Sample::all();
         return view('oilab.lab.order_list1', compact('salesorderoil', 'sample'));
     }
 
-    public function addTrafo($id_solab,$id_history)
+    public function addTrafo($id_solab, $id_history)
     {
-        $salesorderoil = Solab::where('no_so_solab', $id_solab)->first(); 
-        return view('oilab.lab.form_add_data', compact('salesorderoil','id_history'));
+        $salesorderoil = Solab::where('no_so_solab', $id_solab)->first();
+        return view('oilab.lab.form_add_data', compact('salesorderoil', 'id_history'));
     }
-    public function formReport($id_solab,$id_sample){
+    public function formReport($id_solab, $id_sample)
+    {
         $sample = sample::where('id_sample', $id_sample)->firstOrFail();
         $form = json_decode($sample->formReport->field_formreport);
 
-        return view('oilab.lab.form_sample_lab',[
-                'sample'=>$sample,
-                'form'=>$form,
+        return view('oilab.lab.form_sample_lab', [
+            'sample' => $sample,
+            'form' => $form,
         ]);
     }
 
-    public function storeTrafo(Request $request, $no_so_solab,$id_history)
+    public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
         $faker = Faker::create();
         // dd($request->all());
@@ -57,8 +75,6 @@ class labController extends Controller
             'merk' => 'required',
             'year' => 'required',
             'area' => 'required',
-            // 'tegangan_hv' => 'required',
-            // 'tegangan_lv' => 'required',
             'voltage' => 'required',
             'vg' => 'required',
             'tag_number' => 'required',
@@ -80,8 +96,6 @@ class labController extends Controller
             $trafos->merk = $validated['merk'];
             $trafos->year = $validated['year'];
             $trafos->area = $validated['area'];
-            // $trafos->tegangan_hv = $validated['tegangan_hv'];
-            // $trafos->tegangan_lv = $validated['tegangan_lv'];
             $trafos->voltage = $validated['voltage'];
             $trafos->vg = $validated['vg'];
             $trafos->tag_number = $validated['tag_number'];
@@ -91,7 +105,7 @@ class labController extends Controller
             $trafos->id_customer = 0;
             $trafos->save();
 
-            $history =  history::where('id_project', $request->id_project )->where('id',$id_history)->firstOrFail();
+            $history =  history::where('id_project', $request->id_project)->where('id', $id_history)->firstOrFail();
             $history->id_trafo = $trafos->id_trafo;
             $history->save();
             $salesorderoil = Solab::whereNotNull('id_project')->get();

@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <h2><b>4</b></h2>
+                            <h2><b>{{ $totalDGA }}</b></h2>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <h2><b>1</b></h2>
+                            <h2><b>{{ $totalFuran }}</b></h2>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="text-center mt-5">
-                            <h2><b>1</b></h2>
+                            <h2><b>{{ $totalOA }}</b></h2>
                         </div>
                     </div>
                 </div>
@@ -66,58 +66,21 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between ">
                             <div>
-                                <h4><b>Customer</b></h4>
+                                <h4><b>All Samples</b></h4>
                             </div>
                             <div>
-                                <h3><i class="fa-solid fa-users"></i>
-                                    <h3>
+                                <h3><i class="fa-solid fa-calculator"></i></h3>
                             </div>
                         </div>
 
                         <div class="text-center mt-5">
-                            <h2><b>1</b></h2>
+                            <h2><b> {{ $totalAllSamples }}</b></h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <br>
-        {{-- <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body ">
-                        <div class="d-flex justify-content-between">
-                            <div>PROJECT</div>
-                            <div>KANAN</div>
-                        </div>
-                        <br>
-                        <div class="text-center">
-                            <h1>4</h1>
-                        </div>
-                    </div>
-                    <div class="card-footer merah">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body ">
-                        <div class="d-flex justify-content-between">
-                            <div>CUSTOMER</div>
-                            <div>KANAN</div>
-                        </div>
-                        <br>
-                        <div class="text-center">
-                            <h1>4</h1>
-                        </div>
-                    </div>
-                    <div class="card-footer merah">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
         <div class="d-sm-flex align-items-center justify-content-between mt-4">
             <h1 class="h3 mb-0 text-gray-800">Analytics Overview</h1>
         </div>
