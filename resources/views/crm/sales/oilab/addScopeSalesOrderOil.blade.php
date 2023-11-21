@@ -31,111 +31,36 @@
                                     </div>
 
                                     <!-- DGA -->
-                                    <div class="form-check mt-3 ml-2">
-                                        <input class="form-check-input" type="checkbox" name="check[dga]"
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <strong>DGA</strong>
-                                        </label>
-                                    </div>
-
-                                    <!-- Furan -->
-                                    <div class="form-check mt-3 ml-2">
-                                        <input class="form-check-input" type="checkbox" name="check[furan]"
-                                            id="flexCheckDefault">
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            <strong>Furan</strong>
-                                        </label>
-                                    </div>
-
-                                    <!-- COLLAPSE OA -->
-                                    {{-- @dd($oas) --}}
-                                    <div>
-                                        <button class="btn btn-white dropdown-toggle mt-2" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseExampleOil"
-                                            aria-expanded="false" aria-controls="collapseExampleOil">
-                                            <strong>Oil Analysis</strong>
-                                        </button>
-                                    </div>
-                                    <div class="collapse" id="collapseExampleOil">
-                                        <div class="form-check ml-2 mt-1">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][bdv]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Breakdown Voltage (Dieclectric Strength)</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][ift]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Interfacial Tension</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][water_content]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Water Content</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][tan]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>TAN</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][oqin]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Oil Quality Index (OQIN)</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox"
-                                                name="check[oa][sediment_and_sludge]" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Sludge & Sediment</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox"
-                                                name="check[oa][corrosif_sulfur]" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Corrosive Sulfur</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][flash_point]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Flash Point</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][pcb]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>PCB</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][color]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Color / Appreance</strong>
-                                            </label>
-                                        </div>
-                                        <div class="form-check ml-2">
-                                            <input class="form-check-input" type="checkbox" name="check[oa][density]"
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <strong>Density</strong>
-                                            </label>
-                                        </div>
-                                    </div>
+                                    @foreach ($scopes as $scope)
+                                        @if (!$scope->detailed)
+                                            <div class="form-check mt-3 ml-2">
+                                                <input class="form-check-input" type="checkbox"
+                                                    name="check[{{ $scope->nama_scope }}]" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    <strong>{{ $scope->nama_scope }}</strong>
+                                                </label>
+                                            </div>
+                                        @else
+                                            <div>
+                                                <button class="btn btn-white dropdown-toggle mt-2" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapse{{$scope->nama_scope}}"
+                                                    aria-expanded="false" aria-controls="collapse{{$scope->nama_scope}}">
+                                                    <strong>{{ $scope->nama_scope }}</strong>
+                                                </button>
+                                            </div>
+                                            <div class="collapse" id="collapse{{$scope->nama_scope}}">
+                                                @foreach (json_decode($scope->form->field_form,true) as $key => $field)
+                                                <div class="form-check ml-2 mt-1">
+                                                    <input class="form-check-input" type="checkbox" name="check[{{$scope->nama_scope}}][{{$key}}]"
+                                                        id="flexCheckDefault">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        <strong>{{$key}}</strong>
+                                                    </label>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
                             <!-- button back -->

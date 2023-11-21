@@ -514,16 +514,19 @@ class DatabaseSeeder extends Seeder
 
         scope::create([
             'id_scope' => '220',
+            'detailed'=> false,
             'nama_scope' => 'DGA',
         ]);
 
         scope::create([
             'id_scope' => '842',
+            'detailed'=> false,
             'nama_scope' => 'Furan',
         ]);
 
         scope::create([
             'id_scope' => '399',
+            'detailed'=> true,
             'nama_scope' => 'OA',
         ]);
         technician::create([

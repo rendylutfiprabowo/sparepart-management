@@ -8,6 +8,7 @@ use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
+use App\Models\scope;
 use App\Models\solab;
 use App\Models\category;
 use App\Models\history;
@@ -51,7 +52,8 @@ class salesController extends Controller
     {
         $project = project::where('id_project', $id_project)->firstOrFail();
         $history = history::where('id', $id_history)->firstOrFail();
-        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project'));
+        $scopes = scope::all();
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project','scopes'));
     }
 
     public function createSalesOrderOil()
