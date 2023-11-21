@@ -24,25 +24,56 @@ class warehouseController extends Controller
     public function dashboardWarehouse()
     {
         $idStore = Auth::user()->warehouse->id_store;
-        $totalItem = stockSparepart::where('id_store', $idStore)->count();
-        $totalOrder = order::where('id_store', $idStore)->count();
-        $orderClosed = order::where('id_store', $idStore)->where('status', 'closed')->count();
-        $orderProgress = Order::where('id_store', $idStore)
+        $orderProgressNotif = Order::where('id_store', $idStore)
             ->whereNotNull('status')
             ->where('status', '!=', 'closed')
             ->where('status', '!=', null)
             ->count();
-        // @dd($orderClosed);
-        $booking = order::where('id_store', $idStore)->where('status', null)->count();
+        $orderClosedNotif = order::where('id_store', $idStore)->where('status', 'closed')->count();
+
+        // Ambil data per bulan untuk total item
+        $totalItem = stockSparepart::where('id_store', $idStore)->count();
+
+        // Ambil data per bulan untuk total order
+        $totalOrder = order::where('id_store', $idStore)->count();
+
+        // Ambil data per bulan untuk order closed
+        $orderClosed = order::where('id_store', $idStore)
+            ->where('status', 'closed')
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+        // Ambil data per bulan untuk order progress
+        $orderProgress = Order::where('id_store', $idStore)
+            ->whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+        // Ambil data per bulan untuk booking
+        $booking = order::where('id_store', $idStore)
+            ->where('status', null)
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
         return view('sparepart.warehouse.warehouseDashboard', [
             'totalItem' => $totalItem,
             'totalOrder' => $totalOrder,
             'orderClosed' => $orderClosed,
             'orderProgress' => $orderProgress,
-            'booking' => $booking
+            'booking' => $booking,
+            'orderProgressNotif' => $orderProgressNotif,
+            'orderClosedNotif' => $orderClosedNotif,
         ]);
-        // ));
     }
+
 
     public function viewSpkBranch()
     {

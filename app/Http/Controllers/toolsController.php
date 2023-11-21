@@ -15,15 +15,19 @@ class toolsController extends Controller
 {
     public function viewToolsWarehouse()
     {
-        $toolsWarehouse = tools::with('store')->get();
+        $id_store = Auth::User()->warehouse->id_store;
+        $tools = Auth::User()->warehouse->store->tools;
+        $id_tools = Auth::user()->warehouse->store->tools->pluck('id_tools')->all();
+        $reqTools =  technician_tools::whereIn('id_tools', $id_tools)->get();
+        // @dd($reqTools);
         $stores = storeSparepart::all();
-        return view(
-            'sparepart.warehouse.toolsWarehouse',
-            [
-                'tools' => $toolsWarehouse,
-                'stores' => $stores
-            ]
-        );
+        return view('sparepart.warehouse.toolsWarehouse', [
+            'tools' => $tools,
+            'stores' => $stores,
+            'id_store' => $id_store,
+            'reqTools' => $reqTools,
+            'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
+        ]);
     }
 
     public function viewToolsWarehouseToko($id_store)
@@ -59,6 +63,28 @@ class toolsController extends Controller
         session()->flash('success', 'Tools berhasil ditambahkan');
 
         return redirect('/warehouse/branch/tools.');
+    }
+    public function storeCenter(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_tools' => 'required',
+            'id_store' => 'required'
+        ]);
+
+        $id_tools = 'TOOLS-' . rand(0, 99);
+
+        $tools = tools::create([
+            'nama_tools' => $validatedData['nama_tools'],
+            'id_store' => $validatedData['id_store'],
+            'id_tools' => $id_tools,
+            'qty_tools' => 0
+        ]);
+
+        $tools->save();
+
+        session()->flash('success', 'Tools berhasil ditambahkan');
+
+        return redirect('/warehouse/tools');
     }
     public function viewToolsBranchWarehouse()
     {
