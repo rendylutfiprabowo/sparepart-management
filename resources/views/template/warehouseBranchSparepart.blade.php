@@ -5,8 +5,8 @@
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('warehouse/dashboard*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
-                        href="#">
+                    <a class="nav-link {{ Request::is('warehouse/branch/dashboard*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
+                        href="/warehouse/branch/dashboard">
                         <i class="bi bi-grid"></i>
                         Dashboard
                     </a>
