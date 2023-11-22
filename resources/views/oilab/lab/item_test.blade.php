@@ -56,9 +56,9 @@
                                         </td>
                                         <td class="d-flex flex-column">
                                             @if ($history->note === 'lengkap')
-                                                <i class="fa-solid fa-check pt-2" style="color: rgba(0, 255, 0, 0.7);"></i>
+                                                <i class="fa-solid fa-check pt-3" style="color: rgba(0, 255, 0, 0.7);"></i>
                                             @elseif ($history->note === 'tidak lengkap')
-                                                <i class="fa-solid fa-times pt-2" style="color: rgba(255, 0, 0, 0.7);"></i>
+                                                <i class="fa-solid fa-times pt-3" style="color: rgba(255, 0, 0, 0.7);"></i>
                                             @else
                                                 <button class="btn" type="button" data-toggle="modal"
                                                     data-target="#note-{{ $history->id }}">
@@ -66,8 +66,6 @@
                                                 </button>
                                             @endif
                                         </td>
-
-
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -96,17 +94,6 @@
                                                 <label for="message-text" class="col-form-label">Message:</label>
                                                 <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
                                             </div>
-                                            @if (session('error'))
-                                                <div class="alert alert-danger">
-                                                    {{ session('error') }}
-                                                </div>
-                                            @endif
-
-                                            @if (session('success'))
-                                                <div class="alert alert-success">
-                                                    {{ session('success') }}
-                                                </div>
-                                            @endif
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

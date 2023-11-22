@@ -33,7 +33,7 @@
                                 <td class="table-plus">{{ $no + 1 }}</td>
                                 <td class="table-plus">{{ $orders->customer->nama_customer }}</td>
                                 <td class="table-plus">
-                                    {{ $orders->technician ? $orders->technician->nama_technician : '-' }}
+                                    {{ $orders->technician ? $orders->technician->nama_technician : ($orders->status == 'closed' || $orders->status == 'memo-closed' ? 'Delievered by Other Party' : '-') }}
                                 </td>
                                 <td class="table-plus">
                                     {{ $orders->store->nama_store }}
@@ -48,7 +48,7 @@
                                     @elseif($orders->status == 'revisi')
                                     badge text-bg-info
                                     @elseif($orders->status == 'canceled')
-                                       badge text-bg-danger @endif">{{ $orders->status }}
+                                    badge text-bg-danger @endif">{{ $orders->status }}
                                     </b>
                                 </td>
 

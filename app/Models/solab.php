@@ -18,7 +18,6 @@ class solab extends Model
         'no_so_solab',
         'no_spk_solab',
         'alamat_solab',
-        'tahun_solab',
         'id_project',
         'id_sales'
     ];

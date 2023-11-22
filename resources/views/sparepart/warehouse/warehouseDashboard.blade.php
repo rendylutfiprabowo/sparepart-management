@@ -8,12 +8,16 @@
         </x-page-heading>
 
         <div class="row">
-            <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}" />
-            <x-card cardTitles="Total Order" iconClass="bi bi-journal-text" percents="{{ $totalOrder }} " />
-            <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosed }} " />
+            <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}"
+                href="/warehouse/stock" />
+            <x-card cardTitles="Total Order" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}"
+                href="/warehouse/listspk" />
+            <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} "
+                href="#" />
         </div>
         <div class="row mt-2">
-            <x-card cardTitles="Item Delivery" iconClass="bi bi-journal-x" percents="{{ $orderClosed }} " />
+            <x-card cardTitles="Item Delivery" iconClass="bi bi-journal-x" percents="{{ $orderProgressNotif }} "
+                href="" />
         </div>
         <br>
         <div>
@@ -26,28 +30,25 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active rounded bg-white p-2 shadow-sm" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
-                    <div id="warehouseCenterSparepart"></div>
+                    <div id="warehouseCenterChart"></div>
                 </div>
             </div>
         </div>
         <br>
-        {{-- <div class="row">
-            <x-card-list :salesData="$salesData" />
-        </div> --}}
 
         <script>
-            let percentageSales = {{ $booking }}
-            let orderProgress = {{ $orderProgress }};
-            let orderClosed = {{ $orderClosed }};
-            let currentDate = new Date();
-            let year = currentDate.getFullYear();
-            let month = currentDate.getMonth() + 1;
-            let date = currentDate.getDate();
+            // Mengonversi data PHP menjadi format JSON dan menyimpannya di dalam variabel JavaScript
+            let orderClosedData = @json($orderClosed);
+            let orderProgressData = @json($orderProgress);
+            let bookingData = @json($booking);
 
-            let formattedDate = year + '-' + (month < 10 ? '0' + month : month) + '-' + (date < 10 ? '0' + date :
-                date);
+            // Ekstrak data untuk setiap kategori (total)
+            let orderClosedTotal = orderClosedData.map(entry => entry.total);
+            let orderProgressTotal = orderProgressData.map(entry => entry.total);
+            let bookingTotal = bookingData.map(entry => entry.total);
 
-            let myConfigProfit = {
+            // Konfigurasi ZingChart
+            let myConfigWarehouse = {
                 type: "bar",
                 title: {
                     text: "Order Result",
@@ -60,9 +61,8 @@
                     label: {
                         text: "Statistics",
                     },
-
                     // Convert text on scale indices
-                    labels: [formattedDate],
+                    labels: bookingData.map(entry => entry.month),
                 },
                 scaleY: {
                     // Scale label with unicode character
@@ -82,23 +82,28 @@
                 },
                 series: [{
                         // Plot 1 values, linear data
-                        values: [booking],
+                        values: bookingTotal,
                         'background-color': "#FF8080",
                         text: "Booking",
                     },
                     {
                         // Plot 2 values, linear data
-                        values: [orderProgress],
+                        values: orderProgressTotal,
                         'background-color': '#8EACCD',
                         text: "On-Progress",
                     },
                     {
                         // Plot 2 values, linear data
-                        values: [orderClosed],
+                        values: orderClosedTotal,
                         'background-color': "#618264",
                         text: "Closed",
                     },
                 ],
             };
+
+            zingchart.render({
+                id: "warehouseCenterChart",
+                data: myConfigWarehouse,
+            });
         </script>
     @endsection

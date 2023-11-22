@@ -1,3 +1,5 @@
+<!-- card-component.blade.php -->
+
 <div class="col-lg-4">
     <div class="card rounded shadow-sm">
         <div class="card-body d-flex justify-content-between">

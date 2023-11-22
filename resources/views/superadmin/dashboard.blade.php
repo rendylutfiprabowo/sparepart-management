@@ -67,7 +67,11 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <div class="row">
+        <x-card cardTitles="RENDY" iconClass="bi-person" $percents="50" href="#" />
+    </div>
+    {{-- 
     <div>
         <x-page-heading>
             Dashboard
@@ -100,5 +104,5 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
 @endsection
