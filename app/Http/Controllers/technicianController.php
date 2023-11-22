@@ -18,9 +18,40 @@ class technicianController extends Controller
 {
     public function viewDashboard()
     {
-        return view(
-            'sparepart.technician.dashboardTechnician'
-        );
+        $idTechnician = Auth::user()->technician->id_technician;
+        $orderProgressNotif = Order::where('id_technician', $idTechnician)
+            ->whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->count();
+        $orderClosedNotif = order::where('id_technician', $idTechnician)->where('status', 'closed')->count();
+
+        // Ambil data per bulan untuk total order
+        $totalOrder = order::where('id_technician', $idTechnician)->count();
+
+        $orderProgress = Order::where('id_technician', $idTechnician)
+            ->whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->count();
+
+        $order = Order::where('id_technician', $idTechnician)
+            ->whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+
+        return view('sparepart.technician.dashboardTechnician', [
+            'totalOrder' => $totalOrder,
+            'order' => $order,
+            'orderProgress' => $orderProgress,
+            'orderProgressNotif' => $orderProgressNotif,
+            'orderClosedNotif' => $orderClosedNotif,
+        ]);
     }
     public function viewSpk()
     {
