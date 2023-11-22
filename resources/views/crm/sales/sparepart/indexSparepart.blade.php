@@ -7,9 +7,9 @@
             SpareParts Dashboard
         </x-page-heading>
         <div class="row">
-            <x-card cardTitles="Memo" iconClass="bi-file-earmark-richtext" percents="159K" href="#" />
-            <x-card cardTitles="Do" iconClass="bi-file-earmark-richtext" percents="12K" href="#" />
-            <x-card cardTitles="Stock" iconClass="bi-box" percents="3k" href="#" />
+            <x-card cardTitles="Memo" subTitles="Monthly" iconClass="bi-file-earmark-richtext" percents="159K" href="#" />
+            <x-card cardTitles="Do" subTitles="Monthly" iconClass="bi-file-earmark-richtext" percents="12K" href="#" />
+            <x-card cardTitles="Stock" subTitles="Monthly" iconClass="bi-box" percents="3k" href="#" />
         </div>
         <br />
         <div class="row">

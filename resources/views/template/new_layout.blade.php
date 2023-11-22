@@ -36,7 +36,7 @@
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-        {{-- USER MENU --}}
+
         <div class="d-flex gap-2">
             <div>
                 <x-notification />
