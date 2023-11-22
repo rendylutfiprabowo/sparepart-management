@@ -40,7 +40,7 @@
                                 <div class="row">
                                     @foreach ($history->samples as $sample)
                                         <span
-                                            class="badge
+                                            class=" badge
                                         @if ($sample->scope->nama_scope == 'OA') text-bg-danger
                                         @elseif($sample->scope->nama_scope == 'Furan') text-bg-warning
                                         @elseif($sample->scope->nama_scope == 'DGA') text-bg-secondary @endif ">{{ $sample->scope->nama_scope }}</span>

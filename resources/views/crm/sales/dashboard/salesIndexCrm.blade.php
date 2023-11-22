@@ -14,10 +14,12 @@
             $percentageProjects = ($projectsTotal / $divideNumber) * 100;
             $percentageSales = $percentageCustomers + $percentageProjects;
         @endphp
-        <x-card cardTitles="Sales Profit" iconClass="bi bi-graph-up" percents="{{ $percentageSales }} %" href="/" />
-        <x-card cardTitles="Customers" iconClass="bi-person-up " percents="{{ $percentageCustomers }} %" href="#" />
-        <x-card cardTitles="Projects" iconClass="bi-journal-arrow-up " percents="{{ $percentageProjects }} %"
+        <x-card cardTitles="Sales Profit" subTitles="Monthly" iconClass="bi bi-graph-up" percents="{{ $percentageSales }} %"
             href="#" />
+        <x-card cardTitles="Customers" subTitles="Monthly" iconClass="bi-person-up " percents="{{ $percentageCustomers }} %"
+            href="#" />
+        <x-card cardTitles="Projects" subTitles="Monthly" iconClass="bi-journal-arrow-up "
+            percents="{{ $percentageProjects }} %" href="#" />
     </div>
     <br>
     <div>
@@ -110,6 +112,11 @@
                 },
             ],
         };
+
+        zingchart.render({
+            id: "profitCharts",
+            data: myConfigProfit,
+        });
     </script>
 
 @endsection

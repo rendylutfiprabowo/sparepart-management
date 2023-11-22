@@ -10,8 +10,8 @@
         </div>
         <div class="card-body">
             <h3 class="text-danger">{{ $percents }}</h3>
-            <small class="text-secondary">For This Month</small>
-            <a href="#" class="float-end text-danger text-decoration-none">Detail
+            <small class="text-secondary">{{ $subTitles }}</small>
+            <a href="{{ $href }}" class="float-end text-danger text-decoration-none">Detail
                 <i class="bi bi-arrow-right-short"></i></a>
         </div>
     </div>

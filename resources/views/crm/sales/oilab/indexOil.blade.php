@@ -4,14 +4,17 @@
 @section('contents')
     <div class="container-fluid">
         <div class="row">
-            <x-card cardTitles="DGA " iconClass="bi-moisture" percents="155K" href="#" />
-            <x-card cardTitles="FURAN " iconClass="bi-moisture" percents="55K" href="#" />
-            <x-card cardTitles="OA" iconClass="bi-moisture" percents="9K" href="#" />
+            <x-card cardTitles="DGA " subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalDGA }}"
+                href="#" />
+            <x-card cardTitles="FURAN " subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalFuran }}"
+                href="#" />
+            <x-card cardTitles="OA" subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalOA }}"
+                href="#" />
         </div>
         <br>
         <div class="table-responsive bg-white rounded p-2 shadow-sm">
             <table class="table text-center">
-                <thead class="table-secondary">
+                <thead class="table-light">
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Customer</th>
