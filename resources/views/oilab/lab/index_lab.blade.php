@@ -80,24 +80,5 @@
                 </div>
             </div>
         </div>
-        <br>
-        <div class="d-sm-flex align-items-center justify-content-between mt-4">
-            <h1 class="h3 mb-0 text-gray-800">Analytics Overview</h1>
-        </div>
-
-        <!-- Area Chart -->
-        <div class="card shadow mb-4 mt-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-muted">TEST EACH MONTH</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                </div>
-                <hr>
-                Styling for the area chart can be found in the
-                <code>/js/demo/chart-area-demo.js</code> file.
-            </div>
-        </div>
     </div>
 @endsection

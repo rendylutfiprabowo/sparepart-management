@@ -48,8 +48,6 @@
                                 <th scope="col">Item Test</th>
                                 <th scope="col">Report</th>
                                 <th scope="col">Add Data</th>
-                                {{-- <th scope="col">Status</th> --}}
-                                <th scope="col">Note</th>
                             </tr>
                         </thead>
                         <tbody class="text-center ">
@@ -91,63 +89,10 @@
                                             type="button" class="btn-sm btn merah text-putih mx-auto">Add Data<i
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
                                     </td>
-                                    {{-- <td class="text-center align-middle">
-                                        <div>
-                                            <strong>Checking</strong>
-                                        </div>
-                                    </td> --}}
-                                    <!-- button modal -->
-                                    <td class="text-center align-middle"><a href="/order_list" class="btn" type="button"
-                                            data-toggle="modal" data-target="#exampleModal1"><i
-                                                class="fa-regular fa-file fa-xl"></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <!-- Modal 1 -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header merah">
-                                    <h4 class="modal-title btn merah text-putih" id="exampleModalLabel"
-                                        style="font-weight: bold;">Notes</h4>
-                                    <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="">Terlihat kejanggalan pada diagram duval Pentagon</form>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="/orderlist" type="button" class="btn merah text-putih"
-                                        style="font-weight: bold;">Back</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- modal 2 -->
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header merah">
-                                    <h4 class="modal-title btn merah text-putih" id="exampleModalLabel"
-                                        style="font-weight: bold;">Notes</h4>
-                                    <button type="button" class="close putih" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action=""></form>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="/orderlist" type="button" class="btn merah text-putih"
-                                        style="font-weight: bold;">Back</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

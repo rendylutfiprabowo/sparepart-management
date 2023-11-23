@@ -430,9 +430,8 @@ class DatabaseSeeder extends Seeder
                 '2fal' => 0,
                 '2acf' => 0,
                 '5mef' => 0,
-                // 'total_2fal' => 0,
-                // 'total_furan' => 0,
-                // 'estimate_dp' => 0
+                'Kategori Hasil Furan'=> 0,
+                'Rekomendasi Furan'=> 0
             ]),
             'id_scope' => '842',
         ]);
@@ -451,8 +450,8 @@ class DatabaseSeeder extends Seeder
                 'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
-                // 'Kategori Hasil OA'=> 0,
-                // 'Rekomendasi OA' => 0,
+                'Kategori Hasil OA'=> 0,
+                'Rekomendasi OA' => 0
             ]),
             'id_scope' => '399',
         ]);
@@ -566,8 +565,6 @@ class DatabaseSeeder extends Seeder
             'tanggal_sampling' => '2023-11-07',
             'tanggal_kedatangan' => '2023-11-08',
             'tanggal_pengujian' => '2023-11-10',
-            'tanggal_pembuatanlaporan' => '2023-11-12',
-            'tanggal_pengirimanlaporan' => '2023-11-15',
             'id_scope' => '2893782',
             'id_history' => '8833948',
         ]);
