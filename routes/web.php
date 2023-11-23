@@ -107,7 +107,7 @@ Route::middleware(['auth', 'technician'])->group(function () {
 });
 //Role Branch Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
-    // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/dashboard', [warehouseController::class, 'dashboardWarehouseBranch']);
     Route::get('/warehouse/branch/request-item', [warehouseController::class, 'viewDistribution']);
     Route::get('/warehouse/branch/request-item/{id_store}', [distributionController::class, 'reqDistribution']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
@@ -127,6 +127,7 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
 
 //Role Manager Center
 Route::middleware(['auth', 'warehouse-center'])->group(function () {
+    Route::post('/warehouse/tools/store', [toolsController::class, 'storeCenter']);
     Route::get('/warehouse/dashboard', [warehouseController::class, 'dashboardWarehouse']);
     Route::get('/warehouse/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItemCenter']);
     Route::get('/stock_manager_spareparts', [stockController::class, 'viewStockManager']);

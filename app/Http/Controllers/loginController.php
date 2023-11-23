@@ -12,7 +12,7 @@ class loginController extends Controller
     {
         if (Auth::check()) {
             if (Auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
-                return redirect('/warehouse/branch/stock');
+                return redirect('/warehouse/branch/dashboard');
             else if (auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
@@ -40,7 +40,7 @@ class loginController extends Controller
         if (Auth::attempt(['email' => $field, 'password' => $password])) {
             // Jika berhasil login berdasarkan email
             if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
-                return redirect('/warehouse/branch/stock');
+                return redirect('/warehouse/branch/dashboard');
             else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)
@@ -60,7 +60,7 @@ class loginController extends Controller
         // Jika gagal login berdasarkan email, coba login berdasarkan username
         if (Auth::attempt(['username' => $field, 'password' => $password])) {
             if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR')
-                return redirect('/warehouse/branch/stock');
+                return redirect('/warehouse/branch/dashboard');
             else if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR')
                 return redirect('/warehouse/dashboard');
             else if (Auth::user()->id_role == 2)

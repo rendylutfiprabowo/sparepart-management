@@ -16,10 +16,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
     {{-- OTHER --}}
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <style>
+        html,
+        body {
+            height: 500px;
+            width: 100%;
+        }
+
+        #myChart {
+            height: 500px;
+            width: 100%;
+            min-height: 150px;
+        }
+
+        .zc-ref {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="bg-secondary-subtle">
@@ -36,7 +56,7 @@
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-        {{-- USER MENU --}}
+
         <div class="d-flex gap-2">
             <div>
                 <x-notification />
@@ -120,7 +140,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
     <script src="{{ asset('/js/sales-crm.js') }}"></script>
-    <script src="{{ asset('/js/sparepart.js') }}"></script>
+    <script src="{{ asset('/js/technician.js') }}"></script>
 </body>
 
 </html>

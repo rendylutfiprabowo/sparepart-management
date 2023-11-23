@@ -48,7 +48,7 @@
                                     @elseif($orders->status == 'revisi')
                                     badge text-bg-info
                                     @elseif($orders->status == 'canceled')
-                                       badge text-bg-danger @endif">{{ $orders->status }}
+                                    badge text-bg-danger @endif">{{ $orders->status }}
                                     </b>
                                 </td>
 

@@ -1,8 +1,4 @@
 // Render Method[3]
-zingchart.render({
-    id: "profitCharts",
-    data: myConfigProfit,
-});
 
 // Visitor Charts
 let myConfigsVisitor = {
@@ -168,6 +164,6 @@ var myConfigStock = {
 };
 
 zingchart.render({
-    id: "stockCharts",
-    data: myConfigStock,
+    id: "warehouseCenterSparepart",
+    data: myConfigProfit,
 });

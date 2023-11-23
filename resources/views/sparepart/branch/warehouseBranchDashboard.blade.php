@@ -1,4 +1,4 @@
-@extends('template.warehouseSparepart')
+@extends('template.warehouseBranchSparepart')
 @section('title', 'Dashboard Warehouse')
 
 @section('contents')
@@ -9,9 +9,9 @@
 
         <div class="row">
             <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}"
-                href="/warehouse/stock" />
+                href="/warehouse/branch/stock" />
             <x-card cardTitles="Total Order" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}"
-                href="/warehouse/listspk" />
+                href="/warehouse/branch/listspk" />
             <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} "
                 href="#" />
         </div>
