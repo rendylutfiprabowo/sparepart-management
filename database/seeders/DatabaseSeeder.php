@@ -450,8 +450,8 @@ class DatabaseSeeder extends Seeder
                 'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
-                'Kategori Hasil OA'=> 0,
-                'Rekomendasi OA' => 0
+                // 'Kategori Hasil OA'=> 0,
+                // 'Rekomendasi OA' => 0
             ]),
             'id_scope' => '399',
         ]);

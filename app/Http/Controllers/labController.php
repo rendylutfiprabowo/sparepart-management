@@ -67,7 +67,6 @@ class labController extends Controller
     public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
         $faker = Faker::create();
-        // dd($request->all());
         $validated = $request->validate([
             'serial_number' => 'required',
             'id_project' => 'required',

@@ -22,7 +22,7 @@
             </thead>
             <div class="table-responsive">
                 <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead class="text-center font-weight-bold" style="color: rgb(212, 26, 26);">
                         <tr>
                             <th class="text-center" scope="col">No</th>
                             <th class="text-center" scope="col">No SO</th>
