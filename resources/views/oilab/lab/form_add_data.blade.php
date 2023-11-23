@@ -45,16 +45,6 @@
                             <input type="text" class="form-control" id="area" name="area"
                                 placeholder="Enter Area">
                         </div>
-                        {{-- <div class="mb-3">
-                            <label for="tegangan_hv" class="form-label">Tegangan</label>
-                            <input type="number" class="form-control" id="tegangan" name="tegangan_hv"
-                                placeholder="Enter Tegangan HV">
-                        </div>
-                        <div class="mb-3">
-                            <label for="tegangan_lv" class="form-label">Tegangan LV</label>
-                            <input type="number" class="form-control" id="tegangan_lv" name="tegangan_lv"
-                                placeholder="Enter Tegangan LV">
-                        </div> --}}
                         <div class="mb-3">
                             <label for="voltage" class="form-label">Voltage</label>
                             <input type="text" class="form-control" id="voltage" name="voltage"
@@ -85,46 +75,36 @@
                                 placeholder="Enter Warna Oil">
                         </div>
                         <div>
-
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Sampling</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_sampling">
                             </div>
-
                         </div>
                         <div>
-
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Kedatangan</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_kedatangan">
                             </div>
-
                         </div>
                         <div>
-
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Pengujian</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_pengujian">
                             </div>
-
                         </div>
                         <div>
-
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Pembuatan Laporan</label>
                                 <input type="date" class="form-control" id="tanggal"
                                     name="tanggal_pembuatanlaporan">
                             </div>
-
                         </div>
                         <div>
-
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Pengiriman Laporan</label>
                                 <input type="date" class="form-control" id="tanggal"
                                     name="tanggal_pengirimanlaporan">
                             </div>
-
                         </div>
                         <!-- button back -->
                         <div class="row mb-5">

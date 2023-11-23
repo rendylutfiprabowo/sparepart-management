@@ -26,7 +26,17 @@ class salesController extends Controller
     public function indexOil()
     {
         $dataOilCustomers = solab::all();
-        return view('crm.sales.oilab.indexOil', compact('dataOilCustomers'));
+        $totalDGA = sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 220); // DGA
+        })->count();
+        $totalFuran = sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 842); // FURAN
+        })->count();
+        $totalOA = sample::whereHas('scope', function ($query) {
+            $query->where('id_scope', 399); //OA
+        })->count();
+
+        return view('crm.sales.oilab.indexOil', compact('dataOilCustomers', 'totalDGA', 'totalFuran', 'totalOA'));
     }
 
     public function historyOil()

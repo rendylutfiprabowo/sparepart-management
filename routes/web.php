@@ -107,7 +107,7 @@ Route::middleware(['auth', 'technician'])->group(function () {
 });
 //Role Branch Warehouse Sparepart
 Route::middleware(['auth', 'warehouse'])->group(function () {
-    // Route::get('/warehouse/branch/stock/{id_store}', [warehouseController::class, 'viewStockBranch']);
+    Route::get('/warehouse/branch/dashboard', [warehouseController::class, 'dashboardWarehouseBranch']);
     Route::get('/warehouse/branch/request-item', [warehouseController::class, 'viewDistribution']);
     Route::get('/warehouse/branch/request-item/{id_store}', [distributionController::class, 'reqDistribution']);
     Route::get('/warehouse/branch/stock', [warehouseController::class, 'viewStockBranchId']);
@@ -150,6 +150,8 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/index_lab', function () {
         return view('oilab.lab.index_lab');
     });
+    Route::get('/index_lab', [labController::class, 'index']);
+    
     Route::get('/item_test', function () {
         return view('oilab.lab.item_test');
     });
