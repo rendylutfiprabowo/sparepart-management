@@ -29,8 +29,7 @@
                                 <th>No</th>
                                 <th>No SO</th>
                                 <th>Customer Name</th>
-                                {{-- <th>Status</th> --}}
-                                <th>Report</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +38,6 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $solab['no_so_solab'] }}</td>
                                     <td>{{ $solab->project->customer->nama_customer }}</td>
-                                    {{-- <td>In Progress</td> --}}
                                     <td><a href="/orderlist/{{ $solab->no_so_solab }}" type="button"
                                             class="btn merah text-putih">detail</a></td>
                                 </tr>
