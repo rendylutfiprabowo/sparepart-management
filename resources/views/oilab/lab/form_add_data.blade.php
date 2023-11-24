@@ -91,21 +91,6 @@
                                 <label for="tanggal" class="form-label">Tanggal Pengujian</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_pengujian">
                             </div>
-                        </div>
-                        <div>
-                            <div class="mb-3">
-                                <label for="tanggal" class="form-label">Tanggal Pembuatan Laporan</label>
-                                <input type="date" class="form-control" id="tanggal"
-                                    name="tanggal_pembuatanlaporan">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="mb-3">
-                                <label for="tanggal" class="form-label">Tanggal Pengiriman Laporan</label>
-                                <input type="date" class="form-control" id="tanggal"
-                                    name="tanggal_pengirimanlaporan">
-                            </div>
-                        </div>
                         <!-- button back -->
                         <div class="row mb-5">
                             <div class="d-flex col justify-content-start">

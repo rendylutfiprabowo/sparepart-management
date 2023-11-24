@@ -19,8 +19,6 @@ return new class extends Migration
             $table->date('tanggal_sampling')->nullable();
             $table->date('tanggal_kedatangan')->nullable();
             $table->date('tanggal_pengujian')->nullable();
-            $table->date('tanggal_pembuatanlaporan')->nullable();
-            $table->date('tanggal_pengirimanlaporan')->nullable();
             $table->string('id_scope');
             $table->string('id_history');
         });

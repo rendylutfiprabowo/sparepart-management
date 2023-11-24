@@ -60,49 +60,6 @@
                                         class="fa-regular fa-file fa-lg"></a></i>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>09284923890</td>
-                            <td>A123982791</td>
-                            <td>
-                                <div class="mb-2">DGA</div>
-                                <div>Furan</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn pt-0" type="button"><i
-                                            class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                                <div class="">
-                                    <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn" type="button"><i
-                                            class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>09284923890</td>
-                            <td>A123982791</td>
-                            <td>
-                                <div class="mb-2">DGA</div>
-                                <div class="mb-2">Furan</div>
-                                <div>OA</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn pt-0" type="button"><i
-                                            class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                                <div class="">
-                                    <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn" type="button"><i
-                                            class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                                <div class="">
-                                    <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn pt-0" type="button"><i
-                                            class="fa-regular fa-file fa-lg"></i></a>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -22,60 +22,21 @@
             </thead>
             <div class="table-responsive">
                 <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead class="text-center font-weight-bold" style="color: rgb(212, 26, 26);">
                         <tr>
+                            <th class="text-center" scope="col">No</th>
                             <th class="text-center" scope="col">No SO</th>
-                            <th class="text-center" scope="col">Customer</th>
-                            <th class="text-center" scope="col">Project</th>
                             <th class="text-center" scope="col">Pic</th>
-                            <th class="text-center" scope="col">Item Test</th>
                             <th class="text-center" scope="col">Report</th>
-                            <th class="text-center" scope="col">Status</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
                         <tr>
+                             <td class="text-center align-middle">1</td>
                             <td class="text-center align-middle">A9099885</td>
-                            <td class="text-center align-middle">Pertamina Indonesia</td>
-                            <td class="text-center align-middle">Cilacap</td>
                             <td class="text-center align-middle">Nisa</td>
                             <td class="text-center align-middle">
-                                <div>
-                                    DGA
-                                </div>
-                                <div>
-                                    Furan
-                                </div>
-                                <div>
-                                    OA
-                                </div>
-                            </td>
-                            <td class="text-center align-middle">
                                 <div><a href="/reviewreport_adminlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <strong>Inspection</strong>
-                            </td>
-                    </tbody>
-                    <tbody class="text-center">
-                        <tr>
-                            <td class="text-center align-middle">A10012381</td>
-                            <td class="text-center align-middle">PLN</td>
-                            <td class="text-center align-middle">Tangerang</td>
-                            <td class="text-center align-middle">fika</td>
-                            <td class="text-center align-middle">
-                                <div>
-                                    DGA
-                                </div>
-                                <div>
-                                    Furan
-                                </div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <div><a href="/reviewreport_adminlab" type="button" class="btn btn-sm merah text-putih">Preview</a></div>
-                            </td>
-                            <td class="text-center align-middle">
-                                <strong>Inspection</strong>
                             </td>
                     </tbody>
                 </table>

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_so_solab');
             $table->string('no_spk_solab');
             $table->string('alamat_solab');
-            // $table->string('finish');
+            $table->string('finish')->nullable();
             $table->string('id_project');
             $table->string('id_sales');
         });
