@@ -8,6 +8,22 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
+            <form action="/{{ request()->path() }}" method="GET" class="input-group w-25">
+                <div class="dropdown mb-3 me-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Status
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="/warehouse/listspk">All</a></li>
+                        @foreach ($status as $key => $stat)
+                            <li><button class="dropdown-item" name="search" value="{{ $key }}"
+                                    type="submit">{{ $key }}</button></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </form>
+
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -27,10 +43,14 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    @foreach ($order as $no => $orders)
+                    @php
+                        $no = ($order->currentPage() - 1) * $order->perPage();
+                    @endphp
+                    @foreach ($order as $orders)
                         <tr>
+
                             @if ($orders->memo_order != null || ($orders->do_order && $orders->spk_order != null))
-                                <td class="table-plus">{{ $no + 1 }}</td>
+                                <td class="table-plus">{{ ++$no }}</td>
                                 <td class="table-plus">{{ $orders->customer->nama_customer }}</td>
                                 <td class="table-plus">
                                     {{ $orders->technician ? $orders->technician->nama_technician : ($orders->status == 'closed' || $orders->status == 'memo-closed' ? 'Delievered by Other Party' : '-') }}
@@ -64,6 +84,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $order->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $order->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $order->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $order->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 @endsection

@@ -55,11 +55,22 @@ class technicianController extends Controller
     }
     public function viewSpk()
     {
-        $spks = Auth::User()->technician->first()->order;
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+        $id_technician = Auth::user()->technician->id_technician;
+        // $spks = Auth::User()->warehouse->store->order->query();
+        $spks = order::query()->where('id_technician', $id_technician);
+        $status = Auth::User()->technician->order->groupBy('status');
+        if (!empty($query)) {
+            $spks->where('status', $query);
+            // @dd($status);
+        }
+        $spks = $spks->paginate(10);
         return view(
             'sparepart.technician.listSpkTechnician',
             [
                 'spk' => $spks,
+                'status' => $status
             ]
         );
     }
