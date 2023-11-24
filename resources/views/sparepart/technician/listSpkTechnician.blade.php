@@ -8,6 +8,21 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
+            <form action="/{{ request()->path() }}" method="GET" class="input-group w-25">
+                <div class="dropdown mb-3 me-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Status
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="/technician/listspk">All</a></li>
+                        @foreach ($status as $key => $stat)
+                            <li><button class="dropdown-item" name="search" value="{{ $key }}"
+                                    type="submit">{{ $key }}</button></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </form>
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -26,22 +41,26 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+                    @php
+                        $no = ($spk->currentPage() - 1) * $spk->perPage();
+                    @endphp
                     @foreach ($spk as $no => $spks)
                         <tr>
                             @if ($spks->memo_order != null || ($spks->do_order && $spks->spk_order != null))
-                                <td class="table-plus">{{ $no + 1 }}</td>
+                                <td class="table-plus">{{ ++$no }}</td>
                                 <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
                                 <td class="table-plus">{{ $spks->technician ? $spks->technician->nama_technician : '-' }}
                                 </td>
                                 <td class="table-plus">
                                     <b
-                                        class="@if ($spks->status == 'closed') text-success
+                                        class="@if ($spks->status == 'closed') badge text-bg-success
+                                    @elseif ($spks->status == 'closed-memo-do-revisi' || $spks->status == 'memo-closed') badge text-bg-primary
                                     @elseif($spks->status == 'on-warehouse' || $spks->status == 'on-technician')
-                                        text-secondary
+                                    badge text-bg-warning
                                     @elseif($spks->status == 'revisi')
-                                        text-info
+                                    badge text-bg-info
                                     @elseif($spks->status == 'canceled')
-                                        text-danger @endif">{{ $spks->status }}
+                                    badge text-bg-danger @endif">{{ $spks->status }}
                                     </b>
                                 </td>
                                 <td class="table-plus">
@@ -56,6 +75,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $spk->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $spk->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $spk->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $spk->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 @endsection
