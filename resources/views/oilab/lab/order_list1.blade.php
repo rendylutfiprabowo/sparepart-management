@@ -48,6 +48,7 @@
                                 <th scope="col">Item Test</th>
                                 <th scope="col">Report</th>
                                 <th scope="col">Add Data</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody class="text-center ">
@@ -88,6 +89,11 @@
                                         <a href="/orderlist/{{ $salesorderoil->no_so_solab }}/{{ $history->id }}/add"
                                             type="button" class="btn-sm btn merah text-putih mx-auto">Add Data<i
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="{{ url('generate-pdf') }}" type="button"
+                                            class="btn-sm btn merah text-putih mx-auto"><i
+                                                class="fa-solid fa-download"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
