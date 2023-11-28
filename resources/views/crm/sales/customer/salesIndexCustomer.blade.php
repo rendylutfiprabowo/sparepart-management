@@ -14,24 +14,28 @@
         </div>
 
         <br>
-        {{-- TABLE DATA CUSTOMER --}}
-        <x-page-heading>
-            Table Of Customer
-        </x-page-heading>
+        <div class="">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="">
+                    {{-- Button Modal Add Customer --}}
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
+                        <i class="bi bi-person-add"></i>
+                    </button>
+                </div>
+                <div>
+                    <form action="{{ route('searchCustomer') }}" method="GET">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cari customer..." name="keyword">
+                            <button class="btn btn-danger" type="submit">Cari</button>
+                        </div>
+                    </form>
 
-        <div class="row">
-            <div class="mt-3">
-                {{-- Button Modal Add Customer --}}
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="26" fill="currentColor"
-                        class="bi bi-person-add" viewBox="0 0 16 16">
-                        <path
-                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        <path
-                            d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
-                    </svg>
-                </button>
+                    <!-- Tampilkan data pelanggan di sini -->
+
+                </div>
             </div>
+
             <div class="table-responsive mt-3 bg-white p-2 rounded shadow-sm">
                 <table class="table table-borderless">
                     <thead class=" border-bottom table-light">
@@ -48,9 +52,9 @@
                         @if (count($dataCust) > 0)
                             @foreach ($dataCust as $dataTable)
                                 <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $dataTable->id_customer }}</th>
-                                    <td><a class="text-dark text-decoration-none fw-medium link-danger"
+                                    <td class="text-center">{{ $loop->index + $dataCust->firstItem() }}</td>
+                                    <td>{{ $dataTable->id_customer }}</td>
+                                    <td><a class="text-dark text-decoration-none link-danger"
                                             href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                     </td>
                                     <td>{{ $dataTable->phone_customer }}</td>
@@ -61,10 +65,47 @@
                                 </tr>
                             @endforeach
                         @else
-                            <p>Tidak ada data customer</p>
+                            <div class="text-center">
+                                <p class="text-danger">Tidak ada data customer...</p>
+                            </div>
+
                         @endif
                     </tbody>
                 </table>
+                {{-- Paginate Table Customers --}}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        @if ($dataCust->onFirstPage())
+                            <li class="page-item disabled" aria-disabled="true" aria-label="Previous">
+                                <span class="page-link" aria-hidden="true">&laquo;</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $dataCust->previousPageUrl() }}" rel="prev"
+                                    aria-label="Previous">&laquo;</a>
+                            </li>
+                        @endif
+
+                        @for ($i = 1; $i <= $dataCust->lastPage(); $i++)
+                            <li class="page-item {{ $dataCust->currentPage() == $i ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $dataCust->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        @if ($dataCust->hasMorePages())
+                            <li class="page-item">
+                                <a class="page-link" href="{{ $dataCust->nextPageUrl() }}" rel="next"
+                                    aria-label="Next">&raquo;</a>
+                            </li>
+                        @else
+                            <li class="page-item disabled" aria-disabled="true" aria-label="Next">
+                                <span class="page-link" aria-hidden="true">&raquo;</span>
+                            </li>
+                        @endif
+
+                    </ul>
+                </nav>
+
             </div>
         </div>
     </div>
@@ -101,7 +142,8 @@
                                 </div>
                                 <div class="col-12">
                                     <label for="Jenis Usaha" class="form-label">Jenis Usaha </label>
-                                    <input type="text" class="form-control" id="JenisUsaha" name="jenisusaha_customer">
+                                    <input type="text" class="form-control" id="JenisUsaha"
+                                        name="jenisusaha_customer">
                                 </div>
                             </div>
                             <br>

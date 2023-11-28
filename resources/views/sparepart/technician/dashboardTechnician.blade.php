@@ -8,10 +8,12 @@
         </x-page-heading>
 
         <div class="row">
-            <x-card cardTitles="Total SPK" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}"
+            <x-card cardTitles="Total SPK" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}" subTitles="Monthly"
                 href="/warehouse/branch/listspk" />
-            <x-card cardTitles="Closed SPK" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " href="#" />
-            <x-card cardTitles="Unfinish SPK " iconClass="bi bi-journal-x" percents="{{ $orderProgress }} " href="#" />
+            <x-card cardTitles="Closed SPK" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " subTitles="Monthly"
+                href="#" />
+            <x-card cardTitles="Unfinish SPK " iconClass="bi bi-journal-x" percents="{{ $orderProgress }} "
+                subTitles="Monthly" href="#" />
         </div>
         <br>
         <div>

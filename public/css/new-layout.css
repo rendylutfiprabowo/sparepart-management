@@ -2,7 +2,6 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
 }
 
 /*
@@ -15,7 +14,9 @@ body {
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 48px 0 0; /* Height of navbar */
+    padding: 48px 0 0;
+    min-height: 100%;
+    /* Height of navbar */
 }
 
 .active-sidebar-link {
