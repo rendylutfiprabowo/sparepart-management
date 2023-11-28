@@ -83,6 +83,7 @@ class labController extends Controller
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
+            // 'tanggal_cetaklaporan' => 'required',
         ]);
 
         if ($validated) {
@@ -110,6 +111,7 @@ class labController extends Controller
             $sample->tanggal_sampling = $validated['tanggal_sampling'];
             $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
             $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
+            // $sample->tanggal_cetaklaporan = $validated['tanggal_cetaklaporan'];
             $sample->save();
 
             return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));

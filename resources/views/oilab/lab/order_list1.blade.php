@@ -48,7 +48,7 @@
                                 <th scope="col">Item Test</th>
                                 <th scope="col">Report</th>
                                 <th scope="col">Add Data</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Report</th>
                             </tr>
                         </thead>
                         <tbody class="text-center ">
