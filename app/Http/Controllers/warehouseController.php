@@ -126,16 +126,7 @@ class warehouseController extends Controller
     }
 
 
-    public function viewSpkBranch()
-    {
-        $spks = Auth::User()->warehouse->store->order;
-        return view(
-            'sparepart.branch.technicianBranchWarehouse',
-            [
-                'spk' => $spks,
-            ]
-        );
-    }
+
     public function viewStockBranchId()
     {
         $id_store = Auth::User()->warehouse->id_store;
@@ -177,11 +168,47 @@ class warehouseController extends Controller
     }
     public function viewSpk()
     {
-        $order = order::all();
+
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+        // Lakukan query berdasarkan status
+        $order = Order::query();
+        $status = Order::all()->groupBy('status');
+        // @dd($status);
+        if (!empty($query)) {
+            $order->where('status', $query);
+            // @dd($status);
+        }
+        // @dd($order);
+        $order = $order->paginate(10);
         return view(
             'sparepart.warehouse.technicianWarehouse',
             [
                 'order' => $order,
+                'status' => $status,
+            ]
+        );
+    }
+
+    public function viewSpkBranch()
+    {
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+        $id_store = Auth::user()->warehouse->id_store;
+        // $spks = Auth::User()->warehouse->store->order->query();
+        $spks = order::query()->where('id_store', $id_store);
+        $status = Auth::User()->warehouse->store->order->groupBy('status');
+        if (!empty($query)) {
+            $spks->where('status', $query);
+            // @dd($status);
+        }
+        $spks = $spks->paginate(10);
+
+        return view(
+            'sparepart.branch.technicianBranchWarehouse',
+            [
+                'spk' => $spks,
+                'status' => $status
             ]
         );
     }
