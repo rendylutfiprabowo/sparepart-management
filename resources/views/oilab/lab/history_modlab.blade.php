@@ -28,7 +28,7 @@
                                 <th>No</th>
                                 <th>No seri</th>
                                 <th>Tanggal Masuk</th>
-                                <th>Report</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
