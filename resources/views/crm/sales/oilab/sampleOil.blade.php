@@ -47,13 +47,6 @@
                                     @endforeach
                                 </div>
                             </td>
-                            {{-- <td>
-                            <div class="row">
-                                @foreach ($history->samples as $sample)
-                                    <span>{{ $sample->status_sample == true ? 'Completed' : 'In Progress' }}</span>
-                                @endforeach
-                            </div>
-                        </td> --}}
                             <td>
                                 <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal{{ $history->id }}">

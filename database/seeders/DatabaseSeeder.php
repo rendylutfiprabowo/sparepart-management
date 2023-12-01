@@ -431,6 +431,7 @@ class DatabaseSeeder extends Seeder
                 '2acf' => 0,
                 '5mef' => 0,
                 'Kategori Hasil Furan'=> 0,
+                'Remaining Life Time' => 0,
                 'Rekomendasi Furan'=> 0
             ]),
             'id_scope' => '842',

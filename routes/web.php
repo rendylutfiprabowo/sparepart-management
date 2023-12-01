@@ -14,6 +14,8 @@ use App\Http\Controllers\warehouseController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\solabController;
 use App\Http\Controllers\labController;
+use App\Http\Controllers\modlabController;
+use App\Http\Controllers\adminlabController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\technicianController;
 use App\Http\Controllers\revisionController;
@@ -186,7 +188,6 @@ Route::middleware(['auth', 'laboil'])->group(function () {
         return view('oilab.lab.form_dga1_lab');
     });
     Route::get('generate-pdf', [pdfController::class, 'pdf']);
-    // Route::get('/pdfexport', [pdfController::class, 'exportPDF']);
 });
 
 
@@ -196,9 +197,13 @@ Route::middleware(['auth', 'modLab'])->group(function () {
         return view('oilab.lab.index_modlab');
     });
 
+    Route::get('/index_modlab', [modlabController::class, 'index']);
+
     Route::get('/report_modlab', function () {
         return view('oilab.lab.report_modlab');
     });
+
+    Route::get('/report_modlab', [modlabController::class,'viewReport2']);
 
     Route::get('/reviewreport_modlab', function () {
         return view('oilab.lab.reviewreport_modlab');
@@ -211,6 +216,8 @@ Route::middleware(['auth', 'modLab'])->group(function () {
     Route::get('/detailhistory_modlab', function () {
         return view('oilab.lab.detailhistory_modlab');
     });
+
+    Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 
 Route::middleware(['auth', 'adminLab'])->group(function () {
@@ -219,9 +226,13 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
         return view('oilab.lab.index_adminlab');
     });
 
+    Route::get('/index_adminlab', [adminlabController::class, 'index']);
+
     Route::get('/report_adminlab', function () {
         return view('oilab.lab.report_adminlab');
     });
+
+    Route::get('/report_adminlab', [adminlabController::class,'viewReport1']);
 
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
@@ -234,6 +245,8 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
     Route::get('/reviewreport_adminlab', function () {
         return view('oilab.lab.reviewreport_adminlab');
     });
+
+    Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 Route::post('/logout', [loginController::class, 'logout']);
 //Logout
