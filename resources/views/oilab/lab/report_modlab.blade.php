@@ -32,14 +32,17 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
-                            <tr>
-                                <td class="text-center align-middle">1</td>
-                                <td class="text-center align-middle">A9099885</td>
-                                <td class="text-center align-middle">Nisa</td>
-                                <td class="text-center align-middle">
-                                    <div><a href="/reviewreport_adminlab" type="button"
-                                            class="btn btn-sm merah text-putih">Preview</a></div>
-                                </td>
+                            @foreach ($salesorderoil as $key => $solab)
+                                <tr>
+                                    <td class="text-center align-middle">{{ $key + 1 }}</td>
+                                    <td class="text-center align-middle">{{ $solab['no_so_solab'] }}</td>
+                                    <td class="text-center align-middle">Nisa</td>
+                                    <td class="text-center align-middle">
+                                        <div><a href="/reviewreport_modlab" type="button"
+                                                class="btn btn-sm merah text-putih">Preview</a></div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
