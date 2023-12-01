@@ -17,6 +17,7 @@ class history extends Model
     protected $fillable = [
         'id_project',
         'id_trafo',
+        'finish'
     ];
 
     public function trafo(): BelongsTo
