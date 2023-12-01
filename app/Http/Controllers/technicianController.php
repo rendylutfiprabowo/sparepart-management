@@ -55,11 +55,22 @@ class technicianController extends Controller
     }
     public function viewSpk()
     {
-        $spks = Auth::User()->technician->first()->order;
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+        $id_technician = Auth::user()->technician->id_technician;
+        // $spks = Auth::User()->warehouse->store->order->query();
+        $spks = order::query()->where('id_technician', $id_technician);
+        $status = Auth::User()->technician->order->groupBy('status');
+        if (!empty($query)) {
+            $spks->where('status', $query);
+            // @dd($status);
+        }
+        $spks = $spks->paginate(10);
         return view(
             'sparepart.technician.listSpkTechnician',
             [
                 'spk' => $spks,
+                'status' => $status
             ]
         );
     }
@@ -68,6 +79,7 @@ class technicianController extends Controller
     {
         $order = order::all()->where('id_order', $id_order)->first();
         $stocks = stockSparepart::where('id_store', $order->id_store)->with('sparepart.category')->get();
+        $id_store = $order->id_store;
         if ($order->revisi != null) {
             $revision_booked = $order->revisi->booked;
             $order_booked = $order->booked;
@@ -87,8 +99,9 @@ class technicianController extends Controller
         $categories = $categories->unique('id');
         return view('sparepart.technician.returTechnician', [
             'order' => $order,
+            'id_store' => $id_store,
             'stocks' => $stocks,
-            'category' => $categories,
+            'categories' => $categories,
             'revision' => isset($revision) ? $revision : null,
             'new' => isset($new) ? $new : null,
 

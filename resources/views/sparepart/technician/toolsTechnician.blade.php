@@ -85,7 +85,16 @@
                             <td class="table-plus">{{ $no + 1 }}</td>
                             <td class="table-plus">{{ $tech->tools->nama_tools }}</td>
                             <td class="table-plus">{{ $tech->qty_technician_tools }}</td>
-                            <td class="table-plus">{{ $tech->status }}</td>
+                            <td class="table-plus"><b
+                                    class="@if ($tech->status == 'closed') badge text-bg-success
+                            @elseif ($tech->status == 'closed-memo-do-revisi' || $tech->status == 'memo-closed') badge text-bg-primary
+                            @elseif($tech->status == 'on-warehouse' || $tech->status == 'on-technician')
+                            badge text-bg-warning
+                            @elseif($tech->status == 'revisi')
+                            badge text-bg-info
+                            @elseif($tech->status == 'canceled')
+                            badge text-bg-danger @endif">{{ $tech->status }}
+                                </b></td>
                             <td class="table-plus">{{ $tech->start_date }}</td>
                             <td class="table-plus">{{ $tech->finish_date ? $tech->finish_date : '-' }}</td>
                             <td class="table-plus">{{ $tech->tools->store->nama_store }}</td>

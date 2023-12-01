@@ -8,16 +8,16 @@
         </x-page-heading>
 
         <div class="row">
-            <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}"
+            <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}" subTitles="For more"
                 href="/warehouse/stock" />
             <x-card cardTitles="Total Order" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}"
-                href="/warehouse/listspk" />
-            <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} "
-                href="#" />
+                href="/warehouse/listspk" subTitles="For more" />
+            <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " href="#"
+                subTitles="For more" />
         </div>
         <div class="row mt-2">
             <x-card cardTitles="Item Delivery" iconClass="bi bi-journal-x" percents="{{ $orderProgressNotif }} "
-                href="" />
+                subTitles="For more" href="" />
         </div>
         <br>
         <div>

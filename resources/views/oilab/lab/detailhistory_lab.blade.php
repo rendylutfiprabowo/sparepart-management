@@ -44,7 +44,6 @@
                             <th scope="col">No SO</th>
                             <th scope="col">No SPK</th>
                             <th scope="col">Item Test</th>
-                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -54,10 +53,6 @@
                             <td>A123982791</td>
                             <td>
                                 <div>DGA</div>
-                            </td>
-                            <td>
-                                <a href="\Asset\TRANSFORMERS.pdf" class="pdf-link btn" type="button"><i
-                                        class="fa-regular fa-file fa-lg"></a></i>
                             </td>
                         </tr>
                     </tbody>

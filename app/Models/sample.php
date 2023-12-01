@@ -21,6 +21,7 @@ class sample extends Model
         'tanggal_sampling',
         'tanggal_kedatangan',
         'tanggal_pengujian',
+        // 'tanggal_cetaklaporan',
         'id_scope',
         'id_history'
     ];

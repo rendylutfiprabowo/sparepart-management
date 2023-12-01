@@ -74,29 +74,7 @@
                     Submit
                 </button>
         </form>
-        {{-- <script>
-            function addNewItem() {
-                const formContainer = document.querySelector(".items");
-                const originalDiv = formContainer.querySelector(".item");
-                const newDiv = originalDiv.cloneNode(true);
-                formContainer.appendChild(newDiv);
-            }
-
-            function deleteItem(element) {
-                element.parentElement.parentElement.parentElement.remove();
-            }
-        </script> --}}
         <script>
-            function updateForm(sel) {
-                var selectedOption = $('#select-customer').find('option:selected');
-                var phoneNumberInput = $('input[name="phone_number"]');
-                var addressInput = $('input[name="address"]');
-
-                // Update the input values based on the selected customer
-                phoneNumberInput.val(selectedOption.data('phone'));
-                addressInput.val(selectedOption.data('address'));
-            }
-
             function updateItem(select) {
                 var selectedOption = $(select).find(":selected");
                 var dimension = $(select).closest(".item").find('input[name="dim"]');
@@ -114,6 +92,7 @@
 
             // Event delegation to handle category select change
             document.addEventListener('change', function(event) {
+                console.log('tes')
                 if (event.target.classList.contains('category-select')) {
                     const categoryId = event.target.value;
 

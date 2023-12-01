@@ -6,14 +6,12 @@
         <x-page-heading>
             Dashboard
         </x-page-heading>
-
-        <div class="row">
-            <x-card cardTitles="Total SPK" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}" subTitles="Monthly"
-                href="/warehouse/branch/listspk" />
-            <x-card cardTitles="Closed SPK" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " subTitles="Monthly"
-                href="#" />
-            <x-card cardTitles="Unfinish SPK " iconClass="bi bi-journal-x" percents="{{ $orderProgress }} "
-                subTitles="Monthly" href="#" />
+            <x-card cardTitles="Total SPK" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}" subTitles="For more"
+                href="/technician/listspk" />
+            <x-card cardTitles="Closed SPK" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " href="#"
+                subTitles="For more" />
+            <x-card cardTitles="Unfinish SPK" iconClass="bi bi-journal-x" percents="{{ $orderProgress }} " href="#"
+                subTitles="For more" />
         </div>
         <br>
         <div>
