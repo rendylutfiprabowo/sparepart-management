@@ -52,7 +52,7 @@
                                     </div>
                                     <div>
 
-                                        <form method="post" action="">
+                                        <form method="post" action="#">
                                             @csrf
                                             <input type="hidden" name="status" value="rejected">
                                             <button type="submit" class="btn btn-link"><i

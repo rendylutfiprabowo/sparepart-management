@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\pdfController;
 use App\Http\Controllers\reportController;
 use App\Http\Controllers\toolsController;
 use Illuminate\Support\Facades\Route;
@@ -151,7 +152,7 @@ Route::middleware(['auth', 'laboil'])->group(function () {
         return view('oilab.lab.index_lab');
     });
     Route::get('/index_lab', [labController::class, 'index']);
-    
+
     Route::get('/item_test', function () {
         return view('oilab.lab.item_test');
     });
@@ -180,6 +181,8 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
+    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    // Route::get('/pdfexport', [pdfController::class, 'exportPDF']);
 });
 
 

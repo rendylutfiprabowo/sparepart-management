@@ -67,7 +67,6 @@ class labController extends Controller
     public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
         $faker = Faker::create();
-        // dd($request->all());
         $validated = $request->validate([
             'serial_number' => 'required',
             'id_project' => 'required',
@@ -84,8 +83,7 @@ class labController extends Controller
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
-            'tanggal_pembuatanlaporan' => 'required',
-            'tanggal_pengirimanlaporan' => 'required',
+            // 'tanggal_cetaklaporan' => 'required',
         ]);
 
         if ($validated) {
@@ -113,8 +111,7 @@ class labController extends Controller
             $sample->tanggal_sampling = $validated['tanggal_sampling'];
             $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
             $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
-            $sample->tanggal_pembuatanlaporan = $validated['tanggal_pembuatanlaporan'];
-            $sample->tanggal_pengirimanlaporan = $validated['tanggal_pengirimanlaporan'];
+            // $sample->tanggal_cetaklaporan = $validated['tanggal_cetaklaporan'];
             $sample->save();
 
             return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));

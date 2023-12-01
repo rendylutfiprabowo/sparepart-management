@@ -54,7 +54,7 @@
                                                 @endforeach
                                             </div>
                                         </td>
-                                        <td class="d-flex flex-column">
+                                        <td class="flex-column">
                                             @if ($history->note === 'lengkap')
                                                 <i class="fa-solid fa-check pt-3" style="color: rgba(0, 255, 0, 0.7);"></i>
                                             @elseif ($history->note === 'tidak lengkap')
