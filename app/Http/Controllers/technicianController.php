@@ -79,6 +79,7 @@ class technicianController extends Controller
     {
         $order = order::all()->where('id_order', $id_order)->first();
         $stocks = stockSparepart::where('id_store', $order->id_store)->with('sparepart.category')->get();
+        $id_store = $order->id_store;
         if ($order->revisi != null) {
             $revision_booked = $order->revisi->booked;
             $order_booked = $order->booked;
@@ -98,8 +99,9 @@ class technicianController extends Controller
         $categories = $categories->unique('id');
         return view('sparepart.technician.returTechnician', [
             'order' => $order,
+            'id_store' => $id_store,
             'stocks' => $stocks,
-            'category' => $categories,
+            'categories' => $categories,
             'revision' => isset($revision) ? $revision : null,
             'new' => isset($new) ? $new : null,
 

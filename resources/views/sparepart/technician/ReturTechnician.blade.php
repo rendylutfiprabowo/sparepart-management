@@ -92,30 +92,43 @@
                     <input hidden type="text" name="id_technician" value="{{ $order->id_technician }}">
                 </table>
 
-                <div class="items mt-5">
+                <div class="items mt-4">
                     <strong><label class="form-label mt-5">Material Diluar Scope</label></strong>
-                    <strong><label class="form-label">Store Name</label></strong>
-                    <div class="item mb-5">
-                        <div class="mb-3">
+                    <div class="item mt-4">
+                        <div>
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                            <div class="d-flex">
-                                <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
+                        </div>
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-8">
+                                <select class="form-select category-select" placeholder="Enter Customer Name"
                                     name="category" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                    @foreach ($category as $category)
+                                    @foreach ($categories as $category)
                                         <option value="{{ $category->id_category }}">{{ $category->nama_category }}
                                         </option>
                                     @endforeach
                                 </select>
-                                <div class="col d-flex align-items-center mx-3 text-right">qty</div>
-                                <input class="col form-control mx-3" name="qty[]" value="0">
-                                <input class="col form-control mx-3" name="dim" readonly>
-                                <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus</div>
+                            </div>
+                            <div class="col">
+                                <strong>qty</strong>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" name="qty[]" value="0">
+                            </div>
+                            <div class="col">
+                                <input class="form-control" name="dim" disabled>
+                            </div>
+                            <div class="col">
+                                <div class="btn btn-danger form-control" onclick="deleteItem(this)"><i
+                                        class="bi bi-trash-fill"></i>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3">
+
+                        <div class="mb-3 mt-4">
                             <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                            <select name="stocks[]" id="stock" class="form-control specification-select"
+                            <select name="stocks[]" id="stock" class="form-select specification-select"
                                 onchange="updateItem(this)">
                             </select>
                         </div>
@@ -123,14 +136,12 @@
                 </div>
 
                 <div class="d-flex justify-content-center my-3 mb-3">
-                    <div onclick="addNewItem()" class="btn btn-secondary">Add Item
-
-                    </div>
+                    <div onclick="addNewItem()" class="btn btn-secondary btn-sm">Add Items</div>
                 </div>
 
 
                 <div class="modal-footer">
-                    <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                    <a href="/technician/listspk" class="btn merah text-white"> back</a>
                     <button type="submit" class="btn btn-primary"> Submit</button>
                 </div>
         </form>
@@ -278,30 +289,46 @@
                     <div></div>
                     <strong><label class="form-label">Store Name</label></strong>
                     @if ($new == null)
-                        <div class="item mb-5">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
-                                <div class="d-flex">
-                                    <select class="form-control col-7 category-select" placeholder="Enter Customer Name"
-                                        name="category" id="category">
-                                        <option value="" selected disabled>-- Pilih Sparepart --</option>
-                                        @foreach ($category as $category)
-                                            <option value="{{ $category->id_category }}">{{ $category->nama_category }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <div class="col d-flex align-items-center mx-3 text-right">qty</div>
-                                    <input class="col form-control mx-3" name="qty[]" value="0">
-                                    <input class="col form-control mx-3" name="dim" readonly>
-                                    <div class="col btn btn-danger form-control ml-3" onclick="deleteItem(this)">hapus
+                        <div class="items mt-4">
+                            <h3 class="text-muted my-1 text-center">Spareparts</h3>
+                            <div class="item mt-4">
+                                <div>
+                                    <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
+                                </div>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-8">
+                                        <select class="form-select category-select" placeholder="Enter Customer Name"
+                                            name="category" id="category">
+                                            <option value="" selected disabled>-- Pilih Sparepart --</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id_category }}">
+                                                    {{ $category->nama_category }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <strong>qty</strong>
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" name="qty[]" value="0">
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" name="dim" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn btn-danger form-control" onclick="deleteItem(this)"><i
+                                                class="bi bi-trash-fill"></i>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
-                                <select name="stocks[]" id="stock" class="form-control specification-select"
-                                    onchange="updateItem(this)">
-                                </select>
+
+                                <div class="mb-3 mt-4">
+                                    <label for="exampleFormControlInput1" class="form-label">Spesifikasi</label>
+                                    <select name="stocks[]" id="stock" class="form-select specification-select"
+                                        onchange="updateItem(this)">
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     @else
@@ -336,14 +363,11 @@
                 </div>
                 @if ($new == null)
                     <div class="d-flex justify-content-center my-3 mb-3">
-                        <div onclick="addNewItem()" class="btn btn-secondary">Add Item
-
-                        </div>
+                        <div onclick="addNewItem()" class="btn btn-secondary btn-sm">Add Items</div>
                     </div>
 
-
                     <div class="modal-footer">
-                        <a href="/warehouse/branch/listspk" class="btn merah text-white"> back</a>
+                        <a href="/technician/listspk" class="btn merah text-white"> back</a>
                         <button type="submit" class="btn btn-primary"> Submit</button>
                     </div>
                 @else
@@ -356,27 +380,18 @@
     </div>
     </div>
     <script>
-        function updateForm(sel) {
-            var selectedOption = $('#select-customer').find('option:selected');
-            var phoneNumberInput = $('input[name="phone_number"]');
-            var addressInput = $('input[name="address"]');
-
-            // Update the input values based on the selected customer
-            phoneNumberInput.val(selectedOption.data('phone'));
-            addressInput.val(selectedOption.data('address'));
-        }
-
         function updateItem(select) {
             var selectedOption = $(select).find(":selected");
             var dimension = $(select).closest(".item").find('input[name="dim"]');
+            var quantity = $(select).closest(".item").find('input[name="qty[]"]');
 
             var dataDim = selectedOption.data("dim");
+            var dataMax = selectedOption.data("qty");
             dimension.val(dataDim);
-            console.log(dimension.val());
+            quantity.attr('max', dataMax);
         }
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         let itemCount = 1;
 
@@ -387,13 +402,18 @@
 
                 var url = window.location.href;
                 var parts = url.split('/');
-                var storeId = "{{ $order->id_store }}";
+                var storeId = '{{ $id_store }}';
+
                 // Find the corresponding specification select element
                 const specificationSelect = event.target.parentElement.parentElement.parentElement.querySelector(
                     '.specification-select');
 
                 // Clear existing options
                 specificationSelect.innerHTML = '';
+                const temp = document.createElement('option');
+                temp.value = '';
+                temp.text = '-- Pilih Spesifikasi --';
+                specificationSelect.appendChild(temp);
 
                 if (categoryId) {
                     // Fetch specifications based on the selected category and store using an AJAX request
@@ -401,14 +421,18 @@
                         url: '/get/stock/' + categoryId + '/' + storeId,
                         type: 'GET',
                         success: function(data) {
+                            console.log(data)
+
                             // Populate the specification select with the retrieved data
                             data.forEach(function(stock) {
                                 const option = document.createElement('option');
                                 // option.data-dim=stock.satuan;
                                 option.value = stock.id_stock;
-                                option.text = stock.spesifikasi_sparepart;
+                                option.text = stock.spesifikasi_sparepart + (
+                                    ` (tersisa ${stock.qty} ${stock.satuan})`);
 
                                 option.setAttribute('data-dim', stock.satuan);
+                                option.setAttribute('data-qty', stock.qty)
                                 specificationSelect.appendChild(option);
                             });
                         }
