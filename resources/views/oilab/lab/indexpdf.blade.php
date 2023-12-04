@@ -65,6 +65,15 @@
             display: inline-block;
             font-size: 7px;
         }
+
+        canvas {
+            border: 1px solid #ddd;
+            /* Gaya border untuk canvas */
+            display: block;
+            /* Agar canvas dapat menyesuaikan ukuran parent */
+            margin: 20px auto;
+            /* Membuat margin agar tampilan lebih baik */
+        }
     </style>
 </head>
 
@@ -759,7 +768,9 @@
                 <td colspan="4">Keterangan</td>
             </tr>
             <tr>
-                <td style="text-align: center;" colspan="7" rowspan="4"> N/A </td>
+                <td style="text-align: center;" colspan="7" rowspan="4">
+                    <canvas id="gasAnalysisChart" width="400" height="200"></canvas>
+                </td>
                 <td colspan="4"> Thermal-Oil Decomposition: Gas Utama Etilena (C2H4)</td>
             </tr>
             <tr>
@@ -774,11 +785,13 @@
 
             <!-- bagian 7 -->
             <tr>
-                <th colspan="7">key Gas Analysis</th>
+                <th colspan="7">Duval Pentagon Analysis</th>
                 <td colspan="4">Keterangan</td>
             </tr>
             <tr>
-                <td style="text-align: center;" colspan="7" rowspan="4"> N/A </td>
+                <td style="text-align: center;" colspan="7" rowspan="4">
+                    <canvas id="duvalPentagonChart" width="200" height="200"></canvas>
+                </td>
                 <td colspan="4">
                     <ul>
                         <li>PD : Corona partial discharge</li>
@@ -791,5 +804,76 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <!-- chart keygas -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sample gas analysis data (replace with your actual data)
+            var gasData = {
+                labels: ['C2H4', 'CO', 'H2', 'C2H2'],
+                datasets: [{
+                    label: 'Gas Concentration (%)',
+                    data: [2, 3, 18, 75],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 5,
+                }]
+            };
+
+            // Initialize Gas Analysis chart
+            var ctx = document.getElementById('gasAnalysisChart').getContext('2d');
+            var gasAnalysisChart = new Chart(ctx, {
+                type: 'line', // You can change this to 'bar' or other chart types
+                data: gasData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- chart doval pentagon -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dummy values, replace with your actual data
+            var duvalValues = [4, 2, 3, 5, 1];
+
+            // Initialize Duval Pentagon chart
+            var ctx = document.getElementById('duvalPentagonChart').getContext('2d');
+            var duvalPentagonChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['H2', 'C2H2', 'C2H4', 'CH4', 'C2H5'],
+                    datasets: [{
+                        data: duvalValues,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointRadius: 4,
+                        pointHoverRadius: 5,
+                    }]
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            min: 1,
+                            max: 5,
+                            stepSize: 1
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    </table>
     </div>
 </body>
