@@ -289,20 +289,20 @@
                 <th colspan="6" style="padding-bottom: 2rem; border: none;">
                     TEST RESULT OF OIL ANALYSIS <br>
                 </th>
-                <th rowspan="3" colspan="4">
+                <th rowspan="3" colspan="4" style="font-weight: normal; text-align: left;">
                     <ul style="list-style-type: none;">
-                        <li>No. Documen :</li>
-                        <li>Tgl/Rev. Form :</li>
-                        <li>Tgl/Rev. Isi Dok :</li>
-                        <li>Halaman :</li>
+                        <li>No. Documen : TP/V.3221-01/22</li>
+                        <li>Tgl/Rev. Form : 0/20-12-2022</li>
+                        <li>Tgl/Rev. Isi Dok : 1/08-02-2023</li>
+                        <li>Halaman : 1 dari 1</li>
                     </ul>
                 </th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none;">Customer : Edo Laksana Widodo</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Customer : Edo Laksana Widodo</th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none;">Project : Hotel/Apartment</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project : Hotel/Apartment</th>
             </tr>
             <!-- BAGIAN 2 -->
             <tr>
@@ -789,7 +789,7 @@
                 <td colspan="4">Keterangan</td>
             </tr>
             <tr>
-                <td style="text-align: center;" colspan="7" rowspan="4">
+                <td style="text-align: center;" colspan="7" rowspan="1">
                     <canvas id="duvalPentagonChart" width="200" height="200"></canvas>
                 </td>
                 <td colspan="4">
@@ -802,6 +802,72 @@
                         <li>S : Stray Gassing S of Mineral Oil at 120 and 200°C</li>
                     </ul>
                 </td>
+            </tr>
+
+            {{-- BAGIAN 8 --}}
+            <tr>
+                <th colspan="11" style=" border: none; font-weight: normal;">
+                    <span style="font-weight: bold;">Head Office :</span> Jl. Hayam Wuruk 4 FX, Jakarta 10120, Phone :
+                    (62-21) 385 07030, 783 3434 34, Fax:(62-21) 364 837 367 Email : trafo@gtrafoindonesia.com
+                </th>
+            </tr>
+            <tr>
+                <th colspan="11" style="border: none; font-weight: normal;">
+                    <span style="font-weight: bold;">Factory :</span> Jl.Raya Siliwangi RT 001/001 Kel.Gembor,
+                    Kec.Periuk, Tanggerang, Banten - Indonesia Phone : (62-21) 593 19002-05
+                </th>
+            </tr>
+            <tr>
+                <th colspan="11">Analisa</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Normal</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11">Kesimpulan</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11">Rekomendasi</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11" align="left" style="border: none;">
+                    <h4>Tanggerang, 11 Desember 2023</h4>
+                    <br>
+                    <br>
+                </th>
+            </tr>
+            <br>
+            <tr style="text-align: center;">
+                <th colspan="4" style="border: none; font-weight: normal;">
+                    Di uji Oleh, <br><br><br>
+                    Farhan Aditya <br>
+                    (Analis Laboratorium)
+                </th>
+                <th colspan="3" style="border: none; font-weight: normal;">
+                    Di Periksa Oleh, <br><br><br>
+                    Ahmad Kharis <br>
+                    (kaBag. In House Service)
+                </th>
+                <th colspan="4" style="border: none; font-weight: normal;">
+                    Di Setujui Oleh, <br><br><br>
+                    Ahmad Sujarwo <br>
+                    (Manager In House Service)
+                </th>
             </tr>
         </table>
     </div>
@@ -874,6 +940,5 @@
             });
         });
     </script>
-    </table>
     </div>
 </body>

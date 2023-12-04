@@ -80,9 +80,11 @@ class labController extends Controller
             'temperatur_oil' => 'required',
             'volume_oil' => 'required',
             'warna_oil' => 'required',
+            'catatan' => 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
+            'tanggal_cetaklaporan' => 'required'
         ]);
 
         if ($validated) {
@@ -99,6 +101,7 @@ class labController extends Controller
             $trafos->temperatur_oil = $validated['temperatur_oil'];
             $trafos->volume_oil = $validated['volume_oil'];
             $trafos->warna_oil = $validated['warna_oil'];
+            $trafos->catatan = $validated['catatan'];
             $trafos->id_customer = 0;
             $trafos->save();
 
@@ -107,13 +110,14 @@ class labController extends Controller
             $history->save();
             $salesorderoil = Solab::whereNotNull('id_project')->get();
             $sample = Sample::where('id_history', $history->id)->first();
-            $sample->tanggal_sampling = $validated['tanggal_sampling'];
-            $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
-            $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
+            $sample->tanggal_sampling = $request->input('tanggal_sampling');
+            $sample->tanggal_kedatangan = $request->input('tanggal_kedatangan');
+            $sample->tanggal_pengujian = $request->input('tanggal_pengujian');
+            $sample->tanggal_cetaklaporan = $request->input('tanggal_cetaklaporan');
             $sample->save();
 
             return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));
         }
-        return response()->status(500);
+        return response()->json(['error' => 'Internal Server Error'], 500);
     }
 }

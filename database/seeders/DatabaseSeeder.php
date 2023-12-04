@@ -417,7 +417,10 @@ class DatabaseSeeder extends Seeder
                 'Karbon Dioksida (CO2)' => 0,
                 'Metana (CH4)' => 0,
                 'Karbon Monoksida (CO)' => 0,
-                'CO2/CO ratio' => 0
+                'CO2/CO ratio' => 0,
+                'Analisa' => 0,
+                'Kesimpulan' => 0,
+                'Rekomendasi' => 0
             ]),
             'id_scope' => '220',
         ]);
@@ -430,9 +433,9 @@ class DatabaseSeeder extends Seeder
                 '2fal' => 0,
                 '2acf' => 0,
                 '5mef' => 0,
-                'Kategori Hasil Furan'=> 0,
+                'Kategori Hasil Furan' => 0,
                 'Remaining Life Time' => 0,
-                'Rekomendasi Furan'=> 0
+                'Rekomendasi Furan' => 0
             ]),
             'id_scope' => '842',
         ]);
@@ -451,7 +454,7 @@ class DatabaseSeeder extends Seeder
                 'PCB' => 0,
                 'Corrosive Sulfur' => 0,
                 'Flash Point' => 0,
-                'Kategori Hasil OA'=> 0,
+                'Kategori Hasil OA' => 0,
                 'Rekomendasi OA' => 0
             ]),
             'id_scope' => '399',
@@ -556,17 +559,18 @@ class DatabaseSeeder extends Seeder
             'temperatur_oil' => '556',
             'volume_oil' => '60',
             'Warna_oil' => 'merah',
+            'catatan' => 'aman',
             'id_customer' => '23',
         ]);
 
         sample::create([
-            'id_sample' => $faker->numberBetween(100, 999),
+            'id_sample' => $faker->unique()->numberBetween(100, 999),
             'jumlah_sample' => '5',
             'status_sample' => 'Pending',
             'tanggal_sampling' => '2023-11-07',
             'tanggal_kedatangan' => '2023-11-08',
             'tanggal_pengujian' => '2023-11-10',
-            // 'tanggal_cetaklaporan' => '2023-21-10',
+            'tanggal_cetaklaporan' => '2023-11-21', // Perbaikan format tanggal
             'id_scope' => '2893782',
             'id_history' => '8833948',
         ]);
