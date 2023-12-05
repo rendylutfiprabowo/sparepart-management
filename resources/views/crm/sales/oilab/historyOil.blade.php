@@ -33,29 +33,4 @@
             </tbody>
         </table>
     </div>
-    <!-- Modal -->
-    {{-- @foreach ($salesorderoil as $solab)
-        @foreach ($solab->project->history as $history)
-            <div class="modal fade" id="exampleModal{{ $history->id }}" tabindex="-1" id="exampleModal" tabindex="-1"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header merah">
-                            <h4 class="modal-title btn merah text-putih" id="exampleModalLabel">
-                                Notes
-                            </h4>
-                            <button type="button" class="btn-close me-1" data-bs-dismiss="modal" aria-label="Close"
-                                style="background-color: white; width: 24px; height: 24px; padding: 0; border: 0; font-size: 10px;"></button>
-                        </div>
-                        <div class="modal-body">
-                            {{ $history->note }}
-                        </div>
-                        <div class="modal-footer">
-                            <a href="/sales/oil/sample" type="button" class="btn merah text-putih">Back</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    @endforeach --}}
 @endsection

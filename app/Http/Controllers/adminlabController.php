@@ -37,4 +37,21 @@ class adminlabController extends Controller
         $sample = Sample::all();
         return view('oilab.lab.report_adminlab', compact('salesorderoil', 'sample'));
     }
+
+    public function historyadminlab()
+    {
+        $customers = customer::all();
+        return view('oilab.lab.history_adminlab', [
+            'customers' => $customers,
+        ]);
+    }
+
+    public function detailhistoryAdminLab($id_trafo)
+    {
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('oilab.lab.detailhistory_adminlab', [
+            'trafo' => $trafo,
+        ]);
+    }
 }

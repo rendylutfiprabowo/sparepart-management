@@ -67,7 +67,7 @@ class labController extends Controller
 
     public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
-        
+
         $faker = Faker::create();
         $validated = $request->validate([
             'serial_number' => 'required',
@@ -89,9 +89,9 @@ class labController extends Controller
             'tanggal_cetaklaporan' => 'required'
         ]);
         if ($validated) {
-            $trafo = trafo::where('serial_number',$validated['serial_number'])->first();
-            $project = project::where('id_project',$validated['id_project'])->firstOrFail();
-            if(!$trafo){
+            $trafo = trafo::where('serial_number', $validated['serial_number'])->first();
+            $project = project::where('id_project', $validated['id_project'])->firstOrFail();
+            if (!$trafo) {
                 $trafos = new Trafo();
                 $trafos->id_trafo = $faker->numberBetween(100, 999);
                 $trafos->serial_number = $validated['serial_number'];
@@ -121,7 +121,24 @@ class labController extends Controller
                 $sample->save();
             }
 
-            return redirect('orderlist/'.$no_so_solab);
+            return redirect('orderlist/' . $no_so_solab);
         }
+    }
+
+    public function historyLab()
+    {
+        $customers = customer::all();
+        return view('oilab.lab.history_lab', [
+            'customers' => $customers,
+        ]);
+    }
+
+    public function detailhistoryLab($id_trafo)
+    {
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('oilab.lab.detailhistory_lab', [
+            'trafo' => $trafo,
+        ]);
     }
 }
