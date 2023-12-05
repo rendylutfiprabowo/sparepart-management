@@ -65,6 +65,15 @@
             display: inline-block;
             font-size: 7px;
         }
+
+        canvas {
+            border: 1px solid #ddd;
+            /* Gaya border untuk canvas */
+            display: block;
+            /* Agar canvas dapat menyesuaikan ukuran parent */
+            margin: 20px auto;
+            /* Membuat margin agar tampilan lebih baik */
+        }
     </style>
 </head>
 
@@ -280,20 +289,20 @@
                 <th colspan="6" style="padding-bottom: 2rem; border: none;">
                     TEST RESULT OF OIL ANALYSIS <br>
                 </th>
-                <th rowspan="3" colspan="4">
+                <th rowspan="3" colspan="4" style="font-weight: normal; text-align: left;">
                     <ul style="list-style-type: none;">
-                        <li>No. Documen :</li>
-                        <li>Tgl/Rev. Form :</li>
-                        <li>Tgl/Rev. Isi Dok :</li>
-                        <li>Halaman :</li>
+                        <li>No. Documen : TP/V.3221-01/22</li>
+                        <li>Tgl/Rev. Form : 0/20-12-2022</li>
+                        <li>Tgl/Rev. Isi Dok : 1/08-02-2023</li>
+                        <li>Halaman : 1 dari 1</li>
                     </ul>
                 </th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none;">Customer : Edo Laksana Widodo</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Customer : Edo Laksana Widodo</th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none;">Project : Hotel/Apartment</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project : Hotel/Apartment</th>
             </tr>
             <!-- BAGIAN 2 -->
             <tr>
@@ -759,7 +768,9 @@
                 <td colspan="4">Keterangan</td>
             </tr>
             <tr>
-                <td style="text-align: center;" colspan="7" rowspan="4"> N/A </td>
+                <td style="text-align: center;" colspan="7" rowspan="4">
+                    <canvas id="gasAnalysisChart" width="400" height="200"></canvas>
+                </td>
                 <td colspan="4"> Thermal-Oil Decomposition: Gas Utama Etilena (C2H4)</td>
             </tr>
             <tr>
@@ -774,11 +785,13 @@
 
             <!-- bagian 7 -->
             <tr>
-                <th colspan="7">key Gas Analysis</th>
+                <th colspan="7">Duval Pentagon Analysis</th>
                 <td colspan="4">Keterangan</td>
             </tr>
             <tr>
-                <td style="text-align: center;" colspan="7" rowspan="4"> N/A </td>
+                <td style="text-align: center;" colspan="7" rowspan="1">
+                    <canvas id="duvalPentagonChart" width="200" height="200"></canvas>
+                </td>
                 <td colspan="4">
                     <ul>
                         <li>PD : Corona partial discharge</li>
@@ -790,6 +803,142 @@
                     </ul>
                 </td>
             </tr>
+
+            {{-- BAGIAN 8 --}}
+            <tr>
+                <th colspan="11" style=" border: none; font-weight: normal;">
+                    <span style="font-weight: bold;">Head Office :</span> Jl. Hayam Wuruk 4 FX, Jakarta 10120, Phone :
+                    (62-21) 385 07030, 783 3434 34, Fax:(62-21) 364 837 367 Email : trafo@gtrafoindonesia.com
+                </th>
+            </tr>
+            <tr>
+                <th colspan="11" style="border: none; font-weight: normal;">
+                    <span style="font-weight: bold;">Factory :</span> Jl.Raya Siliwangi RT 001/001 Kel.Gembor,
+                    Kec.Periuk, Tanggerang, Banten - Indonesia Phone : (62-21) 593 19002-05
+                </th>
+            </tr>
+            <tr>
+                <th colspan="11">Analisa</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Normal</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11">Kesimpulan</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11">Rekomendasi</th>
+            </tr>
+            <tr>
+                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
+                    dilakukan peningkatan pemantauan
+                    terhadap kenaikan gas</th>
+            </tr>
+            <tr>
+                <th colspan="11" align="left" style="border: none;">
+                    <h4>Tanggerang, 11 Desember 2023</h4>
+                    <br>
+                    <br>
+                </th>
+            </tr>
+            <br>
+            <tr style="text-align: center;">
+                <th colspan="4" style="border: none; font-weight: normal;">
+                    Di uji Oleh, <br><br><br>
+                    Farhan Aditya <br>
+                    (Analis Laboratorium)
+                </th>
+                <th colspan="3" style="border: none; font-weight: normal;">
+                    Di Periksa Oleh, <br><br><br>
+                    Ahmad Kharis <br>
+                    (kaBag. In House Service)
+                </th>
+                <th colspan="4" style="border: none; font-weight: normal;">
+                    Di Setujui Oleh, <br><br><br>
+                    Ahmad Sujarwo <br>
+                    (Manager In House Service)
+                </th>
+            </tr>
         </table>
+    </div>
+    <!-- chart keygas -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sample gas analysis data (replace with your actual data)
+            var gasData = {
+                labels: ['C2H4', 'CO', 'H2', 'C2H2'],
+                datasets: [{
+                    label: 'Gas Concentration (%)',
+                    data: [2, 3, 18, 75],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointHoverRadius: 5,
+                }]
+            };
+
+            // Initialize Gas Analysis chart
+            var ctx = document.getElementById('gasAnalysisChart').getContext('2d');
+            var gasAnalysisChart = new Chart(ctx, {
+                type: 'line', // You can change this to 'bar' or other chart types
+                data: gasData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- chart doval pentagon -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Dummy values, replace with your actual data
+            var duvalValues = [4, 2, 3, 5, 1];
+
+            // Initialize Duval Pentagon chart
+            var ctx = document.getElementById('duvalPentagonChart').getContext('2d');
+            var duvalPentagonChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['H2', 'C2H2', 'C2H4', 'CH4', 'C2H5'],
+                    datasets: [{
+                        data: duvalValues,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointRadius: 4,
+                        pointHoverRadius: 5,
+                    }]
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            min: 1,
+                            max: 5,
+                            stepSize: 1
+                        }
+                    }
+                }
+            });
+        });
+    </script>
     </div>
 </body>

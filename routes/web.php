@@ -217,7 +217,7 @@ Route::middleware(['auth', 'modLab'])->group(function () {
         return view('oilab.lab.detailhistory_modlab');
     });
 
-    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    // Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 
 Route::middleware(['auth', 'adminLab'])->group(function () {
@@ -246,7 +246,7 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
         return view('oilab.lab.reviewreport_adminlab');
     });
 
-    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    // Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 Route::post('/logout', [loginController::class, 'logout']);
 //Logout
