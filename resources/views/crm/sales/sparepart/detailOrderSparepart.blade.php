@@ -3,105 +3,57 @@
 @section('title', 'Detail Order Sparepart ')
 
 @section('contents')
-    <div class="d-flex align-items-center">
-        <div>
-            <a href="/sales/sparepart/order" class="btn btn-danger btn-sm"><i class="bi bi-arrow-left"></i></a>
+
+    <div class="d-flex  gap-2">
+        <div class="">
+            <a href="/sales/sparepart/order" class="btn btn-danger "><i class="bi bi-arrow-left"></i></a>
         </div>
-        <div class="ms-3">
-            <h3 class="text-muted">Detail Order Customer</h3>
+        <div class="">
+            <h3 class="text-muted">Detail Order SpareParts</h3>
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row bg-white m-1 rounded-3 shadow-sm">
+        <div class="col-lg-8 p-4">
+            <h5 class="fw-bold">Information Order SpareParts</h5>
+            <dl class="row mt-3">
+                <dt class="col-sm-4">Customer Name</dt>
+                <dd class="col-sm-8">{{ $order->customer->nama_customer }}</dd>
+                <dt class="col-sm-4">Order Number</dt>
+                <dd class="col-sm-8">{{ $order->id_order }}</dd>
+                <dt class="col-sm-4">Order Date</dt>
+                <dd class="col-sm-8">{{ $order->date_order }}</dd>
+                <dt class="col-sm-4">Store</dt>
+                <dd class="col-sm-8">{{ $order->id_store }}</dd>
+                <dt class="col-sm-4">Address</dt>
+                <dd class="col-sm-8">-</dd>
+            </dl>
+        </div>
+        <div class="col-lg-4 p-4 text-center">
             <div>
-                <div class="row mb-4">
-                    <div class="col">
-                        <div class="">
-                            <div class="card text-bg-light shadow-sm">
-                                <div class="card-header fw-bold">Information SpareParts</div>
-                                <div class="card-body">
-                                    <table class="table-borderless table">
-                                        <tbody>
-                                            <tr>
-                                                <th scope="col"><span><i class="bi bi-person"></i></span> Customer Name
-                                                </th>
-                                                <td> : {{ $order->customer->nama_customer }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><span><i class="bi bi-123"></i></span> Order Number</th>
-                                                <td> : {{ $order->id_order }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><span><i class="bi bi-calendar-check"></i></span> Order
-                                                    Date
-                                                </th>
-                                                <td> : {{ $order->date_order }}</td>
-                                            </tr>
-
-                                            <tr>
-                                                <th scope="col"><span><i class="bi bi-shop-window"></i></span> Store</th>
-                                                <td> : {{ $order->id_store }}</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col"><span><i class="bi bi-geo-alt"></i></span> Address</th>
-                                                <td><small>: Jakarta Barat, Kembangan Puri Indah, Dekat Kampus Mercu
-                                                        Buana</small> </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="col">
-                            <div class="card text-bg-light shadow-sm">
-                                <div class="card-header fw-bold">Status </div>
-                                <div class="card-body">
-                                    @if ($order->status)
-                                        <h5 class="card-title text-bg-danger rounded p-2 text-center">{{ $order->status }}
-                                        </h5>
-                                    @else
-                                        <h5 class="card-title p-2 text-center"> - </h5>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card text-bg-light mt-2 shadow-sm">
-                                <div class="card-header fw-bold">Total Items</div>
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        @php
-                                            $sum = 0;
-                                            foreach ($order->booked as $booked) {
-                                                $sum += $booked->qty_booked;
-                                            }
-                                        @endphp
-                                        {{ $sum }}
-                                    </h5>
-
-                                </div>
-                            </div>
-                            {{-- <h3>Total Item</h3>
-                    @php
-                        $sum = 0;
-                        foreach ($order->booked as $booked) {
-                            $sum += $booked->qty_booked;
-                        }
-                    @endphp
-                    <div class="badge badge-danger">
-                        <h5>{{ $sum }}</h5>
-                    </div> --}}
-                        </div>
-                    </div>
-                </div>
+                <h5 class="fw-bold">Status</h5>
+                <h6>
+                    @if ($order->status)
+                        <span class="badge text-bg-danger">{{ $order->status }}</span>
+                    @else
+                        <span class="badge text-bg-secondary">-</span>
+                    @endif
+                </h6>
+            </div>
+            <br>
+            <br>
+            <div>
+                <h5 class="fw-bold">Total Items</h5>
+                <h6><span class="badge text-bg-danger"> @php
+                    $sum = 0;
+                    foreach ($order->booked as $booked) {
+                        $sum += $booked->qty_booked;
+                    }
+                @endphp
+                        {{ $sum }}</span></h6>
             </div>
         </div>
     </div>
-
     <br>
 
     {{-- FORM  --}}
@@ -181,7 +133,7 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-outline-danger btn-sm" type="submit">Add Item</button>
+                            <button class="btn btn-success " type="submit">Simpan</button>
                         </div>
 
                     </div>
@@ -223,6 +175,7 @@
                     </div>
                 </form>
             @else
+                <br>
                 <label for=""><b>Input No. DO/Memo DO</b> </label>
                 <div class="row my-2">
                     <div class="col-3">
@@ -235,11 +188,14 @@
                             value="{{ $order->do_order }}" readonly>
                     </div>
                 </div>
-                <label for=""><b>Input No. SPK</b> </label>
-                <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
-                    value="{{ $order->spk_order }}" readonly>
+                <div>
+                    <label for=""><b>Input No. SPK</b> </label>
+                    <input type="text" class="form-control my-2" placeholder="No. SPK" name="no-spk"
+                        value="{{ $order->spk_order }}" readonly>
+                </div>
+
                 <div class="modal-footer">
-                    <a href="/sales/sparepart/order" class="btn btn-danger btn-sm mt-2"> Back</a>
+                    <a href="/sales/sparepart/order" class="btn btn-secondary mt-2"> Back</a>
                 </div>
             @endif
         </div>

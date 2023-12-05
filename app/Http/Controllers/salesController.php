@@ -273,11 +273,23 @@ class salesController extends Controller
         $customersTotal = customer::count();
         $projectsTotal = project::count();
         $salesData = sales::all();
+        $orderSpareparts = order::all();
+        $totalOrderSP = order::count();
+
+        // Calculations for charts
+        $divideNumber = 1000;
+        $percentageCustomers = ($customersTotal / $divideNumber) * 100;
+        $percentageProjects = ($projectsTotal / $divideNumber) * 100;
+        $percentageSales = $percentageCustomers + $percentageProjects;
 
         return view('crm.sales.dashboard.salesIndexCrm', compact(
             'customersTotal',
             'projectsTotal',
-            'salesData'
+            'totalOrderSP',
+            'salesData',
+            'percentageSales',
+            'percentageCustomers',
+            'percentageProjects',
         ));
     }
 
@@ -349,8 +361,9 @@ class salesController extends Controller
         $dataCust = customer::where('nama_customer', 'like', "%$keyword%")
             ->paginate(10);
 
-        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
+        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust', 'keyword'));
     }
+
 
     // ====================== REPORTS =============================
     public function reportsCrm()
