@@ -14,7 +14,7 @@
         <form method="post" action="/sales/sparepart/order/add">
             @csrf
             <div class="container">
-                <h3 class="my-1 mb-4 text-muted text-center">Data Pelanggan</h3>
+                <h3 class="text-muted my-1 mb-4 text-center">Data Pelanggan</h3>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Delivery Type</label>
                     <select class="form-select" name="jenis_layanan">
@@ -46,7 +46,7 @@
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
                     <input type="text" class="form-control" name="sales_name" disabled value="Ahmad Sumbul">
-                    <input type="hidden" value="1" name="id_sales">
+                    <input type="hidden" value="{{ Auth::user()->sales->id_sales }}" name="id_sales">
                 </div>
                 <div class="mb-3">
                     <label for="dateInput">Order Date</label>
@@ -59,8 +59,8 @@
                         value="{{ $store->nama_store }}" disabled>
                     <input type="hidden" name="id_store" value="{{ $store->id_store }}">
                 </div>
-                <div class=" mt-4 items">
-                    <h3 class="my-1 text-muted text-center">Spareparts</h3>
+                <div class="items mt-4">
+                    <h3 class="text-muted my-1 text-center">Spareparts</h3>
                     <div class="item mt-4">
                         <div>
                             <label for="exampleFormControlInput1" class="form-label">Nama Barang</label>
@@ -71,7 +71,8 @@
                                     name="category" id="category">
                                     <option value="" selected disabled>-- Pilih Sparepart --</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id_category }}">{{ $category->nama_category }}</option>
+                                        <option value="{{ $category->id_category }}">{{ $category->nama_category }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -79,13 +80,13 @@
                                 <strong>qty</strong>
                             </div>
                             <div class="col">
-                                <input class=" form-control   " name="qty[]" value="0">
+                                <input class="form-control" name="qty[]" value="0">
                             </div>
                             <div class="col">
-                                <input class="form-control " name="dim" disabled>
+                                <input class="form-control" name="dim" disabled>
                             </div>
                             <div class="col">
-                                <div class=" btn btn-danger form-control " onclick="deleteItem(this)"><i
+                                <div class="btn btn-danger form-control" onclick="deleteItem(this)"><i
                                         class="bi bi-trash-fill"></i>
 
                                 </div>
@@ -129,7 +130,7 @@
                 var dataDim = selectedOption.data("dim");
                 var dataMax = selectedOption.data("qty");
                 dimension.val(dataDim);
-                quantity.attr('max',dataMax);
+                quantity.attr('max', dataMax);
             }
         </script>
 
@@ -167,7 +168,8 @@
                                     const option = document.createElement('option');
                                     // option.data-dim=stock.satuan;
                                     option.value = stock.id_stock;
-                                    option.text = stock.spesifikasi_sparepart + (` (tersisa ${stock.qty} ${stock.satuan})`);
+                                    option.text = stock.spesifikasi_sparepart + (
+                                        ` (tersisa ${stock.qty} ${stock.satuan})`);
 
                                     option.setAttribute('data-dim', stock.satuan);
                                     option.setAttribute('data-qty', stock.qty);

@@ -203,7 +203,7 @@ Route::middleware(['auth', 'modLab'])->group(function () {
         return view('oilab.lab.report_modlab');
     });
 
-    Route::get('/report_modlab', [modlabController::class,'viewReport2']);
+    Route::get('/report_modlab', [modlabController::class, 'viewReport2']);
 
     Route::get('/reviewreport_modlab', function () {
         return view('oilab.lab.reviewreport_modlab');
@@ -232,7 +232,7 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
         return view('oilab.lab.report_adminlab');
     });
 
-    Route::get('/report_adminlab', [adminlabController::class,'viewReport1']);
+    Route::get('/report_adminlab', [adminlabController::class, 'viewReport1']);
 
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');

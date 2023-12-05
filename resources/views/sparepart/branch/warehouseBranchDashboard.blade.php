@@ -42,7 +42,14 @@
             let orderProgressData = @json($orderProgress);
             let bookingData = @json($booking);
 
-            // Ekstrak data untuk setiap kategori (total)
+            // Combine unique months from all datasets
+            let allMonths = [...new Set([
+                ...orderClosedData.map(entry => entry.month),
+                ...orderProgressData.map(entry => entry.month),
+                ...bookingData.map(entry => entry.month),
+            ])];
+
+            // Extract data for each category (total)
             let orderClosedTotal = orderClosedData.map(entry => entry.total);
             let orderProgressTotal = orderProgressData.map(entry => entry.total);
             let bookingTotal = bookingData.map(entry => entry.total);
@@ -57,22 +64,17 @@
                     draggable: true,
                 },
                 scaleX: {
-                    // Set scale label
                     label: {
                         text: "Statistics",
                     },
-                    // Convert text on scale indices
-                    labels: bookingData.map(entry => entry.month),
+                    labels: allMonths, // Use the combined unique months
                 },
                 scaleY: {
-                    // Scale label with unicode character
                     label: {
                         text: "Target",
                     },
                 },
                 plot: {
-                    // Animation docs here:
-                    // https://www.zingchart.com/docs/tutorials/styling/animation#effect
                     animation: {
                         effect: "ANIMATION_EXPAND_BOTTOM",
                         method: "ANIMATION_STRONG_EASE_OUT",
@@ -81,24 +83,18 @@
                     },
                 },
                 series: [{
-                        // Plot 1 values, linear data
-                        values: bookingTotal,
-                        'background-color': "#FF8080",
-                        text: "Booking",
-                    },
-                    {
-                        // Plot 2 values, linear data
-                        values: orderProgressTotal,
-                        'background-color': '#8EACCD',
-                        text: "On-Progress",
-                    },
-                    {
-                        // Plot 2 values, linear data
-                        values: orderClosedTotal,
-                        'background-color': "#618264",
-                        text: "Closed",
-                    },
-                ],
+                    values: bookingTotal,
+                    'background-color': "#FF8080",
+                    text: "Booking",
+                }, {
+                    values: orderProgressTotal,
+                    'background-color': '#8EACCD',
+                    text: "On-Progress",
+                }, {
+                    values: orderClosedTotal,
+                    'background-color': "#618264",
+                    text: "Closed",
+                }],
             };
 
             zingchart.render({

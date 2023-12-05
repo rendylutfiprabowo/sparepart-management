@@ -6,6 +6,7 @@
         <x-page-heading>
             Dashboard
         </x-page-heading>
+        <div class="row">
             <x-card cardTitles="Total SPK" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}" subTitles="For more"
                 href="/technician/listspk" />
             <x-card cardTitles="Closed SPK" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " href="#"
@@ -13,11 +14,12 @@
             <x-card cardTitles="Unfinish SPK" iconClass="bi bi-journal-x" percents="{{ $orderProgress }} " href="#"
                 subTitles="For more" />
         </div>
-        <br>
-        <div>
-            <nav>
-                <div class="" id='myChart'><a class="zc-ref"></a></div>
-                {{-- <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    </div>
+    <br>
+    <div>
+        <nav>
+            <div class="" id='myChart'><a class="zc-ref"></a></div>
+            {{-- <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
                         type="button" role="tab" aria-controls="nav-home" aria-selected="true">Working Graph</button>
                 </div>
@@ -25,7 +27,7 @@
             <div class="zc-ref tab-pane fade show active rounded bg-white p-2 shadow-sm" id="nav-home" role="tabpanel"
                 id="myChart" aria-labelledby="nav-home-tab">
             </div> --}}
-        </div>
+    </div>
     </div>
     <br>
     </div>
