@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('id_scope');
             $table->string('nama_scope');
+            $table->boolean('detailed')->nullable();
         });
     }
 
