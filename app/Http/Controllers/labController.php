@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\customer;
 use App\Models\history;
+use App\Models\project;
 use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\scope;
@@ -66,6 +67,7 @@ class labController extends Controller
 
     public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
+        
         $faker = Faker::create();
         $validated = $request->validate([
             'serial_number' => 'required',
@@ -84,35 +86,40 @@ class labController extends Controller
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
         ]);
-
         if ($validated) {
-            $trafos = new Trafo();
-            $trafos->id_trafo = $faker->numberBetween(100, 999);
-            $trafos->serial_number = $validated['serial_number'];
-            $trafos->kva = $validated['kva'];
-            $trafos->merk = $validated['merk'];
-            $trafos->year = $validated['year'];
-            $trafos->area = $validated['area'];
-            $trafos->voltage = $validated['voltage'];
-            $trafos->vg = $validated['vg'];
-            $trafos->tag_number = $validated['tag_number'];
-            $trafos->temperatur_oil = $validated['temperatur_oil'];
-            $trafos->volume_oil = $validated['volume_oil'];
-            $trafos->warna_oil = $validated['warna_oil'];
-            $trafos->id_customer = 0;
-            $trafos->save();
+            $trafo = trafo::where('serial_number',$validated['serial_number'])->first();
+            $project = project::where('id_project',$validated['id_project'])->firstOrFail();
+            if(!$trafo){
+                $trafos = new Trafo();
+                $trafos->id_trafo = $faker->numberBetween(100, 999);
+                $trafos->serial_number = $validated['serial_number'];
+                $trafos->kva = $validated['kva'];
+                $trafos->merk = $validated['merk'];
+                $trafos->year = $validated['year'];
+                $trafos->area = $validated['area'];
+                $trafos->voltage = $validated['voltage'];
+                $trafos->vg = $validated['vg'];
+                $trafos->tag_number = $validated['tag_number'];
+                $trafos->temperatur_oil = $validated['temperatur_oil'];
+                $trafos->volume_oil = $validated['volume_oil'];
+                $trafos->warna_oil = $validated['warna_oil'];
+                $trafos->id_customer = $project->id_customer;
+                $trafos->save();
+                $trafo = $trafos;
+            }
 
             $history =  history::where('id_project', $request->id_project)->where('id', $id_history)->firstOrFail();
-            $history->id_trafo = $trafos->id_trafo;
+            $history->id_trafo = $trafo->id_trafo;
             $history->save();
-            $salesorderoil = Solab::whereNotNull('id_project')->get();
-            $sample = Sample::where('id_history', $history->id)->first();
-            $sample->tanggal_sampling = $validated['tanggal_sampling'];
-            $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
-            $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
-            $sample->save();
+            $samples = Sample::where('id_history', $history->id)->get();
+            foreach ($samples as $key => $sample) {
+                $sample->tanggal_sampling = $validated['tanggal_sampling'];
+                $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
+                $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
+                $sample->save();
+            }
 
-            return view('oilab.lab.order_list', compact('salesorderoil', 'sample'));
+            return redirect('orderlist/'.$no_so_solab);
         }
         return response()->status(500);
     }

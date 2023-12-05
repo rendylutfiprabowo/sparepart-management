@@ -93,14 +93,18 @@ class salesController extends Controller
 
     public function historyOil()
     {
-        $trafos = trafo::all();
+        $customers = customer::all();
         return view('crm.sales.oilab.historyOil',[
-            'trafos'=>$trafos,
+            'customers'=>$customers,
         ]);
     }
-    public function detailHistoryOil()
+    public function detailHistoryOil($id_trafo)
     {
-        return view('crm.sales.oilab.detailHistoryOil');
+        $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('crm.sales.oilab.detailHistoryOil',[
+            'trafo'=>$trafo,
+        ]);
     }
 
     // ================ SPAREPARTS ============================

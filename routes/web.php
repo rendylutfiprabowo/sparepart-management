@@ -76,7 +76,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
     Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
     Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
-    Route::get('/sales/oil/history/detail', [salesController::class, 'detailHistoryOil']);
+    Route::get('/sales/oil/history/{id_trafo}', [salesController::class, 'detailHistoryOil']);
     //Spareparts sales
     Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
     Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
