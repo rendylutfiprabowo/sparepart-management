@@ -8,6 +8,7 @@ use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
+use App\Models\trafo;
 use App\Models\scope;
 use App\Models\solab;
 use App\Models\category;
@@ -37,11 +38,6 @@ class salesController extends Controller
         })->count();
 
         return view('crm.sales.oilab.indexOil', compact('dataOilCustomers', 'totalDGA', 'totalFuran', 'totalOA'));
-    }
-
-    public function historyOil()
-    {
-        return view('crm.sales.oilab.historyOil');
     }
 
     public function salesOrderOil()
@@ -95,6 +91,13 @@ class salesController extends Controller
         return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'histories'));
     }
 
+    public function historyOil()
+    {
+        $trafos = trafo::all();
+        return view('crm.sales.oilab.historyOil',[
+            'trafos'=>$trafos,
+        ]);
+    }
     public function detailHistoryOil()
     {
         return view('crm.sales.oilab.detailHistoryOil');

@@ -27,18 +27,24 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Customer</th>
                             <th>No seri</th>
-                            <th>Tanggal Masuk</th>
+                            <th>Merk</th>
+                            <th>Tahun</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($trafos as $id => $trafo)
                         <tr>
-                            <td>1</td>
-                            <td>0098923783</td>
-                            <td>12 Februari 2023</td>
+                            <td>{{$id+1}}</td>
+                            <td>{{$trafo->customer->nama_customer}}</td>
+                            <td>{{$trafo->serial_number}}</td>
+                            <td>{{$trafo->merk}}</td>
+                            <td>{{$trafo->year}}</td>
                             <td><a href="/sales/oil/history/detail" class="btn btn-danger text-putih">detail</a></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
