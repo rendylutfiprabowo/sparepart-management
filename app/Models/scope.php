@@ -19,8 +19,12 @@ class scope extends Model
         'nama_scope',
     ];
     
-    public function samples() : HasOne 
+    public function samples() : HasMany 
     {
-        return $this-> hasOne(sample:: class, 'id_scope','id_Scope');
+        return $this-> hasMany(sample:: class, 'id_scope','id_Scope');
+    }
+    public function form() : HasOne 
+    {
+        return $this-> hasOne(form::class, 'id_scope','id_scope');
     }
 }

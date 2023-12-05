@@ -23,6 +23,20 @@ class reportController extends Controller
         }
         $form->field_formreport = json_encode([$field]);
         $form->save();
+        $sample->status_sample = TRUE;
+        $sample->save();
+
+        $samples = sample::where('id_history',$sample->history->id_history)->get();
+        $status = TRUE;
+        foreach($samples as $item){
+            if (!$item->status_sample) {
+                $status = FALSE;
+            }
+        }
+        if($status){
+            $sample->history->finish = now();
+            $sample->history->save();
+        }
         return redirect('orderlist/' . $id_solab);
     }
 }

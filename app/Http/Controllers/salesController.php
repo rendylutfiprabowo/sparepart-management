@@ -8,6 +8,8 @@ use App\Models\reportSample;
 use App\Models\sales;
 use App\Models\sample;
 use App\Models\order;
+use App\Models\trafo;
+use App\Models\scope;
 use App\Models\solab;
 use App\Models\category;
 use App\Models\history;
@@ -38,11 +40,6 @@ class salesController extends Controller
         return view('crm.sales.oilab.indexOil', compact('dataOilCustomers', 'totalDGA', 'totalFuran', 'totalOA'));
     }
 
-    public function historyOil()
-    {
-        return view('crm.sales.oilab.historyOil');
-    }
-
     public function salesOrderOil()
     {
 
@@ -61,7 +58,8 @@ class salesController extends Controller
     {
         $project = project::where('id_project', $id_project)->firstOrFail();
         $history = history::where('id', $id_history)->firstOrFail();
-        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project'));
+        $scopes = scope::all();
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project','scopes'));
     }
 
     public function createSalesOrderOil()
@@ -93,9 +91,20 @@ class salesController extends Controller
         return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'histories'));
     }
 
-    public function detailHistoryOil()
+    public function historyOil()
     {
-        return view('crm.sales.oilab.detailHistoryOil');
+        $customers = customer::all();
+        return view('crm.sales.oilab.historyOil',[
+            'customers'=>$customers,
+        ]);
+    }
+    public function detailHistoryOil($id_trafo)
+    {
+        $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('crm.sales.oilab.detailHistoryOil',[
+            'trafo'=>$trafo,
+        ]);
     }
 
     // ================ SPAREPARTS ============================

@@ -76,7 +76,7 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/oil/report', [salesController::class, 'reportOil']);
     Route::get('/sales/oil/sample', [salesController::class, 'sampleOil']);
     Route::get('/sales/oil/history', [salesController::class, 'historyOil']);
-    Route::get('/sales/oil/history/detail', [salesController::class, 'detailHistoryOil']);
+    Route::get('/sales/oil/history/{id_trafo}', [salesController::class, 'detailHistoryOil']);
     //Spareparts sales
     Route::get('/sales/sparepart/index', [salesController::class, 'indexSparepart']);
     Route::get('/sales/sparepart/stock', [salesController::class, 'stockSparepart']);
@@ -203,7 +203,7 @@ Route::middleware(['auth', 'modLab'])->group(function () {
         return view('oilab.lab.report_modlab');
     });
 
-    Route::get('/report_modlab', [modlabController::class,'viewReport2']);
+    Route::get('/report_modlab', [modlabController::class, 'viewReport2']);
 
     Route::get('/reviewreport_modlab', function () {
         return view('oilab.lab.reviewreport_modlab');
@@ -217,7 +217,7 @@ Route::middleware(['auth', 'modLab'])->group(function () {
         return view('oilab.lab.detailhistory_modlab');
     });
 
-    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    // Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 
 Route::middleware(['auth', 'adminLab'])->group(function () {
@@ -232,7 +232,7 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
         return view('oilab.lab.report_adminlab');
     });
 
-    Route::get('/report_adminlab', [adminlabController::class,'viewReport1']);
+    Route::get('/report_adminlab', [adminlabController::class, 'viewReport1']);
 
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
@@ -246,7 +246,7 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
         return view('oilab.lab.reviewreport_adminlab');
     });
 
-    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    // Route::get('generate-pdf', [pdfController::class, 'pdf']);
 });
 Route::post('/logout', [loginController::class, 'logout']);
 //Logout

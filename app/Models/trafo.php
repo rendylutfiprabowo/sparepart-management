@@ -27,6 +27,7 @@ class trafo extends Model
         'temperatur_oil',
         'volume_oil',
         'warna_oil',
+        'catatan',
         'id_customer',
     ];
 
@@ -34,8 +35,8 @@ class trafo extends Model
     {
         return $this->belongsTo(customer::class, 'id_customer', 'id_customer');
     }
-    public function samples($id_project)
-    {
+    public function histories(){
+        return $this->hasMany(history::class,'id_trafo','id_trafo');
     }
 
 }

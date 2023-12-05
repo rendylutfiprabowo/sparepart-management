@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('temperatur_oil')->nullable();
             $table->string('volume_oil')->nullable();
             $table->string('warna_oil')->nullable();
+            $table->string('catatan')->nullable();
             $table->string('id_customer');
         });
     }

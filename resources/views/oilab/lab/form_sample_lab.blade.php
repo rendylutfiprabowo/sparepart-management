@@ -15,13 +15,13 @@
         <div class="col-md-12">
             <div class="card p-4 rounded-4" style="border: 2px solid red;">
                 <!--Button download -->
-                <div class="d-flex justify-content-end">
+                {{-- <div class="d-flex justify-content-end">
                     <a href="\Asset\TRANSFORMERS.pdf"
                         class="btn btn-md shadow-bottom font-weight-bold rounded-pill text-putih align-items-center"
                         style="background-image: url('/Asset/Card BG.png'); background-size: cover; background-repeat: no-repeat;">
                         Download <i class="fa-solid fa-download"></i>
                     </a>
-                </div>
+                </div> --}}
                 <form action="/orderlist/{{ $sample->history->project->solab->no_so_solab }}/{{ $sample->id_sample }}"
                     method="post">
                     @csrf
