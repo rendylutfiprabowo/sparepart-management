@@ -10,13 +10,9 @@
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
@@ -43,8 +39,7 @@
 </head>
 
 <body class="bg-secondary-subtle">
-
-    <header class="navbar d-flex justify-content-between sticky-top bg-white p-1 px-3 shadow-sm">
+    <header class="navbar d-flex justify-content-between fixed-top bg-white p-1 px-3 shadow-sm">
         <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -56,17 +51,26 @@
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-
         <div class="d-flex gap-2">
             <div>
+                <x-button-secondary data-bs-toggle="modal" data-bs-target="#modalAddCust"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
+                        class="bi bi-person-add" viewBox="0 0 16 16">
+                        <path
+                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                        <path
+                            d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                    </svg></x-button-secondary>
+            </div>
+            <div class="pt-1">
                 <x-notification />
             </div>
-            <div>
+            <div class="pt-1">
                 <x-emails />
             </div>
             <div class="vr"></div>
             <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle d-flex align-items-center fw-medium gap-1"
+                <button type="button" class="btn dropdown-toggle d-flex align-items-center gap-1"
                     data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     {{ Auth::user()->username }}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
@@ -112,7 +116,7 @@
     </header>
 
     {{-- WRAP CONTENT --}}
-    <div class="container-fluid">
+    <div class="container-fluid mt-5">
         <div class="row">
             {{-- SIDEBAR / HEADER --}}
             @yield('sidebar')
@@ -126,6 +130,58 @@
             <div class="col-md-9 ms-sm-auto col-lg-10 footer-custom border-top border-1 bg-white p-2">
                 <div class="text-center">
                     <small class="text-secondary">&copy; 2023 PT. Trafindo, All rights reserved.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Add Customer --}}
+    <div class="modal fade" id="modalAddCust" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambahkan Customers</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-2">
+                        <form class="needs-validation" action="{{ route('addCust') }}" method="POST">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="idCustomer" class="form-label">ID CUSTOMER</label>
+                                    <input type="text" class="form-control" id="idCustomer" name="id_customer"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="namaCustomer" class="form-label">Nama Customer</label>
+                                    <input type="text" class="form-control" id="namaCustomer"
+                                        name="nama_customer" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="phone" class="form-label">Phone </label>
+                                    <input type="text" class="form-control" id="phone" name="phone_customer">
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email </label>
+                                    <input type="email" class="form-control" id="email" name="email_customer">
+                                </div>
+                                <div class="col-12">
+                                    <label for="Jenis Usaha" class="form-label">Jenis Usaha </label>
+                                    <input type="text" class="form-control" id="JenisUsaha"
+                                        name="jenisusaha_customer">
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <button class=" btn btn-danger w-100 " type="submit">Submit</button>
+                            </div>
+                            @if (session('status'))
+                                <div id="trigger"></div>
+                            @endif
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

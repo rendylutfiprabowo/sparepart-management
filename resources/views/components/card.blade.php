@@ -3,7 +3,7 @@
 <div class="col-lg-4">
     <div class="card rounded shadow-sm">
         <div class="card-body d-flex justify-content-between">
-            <h5 class="card-title">{{ $cardTitles }}</h5>
+            <h5 class="card-title fw-normal">{{ $cardTitles }}</h5>
             <h1 class="text-secondary">
                 <i class="bi {{ $iconClass }}">
                     {{ $slot }}

@@ -291,7 +291,7 @@ class salesController extends Controller
     public function dashboardCustomerCrm()
     {
         // GET ALL DATA CUSTOMERS
-        $dataCust = customer::all();
+        $dataCust = customer::paginate(10);
         return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
@@ -326,6 +326,8 @@ class salesController extends Controller
 
         $customers->save();
 
+
+
         return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
@@ -341,6 +343,18 @@ class salesController extends Controller
         $search = $request->input('search');
         $products = stockSparepart::where('name', 'like', "%$search%")->get();
         return view('products.index', compact('products'));
+    }
+
+    // SearchCustomers
+    public function searchCustomer(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        // Lakukan pencarian berdasarkan keyword di sini, contoh:
+        $dataCust = customer::where('nama_customer', 'like', "%$keyword%")
+            ->paginate(10);
+
+        return view('crm.sales.customer.salesIndexCustomer', compact('dataCust'));
     }
 
     // ====================== REPORTS =============================

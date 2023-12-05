@@ -201,12 +201,11 @@
                         name="id_technician">
                         <option value="" selected disabled>-- Pilih Technician --</option>
 
-                        <option value="Pilih Teknisi" placeholder="Pilih Teknisi">
-                            @foreach ($technician as $tech)
-                        <option
-                            value="{{ $tech['id_technician'] }}"@if ($order->technician) selected={{ $tech['nama_technician'] == $order->technician->nama_technician ? 'true' : 'false' }} @endif>
-                            {{ $tech['nama_technician'] }}
-                        </option>
+                        @foreach ($technician as $tech)
+                            <option
+                                value="{{ $tech['id_technician'] }}"@if ($order->technician) selected={{ $tech['nama_technician'] == $order->technician->nama_technician ? 'true' : 'false' }} @endif>
+                                {{ $tech['nama_technician'] }}
+                            </option>
                     </select>
                 @endforeach
                 <div class="modal-footer gap-2 pt-4">

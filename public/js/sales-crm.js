@@ -1,169 +1,68 @@
-// Render Method[3]
+const chartDashboardSales = document.getElementById("chartStatistik");
+var currentDate = new Date();
+var year = currentDate.getFullYear();
+var month = currentDate.getMonth() + 1;
+var date = currentDate.getDate();
 
-// Visitor Charts
-let myConfigsVisitor = {
-    type: "pie",
-    title: {
-        text: "Total Visitor",
+var formattedDate =
+    year +
+    "-" +
+    (month < 10 ? "0" + month : month) +
+    "-" +
+    (date < 10 ? "0" + date : date);
+
+new Chart(chartDashboardSales, {
+    type: "bar",
+    data: {
+        labels: [formattedDate],
+        datasets: [
+            {
+                label: "Customers",
+                data: [phpDataChart.customersTotal],
+                backgroundColor: ["rgba(255, 87, 87, 0.8)"],
+                borderWidth: 1,
+            },
+            {
+                label: "Total",
+                data: [phpDataChart.percentageSales],
+                backgroundColor: ["rgba(87, 172, 255, 0.8)"],
+            },
+            {
+                label: "Projects",
+                data: [phpDataChart.projectsTotal],
+                backgroundColor: ["rgba(60,179,113, 0.8)"],
+            },
+        ],
     },
-    series: [
-        {
-            values: [59],
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
         },
-        {
-            values: [55],
-        },
-        {
-            values: [30],
-        },
-        {
-            values: [28],
-        },
-        {
-            values: [15],
-        },
-    ],
-};
-
-zingchart.render({
-    id: "visitorCharts",
-    data: myConfigsVisitor,
-    width: "100%",
+    },
 });
 
-// Stock SpareParts
-var myConfigStock = {
-    graphset: [
-        {
-            type: "bar",
-            "background-color": "white",
-            title: {
-                text: "SpareParts Stock Statistic",
-                "font-color": "#7E7E7E",
-                backgroundColor: "none",
-                "font-size": "20px",
-                alpha: 1,
-                "adjust-layout": true,
-            },
-            plotarea: {
-                margin: "dynamic",
-            },
-            legend: {
-                layout: "x3",
-                overflow: "page",
-                alpha: 0.05,
-                shadow: false,
-                align: "center",
-                "adjust-layout": true,
-                marker: {
-                    type: "circle",
-                    "border-color": "none",
-                    size: "10px",
-                },
-                "border-width": 0,
-                maxItems: 3,
-                "toggle-action": "hide",
-                pageOn: {
-                    backgroundColor: "#000",
-                    size: "10px",
-                    alpha: 0.65,
-                },
-                pageOff: {
-                    backgroundColor: "#7E7E7E",
-                    size: "10px",
-                    alpha: 0.65,
-                },
-                pageStatus: {
-                    color: "black",
-                },
-            },
-            plot: {
-                "bars-space-left": 0.15,
-                "bars-space-right": 0.15,
-                animation: {
-                    effect: "ANIMATION_SLIDE_BOTTOM",
-                    sequence: 0,
-                    speed: 800,
-                    delay: 800,
-                },
-            },
-            "scale-y": {
-                "line-color": "#7E7E7E",
-                item: {
-                    "font-color": "#7e7e7e",
-                },
-                values: "0:60:10",
-                guide: {
-                    visible: true,
-                },
-                label: {
-                    text: "Number ",
-                    "font-family": "roboto",
-                    bold: true,
-                    "font-size": "14px",
-                    "font-color": "#7E7E7E",
-                },
-            },
-            scaleX: {
-                values: ["Q3", "Q4", "Q1", "Q2"],
-                placement: "default",
-                tick: {
-                    size: 58,
-                    placement: "cross",
-                },
-                itemsOverlap: true,
-                item: {
-                    offsetY: -55,
-                },
-            },
-            scaleX2: {
-                values: ["2020", "2023"],
-                placement: "default",
-                tick: {
-                    size: 20,
-                },
-                item: {
-                    offsetY: -15,
-                },
-            },
-            tooltip: {
-                visible: false,
-            },
-            "crosshair-x": {
-                "line-width": "100%",
-                alpha: 0.18,
-                "plot-label": {
-                    "header-text": "%kv Sales",
-                },
-            },
-            series: [
-                {
-                    values: [37.47, 57.59, 45.65, 37.43],
-                    alpha: 0.95,
-                    borderRadiusTopLeft: 7,
-                    "background-color": "green",
-                    text: "In",
-                },
-                {
-                    values: [2.02, 2.59, 2.5, 2.91],
-                    borderRadiusTopLeft: 7,
-                    alpha: 0.95,
-                    "background-color": "blue",
-                    text: "Out",
-                },
-                {
-                    values: [13.4, 14.11, 14.89, 16.86],
-                    alpha: 0.95,
-                    borderRadiusTopLeft: 7,
-                    "background-color": "red",
-                    text: "Lose",
-                },
-            ],
-        },
-    ],
-};
+// ===========================
 
-zingchart.render({
-    id: "warehouseCenterSparepart",
-    data: myConfigProfit,
+const chartAreaStatistik = document.getElementById("chartStatistikArea");
+
+new Chart(chartAreaStatistik, {
+    type: "doughnut",
+    data: {
+        labels: ["Red", "Blue", "Yellow"],
+        datasets: [
+            {
+                label: "My First Dataset",
+                data: [300, 50, 100],
+                backgroundColor: [
+                    "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)",
+                    "rgb(255, 205, 86)",
+                ],
+                hoverOffset: 4,
+                weight: 5,
+            },
+        ],
+    },
 });

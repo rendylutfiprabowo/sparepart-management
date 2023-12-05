@@ -98,4 +98,29 @@ class distributionController extends Controller
         }
         return redirect('/warehouse/branch/request-item');
     }
+
+    public function approvalCenter(Request $request, $id_distribution)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+        $approv = distribution::where('id_distribution', $id_distribution)->firstOrFail();
+        $approv->status = $validatedData['status'];
+        $approv->save();
+
+        session()->flash('success', 'Approval Berhasil');
+        return redirect('/warehouse/distribution');
+    }
+    public function approvalBranch(Request $request, $id_distribution)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+        $approv = distribution::where('id_distribution', $id_distribution)->firstOrFail();
+        $approv->status = $validatedData['status'];
+        $approv->save();
+
+        session()->flash('success', 'Approval Berhasil');
+        return redirect('/warehouse/branch/request-item');
+    }
 }

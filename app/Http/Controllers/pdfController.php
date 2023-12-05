@@ -23,15 +23,6 @@ class pdfController extends Controller
         // $pdf = PDF::loadHTML($htmlPage2);
         // $pdf->save($pdfPath);
 
-        // // Halaman ketiga
-        // $htmlPage3 = view('oilab.lab.indexpdf')->render();
-        // $pdf = PDF::loadHTML($htmlPage3);
-        // $pdf->save($pdfPath);
-
-        // // Halaman keempat
-        // $htmlPage4 = view('oilab.lab.indexpdf')->render();
-        // $pdf = PDF::loadHTML($htmlPage4);
-        // $pdf->save($pdfPath);
 
         // Simpan di Storage jika diperlukan
         // Storage::disk('local')->put('pdfs/' . $filename, file_get_contents($pdfPath));
