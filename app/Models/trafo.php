@@ -27,6 +27,7 @@ class trafo extends Model
         'temperatur_oil',
         'volume_oil',
         'warna_oil',
+        'catatan',
         'id_customer',
     ];
 

@@ -82,9 +82,11 @@ class labController extends Controller
             'temperatur_oil' => 'required',
             'volume_oil' => 'required',
             'warna_oil' => 'required',
+            'catatan' => 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
+            'tanggal_cetaklaporan' => 'required'
         ]);
         if ($validated) {
             $trafo = trafo::where('serial_number',$validated['serial_number'])->first();
@@ -107,7 +109,6 @@ class labController extends Controller
                 $trafos->save();
                 $trafo = $trafos;
             }
-
             $history =  history::where('id_project', $request->id_project)->where('id', $id_history)->firstOrFail();
             $history->id_trafo = $trafo->id_trafo;
             $history->save();
@@ -116,11 +117,11 @@ class labController extends Controller
                 $sample->tanggal_sampling = $validated['tanggal_sampling'];
                 $sample->tanggal_kedatangan = $validated['tanggal_kedatangan'];
                 $sample->tanggal_pengujian = $validated['tanggal_pengujian'];
+                $sample->tanggal_cetaklaporan = $validated['tanggal_cetaklaporan'];
                 $sample->save();
             }
 
             return redirect('orderlist/'.$no_so_solab);
         }
-        return response()->status(500);
     }
 }

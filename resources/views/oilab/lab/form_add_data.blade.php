@@ -74,6 +74,11 @@
                             <input type="text" class="form-control" id="warna_oil" name="warna_oil"
                                 placeholder="Enter Warna Oil">
                         </div>
+                        <div class="mb-3">
+                            <label for="catatan" class="form-label">Catatan</label>
+                            <input type="text" class="form-control" id="catatan" name="catatan"
+                                placeholder="Enter catatan">
+                        </div>
                         <div>
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Sampling</label>
@@ -90,6 +95,12 @@
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Pengujian</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_pengujian">
+                            </div>
+                        </div>
+                         <div>
+                            <div class="mb-3">
+                                <label for="tanggal" class="form-label">Tanggal Cetak Laporan</label>
+                                <input type="date" class="form-control" id="tanggal" name="tanggal_cetaklaporan">
                             </div>
                         </div>
                         <!-- button back -->
