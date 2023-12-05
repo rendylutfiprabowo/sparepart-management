@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Trafindo - @yield('title')</title>
-    {{-- LINK  --}}
+    {{-- LINK CDN  --}}
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -15,9 +15,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
-    {{-- OTHER --}}
+    {{-- STYLE --}}
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
     <style>
@@ -40,6 +39,7 @@
 </head>
 
 <body class="bg-secondary-subtle">
+    {{-- HEADER --}}
     <header class="navbar d-flex justify-content-between fixed-top bg-white p-1 px-3 shadow-sm">
         <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -47,39 +47,41 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        {{-- LOGO  --}}
         <div>
             <a class="navbar-brand" href="#"> <img src="/Asset/LogoTrafoindo.png" width="120" height="50"
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-        <div class="d-flex gap-2">
+        {{-- BUTTON ADD CUSTOMERS --}}
+        <div class="d-flex gap-2 align-items-center">
             <div>
-                <x-button-secondary data-bs-toggle="modal" data-bs-target="#modalAddCust"><svg
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
-                        class="bi bi-person-add" viewBox="0 0 16 16">
+                <x-button-secondary class="d-flex align-items-center" data-bs-toggle="modal"
+                    data-bs-target="#modalAddCust"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
                         <path
                             d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
                         <path
                             d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
                     </svg></x-button-secondary>
             </div>
-            <div class="pt-1">
+
+            {{-- NOTIFICATION --}}
+            <div>
                 <x-notification />
             </div>
-            <div class="pt-1">
+
+            {{-- EMAIL --}}
+            <div>
                 <x-emails />
             </div>
+
+            {{-- USER MENU --}}
             <div class="vr"></div>
             <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle d-flex align-items-center gap-1"
-                    data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"
+                    data-bs-display="static" aria-expanded="false">
                     {{ Auth::user()->username }}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor"
-                        class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end shadow">
                     <li>
@@ -116,9 +118,11 @@
         </div>
     </header>
 
-    {{-- WRAP CONTENT --}}
-    <div class="container-fluid mt-5">
-        <div class="row">
+    {{-- =========== WRAP CONTENT =========== --}}
+    <div class="container-fluid ">
+        <br>
+        <br>
+        <div class="row mt-2">
             {{-- SIDEBAR / HEADER --}}
             @yield('sidebar')
 
@@ -135,8 +139,9 @@
             </div>
         </div>
     </div>
+    {{-- =========== WRAP CONTENT END =========== --}}
 
-    {{-- Modal Add Customer --}}
+    {{-- MODAL FORM CUSTOMERS --}}
     <div class="modal fade" id="modalAddCust" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -188,7 +193,7 @@
         </div>
     </div>
 
-    {{-- SCRIPT --}}
+    {{-- SCRIPT / CDN / PLUGIN --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
