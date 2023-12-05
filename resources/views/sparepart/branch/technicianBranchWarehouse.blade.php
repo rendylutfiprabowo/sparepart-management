@@ -35,6 +35,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Technician Name</th>
+                        <th scope="col">Sales Name</th>
                         <th scope="col">Status</th>
                         <th scope="col">DO/Memo DO</th>
                         <th scope="col">No. SPK</th>
@@ -52,6 +53,9 @@
                                 <td class="table-plus">{{ $spks->customer->nama_customer }}</td>
                                 <td class="table-plus">
                                     {{ $spks->technician ? $spks->technician->nama_technician : ($spks->status == 'closed' || $spks->status == 'memo-closed' ? 'Delievered by Other Party' : '-') }}
+                                </td>
+                                <td class="table-plus">
+                                    {{ $spks->sales->nama_sales }}
                                 </td>
 
                                 <td class="table-plus">

@@ -62,12 +62,12 @@
                         text: "Statistics",
                     },
                     // Convert text on scale indices
-                    labels: bookingData.map(entry => entry.month),
+                    labels: orderProgressData.map(entry => entry.month),
                 },
                 scaleY: {
                     // Scale label with unicode character
                     label: {
-                        text: "Target",
+                        text: "Total",
                     },
                 },
                 plot: {

@@ -14,6 +14,7 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
     {{-- OTHER --}}
@@ -175,7 +176,7 @@
                             </div>
                             <br>
                             <div>
-                                <button class=" btn btn-danger w-100 " type="submit">Submit</button>
+                                <button class="btn btn-danger w-100" type="submit">Submit</button>
                             </div>
                             @if (session('status'))
                                 <div id="trigger"></div>
