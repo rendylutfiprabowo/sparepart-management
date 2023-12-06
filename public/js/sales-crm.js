@@ -43,26 +43,40 @@ new Chart(chartDashboardSales, {
     },
 });
 
-// ===========================
+// =============Line Chart==============
 
-const chartAreaStatistik = document.getElementById("chartStatistikArea");
+var ctx = document.getElementById("chartStatistikLine").getContext("2d");
 
-new Chart(chartAreaStatistik, {
-    type: "doughnut",
-    data: {
-        labels: ["Red", "Blue", "Yellow"],
-        datasets: [
-            {
-                label: "My First Dataset",
-                data: [300, 50, 100],
-                backgroundColor: [
-                    "rgb(255, 99, 132)",
-                    "rgb(54, 162, 235)",
-                    "rgb(255, 205, 86)",
-                ],
-                hoverOffset: 4,
-                weight: 5,
+var monthlyData = {
+    labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
+    datasets: [
+        {
+            label: "SpareParts",
+            data: [phpLineChartData.totalOrderSP, 0, 0, 0, 0, 0], // Menggunakan nilai yang benar
+            borderColor: "rgba(245, 63, 39, 0.8)",
+            borderWidth: 1,
+        },
+        {
+            label: "Oil",
+            data: [10, 50, 85, 20, 10], // Menggunakan nilai yang benar
+            borderColor: "rgba(59, 166, 218, 0.8)",
+            borderWidth: 1,
+        },
+    ],
+};
+
+var myLineChart = new Chart(ctx, {
+    type: "line",
+    data: monthlyData,
+    options: {
+        scales: {
+            x: {
+                type: "category",
+                labels: monthlyData.labels,
             },
-        ],
+            y: {
+                beginAtZero: true,
+            },
+        },
     },
 });

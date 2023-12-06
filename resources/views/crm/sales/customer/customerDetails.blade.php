@@ -54,10 +54,10 @@
             </div>
             <div class="col-md-4 p-2">
                 <div class="bg-white rounded shadow-sm p-3">
-                    <h6 class="text-danger">History Status</h6>
+                    <h6 class="text-danger">Trafos</h6>
                     <div class="mt-3">
-                        <label for="progress" class="text-secondary">Transaction</label>
-                        <div class="progress mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="50"
+                        <label for="progress" class="text-secondary"> Owned Trafos : {{$dataCust->trafos->count()}}</label>
+                        <div class="progress mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100" style="height: 5px">
                             <div class="progress-bar bg-danger" style="width: 50%"></div>
                         </div>
@@ -69,12 +69,16 @@
                         </button>
                         <div class="collapse" id="collapseHistory">
                             <div class="card card-body border-0">
-                                Some placeholder content for the collapse component. This panel is hidden by default but
-                                revealed when the user activates the relevant trigger.
+                                <div class="row">
+                                    @foreach ($dataCust->trafos as $trafo)
+                                    <div class="col-4"><b>{{$trafo->serial_number}}</b></div>
+                                    <div class="col-4">{{$trafo->merk}}</div>
+                                    <div class="col-4"><a href="/sales/customer/{{$dataCust->id_customer}}/trafo/{{$trafo->id_trafo}}" class="btn btn-primary">Detail</a></div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-4 p-2">

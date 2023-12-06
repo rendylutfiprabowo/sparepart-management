@@ -3,113 +3,117 @@
 @section('title', 'Sales Customers')
 
 @section('contents')
-    <div class="container-fluid">
-        <x-page-heading>
-            Dashboard Customers
-        </x-page-heading>
-        <br>
-        {{-- CARD TOP CUSTOMER --}}
-        <div>
-            <x-top-card />
+
+    <x-page-heading>
+        Dashboard Customers
+    </x-page-heading>
+    <br>
+
+    {{-- CARD TOP CUSTOMER --}}
+    <div>
+        <x-top-card />
+    </div>
+    <br>
+    <br>
+    <div>
+        <div class="d-flex justify-content-between align-items-center">
+
+            {{-- BUTTON MODAL ADD CUSTOMERS --}}
+            <div>
+
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
+                    <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </div>
+
+            {{-- CUSTOMER SEARCH BAR --}}
+            <div>
+                <form action="{{ route('searchCustomer') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control shadow-sm" placeholder="Cari customer..." name="keyword"
+                            value="{{ $keyword }}">
+                        <button class="btn btn-danger " style=" position: absolute; right: 0; z-index: 0;" type="submit"><i
+                                class="bi bi-search"></i></button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <br>
-        <div class="">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="">
-                    {{-- Button Modal Add Customer --}}
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
-                        <i class="bi bi-person-add"></i>
-                    </button>
-                </div>
-                <div>
-                    <form action="{{ route('searchCustomer') }}" method="GET">
-                        @csrf
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Cari customer..." name="keyword">
-                            <button class="btn btn-danger" type="submit">Cari</button>
+        {{-- TABLE OF CUSTOMERS --}}
+        <div class="table-responsive mt-3 bg-white p-4 rounded">
+            <table class="table table-borderless table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th>ID Customer</th>
+                        <th>Nama Customer</th>
+                        <th>No Hp</th>
+                        <th>Email</th>
+                        <th>Jenis Usaha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (count($dataCust) > 0)
+                        @foreach ($dataCust as $dataTable)
+                            <tr>
+                                <td class="text-center">{{ $loop->index + $dataCust->firstItem() }}</td>
+                                <td>{{ $dataTable->id_customer }}</td>
+                                <td><a class="text-dark text-decoration-none link-danger"
+                                        href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
+                                </td>
+                                <td>{{ $dataTable->phone_customer }}</td>
+                                <td>
+                                    {{ $dataTable->email_customer }}
+                                </td>
+                                <td>{{ $dataTable->jenisusaha_customer }}</td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <div class="text-center">
+                            <p class="text-secondary">Customer tidak ditemukan...</p>
                         </div>
-                    </form>
 
-                    <!-- Tampilkan data pelanggan di sini -->
+                    @endif
+                </tbody>
+            </table>
 
-                </div>
-            </div>
+            {{-- PAGINATE LINK TABLE  --}}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination ">
+                    @if ($dataCust->onFirstPage())
+                        <li class="page-item disabled" aria-disabled="true" aria-label="Previous">
+                            <span class="page-link" aria-hidden="true">&laquo;</span>
+                        </li>
+                    @else
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $dataCust->previousPageUrl() }}" rel="prev"
+                                aria-label="Previous">&laquo;</a>
+                        </li>
+                    @endif
 
-            <div class="table-responsive mt-3 bg-white p-2 rounded shadow-sm">
-                <table class="table table-borderless">
-                    <thead class=" border-bottom table-light">
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th>ID Customer</th>
-                            <th>Nama Customer</th>
-                            <th>No Hp</th>
-                            <th>Email</th>
-                            <th>Jenis Usaha</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (count($dataCust) > 0)
-                            @foreach ($dataCust as $dataTable)
-                                <tr>
-                                    <td class="text-center">{{ $loop->index + $dataCust->firstItem() }}</td>
-                                    <td>{{ $dataTable->id_customer }}</td>
-                                    <td><a class="text-dark text-decoration-none link-danger"
-                                            href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
-                                    </td>
-                                    <td>{{ $dataTable->phone_customer }}</td>
-                                    <td>
-                                        {{ $dataTable->email_customer }}
-                                    </td>
-                                    <td>{{ $dataTable->jenisusaha_customer }}</td>
-                                </tr>
-                            @endforeach
-                        @else
-                            <div class="text-center">
-                                <p class="text-danger">Tidak ada data customer...</p>
-                            </div>
+                    @for ($i = 1; $i <= $dataCust->lastPage(); $i++)
+                        <li class="page-item {{ $dataCust->currentPage() == $i ? 'active ' : '' }}">
+                            <a class="page-link" style=" position: relative; left: 0; z-index: 0;"
+                                href="{{ $dataCust->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
 
-                        @endif
-                    </tbody>
-                </table>
-                {{-- Paginate Table Customers --}}
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        @if ($dataCust->onFirstPage())
-                            <li class="page-item disabled" aria-disabled="true" aria-label="Previous">
-                                <span class="page-link" aria-hidden="true">&laquo;</span>
-                            </li>
-                        @else
-                            <li class="page-item">
-                                <a class="page-link" href="{{ $dataCust->previousPageUrl() }}" rel="prev"
-                                    aria-label="Previous">&laquo;</a>
-                            </li>
-                        @endif
-
-                        @for ($i = 1; $i <= $dataCust->lastPage(); $i++)
-                            <li class="page-item {{ $dataCust->currentPage() == $i ? 'active' : '' }}">
-                                <a class="page-link" href="{{ $dataCust->url($i) }}">{{ $i }}</a>
-                            </li>
-                        @endfor
-
-                        @if ($dataCust->hasMorePages())
-                            <li class="page-item">
-                                <a class="page-link" href="{{ $dataCust->nextPageUrl() }}" rel="next"
-                                    aria-label="Next">&raquo;</a>
-                            </li>
-                        @else
-                            <li class="page-item disabled" aria-disabled="true" aria-label="Next">
-                                <span class="page-link" aria-hidden="true">&raquo;</span>
-                            </li>
-                        @endif
-
-                    </ul>
-                </nav>
-
-            </div>
+                    @if ($dataCust->hasMorePages())
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $dataCust->nextPageUrl() }}" rel="next"
+                                aria-label="Next">&raquo;</a>
+                        </li>
+                    @else
+                        <li class="page-item disabled" aria-disabled="true" aria-label="Next">
+                            <span class="page-link" aria-hidden="true">&raquo;</span>
+                        </li>
+                    @endif
+                </ul>
+            </nav>
         </div>
     </div>
-    <!-- Modal Add Customer -->
+
+    <!-- MODAL FORM ADD CUSTOMERS -->
     <div class="modal fade" id="addCustModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">

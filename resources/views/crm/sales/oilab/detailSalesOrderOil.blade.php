@@ -41,7 +41,6 @@
                     <h3 class="text-start text-dark my-4" style="font-weight: bold;">list Order</h3>
                 </div>
                 <hr class="mt-1">
-                </thead>
                 <div class="table-responsive">
                     <table class=" table table-bordered" id="" width="100%" cellspacing="0">
                         <thead class="table-secondary">
@@ -81,7 +80,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 
 

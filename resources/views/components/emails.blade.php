@@ -5,7 +5,7 @@
             <span class="visually-hidden">New Emails</span>
         </span> --}}
     </button>
-    <ul class="dropdown-menu shadow ">
+    <ul class="dropdown-menu shadow dropdown-menu-lg-end">
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>

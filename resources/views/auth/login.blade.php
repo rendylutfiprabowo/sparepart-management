@@ -6,24 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
-    <title>Transformer Solution System - Login</title>
+    <title>TSS - Login</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&display=swap"
+        rel="stylesheet">
     <style>
-        /* body {
-            background-image: url('/Asset/trafindo-bg.jpeg');
-            background-size: cover;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(px);
-        } */
+        body {
+            font-family: "Nunito Sans", sans-serif;
+        }
 
         .formContainer {
             padding: 24px;
@@ -35,7 +30,7 @@
         .formContainer input {
             height: 48px;
             padding-left: 48px;
-            background: rgba(63, 63, 63, 0.4);
+            background: rgba(63, 63, 63, 0.5);
             border: 0;
             color: #fff;
         }
@@ -55,7 +50,7 @@
         #mainBgn {
             background: url('/Asset/trafindo-bg.jpeg') no-repeat;
             background-size: cover;
-            background-position: center bottom
+            background-position: center bottom;
         }
 
 
@@ -83,7 +78,6 @@
 </head>
 
 <body>
-
     <div class="vh-100 w-100 d-flex align-items-center" id="mainBgn">
         <div class="formContainer">
             <div>
@@ -92,7 +86,7 @@
                 @endif
             </div>
             <div class="text-center mb-4 ">
-                <h4 class="text-light text-shadows fw-bold">Welcome To Trafindo Solution System</h4>
+                <h3 class="text-white text-shadows fw-bold">Welcome To Trafindo Solution System</h3>
             </div>
             <form method="POST" class="user" action="{{ route('login') }}">
                 @csrf
@@ -106,18 +100,20 @@
                         class="form-control rounded shadow-sm" id="password" name="password" placeholder="password">
                 </div>
                 <div class="mt-4">
-                    <button class="btn btn-danger rounded w-100 fw-bold shadow-sm" type="submit">Login</button>
+                    <button class="btn btn-danger rounded w-100 fw-bold shadow" type="submit">Login</button>
                 </div>
 
             </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
     <script>
