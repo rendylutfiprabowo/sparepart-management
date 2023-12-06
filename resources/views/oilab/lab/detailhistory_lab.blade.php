@@ -19,8 +19,8 @@
                             <div class="text-black"><strong>{{ strtoupper($trafo->merk) }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
-                            <div class="text-merah"><strong>Year</strong></div>
-                            <div class="text-black"><strong>{{ $trafo->year }}</strong></div>
+                            <div class="text-merah"><strong>Pabrikan/Year</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->pabrikan . '/' . $trafo->year }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Voltage</strong></div>
@@ -50,7 +50,7 @@
                         <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse"
                             data-target="#collapseOne{{ $key }}" aria-expanded="true"
                             aria-controls="collapseOne{{ $key }}">
-                            {{ $history->finish }} - {{ $history->project->solab->no_so_solab }}
+                            {{ $history->finish }} - {{ $history->project->solab->no_so_solab }} - {{ $history->project->solab->no_spk_solab }}
                         </button>
                     </h2>
                 </div>
@@ -59,7 +59,7 @@
                     data-parent="#accordionExample">
                     <div class="card-body">
                         @foreach ($history->samples as $sample)
-                            <div class="btn btn-danger">{{ $sample->scope->nama_scope }}</div>
+                            <div class="btn merah text-putih">{{ $sample->scope->nama_scope }}</div>
                         @endforeach
                     </div>
                 </div>

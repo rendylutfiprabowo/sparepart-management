@@ -104,7 +104,7 @@
                     <td>Klien/Proyek</td>
                     <td> : Graha</td>
                     <td> Tegangan </td>
-                    <td> : 20000 Va</td>
+                    <td> : 20000 KVa</td>
                 </tr>
                 <tr>
                     <td>Pabrikan/Tahun</td>
@@ -246,29 +246,26 @@
                     <td colspan="2" style="border: none;">
                         Diuji Oleh :
                         <br>
-                        <br>
-                        <br>
+                        <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
                         <br>
                         Resita Nur Ambya <br>
-                        Analis Laboratorium
+                        (Analis Laboratorium)
                     </td>
                     <td style="border: none;">
                         Diperiksa Oleh :
                         <br>
-                        <br>
-                        <br>
+                        <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
                         <br>
                         Ahmad Kharis <br>
-                        KaBag In House
+                        (KaBag In House Service)
                     </td>
                     <td style="border: none;">
                         Disetujui Oleh :
                         <br>
-                        <br>
-                        <br>
+                        <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
                         <br>
                         Ahmad Sujarwo <br>
-                        Manager In House Service
+                        (Manager In House Service)
                     </td>
                 </tr>
             </table>
@@ -299,10 +296,12 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Customer : Edo Laksana Widodo</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Customer : Edo Laksana
+                    Widodo</th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project : Hotel/Apartment</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project :
+                    Hotel/Apartment</th>
             </tr>
             <!-- BAGIAN 2 -->
             <tr>
@@ -475,7 +474,8 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td colspan="3" style="text-align: center;">No Sediment or precitipitable sludge. Result below 0.02%
+                <td colspan="3" style="text-align: center;">No Sediment or precitipitable sludge. Result below
+                    0.02%
                     by</td>
                 <td></td>
             </tr>
@@ -534,17 +534,26 @@
             </tr>
             <tr style="text-align: center;">
                 <th colspan="3" style="border: none; font-weight: normal;">
-                    Di uji Oleh, <br><br><br>
+                    Di uji Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Farhan Aditya <br>
                     (Analis Laboratorium)
                 </th>
                 <th colspan="3" style="border: none; font-weight: normal;">
-                    Di Periksa Oleh, <br><br><br>
+                    Di Periksa Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Ahmad Kharis <br>
                     (kaBag. In House Service)
                 </th>
                 <th colspan="4" style="border: none; font-weight: normal;">
-                    Di Setujui Oleh, <br><br><br>
+                    Di Setujui Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Ahmad Sujarwo <br>
                     (Manager In House Service)
                 </th>
@@ -846,6 +855,7 @@
             </tr>
             <tr>
                 <th colspan="11" align="left" style="border: none;">
+                    <br>
                     <h4>Tanggerang, 11 Desember 2023</h4>
                     <br>
                     <br>
@@ -854,17 +864,26 @@
             <br>
             <tr style="text-align: center;">
                 <th colspan="4" style="border: none; font-weight: normal;">
-                    Di uji Oleh, <br><br><br>
+                    Di uji Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Farhan Aditya <br>
                     (Analis Laboratorium)
                 </th>
                 <th colspan="3" style="border: none; font-weight: normal;">
-                    Di Periksa Oleh, <br><br><br>
+                    Di Periksa Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Ahmad Kharis <br>
                     (kaBag. In House Service)
                 </th>
                 <th colspan="4" style="border: none; font-weight: normal;">
-                    Di Setujui Oleh, <br><br><br>
+                    Di Setujui Oleh:
+                    <br>
+                    <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
+                    <br>
                     Ahmad Sujarwo <br>
                     (Manager In House Service)
                 </th>

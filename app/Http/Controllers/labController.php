@@ -74,6 +74,7 @@ class labController extends Controller
             'id_project' => 'required',
             'kva' => 'required',
             'merk' => 'required',
+            'pabrikan' => 'required',
             'year' => 'required',
             'area' => 'required',
             'voltage' => 'required',
@@ -82,6 +83,7 @@ class labController extends Controller
             'temperatur_oil' => 'required',
             'volume_oil' => 'required',
             'warna_oil' => 'required',
+            'kapasitas_minyak' => 'required',
             'catatan' => 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
@@ -97,6 +99,7 @@ class labController extends Controller
                 $trafos->serial_number = $validated['serial_number'];
                 $trafos->kva = $validated['kva'];
                 $trafos->merk = $validated['merk'];
+                $trafos->pabrikan = $validated['pabrikan'];
                 $trafos->year = $validated['year'];
                 $trafos->area = $validated['area'];
                 $trafos->voltage = $validated['voltage'];
@@ -105,6 +108,7 @@ class labController extends Controller
                 $trafos->temperatur_oil = $validated['temperatur_oil'];
                 $trafos->volume_oil = $validated['volume_oil'];
                 $trafos->warna_oil = $validated['warna_oil'];
+                $trafos->kapasitas_minyak = $validated['kapasitas_minyak'];
                 $trafos->id_customer = $project->id_customer;
                 $trafos->save();
                 $trafo = $trafos;

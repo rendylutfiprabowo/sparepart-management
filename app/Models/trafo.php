@@ -19,6 +19,7 @@ class trafo extends Model
         'serial_number',
         'kva',
         'merk',
+        'pabrikan',
         'year',
         'area',
         'voltage',
@@ -27,6 +28,7 @@ class trafo extends Model
         'temperatur_oil',
         'volume_oil',
         'warna_oil',
+        'kapasitas_minyak',
         'catatan',
         'id_customer',
     ];

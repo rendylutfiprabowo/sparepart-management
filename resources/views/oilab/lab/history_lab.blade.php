@@ -29,8 +29,8 @@
                                 <th scope="col">Customer</th>
                                 <th scope="col">Serial Number</th>
                                 <th scope="col">Merk</th>
-                                <th scope="col">Tahun</th>
-                                <th scope="col">Lihat</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">View</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
