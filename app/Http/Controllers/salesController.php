@@ -106,6 +106,14 @@ class salesController extends Controller
             'trafo'=>$trafo,
         ]);
     }
+    public function detailTrafo($id_customer,$id_trafo)
+    {
+        $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('crm.sales.oilab.detailHistoryOil',[
+            'trafo'=>$trafo,
+        ]);
+    }
 
     // ================ SPAREPARTS ============================
 
