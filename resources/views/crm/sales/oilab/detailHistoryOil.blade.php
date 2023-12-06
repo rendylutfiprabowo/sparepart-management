@@ -8,31 +8,33 @@
                     <div class="row">
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Customer Name</strong></div>
-                            <div class="text-black"><strong>{{$trafo->customer->nama_customer}}</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->customer->nama_customer }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Serial Number</strong></div>
-                            <div class="text-black"><strong>{{$trafo->serial_number}}</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->serial_number }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Merk</strong></div>
-                            <div class="text-black"><strong>{{strtoupper($trafo->merk)}}</strong></div>
+                            <div class="text-black"><strong>{{ strtoupper($trafo->merk) }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
-                            <div class="text-merah"><strong>Year</strong></div>
-                            <div class="text-black"><strong>{{$trafo->year}}</strong></div>
+                            <div class="text-merah"><strong>Pabrikan/Year</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->pabrikan . '/' . $trafo->year }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Voltage</strong></div>
-                            <div class="text-black"><strong>{{$trafo->voltage}}</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->voltage }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Vector Group</strong></div>
-                            <div class="text-black"><strong>{{$trafo->vg}}</strong></div>
+                            <div class="text-black"><strong>{{ $trafo->vg }}</strong></div>
                         </div>
                         <div class="col-6 mb-3">
                             <div class="text-merah"><strong>Temperatur/Volume/Warna Oil</strong></div>
-                            <div class="text-black"><strong>{{$trafo->temperatur_oil.'/'.$trafo->volume_oil.'/'.$trafo->warna_oil}}</strong></div>
+                            <div class="text-black">
+                                <strong>{{ $trafo->temperatur_oil . '/' . $trafo->volume_oil . '/' . $trafo->warna_oil }}</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,21 +44,23 @@
     <div>
         <div class="accordion shadow accordion-flush" id="accordionExample">
             @foreach ($trafo->histories as $key => $history)
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{$key}}"
-                        aria-expanded="true" aria-controls="collapse{{$key}}">
-                        {{$history->finish}} - {{$history->project->solab->no_so_solab}}
-                    </button>
-                </h2>
-                <div id="collapse{{$key}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        @foreach ($history->samples as $sample)
-                           <div class="btn btn-danger">{{$sample->scope->nama_scope}}</div> 
-                        @endforeach
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ $key }}" aria-expanded="true"
+                            aria-controls="collapse{{ $key }}">
+                            {{ $history->finish }} - {{ $history->project->solab->no_so_solab }} - {{$history->project->solab->no_spk_solab}}
+                        </button>
+                    </h2>
+                    <div id="collapse{{ $key }}" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            @foreach ($history->samples as $sample)
+                                <div class="btn btn-danger">{{ $sample->scope->nama_scope }}</div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
