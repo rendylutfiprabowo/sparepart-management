@@ -122,6 +122,7 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/add-worker/branch/{id_order}', [warehouseController::class, 'addWorkerBranch']);
     Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
     Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
+    Route::post('/warehouse/branch/storeReturn/{id_order}', [revisionController::class, 'storeItemBranch']);
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);

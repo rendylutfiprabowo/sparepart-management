@@ -89,11 +89,14 @@ class toolsController extends Controller
     public function viewToolsBranchWarehouse()
     {
         $id_store = Auth::User()->warehouse->id_store;
-        $tools = Auth::User()->warehouse->store->tools;
+        $tools = tools::query()->where('id_store', Auth::User()->warehouse->id_store)->paginate(10);
         $id_tools = Auth::user()->warehouse->store->tools->pluck('id_tools')->all();
-        $reqTools =  technician_tools::whereIn('id_tools', $id_tools)->get();
-        // @dd($reqTools);
+
+        // Use the query builder for pagination
+        $reqTools = technician_tools::query()->whereIn('id_tools', $id_tools)->paginate(10);
+
         $stores = storeSparepart::all();
+
         return view('sparepart.branch.toolsBranchWarehouse', [
             'tools' => $tools,
             'stores' => $stores,
@@ -103,11 +106,15 @@ class toolsController extends Controller
         ]);
     }
 
+
     public function viewToolsTechnician()
     {
-        $toolsWarehouse = tools::all();
-        $techTools = technician_tools::all()->where('id_technician', Auth::user()->technician->id_technician);
+        $toolsWarehouse = tools::paginate(10);
+
+        $techTools = technician_tools::query()->where('id_technician', Auth::user()->technician->id_technician)->paginate(10);
+
         $stores = storeSparepart::all();
+
         return view(
             'sparepart.technician.toolsTechnician',
             [
@@ -120,11 +127,17 @@ class toolsController extends Controller
 
     public function viewToolsToko($id_store)
     {
-        $tools = tools::with('store')->where('id_store', $id_store)->get();
+        $tools = tools::with('store')->where('id_store', $id_store)->paginate(10);
+        $techDis = technician_tools::all()->pluck('id_tools');
+        $id_tools = tools::whereIn('id_tools', $techDis)->get();
+        $techTools = technician_tools::whereIn('id_tools', $id_tools->pluck('id_tools'))->paginate(10);
+
         $stores = storeSparepart::all();
+
         return view('sparepart.technician.toolsCabang', [
             'tools' => $tools,
             'stores' => $stores,
+            'techTools' => $techTools,
             'id_store' => $id_store,
             'namaStore' => storeSparepart::where('id_store', $id_store)->get()->first()->nama_store,
         ]);

@@ -75,7 +75,7 @@
                                     <h5 class="card-title">
                                         @php
                                             $sum = 0;
-                                            foreach ($order->booked as $booked) {
+                                            foreach ($revision as $booked) {
                                                 $sum += $booked->qty_booked;
                                             }
                                         @endphp
@@ -84,16 +84,6 @@
 
                                 </div>
                             </div>
-                            {{-- <h3>Total Item</h3>
-                    @php
-                        $sum = 0;
-                        foreach ($order->booked as $booked) {
-                            $sum += $booked->qty_booked;
-                        }
-                    @endphp
-                    <div class="badge badge-danger">
-                        <h5>{{ $sum }}</h5>
-                    </div> --}}
                         </div>
                     </div>
                 </div>
@@ -142,7 +132,7 @@
         </table>
         <div class="">
             @if ($type == null || $type == 'MEMO')
-                <form action="/sales/sparepart/revision/{{ $order->id_order }}" method="post">
+                <form action="/warehouse/branch/storeReturn/{{ $order->id_order }}" method="post">
                     @csrf
                     <label for=""><b>No. DO/Memo DO</b> </label>
                     <div class="row my-5">
@@ -165,28 +155,33 @@
                     </div>
                     <div class="modal-footer gap-2 pt-4">
                         <a href="/warehouse/branch/returItem" class="btn btn-secondary"> Back</a>
-                        @if ($type != 'DO')
+                        @if ($type != 'DO' && $order->status != 'closed')
                             <button type="submit" class="btn btn-success"> Submit</button>
                         @endif
                     </div>
                 </form>
             @else
-                <label for=""><b>No. DO/Memo DO</b> </label>
-                <div class="row my-2">
-                    <div class="col-3">
-                        <select name="do-memo" id="" readonly class="form-control">
-                            <option value="1">DO</option>
-                        </select>
+                <form action="/warehouse/branch/storeReturn/{{ $order->id_order }}" method="post">
+                    @csrf
+                    <label for=""><b>No. DO/Memo DO</b> </label>
+                    <div class="row my-2">
+                        <div class="col-3">
+                            <select name="do-memo" id="" readonly class="form-control">
+                                <option value="1">DO</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
+                                value="{{ $order->do_order }}" readonly>
+                        </div>
                     </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="No. DO/Memo DO" name="no-do-memo"
-                            value="{{ $order->do_order }}" readonly>
+                    <div class="modal-footer my-3">
+                        <a href="/warehouse/branch/returItem" class="btn btn-secondary"> Back</a>
+                        @if ($type != 'DO' && $order->status != 'closed')
+                            <button type="submit" class="btn btn-success"> Submit</button>
+                        @endif
                     </div>
-                </div>
-                <div class="modal-footer my-3">
-                    <a href="/warehouse/branch/returItem" class="btn btn-secondary"> Back</a>
-                    <button type="submit" class="btn btn-success"> Submit</button>
-                </div>
+                </form>
             @endif
         </div>
     </div>

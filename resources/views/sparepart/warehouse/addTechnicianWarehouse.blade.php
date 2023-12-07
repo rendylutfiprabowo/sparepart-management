@@ -278,7 +278,7 @@
                     <strong><label class="form-label">Memo DO</label></strong>
                     <div class="row">
                         <div class="form-group col-lg-1 mb-3">
-                            <input type="text" class="form-control" name="" value="DO" placeholder=""
+                            <input type="text" class="form-control" name="" value="MEMO DO" placeholder=""
                                 readonly>
                         </div>
                         <div class="form-group col-lg-11 mb-3">
@@ -376,7 +376,7 @@
                     <strong><label class="form-label">Memo DO</label></strong>
                     <div class="row">
                         <div class="form-group col-lg-1 mb-3">
-                            <input type="text" class="form-control" name="" value="DO" placeholder=""
+                            <input type="text" class="form-control" name="" value="MEMO DO" placeholder=""
                                 disabled>
                         </div>
                         <div class="form-group col-lg-11 mb-3">
@@ -493,7 +493,7 @@
                 <strong><label class="form-label">Memo DO</label></strong>
                 <div class="row">
                     <div class="form-group col-lg-1 mb-3">
-                        <input type="text" class="form-control" name="" value="DO" placeholder=""
+                        <input type="text" class="form-control" name="" value="MEMO DO" placeholder=""
                             disabled>
                     </div>
                     <div class="form-group col-lg-11 mb-3">
