@@ -73,7 +73,7 @@
                                 </td>
 
                                 <td class="table-plus">
-                                    {{ $orders->spk_order ? $orders->do_order : ($orders->memo_order ? $orders->memo_order : '-') }}
+                                    {{ $orders->do_order ? $orders->do_order : ($orders->memo_order ? $orders->memo_order : '-') }}
                                 </td>
                                 <td class="table-plus">{{ $orders->spk_order }}</td>
                                 <td><a href="/warehouse/view-order/{{ $orders->id_order }}" class="btn btn-dark"

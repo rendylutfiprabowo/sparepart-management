@@ -61,6 +61,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $order->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $order->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $order->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $order->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 @endsection
