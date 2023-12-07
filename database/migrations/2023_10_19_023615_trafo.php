@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('serial_number')->nullable();
             $table->string('kva')->nullable();
             $table->string('merk')->nullable();
+            $table->string('pabrikan')->nullable();
             $table->string('year')->nullable();
             $table->string('area')->nullable();
             $table->string('voltage')->nullable();
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('temperatur_oil')->nullable();
             $table->string('volume_oil')->nullable();
             $table->string('warna_oil')->nullable();
+            $table->string('kapasitas_minyak')->nullable();
             $table->string('catatan')->nullable();
             $table->string('id_customer');
         });

@@ -67,13 +67,14 @@ class labController extends Controller
 
     public function storeTrafo(Request $request, $no_so_solab, $id_history)
     {
-        
+
         $faker = Faker::create();
         $validated = $request->validate([
             'serial_number' => 'required',
             'id_project' => 'required',
             'kva' => 'required',
             'merk' => 'required',
+            'pabrikan' => 'required',
             'year' => 'required',
             'area' => 'required',
             'voltage' => 'required',
@@ -82,6 +83,7 @@ class labController extends Controller
             'temperatur_oil' => 'required',
             'volume_oil' => 'required',
             'warna_oil' => 'required',
+            'kapasitas_minyak' => 'required',
             'catatan' => 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
@@ -89,14 +91,15 @@ class labController extends Controller
             'tanggal_cetaklaporan' => 'required'
         ]);
         if ($validated) {
-            $trafo = trafo::where('serial_number',$validated['serial_number'])->first();
-            $project = project::where('id_project',$validated['id_project'])->firstOrFail();
-            if(!$trafo){
+            $trafo = trafo::where('serial_number', $validated['serial_number'])->first();
+            $project = project::where('id_project', $validated['id_project'])->firstOrFail();
+            if (!$trafo) {
                 $trafos = new Trafo();
                 $trafos->id_trafo = $faker->numberBetween(100, 999);
                 $trafos->serial_number = $validated['serial_number'];
                 $trafos->kva = $validated['kva'];
                 $trafos->merk = $validated['merk'];
+                $trafos->pabrikan = $validated['pabrikan'];
                 $trafos->year = $validated['year'];
                 $trafos->area = $validated['area'];
                 $trafos->voltage = $validated['voltage'];
@@ -105,6 +108,7 @@ class labController extends Controller
                 $trafos->temperatur_oil = $validated['temperatur_oil'];
                 $trafos->volume_oil = $validated['volume_oil'];
                 $trafos->warna_oil = $validated['warna_oil'];
+                $trafos->kapasitas_minyak = $validated['kapasitas_minyak'];
                 $trafos->id_customer = $project->id_customer;
                 $trafos->save();
                 $trafo = $trafos;
@@ -121,7 +125,24 @@ class labController extends Controller
                 $sample->save();
             }
 
-            return redirect('orderlist/'.$no_so_solab);
+            return redirect('orderlist/' . $no_so_solab);
         }
+    }
+
+    public function historyLab()
+    {
+        $customers = customer::all();
+        return view('oilab.lab.history_lab', [
+            'customers' => $customers,
+        ]);
+    }
+
+    public function detailhistoryLab($id_trafo)
+    {
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('oilab.lab.detailhistory_lab', [
+            'trafo' => $trafo,
+        ]);
     }
 }

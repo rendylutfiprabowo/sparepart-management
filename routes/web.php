@@ -183,6 +183,9 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');
     });
+    Route::get('/history_lab', [labController::class, 'historyLab']);
+    Route::get('/history_lab/{id_trafo}', [labController::class, 'detailhistoryLab']);
+
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
@@ -214,6 +217,8 @@ Route::middleware(['auth', 'modLab'])->group(function () {
     Route::get('/history_modlab', function () {
         return view('oilab.lab.history_modlab');
     });
+    Route::get('/history_modlab', [modlabController::class, 'historymodlab']);
+    Route::get('/history_modlab/{id_trafo}', [modlabController::class, 'detailhistorymodlab']);
 
     Route::get('/detailhistory_modlab', function () {
         return view('oilab.lab.detailhistory_modlab');
@@ -239,6 +244,8 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
     });
+    Route::get('/history_adminlab', [adminlabController::class, 'historyadminlab']);
+    Route::get('/history_adminlab/{id_trafo}', [adminlabController::class, 'detailhistoryAdminLab']);
 
     Route::get('/detailhistory_adminlab', function () {
         return view('oilab.lab.detailhistory_adminlab');

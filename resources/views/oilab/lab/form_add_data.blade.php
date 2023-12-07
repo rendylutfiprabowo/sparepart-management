@@ -36,6 +36,11 @@
                                 placeholder="Enter Merk">
                         </div>
                         <div class="mb-3">
+                            <label for="pabrikan" class="form-label">Pabrikan</label>
+                            <input type="text" class="form-control" list="datalistOptions" id="pabrikan" name="pabrikan"
+                                placeholder="Enter Pabrikan">
+                        </div>
+                        <div class="mb-3">
                             <label for="year" class="form-label">Trafo Year</label>
                             <input type="number" class="form-control" id="year" name="year"
                                 placeholder="Enter Trafo Year">
@@ -75,6 +80,11 @@
                                 placeholder="Enter Warna Oil">
                         </div>
                         <div class="mb-3">
+                            <label for="kapasitas_minyak" class="form-label">Kapasitas Minyak</label>
+                            <input type="text" class="form-control" id="kapasitas_minyak" name="kapasitas_minyak"
+                                placeholder="Enter Kapasitas Minyak">
+                        </div>
+                        <div class="mb-3">
                             <label for="catatan" class="form-label">Catatan</label>
                             <input type="text" class="form-control" id="catatan" name="catatan"
                                 placeholder="Enter catatan">
@@ -97,7 +107,7 @@
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_pengujian">
                             </div>
                         </div>
-                         <div>
+                        <div>
                             <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal Cetak Laporan</label>
                                 <input type="date" class="form-control" id="tanggal" name="tanggal_cetaklaporan">
