@@ -135,6 +135,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'id_role' => '7'
         ]);
+        User::create([
+            'id_user' => 'USR-20',
+            'username' => 'rawon',
+            'email' => 'rawon@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
         warehouse::create([
             'id_warehouse' => 'WAR-001',
             'nama_warehouse' => 'Calvin',
@@ -148,6 +155,12 @@ class DatabaseSeeder extends Seeder
             'phone_warehouse' => '00444558',
             'id_user' => 'USR-02',
             'id_store' => 'CTR',
+        ]);
+        warehouse::create([
+            'id_warehouse' => 'WAR-003',
+            'nama_warehouse' => 'Rawon',
+            'phone_warehouse' => '081218882',
+            'id_user' => 'USR-20',
         ]);
 
 

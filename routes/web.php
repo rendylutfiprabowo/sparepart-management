@@ -22,6 +22,7 @@ use App\Http\Controllers\revisionController;
 use App\Http\Controllers\superadminController;
 use App\Http\Controllers\sampleContoller;
 use App\Http\Controllers\distributionController;
+use App\Http\Controllers\managerController;
 use App\Models\tools;
 use App\Models\booked;
 use Illuminate\Support\Facades\Auth;
@@ -131,6 +132,10 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/stock/branch/{id_stock}', [stockController::class, 'addStockBranch']);
     Route::post('/warehouse/branch/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStockBranch']);
     Route::post('/warehouse/branch/distribution/{id_distribution}', [distributionController::class, 'approvalBranch']);
+});
+Route::middleware(['auth', 'managerSparepart'])->group(function () {
+    Route::get('/manager/dashboard', [warehouseController::class, 'dashboardManager']);
+    Route::get('/manager/addUser', [managerController::class, 'addUser']);
 });
 
 //Role Manager Center

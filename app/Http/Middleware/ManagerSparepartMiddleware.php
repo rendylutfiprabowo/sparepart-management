@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class WarehouseCenterMiddleware
+class ManagerSparepartMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class WarehouseCenterMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == 'CTR' && auth()->user()->warehouse->id_store != null) {
+        if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store == null) {
             return $next($request);
         }
         return redirect('/home');
