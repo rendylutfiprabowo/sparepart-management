@@ -20,6 +20,11 @@ class warehouseController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function dashboardManager()
+    {
+        return view('sparepart.manager.dashboardManager');
+    }
     public function dashboardWarehouseBranch()
     {
         $idStore = Auth::user()->warehouse->id_store;

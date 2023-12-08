@@ -1,5 +1,5 @@
 @extends('template.managerSparepart')
-@section('content')
+@section('contents')
     <p style="font-size: 23px; color: black;">REPORT TEST HISTORY</p>
     <div class="row">
         <div class="col-md-12">

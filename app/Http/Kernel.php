@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         'adminLab' => \App\Http\Middleware\AdminlabMiddleware::class,
         'modLab' => \App\Http\Middleware\ModlabMiddleware::class,
         'superadmin' => \App\Http\Middleware\SuperadminMiddleware::class,
+        'managerSparepart' => \App\Http\Middleware\ManagerSparepartMiddleware::class,
     ];
 }
