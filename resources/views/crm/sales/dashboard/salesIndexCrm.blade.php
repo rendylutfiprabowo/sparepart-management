@@ -73,7 +73,6 @@
         </div>
     </div>
 
-
     {{-- Bar Chart --}}
     <script>
         var phpDataChart = {
@@ -86,6 +85,11 @@
     <script>
         var phpLineChartData = {
             totalorders: @json($totalOrderSP),
+        }
+    </script>
+    <script>
+        var phpOilChart = {
+            totalOilSample: @json($oilSample)
         }
     </script>
 

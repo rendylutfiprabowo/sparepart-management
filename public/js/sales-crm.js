@@ -38,6 +38,7 @@ new Chart(chartDashboardSales, {
         scales: {
             y: {
                 beginAtZero: true,
+                max: 100,
             },
         },
     },
@@ -46,21 +47,24 @@ new Chart(chartDashboardSales, {
 // =============Line Chart==============
 
 var ctx = document.getElementById("chartStatistikLine").getContext("2d");
+var oilDataArray = [];
+var currentMonth = new Date().getMonth() + 1;
+for (var i = 1; i <= 6; i++) {
+    oilDataArray.push(i <= currentMonth ? phpOilChart.totalOilSample : 0);
+}
 
 var monthlyData = {
     labels: ["Month 1", "Month 2", "Month 3", "Month 4", "Month 5", "Month 6"],
     datasets: [
         {
             label: "SpareParts",
-            data: [phpLineChartData.totalOrderSP, 0, 0, 0, 0, 0], // Menggunakan nilai yang benar
+            data: phpLineChartData.totalOrderSP, // Menggunakan nilai yang benar
             borderColor: "rgba(245, 63, 39, 0.8)",
-            borderWidth: 1,
         },
         {
             label: "Oil",
-            data: [10, 50, 85, 20, 10], // Menggunakan nilai yang benar
+            data: [oilDataArray, 0, 0, 0, 0, 0], // Menggunakan nilai yang benar
             borderColor: "rgba(59, 166, 218, 0.8)",
-            borderWidth: 1,
         },
     ],
 };
@@ -69,14 +73,9 @@ var myLineChart = new Chart(ctx, {
     type: "line",
     data: monthlyData,
     options: {
-        scales: {
-            x: {
-                type: "category",
-                labels: monthlyData.labels,
-            },
-            y: {
-                beginAtZero: true,
-            },
+        y: {
+            beginAtZero: true,
+            max: 90,
         },
     },
 });

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <title>Trafindo - @yield('title')</title>
+
     {{-- LINK CDN  --}}
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -53,8 +54,9 @@
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-        {{-- BUTTON ADD CUSTOMERS --}}
+
         <div class="d-flex gap-2 align-items-center">
+            {{-- BUTTON ADD CUSTOMERS --}}
             <div>
                 <x-button-secondary class="d-flex align-items-center" data-bs-toggle="modal"
                     data-bs-target="#modalAddCust"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -85,7 +87,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end shadow">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                        <a class="dropdown-item d-flex align-items-center gap-2" href="/sales/profile/indexProfile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path

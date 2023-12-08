@@ -97,6 +97,8 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/channels/indexChannels', [salesController::class, 'channelsIndex']);
     // Reports Sales
     Route::get('/sales/reports/indexReports', [salesController::class, 'reportsCrm']);
+    // Profile Sales
+    Route::get('/sales/profile/indexProfile', [salesController::class, 'profileSales']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {

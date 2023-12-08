@@ -1,8 +1,10 @@
 @extends('template.salesCrm')
 @section('title', 'Oil Sales Sample')
 @section('contents')
-    <div class="p-3 bg-white rounded shadow-sm">
+    <div class="p-3 bg-white rounded shadow-sm table-responsive">
         <table class="table table-bordered  align-middle text-center" id="dataTable" width="100%" cellspacing="0">
+            <h5 class="text-secondary">DATA OIL SAMPLE</h5>
+            <br>
             <thead class="text-center">
                 <tr>
                     <th scope="col">No.</th>
@@ -37,15 +39,15 @@
                                 @endif
                             </td>
                             <td>
-                                <div class="row">
+                                <p>
                                     @foreach ($history->samples as $sample)
                                         <span
                                             class=" badge
                                         @if ($sample->scope->nama_scope == 'OA') text-bg-danger
                                         @elseif($sample->scope->nama_scope == 'Furan') text-bg-warning
-                                        @elseif($sample->scope->nama_scope == 'DGA') text-bg-secondary @endif ">{{ $sample->scope->nama_scope }}</span>
+                                        @elseif($sample->scope->nama_scope == 'DGA') text-bg-info @endif ">{{ $sample->scope->nama_scope }}</span>
                                     @endforeach
-                                </div>
+                                </p>
                             </td>
                             <td>
                                 <button href="#" class="btn pt-0" type="button" data-bs-toggle="modal"
@@ -55,8 +57,7 @@
                             </td>
                             @if ($key == 0)
                                 <td rowspan="{{ $solab->project->history->count() }}"><button type="button"
-                                        class="btn btn-sm btn-outline-danger"><i
-                                            class="bi bi-box-arrow-in-down"></i></button>
+                                        class="btn btn-sm btn-danger"><i class="bi bi-box-arrow-in-down"></i></button>
                                 </td>
                             @endif
                         </tr>
