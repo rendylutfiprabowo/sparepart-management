@@ -142,6 +142,7 @@
             {{-- CONTENT --}}
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-3">
                 @yield('contents')
+                @yield('contents2')
                 <br>
                 <br>
             </main>
