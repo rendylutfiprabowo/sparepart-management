@@ -85,6 +85,7 @@ class labController extends Controller
             'warna_oil' => 'required',
             'kapasitas_minyak' => 'required',
             'catatan' => 'required',
+            'umur_trafo'=> 'required',
             'tanggal_sampling' => 'required',
             'tanggal_kedatangan' => 'required',
             'tanggal_pengujian' => 'required',
@@ -109,6 +110,7 @@ class labController extends Controller
                 $trafos->volume_oil = $validated['volume_oil'];
                 $trafos->warna_oil = $validated['warna_oil'];
                 $trafos->kapasitas_minyak = $validated['kapasitas_minyak'];
+                $trafos->umur_trafo = $validated['umur_trafo'];
                 $trafos->id_customer = $project->id_customer;
                 $trafos->save();
                 $trafo = $trafos;
