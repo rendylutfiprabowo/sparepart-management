@@ -354,7 +354,6 @@ class salesController extends Controller
         $customers->save();
 
 
-
         return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
@@ -386,9 +385,14 @@ class salesController extends Controller
 
 
     // ====================== REPORTS =============================
-    public function reportsCrm()
+    public function reportsCrm(Request $request)
     {
-        return view('crm.sales.reports.indexReports');
+        $dataReports = [
+            'total_customer' => $request->input('total_customer'),
+            'total_order' => $request->input('total_order'),
+        ];
+
+        return view('crm.sales.reports.indexReports', compact('dataReports'));
     }
 
     // ================= PROFILE SALES ===========================

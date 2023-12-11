@@ -1,6 +1,5 @@
 @extends('template.salesCrm')
 @section('title', 'Dashboard Sales')
-
 @section('contents')
 
     <x-page-heading>

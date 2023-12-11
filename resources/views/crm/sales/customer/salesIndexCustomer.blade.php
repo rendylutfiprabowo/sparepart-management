@@ -6,10 +6,9 @@
     <x-page-heading>
         Dashboard Customers
     </x-page-heading>
-    <br>
     <div>
         {{-- TABLE OF CUSTOMERS --}}
-        <div class="table-responsive mt-3 bg-white p-4 rounded shadow-sm">
+        <div class="table-responsive bg-white p-4 rounded shadow-sm">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
@@ -19,8 +18,8 @@
                 <div>
                     <form action="{{ route('searchCustomer') }}" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control shadow-sm " placeholder="Cari customer..."
-                                name="keyword" value="{{ $keyword }}" style="background: #DDDDDD;">
+                            <input type="text" class="form-control " placeholder="Search customer..." name="keyword"
+                                value="{{ $keyword }}" style="background: #DDDDDD;">
                             <button class="btn btn-danger " style=" position: absolute; right: 0; z-index: 0;"
                                 type="submit"><i class="bi bi-search"></i></button>
                         </div>
@@ -33,10 +32,10 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th>ID Customer</th>
-                        <th>Nama Customer</th>
-                        <th>No Hp</th>
+                        <th>Customer Name</th>
+                        <th>Phone</th>
                         <th>Email</th>
-                        <th>Jenis Usaha</th>
+                        <th>Types of business</th>
                     </tr>
                 </thead>
                 <tbody>

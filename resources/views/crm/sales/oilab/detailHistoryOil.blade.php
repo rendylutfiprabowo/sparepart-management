@@ -22,75 +22,74 @@
                                 <form class="needs-validation" novalidate>
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label for="CustomerName" class="form-label fw-bold text-secondary">Customer
+                                            <label for="CustomerName" class="form-label  text-secondary">Customer
                                                 Name</label>
                                             <input type="text" class="form-control" id="CustomerName"
                                                 value="{{ $trafo->customer->nama_customer }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="serialNumber" class="form-label fw-bold text-secondary">Serial
+                                            <label for="serialNumber" class="form-label  text-secondary">Serial
                                                 Number</label>
                                             <input type="text" class="form-control" id="serialNumber"
                                                 value="{{ $trafo->serial_number }}" disabled>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label for="Merk" class="form-label fw-bold text-secondary">Merk</label>
+                                            <label for="Merk" class="form-label  text-secondary">Merk</label>
                                             <input type="text" class="form-control" id="Merk"
                                                 value="{{ strtoupper($trafo->merk) }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="year" class="form-label fw-bold text-secondary">Year</label>
+                                            <label for="year" class="form-label  text-secondary">Year</label>
                                             <input type="text" class="form-control" id="year"
                                                 value="{{ $trafo->year }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="voltage" class="form-label fw-bold text-secondary">Voltage</label>
+                                            <label for="voltage" class="form-label  text-secondary">Voltage</label>
                                             <input type="text" class="form-control" id="voltage"
                                                 value="{{ $trafo->voltage }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="vg" class="form-label fw-bold text-secondary">VG</label>
+                                            <label for="vg" class="form-label  text-secondary">VG</label>
                                             <input type="text" class="form-control" id="vg"
                                                 value="{{ $trafo->vg }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="tagnumber" class="form-label fw-bold text-secondary">Tag
+                                            <label for="tagnumber" class="form-label  text-secondary">Tag
                                                 Number</label>
                                             <input type="text" class="form-control" id="tagnumber"
                                                 value="{{ $trafo->tag_number }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="volume_oil" class="form-label fw-bold text-secondary">Oil
+                                            <label for="volume_oil" class="form-label  text-secondary">Oil
                                                 Volume</label>
                                             <input type="text" class="form-control" id="volume_oil"
                                                 value="{{ $trafo->volume_oil }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="oilcolors" class="form-label fw-bold text-secondary">Warna
+                                            <label for="oilcolors" class="form-label  text-secondary">Warna
                                                 Oil</label>
                                             <input type="text" class="form-control" id="oilcolors"
                                                 value="{{ $trafo->warna_oil }}" disabled>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="temperatur_oil"
-                                                class="form-label fw-bold text-secondary">Temperatur</label>
+                                                class="form-label  text-secondary">Temperatur</label>
                                             <input type="text" class="form-control" id="temperatur_oil"
                                                 value="{{ $trafo->temperatur_oil }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="kva" class="form-label fw-bold text-secondary">Kva</label>
+                                            <label for="kva" class="form-label  text-secondary">Kva</label>
                                             <input type="text" class="form-control" id="kva"
                                                 value="{{ $trafo->kva }}" disabled>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="area" class="form-label fw-bold text-secondary">Area</label>
+                                            <label for="area" class="form-label  text-secondary">Area</label>
                                             <input type="text" class="form-control" id="area"
                                                 value="{{ $trafo->area }}" disabled>
                                         </div>
                                         <div class="col-md-12">
-                                            <label for="Catatan"
-                                                class="form-label fw-bold text-secondary">Catatan</label>
+                                            <label for="Catatan" class="form-label  text-secondary">Catatan</label>
                                             <input type="text" class="form-control" id="Catatan"
                                                 value="{{ $trafo->catatan }}" disabled>
                                         </div>

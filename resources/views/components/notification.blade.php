@@ -19,7 +19,7 @@
                 </p>
             @else
                 <p class="dropdown-item text-secondary">
-                    Nothing !
+                    Tidak ada notifikasi
                 </p>
             @endif
     </ul>
