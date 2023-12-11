@@ -102,32 +102,32 @@
                 </caption>
                 <tr>
                     <td>Klien/Proyek</td>
-                    <td> : Graha</td>
+                    <td> : {{ $sample[0]->history->project->nama_project }}</td>
                     <td> Tegangan </td>
-                    <td> : 20000 KVa</td>
+                    <td> : {{ $sample[0]->history->trafo->voltage }}</td>
                 </tr>
                 <tr>
                     <td>Pabrikan/Tahun</td>
-                    <td>: Trafindo/1994</td>
+                    <td>: {{ $sample[0]->history->trafo->pabrikan . '/' . $sample[0]->history->trafo->year }}</td>
                     <td>Minyak</td>
-                    <td>: 1100 L</td>
+                    <td>: {{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
                 </tr>
                 <tr>
                     <td>Nomor Seri</td>
-                    <td>: 123456789</td>
+                    <td>: {{ $sample[0]->history->trafo->serial_number }}</td>
                     <td>Catatan</td>
-                    <td>:</td>
+                    <td>: {{ $sample[0]->history->trafo->catatan }}</td>
                 </tr>
                 <tr>
-                    <td>Rated Power </td>
-                    <td>: 2000 kva</td>
+                    <td>Rated Power</td>
+                    <td> : {{ $sample[0]->history->trafo->kva }}</td>
                 </tr>
                 <tr>
                     <th rowspan="5" style="background-color: skyblue; color: black; font-weight: bold;">Parameter
                     </th>
                     <th colspan="3">
                         <h4>Hasil Uji</h4>
-                        <p>(Nilai Konsetrasi Dalam Parts Billion [ppb])</p>
+                        <p>(Nilai Konsentrasi Dalam Parts Billion [ppb])</p>
                     </th>
                 </tr>
                 <tr>
@@ -139,29 +139,56 @@
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Sampling <br>
-                        <span> 6/6/2023</span>
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</span>
                     </td>
-                    <td></td>
+                    <td style="text-align: center;">
+                        @if ($sample[1] == null)
+                            Tanggal Sampling
+                            <br><span> {{ $sample[0]->tanggal_sampling }}</span>
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Terima <br>
-                        <span> 6/6/2023</span>
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</span>
                     </td>
-                    <td></td>
+                    <td style="text-align: center;">
+                        @if ($sample[1] == null)
+                            Tanggal Terima
+                            <br><span> {{ $sample[0]->tanggal_kedatangan }}</span>
+                        @endif
+                    </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Pengujian <br>
-                        <span> 6/6/2023</span>
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</span>
                     </td>
-                    <td></td>
+                    <td style="text-align: center;">
+                        @if ($sample[1] == null)
+                            Tanggal Pengujian
+                            <br><span> {{ $sample[0]->tanggal_pengujian }}</span>
+                        @endif
+                    </td>
                 </tr>
 
                 <tr>
                     <th>5HMF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['5hmf']))
+                            {{ $s[0]['5hmf'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['5hmf']))
+                            {{ $s[1]['5hmf'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                     <th rowspan="5" style="text-align: center;">
                         <p>0-292 pbd Normal Aging Rate</p>
                         <br>
@@ -175,62 +202,160 @@
                     </th>
                 </tr>
                 <tr>
-                    <th>5HMF <br>
+                    <th>2FOL <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['2fol']))
+                            {{ $s[0]['2fol'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['2fol']))
+                            {{ $s[1]['2fol'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                 </tr>
                 <tr>
-                    <th>5HMF <br>
+                    <th>2FAL <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['2fal']))
+                            {{ $s[0]['2fal'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['2fal']))
+                            {{ $s[1]['2fal'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                 </tr>
                 <tr>
-                    <th>5HMF <br>
+                    <th>2ACF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['2acf']))
+                            {{ $s[0]['2acf'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['2acf']))
+                            {{ $s[1]['2acf'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                 </tr>
                 <tr>
-                    <th>5HMF <br>
+                    <th>5MEF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['5mef']))
+                            {{ $s[0]['5mef'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['5mef']))
+                            {{ $s[1]['5mef'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                 </tr>
                 <tr>
                     <th>Total 2FAL</th>
-                    <th>0/5* = 0.0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['Total 2 FAL']))
+                            {{ $s[0]['Total 2 FAL'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['Total 2 FAL']))
+                            {{ $s[1]['Total 2 FAL'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                     <th style="background-color: skyblue; text-align: left;">5* Faktor Koreksi</th>
                 </tr>
                 <tr>
                     <th>Total Furan</th>
-                    <th>0/5* = 0</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['Total Furan']))
+                            {{ $s[0]['Total Furan'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['Total Furan']))
+                            {{ $s[1]['Total Furan'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                     <th style="background-color: skyblue;">-</th>
                 </tr>
                 <tr>
                     <th>Estimate DP</th>
-                    <th>-+800</th>
-                    <th></th>
+                    <th>
+                        @if (isset($s[0]['Estimate DP']))
+                            {{ $s[0]['Estimate DP'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
+                    <th>
+                        @if (isset($s[1]['Estimate DP']))
+                            {{ $s[1]['Estimate DP'] }}
+                        @else
+                            N/A
+                        @endif
+                    </th>
                     <th style="background-color: skyblue;">-</th>
                 </tr>
                 <!-- Footer -->
                 <tr style="border: none;">
                     <td colspan="4">
                         <ul>
-                            <li>Berdasarkan hasil uji sample tersebut maka trafo mengalami Normal Aging Rate</li>
-                            <li>Derajat polimerisasi (DP) adalah jumlah molekul glukosa dalam polimer selulosa kertas
-                                isolasi. Semakin tinggi DP (atau semakin panjang rantai polimer) kertas isolasi, semakin
-                                besar kekuatan mekaniknya. Berdasarkan hasil pengujian polimerisasi dari sampel tersebut
-                                yakni -+800</li>
-                            <li>Berdasarkan nilai DP tersebut dapat diketahui estimasi presentase masa pakai isolasi
-                                kertas pada trafo sebesar</li>
+                            <li>
+                                @if (isset($value['Kategori Hasil Furan']))
+                                    {{ $value['Kategori Hasil Furan'] }}
+                                @else
+                                    N/A
+                                @endif
+                            </li>
+                            <li>
+                                @if (isset($value['Remaining Life Time']))
+                                    {{ $value['Remaining Life Time'] }}
+                                @else
+                                    N/A
+                                @endif
+                            </li>
+                            <li>
+                                @if (isset($value['Rekomendasi Furan']))
+                                    {{ $value['Rekomendasi Furan'] }}
+                                @else
+                                    N/A
+                                @endif
+                            </li>
                         </ul>
                         <br>
                         <br>
@@ -238,7 +363,8 @@
                 </tr>
                 <tr style="text-align: center;">
                     <td style="border: none;">
-                        Tangerang, 16 juni 2023
+                        Tangerang,
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
                         <br>
                     </td>
                 </tr>
@@ -273,7 +399,7 @@
     </div>
 
     <!-- SAMPLE OA -->
-    <div class="page-break"></div>
+    <div style="page-break-after: always;"></div>
     <div class="container">
         <div class="p-2">
             <img src="{{ asset('Asset/LogoTrafoindo.png') }}" width="120" height="50" class="d-inline-block"
@@ -300,8 +426,9 @@
                     Widodo</th>
             </tr>
             <tr>
-                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project :
-                    Hotel/Apartment</th>
+                <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project
+                    :{{ $sample[0]->history->project->nama_project }}
+                </th>
             </tr>
             <!-- BAGIAN 2 -->
             <tr>
@@ -311,29 +438,29 @@
             </tr>
             <tr>
                 <th style="border: none;">Merk</th>
-                <td style="border: none;">: Brush</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->merk }}</td>
                 <th style="border: none;">Tegangan</th>
-                <td style="border: none;">:3450</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->voltage }}</td>
                 <th style="border: none;">Tahun</th>
-                <td style="border: none;">:1999</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->year }}</td>
                 <th style="border: none;">Catatan</th>
                 <td style="border: none;">:___</td>
             </tr>
             <tr>
-                <th style="border: none;">Kapasistas</th>
-                <td style="border: none;">:5000kva</td>
-                <th style="border: none;">Tag No. </th>
-                <td style="border: none;">:50</td>
+                <th style="border: none;">Kapasistas Power</th>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->kva }}</td>
+                <th style="border: none;">Tag No</th>
+                <td style="border: none;">{{ $sample[0]->history->trafo->tag_number }}</td>
                 <th style="border: none;">VG</th>
-                <td style="border: none;">:Dy</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->vg }}</td>
             </tr>
             <tr>
                 <th style="border: none;">No Seri</th>
-                <td style="border: none;">:717</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->serial_number }}</td>
                 <th style="border: none;">Temp. Oil</th>
-                <td style="border: none;">: -5*</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->temperatur_oil }}</td>
                 <th style="border: none;">Jumlah Oil</th>
-                <td style="border: none;">:21L</td>
+                <td style="border: none;">: {{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
             </tr>
             <!-- BAGIAN 3 -->
             <tr style="text-align: center;">
@@ -361,8 +488,12 @@
                 <th>Tanggal Sampling</th>
             </tr>
             <tr>
-                <th>21/06/2023</th>
-                <th></th>
+                <th>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</th>
+                <th>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_sampling }}</span>
+                    @endif
+                </th>
                 <th></th>
             </tr>
             <tr>
@@ -371,8 +502,12 @@
                 <th>Tanggal Terima</th>
             </tr>
             <tr>
-                <th>08/20/2023</th>
-                <th></th>
+                <th>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</th>
+                <th>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_kedatangan }}</span>
+                    @endif
+                </th>
                 <th></th>
             </tr>
             <tr>
@@ -381,8 +516,12 @@
                 <th>Tanggal Pengujian</th>
             </tr>
             <tr style="text-align: center;">
-                <th>08/08/2023</th>
-                <th></th>
+                <th>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</th>
+                <th>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_pengujian }}</span>
+                    @endif
+                </th>
                 <th></th>
                 <th>Poor</th>
                 <th>Pair</th>
@@ -513,21 +652,34 @@
             <tr style="text-align: left">
                 <th colspan="10" style="border: none;">
                     <h3>Kesimpulan :</h3>
-                    <p style="font-weight:normal;">Berasarkan IEC 60422:2013, Sample Minyak Trafo berada pada kondisi
-                        Poor</p>
+                    <p style="font-weight:normal;">
+                        @if (isset($value['Kategori Hasil OA']))
+                            {{ $value['Kategori Hasil OA'] }}
+                        @else
+                            N/A
+                        @endif
+                    </p>
                     <br>
                 </th>
             </tr>
             <tr style="text-align: left">
                 <th colspan="10" style="border: none;">
                     <h4>Rekomendasi :</h4>
-                    <p style="font-weight:normal;">Lakukan Purifikasi Oli atau pergantian Oli</p>
+                    <p style="font-weight:normal;">
+                        @if (isset($value['Rekomendasi OA']))
+                            {{ $value['Rekomendasi OA'] }}
+                        @else
+                            N/A
+                        @endif
+                    </p>
                     <br>
                 </th>
             </tr>
             <tr style="text-align: left">
                 <th colspan="10" style="border: none;">
-                    <h4>Tangerang, 09 August 2023</h4>
+                    <h4>Tangerang,
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
+                    </h4>
                     <br>
                     <br>
                 </th>
@@ -562,7 +714,7 @@
     </div>
 
     <!-- SAMPLE DGA -->
-    <div class="page-break"></div>
+    <div style="page-break-after: always;"></div>
     <div class="container">
         <div class="p-2">
             <img src="{{ asset('Asset/LogoTrafoindo.png') }}" width="120" height="50" class="d-inline-block"
@@ -574,33 +726,34 @@
             <!-- BAGIAN 1 -->
             <tr>
                 <th colspan="1">Klien/Proyek</th>
-                <td colspan="6">PLN</td>
+                <td colspan="6">{{ $sample[0]->history->project->nama_project }}</td>
                 <th colspan="2">Tegangan</th>
-                <td colspan="2">20000/380 V</td>
+                <td colspan="2">{{ $sample[0]->history->trafo->voltage }}</td>
             </tr>
             <tr>
                 <th colspan="1">Pabrikan/tahun</th>
-                <td colspan="6">Trafindo / 1998</td>
+                <td colspan="6">{{ $sample[0]->history->trafo->pabrikan . '/' . $sample[0]->history->trafo->year }}
+                </td>
                 <th colspan="2">Kapasistas Minyak</th>
-                <td colspan="2">1219 L</td>
+                <td colspan="2">{{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
             </tr>
             <tr>
                 <th colspan="1">Umur Trafo</th>
-                <td colspan="6">25 Tahun</td>
+                <td colspan="6">{{ $sample[0]->history->trafo->umur_trafo }}</td>
                 <th colspan="2">Catatan</th>
-                <td colspan="2">2: After Purif</td>
+                <td colspan="2"></td>
             </tr>
             <tr>
                 <th colspan="1">Nomor Seri</th>
-                <td colspan="6">9830012</td>
-                <th colspan="2"></th>
-                <th colspan="2"></th>
+                <td colspan="6">{{ $sample[0]->history->trafo->serial_number }}</td>
+                {{-- <th colspan="2"></th>
+                <th colspan="2"></th> --}}
             </tr>
             <tr>
                 <th colspan="1">Rated Power</th>
-                <td colspan="6">1600 KVA</td>
-                <th colspan="2"></th>
-                <th colspan="2"></th>
+                <td colspan="6">{{ $sample[0]->history->trafo->kva }}</td>
+                {{-- <th colspan="2"></th>
+                <th colspan="2"></th> --}}
             </tr>
             <!-- BAGIAN 2 -->
             <tr>
@@ -615,8 +768,8 @@
                 <th>TANGGAL</th>
                 <th>1</th>
                 <th>2</th>
-                <th></th>
-                <th></th>
+                <th>3</th>
+                <th>4</th>
                 <th rowspan="5">Delta [Δ] (ppm)</th>
                 <th rowspan="5">Rates (ppm/year)</th>
                 <th rowspan="5">Tabel 1 (ppm)</th>
@@ -626,22 +779,35 @@
             </tr>
             <tr>
                 <th>Tanggal Sampling</th>
-                <td>11/06/23</td>
-                <td>15/07/23</td>
+                <td>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</td>
+                <td>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_sampling }}</span>
+                    @endif
+                </td>
                 <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Tanggal Terima</th>
-                <td>12/06/23</td>
-                <td>17/07/23</td>
+                <td>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</td>
+                <td>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_kedatangan }}</span>
+                    @endif
+                </td>
                 <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Tanggal Pengujian</th>
-                <td>15/06/23</td>
-                <td>19/07/23</td>
+                <td>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</td>
+                <td>
+                    @if ($sample[1] == null)
+                        <span> {{ $sample[0]->tanggal_pengujian }}</span>
+                    @endif
+                </td>
+                <th></th>
                 <th></th>
             </tr>
             <tr>
@@ -817,7 +983,9 @@
             <tr>
                 <th colspan="11" style=" border: none; font-weight: normal;">
                     <span style="font-weight: bold;">Head Office :</span> Jl. Hayam Wuruk 4 FX, Jakarta 10120, Phone :
-                    (62-21) 385 07030, 783 3434 34, Fax:(62-21) 364 837 367 Email : trafo@gtrafoindonesia.com
+                    (62-21) 385 07030, 386 1865, 351 7113, 345 1384 (Hunting) Fax:(62-21) 385 0702, 386 1865, SMS
+                    Hotline Service : 0815 1729 0000 Email : trafo@gtrafoindonesia.com marketing@trafoindonesia.com
+                    www.trafoindonesia.com
                 </th>
             </tr>
             <tr>
@@ -830,33 +998,49 @@
                 <th colspan="11">Analisa</th>
             </tr>
             <tr>
-                <th colspan="11" style="font-weight: normal;">Normal</th>
+                <th colspan="11" style="font-weight: normal;">
+                    @if (isset($value['Analisa']))
+                        {{ $value['Analisa'] }}
+                    @else
+                        N/A
+                    @endif
+                </th>
             </tr>
-            <tr>
+            {{-- <tr>
                 <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
                     dilakukan peningkatan pemantauan
                     terhadap kenaikan gas</th>
-            </tr>
+            </tr> --}}
             <tr>
                 <th colspan="11">Kesimpulan</th>
             </tr>
             <tr>
-                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
-                    dilakukan peningkatan pemantauan
-                    terhadap kenaikan gas</th>
+                <th colspan="11" style="font-weight: normal;">
+                    @if (isset($value['Kesimpulan']))
+                        {{ $value['Kesimpulan'] }}
+                    @else
+                        N/A
+                    @endif
+                </th>
             </tr>
             <tr>
                 <th colspan="11">Rekomendasi</th>
             </tr>
             <tr>
-                <th colspan="11" style="font-weight: normal;">Hasil DGA trafo melebihi batas standar, perlu
-                    dilakukan peningkatan pemantauan
-                    terhadap kenaikan gas</th>
+                <th colspan="11" style="font-weight: normal;">
+                    @if (isset($value['Rekomendasi']))
+                        {{ $value['Rekomendasi'] }}
+                    @else
+                        N/A
+                    @endif
+                </th>
             </tr>
             <tr>
                 <th colspan="11" align="left" style="border: none;">
                     <br>
-                    <h4>Tanggerang, 11 Desember 2023</h4>
+                    <h4>Tanggerang,
+                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
+                    </h4>
                     <br>
                     <br>
                 </th>

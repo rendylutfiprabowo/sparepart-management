@@ -428,11 +428,14 @@ class DatabaseSeeder extends Seeder
         form::create([
             'id_form' => '23',
             'field_form' => json_encode([
-                '5mhf' => 0,
+                '5hmf' => 0,
                 '2fol' => 0,
                 '2fal' => 0,
                 '2acf' => 0,
                 '5mef' => 0,
+                'Total 2 FAL'=> 0,
+                'Total Furan'=> 0,
+                'Estimate DP'=> 0,
                 'Kategori Hasil Furan' => 0,
                 'Remaining Life Time' => 0,
                 'Rekomendasi Furan' => 0
@@ -550,6 +553,7 @@ class DatabaseSeeder extends Seeder
             'Warna_oil' => 'merah',
             'kapasitas_minyak' => '2000 L',
             'catatan' => 'aman',
+            'umur_trafo'=> '23 tahun',
             'id_customer' => '23',
         ]);
         trafo::create([
@@ -567,6 +571,7 @@ class DatabaseSeeder extends Seeder
             'Warna_oil' => 'merah',
             'kapasitas_minyak' => '2000 L',
             'catatan' => 'aman',
+            'umur_trafo'=> '25 tahun',
             'id_customer' => '23',
         ]);
 
