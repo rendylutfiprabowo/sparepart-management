@@ -114,7 +114,7 @@
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse{{ $key }}" aria-expanded="true"
                             aria-controls="collapse{{ $key }}">
-                            {{ $history->finish }} - {{ $history->project->solab->no_so_solab }}
+                            {{ $history->finish }} - {{ $history->project->solab->no_so_solab }} - {{$history->project->solab->no_spk_solab}}
                         </button>
                     </h2>
                     <div id="collapse{{ $key }}" class="accordion-collapse collapse"
@@ -128,6 +128,5 @@
                 </div>
             @endforeach
         </div>
-
     </div>
 @endsection

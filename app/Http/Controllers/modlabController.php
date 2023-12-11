@@ -37,4 +37,21 @@ class modlabController extends Controller
         $sample = Sample::all();
         return view('oilab.lab.report_modlab', compact('salesorderoil', 'sample'));
     }
+
+    public function historymodlab()
+    {
+        $customers = customer::all();
+        return view('oilab.lab.history_modlab', [
+            'customers' => $customers,
+        ]);
+    }
+
+    public function detailhistorymodlab($id_trafo)
+    {
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('oilab.lab.detailhistory_modlab', [
+            'trafo' => $trafo,
+        ]);
+    }
 }

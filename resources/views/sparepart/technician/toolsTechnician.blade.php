@@ -9,19 +9,26 @@
                 </tr>
                 <hr class="mt-1" style="background-color: black;">
             </thead>
-            <div class="row">
-                <div class="col-md-3 dropdown mb-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        List Cabang
-                    </button>
-                    <div class="dropdown-menu col-md-3" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/technician/tools">Semua Toko</a>
-                        @foreach ($stores as $store)
-                            <a class="dropdown-item"
-                                href="/technician/tools/{{ $store->id_store }}">{{ $store->nama_store }}</a>
-                        @endforeach
+            <div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="dropdown mb-3">
+                            <button class="btn btn-outline-danger btn-sm dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                List Cabang
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/technician/tools">Semua Store</a>
+                                </li>
+                                @foreach ($stores as $store)
+                                    <li><a class="dropdown-item"
+                                            href="/technician/tools/{{ $store->id_store }}">{{ $store->nama_store }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
+                    <x-searchbar url="/{{ request()->path() }}" value="{{ request()->input('search') }}" />
                 </div>
             </div>
             <table class="table-bordered table" width="100%" cellspacing="0">
@@ -45,6 +52,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $tools->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $tools->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $tools->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $tools->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
         <div class="card rounded-4 mb-4 p-4">
             <thead>
@@ -114,6 +135,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $techTools->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $techTools->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $techTools->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $techTools->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 @endsection

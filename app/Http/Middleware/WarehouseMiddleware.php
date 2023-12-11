@@ -15,7 +15,7 @@ class WarehouseMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR') {
+        if (auth()->check() && auth()->user()->id_role == 1 && auth()->user()->warehouse->id_store != 'CTR' && auth()->user()->warehouse->id_store != null) {
             return $next($request);
         }
         return redirect('/home');

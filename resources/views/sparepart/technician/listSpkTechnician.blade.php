@@ -9,18 +9,24 @@
                 <hr class="mt-1" style="background-color: black;">
             </thead>
             <form action="/{{ request()->path() }}" method="GET" class="input-group w-25">
-                <div class="dropdown mb-3 me-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Status
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="/technician/listspk">All</a></li>
-                        @foreach ($status as $key => $stat)
-                            <li><button class="dropdown-item" name="search" value="{{ $key }}"
-                                    type="submit">{{ $key }}</button></li>
-                        @endforeach
-                    </ul>
+                <div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="dropdown mb-3">
+                                <button class="btn btn-outline-danger btn-sm dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Status
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/technician/listspk">All</a></li>
+                                    @foreach ($status as $key => $stat)
+                                        <li><button class="dropdown-item" name="search" value="{{ $key }}"
+                                                type="submit">{{ $key }}</button></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
             @if (session('success'))

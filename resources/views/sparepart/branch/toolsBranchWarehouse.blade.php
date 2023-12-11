@@ -46,6 +46,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $tools->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $tools->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $tools->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $tools->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
 
         <div class="card rounded-4 p-4">
@@ -92,7 +106,7 @@
                             @elseif($req->status == 'revisi')
                             badge text-bg-info
                             @elseif($req->status == 'canceled')
-                               badge text-bg-danger @endif">{{ $req->status }}
+                            badge text-bg-danger @endif">{{ $req->status }}
                                 </b></td>
                             <td class="table-plus">{{ $req->start_date }}</td>
                             <td class="table-plus">{{ $req->finish_date ? $req->finish_date : '-' }}</td>
@@ -131,6 +145,20 @@
         @endforeach
         </tbody>
         </table>
+        <ul class="pagination">
+            <li class="page-item {{ $reqTools->onFirstPage() ? 'disabled' : '' }}">
+                <a class="page-link" href="{{ $reqTools->previousPageUrl() }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item {{ $reqTools->hasMorePages() ? '' : 'disabled' }}">
+                <a class="page-link" href="{{ $reqTools->nextPageUrl() }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
     </div>
     </div>
     <!--Add Product Modal -->

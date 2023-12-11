@@ -135,6 +135,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'id_role' => '7'
         ]);
+        User::create([
+            'id_user' => 'USR-20',
+            'username' => 'rawon',
+            'email' => 'rawon@mail.com',
+            'password' => bcrypt('123456789'),
+            'id_role' => '1'
+        ]);
         warehouse::create([
             'id_warehouse' => 'WAR-001',
             'nama_warehouse' => 'Calvin',
@@ -148,6 +155,12 @@ class DatabaseSeeder extends Seeder
             'phone_warehouse' => '00444558',
             'id_user' => 'USR-02',
             'id_store' => 'CTR',
+        ]);
+        warehouse::create([
+            'id_warehouse' => 'WAR-003',
+            'nama_warehouse' => 'Rawon',
+            'phone_warehouse' => '081218882',
+            'id_user' => 'USR-20',
         ]);
 
 
@@ -463,19 +476,19 @@ class DatabaseSeeder extends Seeder
 
         scope::create([
             'id_scope' => '220',
-            'detailed'=> false,
+            'detailed' => false,
             'nama_scope' => 'DGA',
         ]);
 
         scope::create([
             'id_scope' => '842',
-            'detailed'=> false,
+            'detailed' => false,
             'nama_scope' => 'Furan',
         ]);
 
         scope::create([
             'id_scope' => '399',
-            'detailed'=> true,
+            'detailed' => true,
             'nama_scope' => 'OA',
         ]);
         technician::create([
@@ -537,24 +550,10 @@ class DatabaseSeeder extends Seeder
         ]);
         trafo::create([
             'id_trafo' => $faker->numberBetween(100, 999),
-            'serial_number' => '123',
-            'kva' => '872',
-            'merk' => 'trafindo',
-            'year' => '2020',
-            'area' => 'area 1',
-            'voltage' => '1212',
-            'vg' => '1222',
-            'tag_number' => '11',
-            'temperatur_oil' => '2323',
-            'volume_oil' => '60',
-            'Warna_oil' => 'merah',
-            'id_customer' => '12',
-        ]);
-        trafo::create([
-            'id_trafo' => $faker->numberBetween(100, 999),
             'serial_number' => '090',
             'kva' => '388',
             'merk' => 'power',
+            'pabrikan' => 'trafindo',
             'year' => '2012',
             'voltage' => '1234',
             'vg' => '5543',
@@ -562,6 +561,24 @@ class DatabaseSeeder extends Seeder
             'temperatur_oil' => '556',
             'volume_oil' => '60',
             'Warna_oil' => 'merah',
+            'kapasitas_minyak' => '2000 L',
+            'catatan' => 'aman',
+            'id_customer' => '23',
+        ]);
+        trafo::create([
+            'id_trafo' => $faker->numberBetween(100, 999),
+            'serial_number' => '090',
+            'kva' => '388',
+            'merk' => 'power',
+            'pabrikan' => 'trafindo',
+            'year' => '2012',
+            'voltage' => '1234',
+            'vg' => '5543',
+            'tag_number' => '11',
+            'temperatur_oil' => '556',
+            'volume_oil' => '60',
+            'Warna_oil' => 'merah',
+            'kapasitas_minyak' => '2000 L',
             'catatan' => 'aman',
             'id_customer' => '23',
         ]);
