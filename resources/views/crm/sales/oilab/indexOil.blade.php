@@ -2,7 +2,9 @@
 
 @section('title', 'Oil Sales Dashboard')
 @section('contents')
-
+    <x-page-heading>
+        OIL ANALYTIC
+    </x-page-heading>
     <div class="row">
         <x-card cardTitles="DGA " subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalDGA }}" href="#" />
         <x-card cardTitles="FURAN " subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalFuran }}" href="#" />

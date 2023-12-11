@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="system of trafindo solution">
     <title>Trafindo - @yield('title')</title>
+
     {{-- LINK CDN  --}}
     <link rel="shortcut icon" href="https://www.trafoindonesia.com/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -16,9 +17,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
 
-    {{-- STYLE --}}
+    {{-- LINK STYLE --}}
     <link href="{{ asset('/css/new-layout.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+
     <style>
         html,
         body {
@@ -53,39 +55,50 @@
                     class="d-inline-block" alt="LOGO"></a>
         </div>
 
-        {{-- BUTTON ADD CUSTOMERS --}}
+
         <div class="d-flex gap-2 align-items-center">
-            <div>
-                <x-button-secondary class="d-flex align-items-center" data-bs-toggle="modal"
-                    data-bs-target="#modalAddCust"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-                        <path
-                            d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-                        <path
-                            d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-                    </svg></x-button-secondary>
-            </div>
+            @if (auth()->user()->id_role == 2)
+                <!-- Tampilkan tombol "Add Data Customer" hanya untuk peran "sales" -->
+                <div>
+                    <x-button-secondary class="d-flex align-items-center" data-bs-toggle="modal"
+                        data-bs-target="#modalAddCust"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                            height="20" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                            <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                            <path
+                                d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                        </svg></x-button-secondary>
+                </div>
+
+                <div>
+                    <x-notification />
+                </div>
+
+                <div>
+                    <x-emails />
+                </div>
+            @endif
+
+
 
             {{-- NOTIFICATION --}}
-            <div>
-                <x-notification />
-            </div>
+
 
             {{-- EMAIL --}}
-            <div>
-                <x-emails />
-            </div>
+
 
             {{-- USER MENU --}}
             <div class="vr"></div>
             <div class="dropdown">
-                <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown"
-                    data-bs-display="static" aria-expanded="false">
+                <button type="button"
+                    class="btn dropdown-toggle d-flex align-items-center  {{ Request::is('sales/profile/indexProfile') ? 'text-danger' : '' }}"
+                    data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     {{ Auth::user()->username }}
                 </button>
                 <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-end shadow">
                     <li>
-                        <a class="dropdown-item d-flex align-items-center gap-2" href="#">
+                        <a class="dropdown-item d-flex align-items-center gap-2 {{ Request::is('sales/profile/indexProfile') ? 'bg-danger text-white' : '' }}"
+                            href="/sales/profile/indexProfile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path
@@ -98,7 +111,7 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item dropdown-item-danger d-flex align-items-center gap-2" href="#"
+                        <a class="dropdown-item  d-flex align-items-center gap-2" href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -127,10 +140,11 @@
             @yield('sidebar')
 
             {{-- CONTENT --}}
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 mb-5 pt-3">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-3 pt-3">
                 @yield('contents')
+                <br>
+                <br>
             </main>
-
             {{-- FOOTER --}}
             <div class="col-md-9 ms-sm-auto col-lg-10 footer-custom border-top border-1 bg-white p-2">
                 <div class="text-center">

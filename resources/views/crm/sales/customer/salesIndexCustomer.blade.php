@@ -3,53 +3,39 @@
 @section('title', 'Sales Customers')
 
 @section('contents')
-
     <x-page-heading>
         Dashboard Customers
     </x-page-heading>
-    <br>
-
-    {{-- CARD TOP CUSTOMER --}}
     <div>
-        <x-top-card />
-    </div>
-    <br>
-    <br>
-    <div>
-        <div class="d-flex justify-content-between align-items-center">
-
-            {{-- BUTTON MODAL ADD CUSTOMERS --}}
-            <div>
-
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
-                    <i class="fa-solid fa-user-plus"></i>
-                </button>
-            </div>
-
-            {{-- CUSTOMER SEARCH BAR --}}
-            <div>
-                <form action="{{ route('searchCustomer') }}" method="GET">
-                    <div class="input-group">
-                        <input type="text" class="form-control shadow-sm" placeholder="Cari customer..." name="keyword"
-                            value="{{ $keyword }}">
-                        <button class="btn btn-danger " style=" position: absolute; right: 0; z-index: 0;" type="submit"><i
-                                class="bi bi-search"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         {{-- TABLE OF CUSTOMERS --}}
-        <div class="table-responsive mt-3 bg-white p-4 rounded">
-            <table class="table table-borderless table-hover">
+        <div class="table-responsive bg-white p-4 rounded shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
+                        + Customer
+                    </button>
+                </div>
+                <div>
+                    <form action="{{ route('searchCustomer') }}" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control " placeholder="Search customer..." name="keyword"
+                                value="{{ $keyword }}" style="background: #DDDDDD;">
+                            <button class="btn btn-danger " style=" position: absolute; right: 0; z-index: 0;"
+                                type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <table class="table">
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
                         <th>ID Customer</th>
-                        <th>Nama Customer</th>
-                        <th>No Hp</th>
+                        <th>Customer Name</th>
+                        <th>Phone</th>
                         <th>Email</th>
-                        <th>Jenis Usaha</th>
+                        <th>Types of business</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +44,7 @@
                             <tr>
                                 <td class="text-center">{{ $loop->index + $dataCust->firstItem() }}</td>
                                 <td>{{ $dataTable->id_customer }}</td>
-                                <td><a class="text-dark text-decoration-none link-danger"
+                                <td><a class="text-dark fw-bold text-decoration-none link-danger"
                                         href="{{ url('/sales/customer/' . $dataTable->id_customer) }}">{{ $dataTable->nama_customer }}</a>
                                 </td>
                                 <td>{{ $dataTable->phone_customer }}</td>
