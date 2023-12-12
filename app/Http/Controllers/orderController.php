@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\order;
 use App\Models\booked;
+use App\Models\stockSparepart;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
 
@@ -64,14 +65,26 @@ class orderController extends Controller
         $order->status = NULL;
         $order->save();
 
-
+        $bookings = [];
+        $stocks = [];
         foreach ($validated['stocks'] as $key => $stock) {
             $booking = new booked();
             $booking->id_order = $order->id_order;
             $booking->id_stock = $stock;
             $booking->id_booked = $stock . '-' . $order->id_order . '-' . $validated['date'];
             $booking->qty_booked = $validated['qty'][$key];
+    
+            $stock = stockSparepart::where('id_stock',$stock)->firstOrFail();
+            if($stock->qty_stock >= $validated['qty'][$key]){
+                $stock->qty_stock -= $validated['qty'][$key];
+                $bookings[] = $booking;
+                $stocks[] = $stock;
+            }
+            else return redirect()->back()->with('error', 'Stock tidak menucukupi jumlah order');
+        }
+        foreach ($bookings as $key => $booking) {
             $booking->save();
+            $stocks[$key]->save();
         }
 
         return redirect('sales/sparepart/order');

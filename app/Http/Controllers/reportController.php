@@ -21,7 +21,7 @@ class reportController extends Controller
         foreach ($validated as $key => $value) {
             $field[str_replace('_', ' ', $key)] = $value;
         }
-        $form->field_formreport = json_encode([$field]);
+        $form->field_formreport = json_encode($field);
         $form->save();
         $sample->status_sample = TRUE;
         $sample->save();
