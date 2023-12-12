@@ -91,7 +91,7 @@
                                                 class="fa-regular fa-square-plus ml-2 "></i></a>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="{{ url('generate-pdf') }}/{{ $sample->id_sample }}" type="button"
+                                        <a href="{{ url('generate-pdf') }}/{{ $history->id }}" type="button"
                                             class="btn-sm btn merah text-putih mx-auto"><i
                                                 class="fa-solid fa-download"></i></a>
                                     </td>
