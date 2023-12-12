@@ -5,6 +5,7 @@
     <x-page-heading>
         History Hasil Pengetesan
     </x-page-heading>
+    <br>
     <div class="p-3 bg-white rounded shadow-sm">
         <table class="table align-middle text-center" id="dataTable" width="100%" cellspacing="0">
             <thead class="text-center">

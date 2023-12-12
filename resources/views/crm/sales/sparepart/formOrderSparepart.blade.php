@@ -48,7 +48,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Sales Name</label>
-                        <input type="text" class="form-control" name="sales_name" disabled value="">
+                        <input type="text" class="form-control" name="sales_name" readonly value="{{Auth::user()->sales->nama_sales}}">
                         <input type="hidden" value="{{ Auth::user()->sales->id_sales }}" name="id_sales">
                     </div>
                     <div class="mb-3">

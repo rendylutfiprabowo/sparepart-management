@@ -30,6 +30,7 @@ class trafo extends Model
         'warna_oil',
         'kapasitas_minyak',
         'catatan',
+        'umur_trafo',
         'id_customer',
     ];
 

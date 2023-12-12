@@ -41,7 +41,7 @@
                                 placeholder="Enter Pabrikan">
                         </div>
                         <div class="mb-3">
-                            <label for="year" class="form-label">Trafo Year</label>
+                            <label for="year" class="form-label">Year</label>
                             <input type="number" class="form-control" id="year" name="year"
                                 placeholder="Enter Trafo Year">
                         </div>
@@ -83,6 +83,11 @@
                             <label for="kapasitas_minyak" class="form-label">Kapasitas Minyak</label>
                             <input type="text" class="form-control" id="kapasitas_minyak" name="kapasitas_minyak"
                                 placeholder="Enter Kapasitas Minyak">
+                        </div>
+                         <div class="mb-3">
+                            <label for="umur_trafo" class="form-label">Umur Trafo</label>
+                            <input type="text" class="form-control" id="umur_trafo" name="umur_trafo"
+                                placeholder="Enter Umur Trafo">
                         </div>
                         <div class="mb-3">
                             <label for="catatan" class="form-label">Catatan</label>

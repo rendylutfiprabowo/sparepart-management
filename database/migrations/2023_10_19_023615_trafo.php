@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('warna_oil')->nullable();
             $table->string('kapasitas_minyak')->nullable();
             $table->string('catatan')->nullable();
+            $table->string('umur_trafo')->nullable();
             $table->string('id_customer');
         });
     }
