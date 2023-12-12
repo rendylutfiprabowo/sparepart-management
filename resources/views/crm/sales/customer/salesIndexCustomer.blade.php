@@ -12,14 +12,14 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addCustModal">
-                        + Customer
+                        Customer +
                     </button>
                 </div>
                 <div>
                     <form action="{{ route('searchCustomer') }}" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control " placeholder="Search customer..." name="keyword"
-                                value="{{ $keyword }}" style="background: #DDDDDD;">
+                            <input type="text" class="form-control " placeholder="Search" name="keyword"
+                                value="{{ $keyword }}">
                             <button class="btn btn-danger " style=" position: absolute; right: 0; z-index: 0;"
                                 type="submit"><i class="bi bi-search"></i></button>
                         </div>
@@ -104,41 +104,43 @@
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahkan Data Customer</h1>
-                    <button type="button" class="btn-close text-danger" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <h5 class="modal-title text-secondary" id="exampleModalLabel">Please add customer data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="p-2">
+                    <div class="p-4">
                         <form class="needs-validation" action="{{ route('addCust') }}" method="POST">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="idCustomer" class="form-label">ID CUSTOMER</label>
-                                    <input type="text" class="form-control" id="idCustomer" name="id_customer" required>
+                                    <label for="idCustomer" class="form-label ">ID Customer *</label>
+                                    <input type="text" class="form-control border border-1" id="idCustomer"
+                                        name="id_customer" style="background-color: #EEEEEE;" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="namaCustomer" class="form-label">Nama Customer</label>
-                                    <input type="text" class="form-control" id="namaCustomer" name="nama_customer"
-                                        required>
+                                    <label for="namaCustomer" class="form-label ">Customer Name *</label>
+                                    <input type="text" class="form-control border border-1" id="namaCustomer"
+                                        name="nama_customer" style="background-color: #EEEEEE;" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="phone" class="form-label">Phone </label>
-                                    <input type="text" class="form-control" id="phone" name="phone_customer">
+                                    <label for="phone" class="form-label ">Phone </label>
+                                    <input type="text" class="form-control border border-1" id="phone"
+                                        name="phone_customer" style="background-color: #EEEEEE;">
                                 </div>
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email </label>
-                                    <input type="email" class="form-control" id="email" name="email_customer">
+                                    <label for="email" class="form-label ">Email </label>
+                                    <input type="email" class="form-control " id="email" name="email_customer"
+                                        style="background-color: #EEEEEE;">
                                 </div>
                                 <div class="col-12">
-                                    <label for="Jenis Usaha" class="form-label">Jenis Usaha </label>
-                                    <input type="text" class="form-control" id="JenisUsaha"
-                                        name="jenisusaha_customer">
+                                    <label for="Jenis Usaha" class="form-label ">Type Of Business </label>
+                                    <input type="text" class="form-control border border-1" id="JenisUsaha"
+                                        name="jenisusaha_customer" style="background-color: #EEEEEE;">
                                 </div>
                             </div>
                             <br>
                             <div>
-                                <button class=" btn btn-outline-danger w-100 " type="submit">Submit</button>
+                                <button class=" btn btn-danger w-100 " type="submit">Submit</button>
                             </div>
                             @if (session('status'))
                                 <div id="trigger"></div>

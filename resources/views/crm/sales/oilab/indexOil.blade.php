@@ -3,7 +3,7 @@
 @section('title', 'Oil Sales Dashboard')
 @section('contents')
     <x-page-heading>
-        OIL ANALYTIC
+        Oil Analytic
     </x-page-heading>
     <div class="row">
         <x-card cardTitles="DGA " subTitles="Monthly" iconClass="bi-moisture" percents="{{ $totalDGA }}" href="#" />
@@ -33,7 +33,7 @@
                         <td>{{ $dataOilCust->project->customer->nama_customer }}</td>
                         <td>{{ $dataOilCust->no_spk_solab }}</td>
                         <td>{{ $dataOilCust->no_so_solab }}</td>
-                        <td>{{ $dataOilCust->sales->nama_sales }}</td>
+                        <td class="text-secondary">{{ $dataOilCust->sales->nama_sales }}</td>
                         <td><small>{{ $dataOilCust->alamat_solab }}</small></td>
                     </tr>
                 @endforeach

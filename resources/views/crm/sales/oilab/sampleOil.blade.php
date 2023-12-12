@@ -29,7 +29,8 @@
                                     {{ $solab->project->customer->nama_customer }}</td>
                                 <td rowspan="{{ $solab->project->history->count() }}">{{ $solab->project->nama_project }}
                                 </td>
-                                <td rowspan="{{ $solab->project->history->count() }}">{{ $solab->sales->nama_sales }}</td>
+                                <td rowspan="{{ $solab->project->history->count() }}" class="text-secondary">
+                                    {{ $solab->sales->nama_sales }}</td>
                             @endif
                             <td>
                                 @if ($history->trafo)

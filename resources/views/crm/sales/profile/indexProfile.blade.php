@@ -11,7 +11,7 @@
     </nav>
     <br>
     <br>
-    <div class="wrap-sales-profile">
+    <div class="wrap-sales-profile bg-red">
         <div class="container-profiles">
             <div class="row gap-3 p-3 justify-content-center">
                 <div class="col-md-4 shadow-sm p-3 rounded bg-white">

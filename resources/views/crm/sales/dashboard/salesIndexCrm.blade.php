@@ -7,12 +7,12 @@
     </x-page-heading>
 
     <div class="row">
-        <x-card cardTitles="Total Order" subTitles="Monthly" iconClass="bi bi-graph-up" percents="{{ $percentageSales }} %"
+        <x-card cardTitles="Total Order" subTitles="Monthly" iconClass="bi bi-graph-up" percents="{{ $totalOrderSP }} "
             href="#" />
-        <x-card cardTitles="Total Customers" subTitles="Monthly" iconClass="bi-person-up "
-            percents="{{ $percentageCustomers }} %" href="#" />
+        <x-card cardTitles="Total Customers" subTitles="Monthly" iconClass="bi-person-up " percents="{{ $customersTotal }} "
+            href="#" />
         <x-card cardTitles="Total Projects" subTitles="Monthly" iconClass="bi-journal-arrow-up "
-            percents="{{ $percentageProjects }} %" href="#" />
+            percents="{{ $projectsTotal }} " href="#" />
     </div>
     <br>
     <div class="row ">

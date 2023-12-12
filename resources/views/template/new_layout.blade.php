@@ -56,9 +56,9 @@
         </div>
 
 
+        {{-- IF SALES --}}
         <div class="d-flex gap-2 align-items-center">
             @if (auth()->user()->id_role == 2)
-                <!-- Tampilkan tombol "Add Data Customer" hanya untuk peran "sales" -->
                 <div>
                     <x-button-secondary class="d-flex align-items-center" data-bs-toggle="modal"
                         data-bs-target="#modalAddCust"><svg xmlns="http://www.w3.org/2000/svg" width="20"
@@ -73,21 +73,8 @@
                 <div>
                     <x-notification />
                 </div>
-
-                <div>
-                    <x-emails />
-                </div>
             @endif
 
-
-
-            {{-- NOTIFICATION --}}
-
-
-            {{-- EMAIL --}}
-
-
-            {{-- USER MENU --}}
             <div class="vr"></div>
             <div class="dropdown">
                 <button type="button"
@@ -156,46 +143,47 @@
     {{-- =========== WRAP CONTENT END =========== --}}
 
     {{-- MODAL FORM CUSTOMERS --}}
-    <div class="modal fade" id="modalAddCust" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modalAddCust" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Tambahkan Customers</h1>
+                    <h5 class="modal-title text-secondary" id="exampleModalLabel">Please add customer data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="p-2">
+                    <div class="p-4">
                         <form class="needs-validation" action="{{ route('addCust') }}" method="POST">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-12">
-                                    <label for="idCustomer" class="form-label">ID CUSTOMER</label>
-                                    <input type="text" class="form-control" id="idCustomer" name="id_customer"
-                                        required>
+                                    <label for="idCustomer" class="form-label ">ID Customer *</label>
+                                    <input type="text" class="form-control border border-1" id="idCustomer"
+                                        name="id_customer" style="background-color: #EEEEEE;" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="namaCustomer" class="form-label">Nama Customer</label>
-                                    <input type="text" class="form-control" id="namaCustomer"
-                                        name="nama_customer" required>
+                                    <label for="namaCustomer" class="form-label ">Customer Name *</label>
+                                    <input type="text" class="form-control border border-1" id="namaCustomer"
+                                        name="nama_customer" style="background-color: #EEEEEE;" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="phone" class="form-label">Phone </label>
-                                    <input type="text" class="form-control" id="phone" name="phone_customer">
+                                    <label for="phone" class="form-label ">Phone </label>
+                                    <input type="text" class="form-control border border-1" id="phone"
+                                        name="phone_customer" style="background-color: #EEEEEE;">
                                 </div>
                                 <div class="col-12">
-                                    <label for="email" class="form-label">Email </label>
-                                    <input type="email" class="form-control" id="email" name="email_customer">
+                                    <label for="email" class="form-label ">Email </label>
+                                    <input type="email" class="form-control " id="email" name="email_customer"
+                                        style="background-color: #EEEEEE;">
                                 </div>
                                 <div class="col-12">
-                                    <label for="Jenis Usaha" class="form-label">Jenis Usaha </label>
-                                    <input type="text" class="form-control" id="JenisUsaha"
-                                        name="jenisusaha_customer">
+                                    <label for="Jenis Usaha" class="form-label ">Type Of Business </label>
+                                    <input type="text" class="form-control border border-1" id="JenisUsaha"
+                                        name="jenisusaha_customer" style="background-color: #EEEEEE;">
                                 </div>
                             </div>
                             <br>
                             <div>
-                                <button class="btn btn-danger w-100" type="submit">Submit</button>
+                                <button class=" btn btn-danger w-100 " type="submit">Submit</button>
                             </div>
                             @if (session('status'))
                                 <div id="trigger"></div>
