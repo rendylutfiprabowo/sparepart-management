@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class salesController extends Controller
 {
@@ -59,7 +60,7 @@ class salesController extends Controller
         $project = project::where('id_project', $id_project)->firstOrFail();
         $history = history::where('id', $id_history)->firstOrFail();
         $scopes = scope::all();
-        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project','scopes'));
+        return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project', 'scopes'));
     }
 
     public function createSalesOrderOil()
@@ -94,16 +95,24 @@ class salesController extends Controller
     public function historyOil()
     {
         $customers = customer::all();
-        return view('crm.sales.oilab.historyOil',[
-            'customers'=>$customers,
+        return view('crm.sales.oilab.historyOil', [
+            'customers' => $customers,
         ]);
     }
     public function detailHistoryOil($id_trafo)
     {
-        $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
         $histories = $trafo->histories->whereNotNull('finish');
-        return view('crm.sales.oilab.detailHistoryOil',[
-            'trafo'=>$trafo,
+        return view('crm.sales.oilab.detailHistoryOil', [
+            'trafo' => $trafo,
+        ]);
+    }
+    public function detailTrafo($id_customer, $id_trafo)
+    {
+        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+        $histories = $trafo->histories->whereNotNull('finish');
+        return view('crm.sales.oilab.detailHistoryOil', [
+            'trafo' => $trafo,
         ]);
     }
     public function detailTrafo($id_customer,$id_trafo)
@@ -292,6 +301,7 @@ class salesController extends Controller
         $salesData = sales::all();
         $orderSpareparts = order::all();
         $totalOrderSP = order::count();
+        $oilSample = sample::count();
 
         // Calculations for charts
         $divideNumber = 1000;
@@ -307,6 +317,7 @@ class salesController extends Controller
             'percentageSales',
             'percentageCustomers',
             'percentageProjects',
+            'oilSample',
         ));
     }
 
@@ -351,7 +362,6 @@ class salesController extends Controller
         $customers->save();
 
 
-
         return redirect('sales/customer')->with('status', 'Data Customer Berhasil Ditambahkan !');
     }
 
@@ -383,8 +393,28 @@ class salesController extends Controller
 
 
     // ====================== REPORTS =============================
-    public function reportsCrm()
+    public function reportsCrm(Request $request)
     {
-        return view('crm.sales.reports.indexReports');
+        $dataReports = [
+            'total_customer' => $request->input('total_customer'),
+            'total_order' => $request->input('total_order'),
+        ];
+
+        return view('crm.sales.reports.indexReports', compact('dataReports'));
+    }
+
+    // ================= PROFILE SALES ===========================
+    public function profileSales()
+    {
+        $saleslog = Auth::user();
+
+        $salesProfile = sales::join('users', 'users.id_user', '=', 'sales.id_user')
+            ->where('users.id_user', $saleslog->id_user)
+            ->first();
+        return view(
+            'crm.sales.profile.indexProfile',
+            ['saleslog' => $saleslog],
+            ['salesProfile' => $salesProfile],
+        );
     }
 }

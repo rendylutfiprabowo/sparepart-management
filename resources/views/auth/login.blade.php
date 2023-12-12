@@ -24,43 +24,41 @@
             padding: 24px;
             width: 100%;
             max-width: 340px;
-            margin: 0 auto
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+            border-radius: 5px;
         }
 
         .formContainer input {
             height: 48px;
             padding-left: 48px;
-            background: rgba(63, 63, 63, 0.5);
+            background: white;
             border: 0;
-            color: #fff;
+            color: black;
         }
 
-        .formContainer input:focus {
+        /* .formContainer input:focus {
             background: rgba(63, 63, 63, 0.4);
-            color: #fff;
-        }
+
+        } */
 
         .inputLogo {
             position: absolute;
             margin-top: 12px;
             margin-left: 18px;
-            color: #fff
+
         }
 
         #mainBgn {
-            background: url('/Asset/trafindo-bg.jpeg') no-repeat;
             background-size: cover;
             background-position: center bottom;
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/Asset/trafindo-bg.jpeg");
         }
 
-
-        ::placeholder {
-            color: whitesmoke !important;
-        }
-
-        .text-shadows {
-            text-shadow: 2px 2px 5px gray;
-        }
 
         @media screen and (max-width: 743px) {
             h4 {
@@ -79,32 +77,34 @@
 
 <body>
     <div class="vh-100 w-100 d-flex align-items-center" id="mainBgn">
-        <div class="formContainer">
-            <div>
-                @if (session('error'))
-                    <x-error_message text="Username/Email & Password Salah" />
-                @endif
-            </div>
-            <div class="text-center mb-4 ">
-                <h3 class="text-white text-shadows fw-bold">Welcome To Trafindo Solution System</h3>
-            </div>
-            <form method="POST" class="user" action="{{ route('login') }}">
-                @csrf
-                <div>
-                    <span class="inputLogo"><i class="bi bi-person"></i></span><input type="text"
-                        class="form-control rounded shadow-sm" id="email_or_username" name="email_or_username"
-                        placeholder="username/email">
-                </div>
-                <div class="mt-2">
-                    <span class="inputLogo"><i class="bi bi-lock"></i></span><input type="password"
-                        class="form-control rounded shadow-sm" id="password" name="password" placeholder="password">
-                </div>
-                <div class="mt-4">
-                    <button class="btn btn-danger rounded w-100 fw-bold shadow" type="submit">Login</button>
-                </div>
 
-            </form>
+    </div>
+    <div class="formContainer">
+        <div>
+            @if (session('error'))
+                <x-error_message text="Username/Email & Password Salah" />
+            @endif
         </div>
+        <div class="text-center ">
+            <h3 class="text-white fw-bold">Welcome To Trafindo Solution System</h3>
+        </div>
+        <br>
+        <form method="POST" class="user" action="{{ route('login') }}">
+            @csrf
+            <div>
+                <span class="inputLogo"><i class="bi bi-person"></i></span><input type="text"
+                    class="form-control rounded shadow-sm" id="email_or_username" name="email_or_username"
+                    placeholder="username/email">
+            </div>
+            <div class="mt-2">
+                <span class="inputLogo"><i class="bi bi-lock"></i></span><input type="password"
+                    class="form-control rounded shadow-sm" id="password" name="password" placeholder="password">
+            </div>
+            <div class="mt-4">
+                <button class="btn btn-danger rounded w-100 shadow-sm fw-bold" type="submit">Login</button>
+            </div>
+
+        </form>
     </div>
 
 

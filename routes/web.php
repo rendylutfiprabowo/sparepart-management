@@ -22,6 +22,7 @@ use App\Http\Controllers\revisionController;
 use App\Http\Controllers\superadminController;
 use App\Http\Controllers\sampleContoller;
 use App\Http\Controllers\distributionController;
+use App\Http\Controllers\managerController;
 use App\Models\tools;
 use App\Models\booked;
 use Illuminate\Support\Facades\Auth;
@@ -97,6 +98,8 @@ Route::middleware(['auth', 'sales'])->group(function () {
     Route::get('/sales/channels/indexChannels', [salesController::class, 'channelsIndex']);
     // Reports Sales
     Route::get('/sales/reports/indexReports', [salesController::class, 'reportsCrm']);
+    // Profile Sales
+    Route::get('/sales/profile/indexProfile', [salesController::class, 'profileSales']);
 });
 //Role Technician Sparepart
 Route::middleware(['auth', 'technician'])->group(function () {
@@ -123,6 +126,7 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/add-worker/branch/{id_order}', [warehouseController::class, 'addWorkerBranch']);
     Route::get('/warehouse/branch/returItem', [warehouseController::class, 'returItem']);
     Route::get('/warehouse/branch/detailReturItem/{id_order}', [warehouseController::class, 'detailReturItem']);
+    Route::post('/warehouse/branch/storeReturn/{id_order}', [revisionController::class, 'storeItemBranch']);
     Route::post('/warehouse/branch/stock/store', [toolsController::class, 'store']);
     Route::post('/warehouse/tools/validasi/{id_tools}', [toolsController::class, 'validasiRequest']);
     Route::post('/warehouse/tools/request-closed/{id_tools}', [toolsController::class, 'closedRequest']);
@@ -130,6 +134,10 @@ Route::middleware(['auth', 'warehouse'])->group(function () {
     Route::post('/warehouse/stock/branch/{id_stock}', [stockController::class, 'addStockBranch']);
     Route::post('/warehouse/branch/stock/safety-stock/{id_stock}', [stockController::class, 'safetyStockBranch']);
     Route::post('/warehouse/branch/distribution/{id_distribution}', [distributionController::class, 'approvalBranch']);
+});
+Route::middleware(['auth', 'managerSparepart'])->group(function () {
+    Route::get('/manager/dashboard', [warehouseController::class, 'dashboardManager']);
+    Route::get('/manager/addUser', [managerController::class, 'addUser']);
 });
 
 //Role Manager Center
@@ -182,13 +190,16 @@ Route::middleware(['auth', 'laboil'])->group(function () {
     Route::get('/history_lab', function () {
         return view('oilab.lab.history_lab');
     });
+    Route::get('/history_lab', [labController::class, 'historyLab']);
+    Route::get('/history_lab/{id_trafo}', [labController::class, 'detailhistoryLab']);
+
     Route::get('/detailhistory_lab', function () {
         return view('oilab.lab.detailhistory_lab');
     });
     Route::get('/form_dga1_lab/{id}', function () {
         return view('oilab.lab.form_dga1_lab');
     });
-    Route::get('generate-pdf', [pdfController::class, 'pdf']);
+    Route::get('/generate-pdf/{id}', [pdfController::class, 'pdf']);
 });
 
 
@@ -213,6 +224,8 @@ Route::middleware(['auth', 'modLab'])->group(function () {
     Route::get('/history_modlab', function () {
         return view('oilab.lab.history_modlab');
     });
+    Route::get('/history_modlab', [modlabController::class, 'historymodlab']);
+    Route::get('/history_modlab/{id_trafo}', [modlabController::class, 'detailhistorymodlab']);
 
     Route::get('/detailhistory_modlab', function () {
         return view('oilab.lab.detailhistory_modlab');
@@ -238,6 +251,8 @@ Route::middleware(['auth', 'adminLab'])->group(function () {
     Route::get('/history_adminlab', function () {
         return view('oilab.lab.history_adminlab');
     });
+    Route::get('/history_adminlab', [adminlabController::class, 'historyadminlab']);
+    Route::get('/history_adminlab/{id_trafo}', [adminlabController::class, 'detailhistoryAdminLab']);
 
     Route::get('/detailhistory_adminlab', function () {
         return view('oilab.lab.detailhistory_adminlab');

@@ -156,7 +156,7 @@ body {
     }
 }
 
-.card {
+/* .card {
     background-color: white;
     border-radius: 0.25rem;
     display: flex;
@@ -221,4 +221,4 @@ body {
 
 .card_text p:last-child {
     margin: 0;
-}
+} */

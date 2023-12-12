@@ -6,6 +6,7 @@ use App\Models\booked;
 use App\Models\revisi;
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\stockSparepart;
 use Illuminate\Support\Str;
 
 class revisionController extends Controller
@@ -104,5 +105,33 @@ class revisionController extends Controller
         }
 
         return redirect('/technician/listspk');
+    }
+
+    public function storeItemBranch($id_order)
+    {
+        $order = Order::where('id_order', $id_order)->first();
+
+        // Mendapatkan data revisi dan pesanan
+        $revision_booked = $order->revisi->booked;
+        $order_booked = $order->booked;
+
+        // Mendapatkan nilai ID stok dari pesanan
+        $id_stock_values = $order_booked->pluck('id_stock')->toArray();
+
+        // Mendapatkan data revisi berdasarkan ID stok dari pesanan
+        $revision = $revision_booked->whereIn('id_stock', $id_stock_values);
+
+        // Menambahkan stok untuk setiap ID stok
+        foreach ($revision as $revisionItem) {
+            $id_stock = $revisionItem->id_stock;
+            $returStock = $revisionItem->qty_booked;
+            // Menggunakan model Stock untuk menambahkan stok
+            $stock = stockSparepart::where('id_stock', $id_stock)->firstOrFail();
+            if ($stock) {
+                $stock->qty_stock += $returStock;
+                $stock->save();
+            }
+        }
+        return redirect('/warehouse/branch/detailReturItem/' . $id_order)->with('success', 'Berhasil mengembalikan Item');
     }
 }

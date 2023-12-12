@@ -17,7 +17,7 @@
             <div class="card p-4 rounded-4">
                 <thead>
                     <tr>
-                        <h3 class="text-start text-dark my-4" style="font-weight: bold;">Daftar Form Report</h3>
+                        <h3 class="text-start text-dark my-4" style="font-weight: bold;">List History Trafo</h3>
                     </tr>
                     <hr class="mt-1" style="background-color: black;">
                 </thead>
@@ -25,20 +25,33 @@
                     <table class=" text-center table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead class="text-center font-weight-bold" style="color: rgb(212, 26, 26);">
                             <tr>
-                                <th>No</th>
-                                <th>No seri</th>
-                                <th>Tanggal Masuk</th>
-                                <th>Action</th>
+                                <th scope="col">No.</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Serial Number</th>
+                                <th scope="col">Merk</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">View</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>0098923783</td>
-                                <td>12 Februari 2023</td>
-                                <td><a href="/detailhistory_adminlab" type="button" class="btn merah text-putih">detail</a>
-                                </td>
-                            </tr>
+                        <tbody class="text-center">
+                            @foreach ($customers as $no => $customer)
+                                @if ($customer->trafos)
+                                    @foreach ($customer->trafos as $key => $trafo)
+                                        <tr>
+                                            @if ($key == 0)
+                                                <td rowspan="{{ $customer->trafos->count() }}">{{ $no + 1 }}</td>
+                                                <td rowspan="{{ $customer->trafos->count() }}">
+                                                    {{ $customer->nama_customer }}</td>
+                                            @endif
+                                            <td> {{ $trafo->serial_number }}</td>
+                                            <td> {{ $trafo->merk }}</td>
+                                            <td> {{ $trafo->year }}</td>
+                                            <td> <a href="/history_adminlab/{{ $trafo->id_trafo }}" class="btn merah text-putih">
+                                                    Detail </a> </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

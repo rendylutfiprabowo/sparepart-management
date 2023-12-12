@@ -20,6 +20,11 @@ class warehouseController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function dashboardManager()
+    {
+        return view('sparepart.manager.dashboardManager');
+    }
     public function dashboardWarehouseBranch()
     {
         $idStore = Auth::user()->warehouse->id_store;
@@ -216,9 +221,11 @@ class warehouseController extends Controller
     public function returItem()
     {
         $id_user = auth()->user()->warehouse->id_store;
-        $order = Order::where('id_store', $id_user)
+        $order = Order::query()
+            ->where('id_store', $id_user)
             ->whereHas('revisi')
-            ->get();
+            ->paginate(10);
+
         return view('sparepart.branch.returBranchWarehouse', [
             'order' => $order,
         ]);
@@ -415,7 +422,9 @@ class warehouseController extends Controller
     {
         $id_store = Auth::User()->warehouse->id_store;
         $store = storeSparepart::all()->where('id_store', $id_store)->first();
-        $distribution = distribution::all();
+        $distributionIds = distribution::all()->pluck('id_stock');
+        $id_stocks = stockSparepart::whereIn('id_stock', $distributionIds)->get();
+        $distribution = distribution::whereIn('id_stock', $id_stocks->pluck('id_stock'))->paginate(10);
         return view(
             'sparepart.branch.distribution',
             [
