@@ -64,11 +64,11 @@
                 {{ session('success') }}
             </div>
         @endif
-        @error('qty')
-            <div class="bg-danger text-light rounded text-center">
-                {{ $message }}
+        @if (session('error'))
+            <div class="mx-3">
+                <x-error_message text="{{ session('error') }}" />
             </div>
-        @enderror
+        @endif
         <thead>
             <tr>
                 <h3 class="text-dark my-2 text-start">List SPK</h3>
@@ -231,7 +231,10 @@
 
                 // Clear existing options
                 specificationSelect.innerHTML = '';
-
+                const temp = document.createElement('option');
+                temp.value = '';
+                temp.text = '-- Pilih Spesifikasi --';
+                specificationSelect.appendChild(temp);
                 if (categoryId) {
                     // Fetch specifications based on the selected category and store using an AJAX request
                     $.ajax({
@@ -244,7 +247,8 @@
                                 console.log('tes');
                                 // option.data-dim=stock.satuan;
                                 option.value = stock.id_stock;
-                                option.text = stock.spesifikasi_sparepart;
+                                option.text = stock.spesifikasi_sparepart + (
+                                    ` (tersisa ${stock.qty} ${stock.satuan})`);
 
                                 option.setAttribute('data-dim', stock.satuan);
                                 specificationSelect.appendChild(option);
