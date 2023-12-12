@@ -102,25 +102,28 @@
                 </caption>
                 <tr>
                     <td>Klien/Proyek</td>
-                    <td> : {{ $sample[0]->history->project->nama_project }}</td>
+                    <td> : {{ $sample['furan'] ? $sample['furan']->history->project->nama_project : 'N/A' }}</td>
                     <td> Tegangan </td>
-                    <td> : {{ $sample[0]->history->trafo->voltage }}</td>
+                    <td> : {{ $sample['furan'] ? $sample['furan']->history->trafo->voltage : 'N/A' }}</td>
                 </tr>
                 <tr>
                     <td>Pabrikan/Tahun</td>
-                    <td>: {{ $sample[0]->history->trafo->pabrikan . '/' . $sample[0]->history->trafo->year }}</td>
+                    <td>:
+                        {{ $sample['furan'] ? ($sample['furan']->history->trafo->pabrikan ?? 'N/A') . '/' . ($sample['furan']->history->trafo->year ?? 'N/A') : 'N/A' }}
+
+                    </td>
                     <td>Minyak</td>
-                    <td>: {{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
+                    <td>: {{ $sample['furan'] ? $sample['furan']->history->trafo->kapasitas_minyak : 'N/A' }}</td>
                 </tr>
                 <tr>
                     <td>Nomor Seri</td>
-                    <td>: {{ $sample[0]->history->trafo->serial_number }}</td>
+                    <td>: {{ $sample['furan'] ? $sample['furan']->history->trafo->serial_number : 'N/A' }}</td>
                     <td>Catatan</td>
-                    <td>: {{ $sample[0]->history->trafo->catatan }}</td>
+                    <td>: {{ $sample['furan'] ? $sample['furan']->history->trafo->catatan : 'N/A' }}</td>
                 </tr>
                 <tr>
                     <td>Rated Power</td>
-                    <td> : {{ $sample[0]->history->trafo->kva }}</td>
+                    <td> : {{ $sample['furan'] ? $sample['furan']->history->trafo->kva : 'N/A' }}</td>
                 </tr>
                 <tr>
                     <th rowspan="5" style="background-color: skyblue; color: black; font-weight: bold;">Parameter
@@ -139,35 +142,35 @@
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Sampling <br>
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</span>
+                        <span>{{ $sample['furan'] != null ? $sample['furan']->tanggal_sampling : null }}</span>
                     </td>
                     <td style="text-align: center;">
-                        @if ($sample[1] == null)
+                        {{-- @if ($sample['furan'] != null)
                             Tanggal Sampling
-                            <br><span> {{ $sample[0]->tanggal_sampling }}</span>
-                        @endif
+                            <br><span> {{ $sample['furan']->tanggal_sampling }}</span>
+                        @endif --}}
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Terima <br>
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</span>
+                        <span>{{ $sample['furan'] != null ? $sample['furan']->tanggal_kedatangan : null }}</span>
                     </td>
                     <td style="text-align: center;">
-                        @if ($sample[1] == null)
+                        {{-- @if ($sample['furan'] != null)
                             Tanggal Terima
-                            <br><span> {{ $sample[0]->tanggal_kedatangan }}</span>
-                        @endif
+                            <br><span> {{ $sample['furan']->tanggal_kedatangan }}</span>
+                        @endif --}}
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: center;">Tanggal Pengujian <br>
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</span>
+                        <span>{{ $sample['furan'] != null ? $sample['furan']->tanggal_pengujian : null }}</span>
                     </td>
                     <td style="text-align: center;">
-                        @if ($sample[1] == null)
+                        {{-- @if ($sample['furan'] != null)
                             Tanggal Pengujian
-                            <br><span> {{ $sample[0]->tanggal_pengujian }}</span>
-                        @endif
+                            <br><span> {{ $sample['furan']->tanggal_pengujian }}</span>
+                        @endif --}}
                     </td>
                 </tr>
 
@@ -175,20 +178,8 @@
                     <th>5HMF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>
-                        @if (isset($s[0]['5hmf']))
-                            {{ $s[0]['5hmf'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['5hmf']))
-                            {{ $s[1]['5hmf'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['5hmf'] : 'N/A' }}</td>
+                    <th> </th>
                     <th rowspan="5" style="text-align: center;">
                         <p>0-292 pbd Normal Aging Rate</p>
                         <br>
@@ -205,157 +196,55 @@
                     <th>2FOL <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>
-                        @if (isset($s[0]['2fol']))
-                            {{ $s[0]['2fol'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['2fol']))
-                            {{ $s[1]['2fol'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['2fol'] : 'N/A' }}</td>
+                    <th></th>
                 </tr>
                 <tr>
                     <th>2FAL <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>
-                        @if (isset($s[0]['2fal']))
-                            {{ $s[0]['2fal'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['2fal']))
-                            {{ $s[1]['2fal'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['2fal'] : 'N/A' }}</td>
+                    <th></th>
                 </tr>
                 <tr>
                     <th>2ACF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>
-                        @if (isset($s[0]['2acf']))
-                            {{ $s[0]['2acf'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['2acf']))
-                            {{ $s[1]['2acf'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['2acf'] : 'N/A' }}</td>
+                    <th></th>
                 </tr>
                 <tr>
                     <th>5MEF <br>
                         <span>(5-hydromethyl-2-furakhydel)</span>
                     </th>
-                    <th>
-                        @if (isset($s[0]['5mef']))
-                            {{ $s[0]['5mef'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['5mef']))
-                            {{ $s[1]['5mef'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['5mef'] : 'N/A' }}</td>
+                    <th></th>
                 </tr>
                 <tr>
                     <th>Total 2FAL</th>
-                    <th>
-                        @if (isset($s[0]['Total 2 FAL']))
-                            {{ $s[0]['Total 2 FAL'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['Total 2 FAL']))
-                            {{ $s[1]['Total 2 FAL'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['Total 2 FAL'] : 'N/A' }}</td>
+                    <th></th>
                     <th style="background-color: skyblue; text-align: left;">5* Faktor Koreksi</th>
                 </tr>
                 <tr>
                     <th>Total Furan</th>
-                    <th>
-                        @if (isset($s[0]['Total Furan']))
-                            {{ $s[0]['Total Furan'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['Total Furan']))
-                            {{ $s[1]['Total Furan'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['Total Furan'] : 'N/A' }}</td>
+                    <th></th>
                     <th style="background-color: skyblue;">-</th>
                 </tr>
                 <tr>
                     <th>Estimate DP</th>
-                    <th>
-                        @if (isset($s[0]['Estimate DP']))
-                            {{ $s[0]['Estimate DP'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
-                    <th>
-                        @if (isset($s[1]['Estimate DP']))
-                            {{ $s[1]['Estimate DP'] }}
-                        @else
-                            N/A
-                        @endif
-                    </th>
+                    <td  style="text-align: center;">{{ $value['furan'] != null ? $value['furan']['Estimate DP'] : 'N/A' }}</td>
+                    <th></th>
                     <th style="background-color: skyblue;">-</th>
                 </tr>
                 <!-- Footer -->
                 <tr style="border: none;">
                     <td colspan="4">
                         <ul>
-                            <li>
-                                @if (isset($value['Kategori Hasil Furan']))
-                                    {{ $value['Kategori Hasil Furan'] }}
-                                @else
-                                    N/A
-                                @endif
-                            </li>
-                            <li>
-                                @if (isset($value['Remaining Life Time']))
-                                    {{ $value['Remaining Life Time'] }}
-                                @else
-                                    N/A
-                                @endif
-                            </li>
-                            <li>
-                                @if (isset($value['Rekomendasi Furan']))
-                                    {{ $value['Rekomendasi Furan'] }}
-                                @else
-                                    N/A
-                                @endif
-                            </li>
+                            <li>{{ $value['furan'] != null ? $value['furan']['Kategori Hasil Furan'] : 'N/A' }}</li>
+                            <li>{{ $value['furan'] != null ? $value['furan']['Remaining Life Time'] : 'N/A' }}</li>
+                            <li>{{ $value['furan'] != null ? $value['furan']['Rekomendasi Furan'] : 'N/A' }}</li>
                         </ul>
                         <br>
                         <br>
@@ -364,7 +253,7 @@
                 <tr style="text-align: center;">
                     <td style="border: none;">
                         Tangerang,
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
+                        <span>{{ $sample['furan'] != null ? $sample['furan']->tanggal_cetaklaporan : null }}</span>
                         <br>
                     </td>
                 </tr>
@@ -374,7 +263,7 @@
                         <br>
                         <img src="{{ asset('img/ttd.jpg') }}" style="width: 100px; height: auto;">
                         <br>
-                        Resita Nur Ambya <br>
+                        Farhan Aditya <br>
                         (Analis Laboratorium)
                     </td>
                     <td style="border: none;">
@@ -397,6 +286,8 @@
             </table>
         </div>
     </div>
+
+
 
     <!-- SAMPLE OA -->
     <div style="page-break-after: always;"></div>
@@ -427,7 +318,7 @@
             </tr>
             <tr>
                 <th colspan="6" style="border: none; font-weight: normal; text-align: left;">Project
-                    :{{ $sample[0]->history->project->nama_project }}
+                    :{{ $sample['oa'] ? $sample['oa']->history->project->nama_project : 'N/A' }}
                 </th>
             </tr>
             <!-- BAGIAN 2 -->
@@ -438,29 +329,32 @@
             </tr>
             <tr>
                 <th style="border: none;">Merk</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->merk }}</td>
+                <td style="border: none;">: {{ $sample['oa'] ? $sample['oa']->history->trafo->merk : 'N/A' }}</td>
                 <th style="border: none;">Tegangan</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->voltage }}</td>
+                <td style="border: none;">:{{ $sample['oa'] ? $sample['oa']->history->trafo->voltage : 'N/A' }}</td>
                 <th style="border: none;">Tahun</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->year }}</td>
+                <td style="border: none;">: {{ $sample['oa'] ? $sample['oa']->history->trafo->year : 'N/A' }}</td>
                 <th style="border: none;">Catatan</th>
-                <td style="border: none;">:___</td>
+                <td style="border: none;">:{{ $sample['oa'] ? $sample['oa']->history->trafo->catatan : 'N/A' }}</td>
             </tr>
             <tr>
                 <th style="border: none;">Kapasistas Power</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->kva }}</td>
+                <td style="border: none;">:{{ $sample['oa'] ? $sample['oa']->history->trafo->kva : 'N/A' }}</td>
                 <th style="border: none;">Tag No</th>
-                <td style="border: none;">{{ $sample[0]->history->trafo->tag_number }}</td>
+                <td style="border: none;">{{ $sample['oa'] ? $sample['oa']->history->trafo->tag_number : 'N/A' }}</td>
                 <th style="border: none;">VG</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->vg }}</td>
+                <td style="border: none;">: {{ $sample['oa'] ? $sample['oa']->history->trafo->vg : 'N/A' }}</td>
             </tr>
             <tr>
                 <th style="border: none;">No Seri</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->serial_number }}</td>
+                <td style="border: none;">: {{ $sample['oa'] ? $sample['oa']->history->trafo->serial_number : 'N/A' }}
+                </td>
                 <th style="border: none;">Temp. Oil</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->temperatur_oil }}</td>
+                <td style="border: none;">:{{ $sample['oa'] ? $sample['oa']->history->trafo->temperatur_oil : 'N/A' }}
+                </td>
                 <th style="border: none;">Jumlah Oil</th>
-                <td style="border: none;">: {{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
+                <td style="border: none;">:
+                    {{ $sample['oa'] ? $sample['oa']->history->trafo->kapasitas_minyak : 'N/A' }}</td>
             </tr>
             <!-- BAGIAN 3 -->
             <tr style="text-align: center;">
@@ -488,11 +382,12 @@
                 <th>Tanggal Sampling</th>
             </tr>
             <tr>
-                <th>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</th>
+                <th>{{ $sample['oa'] != null ? $sample['oa']->tanggal_sampling : null }}
+                </th>
                 <th>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_sampling }}</span>
-                    @endif
+                    {{-- @if ($sample['oa'] != null)
+                        <span> {{ $sample['oa']->tanggal_sampling }}</span>
+                    @endif --}}
                 </th>
                 <th></th>
             </tr>
@@ -502,11 +397,12 @@
                 <th>Tanggal Terima</th>
             </tr>
             <tr>
-                <th>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</th>
+                <th>{{ $sample['oa'] != null ? $sample['oa']->tanggal_kedatangan : null }}
+                </th>
                 <th>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_kedatangan }}</span>
-                    @endif
+                    {{-- @if ($sample['oa'] != null)
+                        <span> {{ $sample['oa']->tanggal_kedatangan }}</span>
+                    @endif --}}
                 </th>
                 <th></th>
             </tr>
@@ -516,11 +412,12 @@
                 <th>Tanggal Pengujian</th>
             </tr>
             <tr style="text-align: center;">
-                <th>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</th>
+                <th>{{ $sample['oa'] != null ? $sample['oa']->tanggal_pengujian : null }}
+                </th>
                 <th>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_pengujian }}</span>
-                    @endif
+                    {{-- @if ($sample['oa'] != null)
+                        <span> {{ $sample['oa']->tanggal_pengujian }}</span>
+                    @endif --}}
                 </th>
                 <th></th>
                 <th>Poor</th>
@@ -533,7 +430,7 @@
                 <td>Color / Appereance</td>
                 <td>ASTM Color</td>
                 <td>ASTM D1500</td>
-                <td>5</td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Color / Appreance'] : 'N/A' }}</td>
                 <td>-</td>
                 <td>-</td>
                 <td>>3.5</td>
@@ -546,7 +443,7 @@
                 <td>Breakdown Voltage (Dielectric Strength)</td>
                 <td>Kv</td>
                 <td>IEC 98</td>
-                <td>23.1</td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Breakdown Voltage (Dieclectric Strength)'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td>
@@ -559,7 +456,7 @@
                 <td>Interfacial Tension</td>
                 <td>Mn/M</td>
                 <td>AST-2</td>
-                <td></td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Interfacial Tension'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td>
@@ -572,7 +469,7 @@
                 <td>Total Acid Number (TAN)</td>
                 <td>mg Koh/g</td>
                 <td>IEC</td>
-                <td>0.17</td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Total Acid Number (TAN)'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td>>0.3</td>
@@ -584,7 +481,7 @@
                 <td>Water Content</td>
                 <td>ppm</td>
                 <td>IEC-1</td>
-                <td>51</td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Water Content'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td>>40</td>
@@ -597,7 +494,7 @@
                 <td>Oil Quality Index (OQIN)</td>
                 <td>-</td>
                 <td>WP-2</td>
-                <td></td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Oil Quality Index (OQIN)'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td>
@@ -610,7 +507,7 @@
                 <td>Sediment & Sludge</td>
                 <td>%</td>
                 <td>IEC-2</td>
-                <td></td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Sendiment & Sludge'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;">No Sediment or precitipitable sludge. Result below
@@ -622,7 +519,7 @@
                 <td>Density</td>
                 <td>g/Ml</td>
                 <td>ISO-2</td>
-                <td></td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Density'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;">Max 0.895 at 29.5*C</td>
@@ -632,7 +529,7 @@
                 <td>Corrosive Sulfur</td>
                 <td>-</td>
                 <td>ASTM-3</td>
-                <td></td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Corrosive Sulfur'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;">Not Corrosive</td>
@@ -642,7 +539,7 @@
                 <td>Flash Point</td>
                 <td>*C</td>
                 <td>ISO-34</td>
-                <td>156.6*C</td>
+                <td>{{ $value['oa'] != null ? $value['oa']['Flash Point'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;"> 135*C</td>
@@ -653,11 +550,6 @@
                 <th colspan="10" style="border: none;">
                     <h3>Kesimpulan :</h3>
                     <p style="font-weight:normal;">
-                        @if (isset($value['Kategori Hasil OA']))
-                            {{ $value['Kategori Hasil OA'] }}
-                        @else
-                            N/A
-                        @endif
                     </p>
                     <br>
                 </th>
@@ -666,11 +558,6 @@
                 <th colspan="10" style="border: none;">
                     <h4>Rekomendasi :</h4>
                     <p style="font-weight:normal;">
-                        @if (isset($value['Rekomendasi OA']))
-                            {{ $value['Rekomendasi OA'] }}
-                        @else
-                            N/A
-                        @endif
                     </p>
                     <br>
                 </th>
@@ -678,7 +565,7 @@
             <tr style="text-align: left">
                 <th colspan="10" style="border: none;">
                     <h4>Tangerang,
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
+                        <span>{{ $sample['oa'] != null ? $sample['oa']->tanggal_cetaklaporan : null }}</span>
                     </h4>
                     <br>
                     <br>
@@ -726,32 +613,34 @@
             <!-- BAGIAN 1 -->
             <tr>
                 <th colspan="1">Klien/Proyek</th>
-                <td colspan="6">{{ $sample[0]->history->project->nama_project }}</td>
+                <td colspan="6"> {{ $sample['dga'] ? $sample['dga']->history->project->nama_project : 'N/A' }}</td>
                 <th colspan="2">Tegangan</th>
-                <td colspan="2">{{ $sample[0]->history->trafo->voltage }}</td>
+                <td colspan="2">{{ $sample['dga'] ? $sample['dga']->history->trafo->voltage : 'N/A' }}</td>
             </tr>
             <tr>
                 <th colspan="1">Pabrikan/tahun</th>
-                <td colspan="6">{{ $sample[0]->history->trafo->pabrikan . '/' . $sample[0]->history->trafo->year }}
+                <td colspan="6">
+                    {{ $sample['dga'] ? ($sample['dga']->history->trafo->pabrikan ?? 'N/A') . '/' . ($sample['dga']->history->trafo->year ?? 'N/A') : 'N/A' }}
                 </td>
                 <th colspan="2">Kapasistas Minyak</th>
-                <td colspan="2">{{ $sample[0]->history->trafo->kapasitas_minyak }}</td>
+                <td colspan="2">{{ $sample['dga'] ? $sample['dga']->history->trafo->kapasitas_minyak : 'N/A' }}
+                </td>
             </tr>
             <tr>
                 <th colspan="1">Umur Trafo</th>
-                <td colspan="6">{{ $sample[0]->history->trafo->umur_trafo }}</td>
+                <td colspan="6">{{ $sample['dga'] ? $sample['dga']->history->trafo->umur_trafo : 'N/A' }}</td>
                 <th colspan="2">Catatan</th>
-                <td colspan="2"></td>
+                <td colspan="2">">{{ $sample['dga'] ? $sample['dga']->history->trafo->catatan : 'N/A' }}</td>
             </tr>
             <tr>
                 <th colspan="1">Nomor Seri</th>
-                <td colspan="6">{{ $sample[0]->history->trafo->serial_number }}</td>
+                <td colspan="6">{{ $sample['dga'] ? $sample['dga']->history->trafo->serial_number : 'N/A' }}</td>
                 {{-- <th colspan="2"></th>
                 <th colspan="2"></th> --}}
             </tr>
             <tr>
                 <th colspan="1">Rated Power</th>
-                <td colspan="6">{{ $sample[0]->history->trafo->kva }}</td>
+                <td colspan="6">{{ $sample['dga'] ? $sample['dga']->history->trafo->kva : 'N/A' }}</td>
                 {{-- <th colspan="2"></th>
                 <th colspan="2"></th> --}}
             </tr>
@@ -779,33 +668,36 @@
             </tr>
             <tr>
                 <th>Tanggal Sampling</th>
-                <td>{{ $sample[1] == null ? $sample[0]->tanggal_sampling : $sample[1]->tanggal_sampling }}</td>
+                <td>{{ $sample['dga'] != null ? $sample['dga']->tanggal_sampling : null }}
+                </td>
                 <td>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_sampling }}</span>
-                    @endif
+                    {{-- @if ($sample['dga'] != null)
+                        <span> {{ $sample['dga']->tanggal_sampling }}</span>
+                    @endif --}}
                 </td>
                 <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Tanggal Terima</th>
-                <td>{{ $sample[1] == null ? $sample[0]->tanggal_kedatangan : $sample[1]->tanggal_kedatangan }}</td>
+                <td>{{ $sample['dga'] != null ? $sample['dga']->tanggal_kedatangan : null }}
+                </td>
                 <td>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_kedatangan }}</span>
-                    @endif
+                    {{-- @if ($sample['dga'] != null)
+                        <span> {{ $sample['dga']->tanggal_kedatangan }}</span>
+                    @endif --}}
                 </td>
                 <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Tanggal Pengujian</th>
-                <td>{{ $sample[1] == null ? $sample[0]->tanggal_pengujian : $sample[1]->tanggal_pengujian }}</td>
+                <td>{{ $sample['dga'] != null ? $sample['dga']->tanggal_pengujian : null }}
+                </td>
                 <td>
-                    @if ($sample[1] == null)
-                        <span> {{ $sample[0]->tanggal_pengujian }}</span>
-                    @endif
+                    {{-- @if ($sample['dga'] != null)
+                        <span> {{ $sample['dga']->tanggal_pengujian }}</span>
+                    @endif --}}
                 </td>
                 <th></th>
                 <th></th>
@@ -817,8 +709,8 @@
             <!-- bagian 4 -->
             <tr style="text-align: center;">
                 <th>Hidrogen</th>
-                <td>3</td>
-                <td>8</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Hidrogen (H2)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>5</td>
@@ -830,8 +722,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Etana</th>
-                <td>0</td>
-                <td>41</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Etana (C2H6)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>41</td>
@@ -843,8 +735,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Etilena</th>
-                <td>0</td>
-                <td>41</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Etilena (C2H4)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>338</td>
@@ -856,8 +748,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Asetilena</th>
-                <td>0</td>
-                <td>0</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Asetilena (C2H2)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>0</td>
@@ -869,8 +761,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Karbon Dioksida</th>
-                <td>8.9</td>
-                <td>2398</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Karbon Dioksida (CO2)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>2389.1</td>
@@ -882,8 +774,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Metana</th>
-                <td>0.12</td>
-                <td>42</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Metana (CH4)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>41.88</td>
@@ -895,8 +787,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>Karbon Monoksida</th>
-                <td>0.19</td>
-                <td>147</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['Karbon Monoksida (CO)'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>146.81</td>
@@ -908,8 +800,8 @@
             </tr>
             <tr style="text-align: center;">
                 <th>CO2/CO ratio</th>
-                <td>-</td>
-                <td>-</td>
+                <td>{{ $value['dga'] != null ? $value['dga']['CO2/CO ratio'] : 'N/A' }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <th colspan="6">Note: The Ratio for normal cellulosic decomposition (healthy) = 3 to 10</th>
@@ -999,11 +891,6 @@
             </tr>
             <tr>
                 <th colspan="11" style="font-weight: normal;">
-                    @if (isset($value['Analisa']))
-                        {{ $value['Analisa'] }}
-                    @else
-                        N/A
-                    @endif
                 </th>
             </tr>
             {{-- <tr>
@@ -1016,11 +903,6 @@
             </tr>
             <tr>
                 <th colspan="11" style="font-weight: normal;">
-                    @if (isset($value['Kesimpulan']))
-                        {{ $value['Kesimpulan'] }}
-                    @else
-                        N/A
-                    @endif
                 </th>
             </tr>
             <tr>
@@ -1028,18 +910,13 @@
             </tr>
             <tr>
                 <th colspan="11" style="font-weight: normal;">
-                    @if (isset($value['Rekomendasi']))
-                        {{ $value['Rekomendasi'] }}
-                    @else
-                        N/A
-                    @endif
                 </th>
             </tr>
             <tr>
                 <th colspan="11" align="left" style="border: none;">
                     <br>
                     <h4>Tanggerang,
-                        <span>{{ $sample[1] == null ? $sample[0]->tanggal_cetaklaporan : $sample[1]->tanggal_cetaklaporan }}</span>
+                        <span>{{ $sample['dga'] != null ? $sample['dga']->tanggal_cetaklaporan : null }}</span>
                     </h4>
                     <br>
                     <br>
