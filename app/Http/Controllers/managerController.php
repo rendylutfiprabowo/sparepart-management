@@ -13,16 +13,41 @@ class managerController extends Controller
     //
     public function viewUser()
     {
-        $warehouse = warehouse::all();
-        $technician = technician::all();
+        $query = request()->input('search');
+        $query = trim($query); // Remove leading/trailing whitespace
+
+        $warehouseQuery = warehouse::query(); // Create a query builder instance
+
+        if (!empty($query)) {
+            $warehouseQuery->where(function ($subQuery) use ($query) {
+                $subQuery->where('nama_warehouse', 'like', '%' . $query . '%')
+                    ->orWhere('phone_warehouse', 'like', '%' . $query . '%');
+            })
+                ->orWhereHas('store', function ($subQuery) use ($query) {
+                    $subQuery->where('nama_store', 'like', '%' . $query . '%');
+                });
+        }
+
+        $warehouse = $warehouseQuery->paginate(10); // Paginate the query builder, not the collection
+
+        $searchTechnician = request()->input('searchTechnician');
+        $technicianQuery = technician::query();
+        if (!empty($searchTechnician)) {
+            $technicianQuery->where('nama_technician', 'like', '%' . $searchTechnician . '%')
+                ->orWhere('phone_technician', 'like', '%' . $searchTechnician . '%');
+        }
+
+        $technician = $technicianQuery->paginate(10);
         $store = storeSparepart::all();
-        // @dd($warehouse);
+
         return view('sparepart.manager.addUser', [
             'warehouse' => $warehouse,
             'technician' => $technician,
             'store' => $store,
         ]);
     }
+
+
 
     public function storeWarehouse(Request $request)
     {

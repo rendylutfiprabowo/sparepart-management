@@ -41,12 +41,12 @@
 
                 </thead>
                 <tbody class="text-center">
+                    @php
+                        $no = ($warehouse->currentPage() - 1) * $warehouse->perPage();
+                    @endphp
                     @foreach ($warehouse as $no => $warehouses)
-                        @php
-                            $no = 1;
-                        @endphp
                         <tr>
-                            <td class="table-plus">{{ $no++ }}</td>
+                            <td class="table-plus">{{ ++$no }}</td>
                             <td class="table-plus">{{ $warehouses->nama_warehouse }}</td>
                             <td class="table-plus">{{ $warehouses->phone_warehouse }}</td>
                             <td class="table-plus">{{ $warehouses->store->nama_store ?? '-' }}</td>
@@ -59,6 +59,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $warehouse->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $warehouse->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $warehouse->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $warehouse->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="col-md-12 mt-3">
@@ -81,7 +95,13 @@
                 </div>
                 <div class="col">
                     <div class="d-flex justify-content-end">
-                        <x-searchbar url="/{{ request()->path() }}" value="{{ request()->input('search') }}" />
+                        <form class="input-group w-25" method="get" action="{{ request()->url() }}">
+                            <input class="form-control rounded-start-2 form-control-sm border" type="text"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" name="searchTechnician"
+                                value="{{ request()->input('searchTechnician') }}" placeholder="Search">
+                            <button type="submit" class="input-group-text bg-danger" id="basic-addon2"><i
+                                    class="bi bi-search text-white"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -99,13 +119,13 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
+                @php
+                    $no = ($technician->currentPage() - 1) * $technician->perPage();
+                @endphp
                 <tbody class="text-center">
-                    @foreach ($technician as $no => $technicians)
-                        @php
-                            $no = 1;
-                        @endphp
+                    @foreach ($technician as $technicians)
                         <tr>
-                            <td class="table-plus">{{ $no++ }}</td>
+                            <td class="table-plus">{{ ++$no }}</td>
                             <td class="table-plus">{{ $technicians->nama_technician }}</td>
                             <td class="table-plus">{{ $technicians->phone_technician }}</td>
                             </td>
@@ -117,6 +137,20 @@
                     @endforeach
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li class="page-item {{ $technician->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $technician->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $technician->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $technician->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     {{-- Add Account Warehouse --}}

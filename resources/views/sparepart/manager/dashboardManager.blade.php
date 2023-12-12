@@ -1,34 +1,112 @@
 @extends('template.managerSparepart')
+@section('title', 'Dashboard Warehouse')
 @section('contents')
-    <p style="font-size: 23px; color: black;">REPORT TEST HISTORY</p>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card rounded-4" style="border-left-color: red; border-left-width: 10px;">
-                <div class="card-body shadow">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="text-merah"><strong>Customer Name</strong></div>
-                            <div class="text-merah"><strong>Status Customer</strong></div>
-                            <div class="text-merah"><strong>Negara Asal</strong></div>
-                        </div>
-                        <div class="col-3">
-                            <div class="text-black">PLN</div>
-                            <div class="text-black">Aktif</div>
-                            <div class="text-black">Indonesia</div>
-                        </div>
-                        <div class="col-3">
-                            <div class="text-merah"><strong>Tahun</strong></div>
-                            <div class="text-merah"><strong>No Tag</strong></div>
-                            <div class="text-merah"><strong>Merk</strong></div>
-                        </div>
-                        <div class="col-3">
-                            <div class="text-black">2015</div>
-                            <div class="text-black">ASJB15</div>
-                            <div class="text-black">Desalter FOC 1</div>
-                        </div>
-                    </div>
+
+@section('contents')
+    <div>
+        <x-page-heading>
+            Dashboard
+        </x-page-heading>
+
+        <div class="row">
+            <x-card cardTitles="Total Item" iconClass="bi bi-diagram-3-fill" percents="{{ $totalItem }}" subTitles="For more"
+                href="/warehouse/stock" />
+            <x-card cardTitles="Total Order" iconClass="bi bi-journal-text" percents="{{ $totalOrder }}"
+                href="/warehouse/listspk" subTitles="For more" />
+            <x-card cardTitles="Order Closed" iconClass="bi bi-journal-x" percents="{{ $orderClosedNotif }} " href="#"
+                subTitles="For more" />
+        </div>
+        <div class="row mt-2">
+            <x-card cardTitles="Item Delivery" iconClass="bi bi-journal-x" percents="{{ $orderProgressNotif }} "
+                subTitles="For more" href="" />
+        </div>
+        <br>
+        <div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Order Result</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active rounded bg-white p-2 shadow-sm" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-home-tab">
+                    <div id="warehouseCenterChart"></div>
                 </div>
             </div>
         </div>
-    </div>
+        <br>
+
+        <script>
+            // Mengonversi data PHP menjadi format JSON dan menyimpannya di dalam variabel JavaScript
+            let orderClosedData = @json($orderClosed);
+            let orderProgressData = @json($orderProgress);
+            let bookingData = @json($booking);
+
+            // Ekstrak data untuk setiap kategori (total)
+            let orderClosedTotal = orderClosedData.map(entry => entry.total);
+            let orderProgressTotal = orderProgressData.map(entry => entry.total);
+            let bookingTotal = bookingData.map(entry => entry.total);
+
+            // Konfigurasi ZingChart
+            let myConfigWarehouse = {
+                type: "bar",
+                title: {
+                    text: "Order Result",
+                },
+                legend: {
+                    draggable: true,
+                },
+                scaleX: {
+                    // Set scale label
+                    label: {
+                        text: "Statistics",
+                    },
+                    // Convert text on scale indices
+                    labels: orderProgressData.map(entry => entry.month),
+                },
+                scaleY: {
+                    // Scale label with unicode character
+                    label: {
+                        text: "Total",
+                    },
+                },
+                plot: {
+                    // Animation docs here:
+                    // https://www.zingchart.com/docs/tutorials/styling/animation#effect
+                    animation: {
+                        effect: "ANIMATION_EXPAND_BOTTOM",
+                        method: "ANIMATION_STRONG_EASE_OUT",
+                        sequence: "ANIMATION_BY_NODE",
+                        speed: 275,
+                    },
+                },
+                series: [{
+                        // Plot 1 values, linear data
+                        values: bookingTotal,
+                        'background-color': "#FF8080",
+                        text: "Booking",
+                    },
+                    {
+                        // Plot 2 values, linear data
+                        values: orderProgressTotal,
+                        'background-color': '#8EACCD',
+                        text: "On-Progress",
+                    },
+                    {
+                        // Plot 2 values, linear data
+                        values: orderClosedTotal,
+                        'background-color': "#618264",
+                        text: "Closed",
+                    },
+                ],
+            };
+
+            zingchart.render({
+                id: "warehouseCenterChart",
+                data: myConfigWarehouse,
+            });
+        </script>
+    @endsection
+
 @endsection

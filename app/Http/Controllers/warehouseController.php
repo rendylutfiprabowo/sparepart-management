@@ -23,7 +23,51 @@ class warehouseController extends Controller
 
     public function dashboardManager()
     {
-        return view('sparepart.manager.dashboardManager');
+        $idStore = Auth::user()->warehouse->id_store;
+        $orderProgressNotif = Order::whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->count();
+        $orderClosedNotif = order::where('status', 'closed')->count();
+
+        // Ambil data per bulan untuk total item
+        $totalItem = stockSparepart::all()->count();
+
+        // Ambil data per bulan untuk total order
+        $totalOrder = order::all()->count();
+
+        // Ambil data per bulan untuk order closed
+        $orderClosed = order::where('status', 'closed')
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+        // Ambil data per bulan untuk order progress
+        $orderProgress = Order::whereNotNull('status')
+            ->where('status', '!=', 'closed')
+            ->where('status', '!=', null)
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+        // Ambil data per bulan untuk booking
+        $booking = order::where('status', null)
+            ->selectRaw('DATE_FORMAT(date_order, "%Y-%m") as month')
+            ->selectRaw('COUNT(*) as total')
+            ->groupBy('month')
+            ->get();
+
+        return view('sparepart.manager.dashboardManager', [
+            'totalItem' => $totalItem,
+            'totalOrder' => $totalOrder,
+            'orderClosed' => $orderClosed,
+            'orderProgress' => $orderProgress,
+            'booking' => $booking,
+            'orderProgressNotif' => $orderProgressNotif,
+            'orderClosedNotif' => $orderClosedNotif,
+        ]);
     }
     public function dashboardWarehouseBranch()
     {
