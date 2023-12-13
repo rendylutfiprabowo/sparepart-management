@@ -170,6 +170,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '0856027541982',
             'email_customer' => 'akucintazee@gmail.com',
             'jenisusaha_customer' => 'sanggar tari',
+            'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -178,6 +179,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '085602754434',
             'email_customer' => 'akucintashani@gmail.com',
             'jenisusaha_customer' => 'RM padang',
+            'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -186,6 +188,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '085602754112',
             'email_customer' => 'akucintaacel@gmail.com',
             'jenisusaha_customer' => 'toko kue',
+            'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -194,6 +197,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '08560275222',
             'email_customer' => 'akucintamatcha@gmail.com',
             'jenisusaha_customer' => 'cosplayer',
+            'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -202,6 +206,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '0856027541922',
             'email_customer' => 'akucintafreya@gmail.com',
             'jenisusaha_customer' => 'pembuat komik',
+            'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
 

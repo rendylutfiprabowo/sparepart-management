@@ -19,6 +19,7 @@ class customer extends Model
         'phone_customer',
         'email_customer',
         'jenisusaha_customer',
+        'address_customer',
         'id_user'
     ];
 
@@ -34,7 +35,6 @@ class customer extends Model
     {
         return $this->hasMany(booked::class, 'id_customer', 'id_customer');
     }
-
     public function order(): HasMany
     {
         return $this->hasMany(order::class, 'id_customer', 'id_customer');
