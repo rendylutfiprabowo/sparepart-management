@@ -33,14 +33,14 @@
         <div class="col-md-8">
             <x-card-default title="Sales Data Team" class="text-bg-light">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table text-center">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">SP Order</th>
-                                <th scope="col">Progress</th>
+                                <th scope="col">Oil labs</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,20 +49,8 @@
                                     <td scope="row">{{ $datasales->id_sales }}</td>
                                     <td>{{ $datasales->nama_sales }}</td>
                                     <td>{{ $datasales->phone_sales }}</td>
-
-                                    <td>{{ $totalOrderSP }}</td>
-                                    @php
-                                        $numberTarget = 100;
-                                        $result = ($totalOrderSP / $numberTarget) * 100;
-                                    @endphp
-                                    <td>
-                                        <div class="progress" role="progressbar" aria-label="Total Sales Progress"
-                                            aria-valuenow="{{ $result }}" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar bg-danger" style="width: {{ $result }}%">
-
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                         </tbody>
