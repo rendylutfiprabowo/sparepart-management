@@ -76,10 +76,11 @@
                                 <div class="row">
                                     @foreach ($dataCust->trafos as $trafo)
                                         <div class="col-4"><b>{{ $trafo->serial_number }}</b></div>
-                                        <div class="col-4">{{ $trafo->merk }}</div>
+                                        <div class="col-4"><small>{{ $trafo->merk }}</small></div>
                                         <div class="col-4"><a
                                                 href="/sales/customer/{{ $dataCust->id_customer }}/trafo/{{ $trafo->id_trafo }}"
-                                                class="text-danger">Detail</a></div>
+                                                class="text-danger"><span class="badge text-bg-danger">Detail</span></a>
+                                        </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -106,8 +107,7 @@
                         </button>
                         <div class="collapse" id="collapseSpareParts">
                             <div class="card card-body border-0">
-                                Some placeholder content for the collapse component. This panel is hidden by default but
-                                revealed when the user activates the relevant trigger.
+                                Kosong
                             </div>
                         </div>
                     </div>
@@ -132,8 +132,7 @@
                         </button>
                         <div class="collapse" id="collapseOil">
                             <div class="card card-body border-0">
-                                Some placeholder content for the collapse component. This panel is hidden by default but
-                                revealed when the user activates the relevant trigger.
+                                Kosong
                             </div>
                         </div>
                     </div>

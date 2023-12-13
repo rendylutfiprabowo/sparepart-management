@@ -16,6 +16,7 @@ use App\Models\history;
 use Illuminate\Http\Request;
 use App\Models\stockSparepart;
 use App\Models\storeSparepart;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Session;
@@ -128,7 +129,7 @@ class salesController extends Controller
 
     public function indexSparepart()
     {
-        $dataOrder = order::all();
+        $dataOrder = Order::whereNotNull('nama_kolom')->get();
         $dataStock = stockSparepart::count();
         return view('crm.sales.sparepart.indexSparepart', compact('dataStock', 'dataOrder'));
     }
