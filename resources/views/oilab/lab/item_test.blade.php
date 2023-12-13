@@ -66,6 +66,7 @@
                                                 </button>
                                             @endif
                                         </td>
+
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -91,8 +92,11 @@
                                             @csrf
                                             <input type="hidden" value="{{ $solab->no_so_solab }}" name="no_so_solab">
                                             <div class="form-group">
-                                                <label for="message-text" class="col-form-label">Message:</label>
-                                                <textarea class="form-control" id="message-text" name="notes_reportsample"></textarea>
+                                                <label for="note-choice" class="col-form-label">Select Note:</label>
+                                                <select class="form-control" id="note-choice" name="notes_reportsample">
+                                                    <option value="lengkap">Lengkap</option>
+                                                    <option value="tidak lengkap">Tidak Lengkap</option>
+                                                </select>
                                             </div>
                                     </div>
                                     <div class="modal-footer">
