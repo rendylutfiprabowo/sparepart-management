@@ -129,9 +129,13 @@ class salesController extends Controller
 
     public function indexSparepart()
     {
-        $dataOrder = Order::whereNotNull('nama_kolom')->get();
+        $dataOrders = order::all();
+        $ordermemo = $dataOrders->whereNotNull('memo_order')->count();
+        $orderspk = $dataOrders->whereNotNull('spk_order')->count();
+        $orderdo = $dataOrders->whereNotNull('do_order')->count();
+
         $dataStock = stockSparepart::count();
-        return view('crm.sales.sparepart.indexSparepart', compact('dataStock', 'dataOrder'));
+        return view('crm.sales.sparepart.indexSparepart', compact('dataStock', 'ordermemo', 'orderspk', 'orderdo'));
     }
 
     public function stockSparepart()
