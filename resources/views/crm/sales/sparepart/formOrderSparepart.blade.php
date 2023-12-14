@@ -32,7 +32,7 @@
                             <option value="" selected disabled>-- Pilih Customer --</option>
                             @foreach ($customers as $customer)
                                 <option value="{{ $customer->id_customer }}" data-phone="{{ $customer->phone_customer }}"
-                                    data-address="{{ $customer->jenisusaha_customer }}">
+                                    data-address="{{ $customer->address_customer }}">
                                     {{ $customer->nama_customer }}
                                 </option>
                             @endforeach
