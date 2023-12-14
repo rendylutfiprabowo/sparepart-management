@@ -197,8 +197,8 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span
                                 class="d-none d-lg-inline mr-3 font-weight-bold text-merah">{{ Auth::user()->username }}</span>
-                            <img class="img-profile rounded-circle" src="{{ asset('Asset/sales-image.jpg') }}"
-                                alt="avatars">
+                            {{-- <img class="img-profile rounded-circle" src="{{ asset('Asset/sales-image.jpg') }}"
+                                alt="avatars"> --}}
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right animated--grow-in shadow"

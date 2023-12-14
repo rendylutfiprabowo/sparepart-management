@@ -34,4 +34,6 @@ class pdfController extends Controller
 
         return view('oilab.lab.indexpdf', compact('sample', 'value'));
     }
+
+    
 }

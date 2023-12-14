@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-6">
                             <div class="text-merah"><strong>Sales Name</strong></div>
-                            <div class="text-black"><strong>-</strong></div>
+                            <div class="text-black"><strong>{{ $salesorderoil->sales->nama_sales }}</strong></div>
                         </div>
                     </div>
                 </div>
