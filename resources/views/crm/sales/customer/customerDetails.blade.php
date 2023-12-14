@@ -19,7 +19,7 @@
                     <img src="https://th.bing.com/th/id/R.19fa7497013a87bd77f7adb96beaf768?rik=144XvMigWWj2bw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fUser-Profile-PNG-High-Quality-Image.png&ehk=%2bat%2brmqQuJrWL609bAlrUPYgzj%2b%2f7L1ErXRTN6ZyxR0%3d&risl=&pid=ImgRaw&r=0"
                         class="bd-placeholder-img rounded-circle mt-4" width="140" height="140">
                     <h3>{{ $dataCust->nama_customer }}</h3>
-                    <p class="text-secondary">ID : {{ $dataCust->id_customer }}</p>
+                    <p>ID : {{ $dataCust->id_customer }}</p>
                     <br>
                 </div>
             </div>
@@ -59,29 +59,41 @@
                     <h6 class="text-secondary  text-center ">Trafos</h6>
                     <br>
                     <div>
-                        <label for="progress" class="text-secondary"> Owned Trafos :
-                            {{ $dataCust->trafos->count() }}</label>
-                        <div class="progress mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="100"
-                            aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-                            <div class="progress-bar bg-danger" style="width: {{ $dataCust->trafos->count() }}"></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <label for="trafos">Owned Trafos</label>
+                            <span class="badge text-bg-danger"> {{ $dataCust->trafos->count() }}</span>
                         </div>
                         <br>
                         <button class="btn btn-sm text-danger" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseHistory" aria-expanded="false" aria-controls="collapseExample">
+                            data-bs-target="#collapseTrafo" aria-expanded="false" aria-controls="collapseExample">
                             See more
                             <i class="bi bi-arrow-down-short"></i>
                         </button>
-                        <div class="collapse" id="collapseHistory">
+                        <div class="collapse" id="collapseTrafo">
                             <div class="card card-body border-0">
                                 <div class="row">
-                                    @foreach ($dataCust->trafos as $trafo)
+                                    {{-- @foreach ($dataCust->trafos as $trafo)
                                         <div class="col-4"><b>{{ $trafo->serial_number }}</b></div>
                                         <div class="col-4"><small>{{ $trafo->merk }}</small></div>
                                         <div class="col-4"><a
                                                 href="/sales/customer/{{ $dataCust->id_customer }}/trafo/{{ $trafo->id_trafo }}"
                                                 class="text-danger"><span class="badge text-bg-danger">Detail</span></a>
                                         </div>
-                                    @endforeach
+                                    @endforeach --}}
+                                    @forelse ($dataCust->trafos as $trafo)
+                                        <div class="col-4"><b>{{ $trafo->serial_number }}</b></div>
+                                        <div class="col-4"><small>{{ $trafo->merk }}</small></div>
+                                        <div class="col-4">
+                                            <a href="/sales/customer/{{ $dataCust->id_customer }}/trafo/{{ $trafo->id_trafo }}"
+                                                class="text-danger">
+                                                <span class="badge text-bg-danger">Detail</span>
+                                            </a>
+                                        </div>
+                                    @empty
+                                        <div class="col-12">
+                                            <p class="text-secondary">Tidak ada data trafo.</p>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
@@ -95,10 +107,6 @@
                     <div>
                         <br>
                         <label for="progress" class="text-secondary">Bushing</label>
-                        <div class="progress  mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-                            <div class="progress-bar bg-danger" style="width: 25%"></div>
-                        </div>
                         <br>
                         <button class="btn btn-sm text-danger" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseSpareParts" aria-expanded="false" aria-controls="collapseExample">
@@ -120,10 +128,6 @@
                     <div>
                         <br>
                         <label for="progress" class="text-secondary">Testing</label>
-                        <div class="progress  mt-2" role="progressbar" aria-label="Basic example" aria-valuenow="25"
-                            aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-                            <div class="progress-bar bg-danger" style="width: 85%"></div>
-                        </div>
                         <br>
                         <button class="btn btn-sm text-danger" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOil" aria-expanded="false" aria-controls="collapseExample">
