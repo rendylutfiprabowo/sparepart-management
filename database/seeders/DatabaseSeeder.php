@@ -163,50 +163,31 @@ class DatabaseSeeder extends Seeder
             'id_user' => 'USR-20',
         ]);
 
-
+        // CUSTOMERS
         customer::create([
             'id_customer' => '60007596',
-            'nama_customer' => 'PT Pertamina Indonesia',
+            'nama_customer' => 'PT SEMESTA JAYA ABADI',
             'phone_customer' => '0856027541982',
-            'email_customer' => 'akucintazee@gmail.com',
-            'jenisusaha_customer' => 'sanggar tari',
+            'email_customer' => 'semestajaya@gmail.com',
+            'jenisusaha_customer' => 'RETAIL',
             'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
             'id_customer' => '60007510',
-            'nama_customer' => 'PT PLN Persero',
+            'nama_customer' => 'PT INTI JAYA ABADI',
             'phone_customer' => '085602754434',
-            'email_customer' => 'akucintashani@gmail.com',
-            'jenisusaha_customer' => 'RM padang',
+            'email_customer' => 'intijayaabadi@sample.com',
+            'jenisusaha_customer' => 'RETAIL',
             'address_customer'=>'jalan-jalan',
             'id_user' => NULL,
         ]);
         customer::create([
-            'id_customer' => '60007522',
-            'nama_customer' => 'PT Cinta Sejati',
-            'phone_customer' => '085602754112',
-            'email_customer' => 'akucintaacel@gmail.com',
-            'jenisusaha_customer' => 'toko kue',
-            'address_customer'=>'jalan-jalan',
-            'id_user' => NULL,
-        ]);
-        customer::create([
-            'id_customer' => '60007593',
-            'nama_customer' => 'SCI Lampung',
-            'phone_customer' => '08560275222',
-            'email_customer' => 'akucintamatcha@gmail.com',
-            'jenisusaha_customer' => 'cosplayer',
-            'address_customer'=>'jalan-jalan',
-            'id_user' => NULL,
-        ]);
-        customer::create([
-            'id_customer' => '60007591',
-            'nama_customer' => 'PT BUMITAMA',
-            'phone_customer' => '0856027541922',
-            'email_customer' => 'akucintafreya@gmail.com',
-            'jenisusaha_customer' => 'pembuat komik',
-            'address_customer'=>'jalan-jalan',
+            'id_customer' => '600075555',
+            'nama_customer' => 'PT ABADI MAKMUR ',
+            'phone_customer' => '085602754444',
+            'email_customer' => 'abadi@sample.com',
+            'jenisusaha_customer' => 'RETAIL',
             'id_user' => NULL,
         ]);
 
@@ -451,9 +432,9 @@ class DatabaseSeeder extends Seeder
                 '2fal' => 0,
                 '2acf' => 0,
                 '5mef' => 0,
-                'Total 2 FAL'=> 0,
-                'Total Furan'=> 0,
-                'Estimate DP'=> 0,
+                'Total 2 FAL' => 0,
+                'Total Furan' => 0,
+                'Estimate DP' => 0,
                 'Kategori Hasil Furan' => 0,
                 'Remaining Life Time' => 0,
                 'Rekomendasi Furan' => 0
@@ -571,7 +552,7 @@ class DatabaseSeeder extends Seeder
             'Warna_oil' => 'merah',
             'kapasitas_minyak' => '2000 L',
             'catatan' => 'aman',
-            'umur_trafo'=> '23 tahun',
+            'umur_trafo' => '23 tahun',
             'id_customer' => '23',
         ]);
         trafo::create([
@@ -589,7 +570,7 @@ class DatabaseSeeder extends Seeder
             'Warna_oil' => 'merah',
             'kapasitas_minyak' => '2000 L',
             'catatan' => 'aman',
-            'umur_trafo'=> '25 tahun',
+            'umur_trafo' => '25 tahun',
             'id_customer' => '23',
         ]);
 

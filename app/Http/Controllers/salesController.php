@@ -413,5 +413,7 @@ class salesController extends Controller
             ['saleslog' => $saleslog],
             ['salesProfile' => $salesProfile],
         );
+
+        // dd($salesProfile);
     }
 }

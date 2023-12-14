@@ -71,8 +71,8 @@
                                 <label for="colFormLabelSm"
                                     class="col-sm-2 col-form-label col-form-label-sm text-secondary">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" value="-" class="form-control form-control-sm"
-                                        id="colFormLabelSm" disabled>
+                                    <input type="email" value="{{ $salesProfile->email }}"
+                                        class="form-control form-control-sm" id="colFormLabelSm" disabled>
                                 </div>
                             </div>
                             <div class="row mb-3">
