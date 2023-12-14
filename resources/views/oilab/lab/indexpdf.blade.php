@@ -405,7 +405,7 @@
                 <th></th>
                 <th></th>
                 <th>Poor</th>
-                <th>Pair</th>
+                <th>Fair</th>
                 <th>Good</th>
                 <th>Condition</th>
             </tr>
@@ -414,96 +414,178 @@
                 <td>Color / Appereance</td>
                 <td>ASTM Color</td>
                 <td>ASTM D1500</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['Color / Appreance'] : 'N/A' }}
+                <td style="text-align: center;">
+                    {{ $value['oa'] != null && $value['oa']['Color / Appreance'] != -1 ? $value['oa']['Color / Appreance'] : 'N/A' }}
                 </td>
                 <td></td>
                 <td></td>
                 <td style="text-align: center;">>3.5</td>
                 <td style="text-align: center;">-</td>
-                <td style="text-align: center;"><3.5 </td>
-                <td style="background-color: red; font-weight: bold;">Poor</td>
+                <td style="text-align: center;">
+                    <3.5 </td>
+                        @if ($value['oa'] > 3.5)
+                <td style="background-color: Red; font-weight: bold;">
+                    Poor
+                </td>
+            @elseif ($value['oa'] < 3.5)
+                <td style="background-color: Green; font-weight: bold;">
+                    Good
+                </td>
+            @else
+                <td style="background-color: Yellow; font-weight: bold;">
+                    Fair
+                </td>
+                @endif
             </tr>
             <tr>
                 <td>Breakdown Voltage (Dielectric Strength)</td>
                 <td>Kv</td>
                 <td>IEC 60156</td>
                 <td style="text-align: center;">
-                    {{ $value['oa'] != null ? $value['oa']['Breakdown Voltage (Dieclectric Strength)'] : 'N/A' }}</td>
+                    {{ $value['oa'] != null && $value['oa']['Breakdown Voltage (Dieclectric Strength)'] != -1 ? $value['oa']['Breakdown Voltage (Dieclectric Strength)'] : 'N/A' }}
+                </td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center;"><30 </td>
+                <td style="text-align: center;">
+                    <30 </td>
                 <td style="text-align: center;">30-40</td>
                 <td style="text-align: center;">>40</td>
-                <td style="background-color: red; font-weight: bold;">Poor</td>
+                @if ($value['oa'] > 40)
+                    <td style="background-color: Green; font-weight: bold;">
+                        Good
+                    </td>
+                @elseif ($value['oa'] < 30)
+                    <td style="background-color: Red; font-weight: bold;">
+                        Poor
+                    </td>
+                @else
+                    <td style="background-color: Yellow; font-weight: bold;">
+                        Fair
+                    </td>
+                @endif
+
             </tr>
             <tr>
                 <td>Interfacial Tension</td>
                 <td>Mn/M</td>
                 <td>ASTM D971</td>
                 <td style="text-align: center;">
-                    {{ $value['oa'] != null ? $value['oa']['Interfacial Tension'] : 'N/A' }}</td>
+                    {{ $value['oa'] != null && $value['oa']['Interfacial Tension'] != -1 ? $value['oa']['Interfacial Tension'] : 'N/A' }}
+                </td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center;"><22</td>
+                <td style="text-align: center;">
+                    <22 </td>
                 <td style="text-align: center;">20-28</td>
                 <td style="text-align: center;">>28</td>
-                <td></td>
+                @if ($value['oa'] < 22)
+                    <td style="background-color: Red; font-weight: bold;">
+                        Poor
+                    </td>
+                @elseif ($value['oa'] > 28)
+                    <td style="background-color: Green; font-weight: bold;">
+                        Good
+                    </td>
+                @else
+                    <td style="background-color: Yellow; font-weight: bold;">
+                        Fair
+                    </td>
+                @endif
             </tr>
             <tr>
                 <td>Total Acid Number (TAN)</td>
                 <td>mg Koh/g</td>
                 <td>IEC 62021-2</td>
                 <td style="text-align: center;">
-                    {{ $value['oa'] != null ? $value['oa']['Total Acid Number (TAN)'] : 'N/A' }}</td>
+                    {{ $value['oa'] != null && $value['oa']['Total Acid Number (TAN)'] != -1 ? $value['oa']['Total Acid Number (TAN)'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td style="text-align: center;">>0.3</td>
                 <td style="text-align: center;">15-0.3</td>
                 <td style="text-align: center;">>15</td>
-                <td style="background-color: yellow; font-weight: bold;">Fair</td>
+                @if ($value['oa'] > 0.3)
+                    <td style="background-color: Red; font-weight: bold;">
+                        Poor
+                    </td>
+                @elseif ($value['oa'] > 15)
+                    <td style="background-color: Green; font-weight: bold;">
+                        Good
+                    </td>
+                @else
+                    <td style="background-color: Yellow; font-weight: bold;">
+                        Fair
+                    </td>
+                @endif
             </tr>
             <tr>
                 <td>Water Content</td>
                 <td>ppm</td>
                 <td>IEC-60814</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['Water Content'] : 'N/A' }}
+                <td style="text-align: center;">{{ $value['oa'] != null && $value['oa']['Water Content'] != -1 ? $value['oa']['Water Content'] : 'N/A' }}
                 </td>
                 <td></td>
                 <td></td>
                 <td style="text-align: center;">>40</td>
                 <td style="text-align: center;">30-40</td>
-                <td style="text-align: center;"><30</td>
-                <td style="background-color: red; font-weight: bold;">Poor</td>
+                <td style="text-align: center;">
+                    <30 </td>
+                        @if ($value['oa'] > 40)
+                <td style="background-color: Red; font-weight: bold;">
+                    Poor
+                </td>
+            @elseif ($value['oa'] < 30)
+                <td style="background-color: Green; font-weight: bold;">
+                    Good
+                </td>
+            @else
+                <td style="background-color: Yellow; font-weight: bold;">
+                    Fair
+                </td>
+                @endif
             </tr>
             <tr>
                 <td>Oil Quality Index (OQIN)</td>
                 <td>-</td>
                 <td>WP-222</td>
                 <td style="text-align: center;">
-                    {{ $value['oa'] != null ? $value['oa']['Oil Quality Index (OQIN)'] : 'N/A' }}</td>
+                    {{ $value['oa'] != null && $value['oa']['Oil Quality Index (OQIN)'] != -1 ? $value['oa']['Oil Quality Index (OQIN)'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
-                <td style="text-align: center;"><160</td>
+                <td style="text-align: center;">
+                    <160 </td>
                 <td style="text-align: center;">160-300</td>
                 <td style="text-align: center;">>300</td>
-                <td></td>
+                @if ($value['oa'] < 160)
+                    <td style="background-color: Red; font-weight: bold;">
+                        Poor
+                    </td>
+                @elseif ($value['oa'] > 300)
+                    <td style="background-color: Green; font-weight: bold;">
+                        Good
+                    </td>
+                @else
+                    <td style="background-color: Yellow; font-weight: bold;">
+                        Fair
+                    </td>
+                @endif
             </tr>
             <tr>
                 <td>Sediment & Sludge</td>
                 <td>%</td>
                 <td>IEC 60422</td>
                 <td style="text-align: center;">
-                    {{ $value['oa'] != null ? $value['oa']['Sendiment & Sludge'] : 'N/A' }}</td>
+                    {{ $value['oa'] != null && $value['oa']['Sendiment & Sludge'] != -1 ? $value['oa']['Sendiment & Sludge'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
-                <td colspan="3" style="text-align: center;">No Sediment or precitipitable sludge. Result below 0.02% by mass may be neglected</td>
+                <td colspan="3" style="text-align: center;">No Sediment or precitipitable sludge. Result below
+                    0.02% by mass may be neglected</td>
                 <td></td>
             </tr>
             <tr>
                 <td>Density</td>
                 <td>g/Ml</td>
                 <td>ISO 3675</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['Density'] : 'N/A' }}</td>
+                <td style="text-align: center;">{{ $value['oa'] != null && $value['oa']['Density'] != -1 ? $value['oa']['Density'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;">Max 0.895 at 29.5*C</td>
@@ -513,7 +595,7 @@
                 <td>PCB</td>
                 <td>g/Ml</td>
                 <td>ISO-2</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['PCB'] : 'N/A' }}</td>
+                <td style="text-align: center;">{{ $value['oa'] != null && $value['oa']['PCB'] != -1 ? $value['oa']['PCB'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;">
@@ -524,7 +606,7 @@
                 <td>Corrosive Sulfur</td>
                 <td>-</td>
                 <td>ASTM D1275</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['Corrosive Sulfur'] : 'N/A' }}
+                <td style="text-align: center;">{{ $value['oa'] != null && $value['oa']['Corrosive Sulfur'] != -1 ? $value['oa']['Corrosive Sulfur'] : 'N/A' }}
                 </td>
                 <td></td>
                 <td></td>
@@ -535,7 +617,7 @@
                 <td>Flash Point</td>
                 <td>*C</td>
                 <td>ISO 2719</td>
-                <td style="text-align: center;">{{ $value['oa'] != null ? $value['oa']['Flash Point'] : 'N/A' }}</td>
+                <td style="text-align: center;">{{ $value['oa'] != null && $value['oa']['Flash Point'] != -1 ? $value['oa']['Flash Point'] : 'N/A' }}</td>
                 <td></td>
                 <td></td>
                 <td colspan="3" style="text-align: center;"> 135*C</td>

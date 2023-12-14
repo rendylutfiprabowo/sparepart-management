@@ -110,6 +110,7 @@ class labController extends Controller
                 $trafos->volume_oil = $validated['volume_oil'];
                 $trafos->warna_oil = $validated['warna_oil'];
                 $trafos->kapasitas_minyak = $validated['kapasitas_minyak'];
+                $trafos->catatan = $validated['catatan'];
                 $trafos->umur_trafo = $validated['umur_trafo'];
                 $trafos->id_customer = $project->id_customer;
                 $trafos->save();
