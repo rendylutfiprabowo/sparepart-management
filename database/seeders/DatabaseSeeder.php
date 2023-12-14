@@ -170,6 +170,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '0856027541982',
             'email_customer' => 'semestajaya@gmail.com',
             'jenisusaha_customer' => 'RETAIL',
+            'address_customer'=>'Jl. Veteran No. 16, Bukit Cermin, Tanjung Pinang Timur, Tanjung Pinang, Kep. Riau 477026',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -178,6 +179,7 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '085602754434',
             'email_customer' => 'intijayaabadi@sample.com',
             'jenisusaha_customer' => 'RETAIL',
+            'address_customer'=>'Jl. Veteran No. 16, Bukit Cermin, Tanjung Pinang Timur, Tanjung Pinang, Kep. Riau 477026',
             'id_user' => NULL,
         ]);
         customer::create([
@@ -186,6 +188,8 @@ class DatabaseSeeder extends Seeder
             'phone_customer' => '085602754444',
             'email_customer' => 'abadi@sample.com',
             'jenisusaha_customer' => 'RETAIL',
+            'address_customer'=>'Jl. Veteran No. 16, Bukit Cermin, Tanjung Pinang Timur, Tanjung Pinang, Kep. Riau 477026',
+
             'id_user' => NULL,
         ]);
 
