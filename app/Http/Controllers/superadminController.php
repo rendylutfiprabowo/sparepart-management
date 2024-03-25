@@ -62,6 +62,7 @@ class superadminController extends Controller
 
     public function createaccount()
     {
+        
         return view('superadmin.createaccount');
     }
 

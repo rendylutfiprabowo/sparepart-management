@@ -118,4 +118,10 @@ class managerController extends Controller
 
         return redirect('/manager/addUser');
     }
+
+    public function viewPrint()
+    {
+
+        return view('sparepart.manager.printReport');
+    }
 }

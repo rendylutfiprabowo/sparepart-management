@@ -2,7 +2,7 @@
 @section('title', 'Dashboard Sales')
 @section('contents')
 
-    <x-page-heading>
+    {{-- <x-page-heading>
         Dashboard Analytic
     </x-page-heading>
 
@@ -61,7 +61,7 @@
     </div>
 
     {{-- Bar Chart --}}
-    <script>
+    {{-- <script>
         var phpDataChart = {
             percentageSales: @json($percentageSales),
             customersTotal: @json($customersTotal),
@@ -78,7 +78,7 @@
         var phpOilChart = {
             totalOilSample: @json($oilSample)
         }
-    </script>
-
+    </script> --}}
+ 
 
 @endsection

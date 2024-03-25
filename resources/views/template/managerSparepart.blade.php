@@ -21,6 +21,15 @@
                     </a>
                 </li>
             </ul>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('manager/printReport*') ? 'text-white active-sidebar-link rounded' : 'fw-normal' }}"
+                        href="/manager/printReport">
+                        <i class="bi bi-printer"></i>
+                        Print Report
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 @endsection

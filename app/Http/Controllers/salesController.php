@@ -59,7 +59,7 @@ class salesController extends Controller
     public function addScopeSalesOrderOil($id_project, $id_history)
     {
         $project = project::where('id_project', $id_project)->firstOrFail();
-        $history = history::where('id', $id_history)->firstOrFail();
+        // $history = history::where('id', $id_history)->firstOrFail();
         $scopes = scope::all();
         return view('crm.sales.oilab.addScopeSalesOrderOil', compact('history', 'project', 'scopes'));
     }
@@ -83,39 +83,39 @@ class salesController extends Controller
         return view('crm.sales.oilab.reportOil', compact('salesorderoil', 'sample'));
     }
 
-    public function sampleOil()
-    {
-        $salesorderoil = solab::all()->whereNotNull('id_project');
-        $histories = history::all();
-        $sample = sample::all();
-        // $reportSample = reportSample::all();
-        // dd($reportSample);
-        return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'histories'));
-    }
+    // public function sampleOil()
+    // {
+    //     $salesorderoil = solab::all()->whereNotNull('id_project');
+    //     $histories = history::all();
+    //     $sample = sample::all();
+    //     // $reportSample = reportSample::all();
+    //     // dd($reportSample);
+    //     return view('crm.sales.oilab.sampleOil', compact('salesorderoil', 'sample', 'histories'));
+    // }
 
-    public function historyOil()
-    {
-        $customers = customer::all();
-        return view('crm.sales.oilab.historyOil', [
-            'customers' => $customers,
-        ]);
-    }
-    public function detailHistoryOil($id_trafo)
-    {
-        $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
-        $histories = $trafo->histories->whereNotNull('finish');
-        return view('crm.sales.oilab.detailHistoryOil', [
-            'trafo' => $trafo,
-        ]);
-    }
-    public function detailTrafo($id_customer,$id_trafo)
-    {
-        $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
-        $histories = $trafo->histories->whereNotNull('finish');
-        return view('crm.sales.oilab.detailHistoryOil',[
-            'trafo'=>$trafo,
-        ]);
-    }
+    // public function historyOil()
+    // {
+    //     $customers = customer::all();
+    //     return view('crm.sales.oilab.historyOil', [
+    //         'customers' => $customers,
+    //     ]);
+    // }
+    // public function detailHistoryOil($id_trafo)
+    // {
+    //     $trafo = trafo::where('id_trafo', $id_trafo)->firstOrFail();
+    //     $histories = $trafo->histories->whereNotNull('finish');
+    //     return view('crm.sales.oilab.detailHistoryOil', [
+    //         'trafo' => $trafo,
+    //     ]);
+    // }
+    // public function detailTrafo($id_customer,$id_trafo)
+    // {
+    //     $trafo = trafo::where('id_trafo',$id_trafo)->firstOrFail();
+    //     $histories = $trafo->histories->whereNotNull('finish');
+    //     return view('crm.sales.oilab.detailHistoryOil',[
+    //         'trafo'=>$trafo,
+    //     ]);
+    // }
 
     // ================ SPAREPARTS ============================
 
@@ -298,7 +298,7 @@ class salesController extends Controller
         $salesData = sales::all();
         $orderSpareparts = order::all();
         $totalOrderSP = order::count();
-        $oilSample = sample::count();
+        // $oilSample = sample::count();
 
         // Calculations for charts
         $divideNumber = 1000;
@@ -314,7 +314,7 @@ class salesController extends Controller
             'percentageSales',
             'percentageCustomers',
             'percentageProjects',
-            'oilSample',
+            // 'oilSample',
         ));
     }
 

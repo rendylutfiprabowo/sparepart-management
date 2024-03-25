@@ -140,6 +140,7 @@ Route::middleware(['auth', 'managerSparepart'])->group(function () {
     Route::get('/manager/addUser', [managerController::class, 'viewUser']);
     Route::post('/manager/addUser/warehouse', [managerController::class, 'storeWarehouse']);
     Route::post('/manager/addUser/technician', [managerController::class, 'storeTechnician']);
+    Route::get('/manager/printReport', [managerController::class, 'viewPrint']);
 });
 
 //Role Manager Center

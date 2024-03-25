@@ -1,67 +1,71 @@
 @extends('template.superadmin')
 @section('contents')
-    <!-- lOGO TRAFOINDO -->
-    <div class="container d-flex justify-content-center align-items-center">
-        <img src="/Asset/LogoTrafoindo.png" alt="Centered Image" style="width: 235px;">
-    </div>
-    <!--  -->
-    <!-- form salesorder -->
-    <div>
-        <form action="/materialstore" method="post">
-            @csrf
+     <div class="col-md-12">
+        <div class="card rounded-4 p-4">
+            <thead>
+                <tr>
+                    <h3 class="text-dark my-2 text-start" style="font-weight: bold;">List Account Warehouse</h3>
+                </tr>
+                <hr class="mt-1" style="background-color: black;">
+            </thead>
             <div class="row">
-                <div class="col-md-5"></div> <!-- div kosong -->
-                <div class="col-md-5"></div> <!-- div kosong -->
-                
-            </div>
-            <div class="container-fluid">
-                <div class="mb-3">
-                    <label for="id_mr" class="form-label">PR NO</label>
-                    <input type="text" class="form-control" id="id_mr" placeholder="Masukan id MR"
-                        value="" name="id_mr" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="tanggal" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="tanggal" value=""
-                        placeholder="Masukan Tanggal" name="tanggal_mr">
-                </div>
-                <div class="mb-3">
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1" class="form-label">Division Name</label>
-                        <input list="options" class="form-control" id="exampleFormControlSelect1"
-                            placeholder="Type to search">
-                        <datalist id="options">
-                            <option value="Option 1">
-                            <option value="Option 2">
-                            <option value="Option 3">
-                        </datalist>
+                <div class="col">
+                    <div class="d-flex justify-content-start">
+                        <div class="">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#addwarehouse"><i class="fa-solid fa-plus"></i> Add Warehouse
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Division Code</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Project"
-                        name="">
+                <div class="col">
+                    <div class="d-flex justify-content-end">
+                        <x-searchbar url="/{{ request()->path() }}" value="{{ request()->input('search') }}" />
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Note</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="keterangan"></textarea>
-                </div>
-                <button type="submit">submit</button>
-                <!-- <input type="submit" value="Submit"> -->
-        </form>
+            </div>
+             
+            <table class="table-bordered mt-3 table" width="100%" cellspacing="">
+                <thead class="text-center">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Warehouse</th>
+                        <th scope="col">No.HP</th>
+                        <th scope="col">Branch</th>
+                        <th scope="col">Action</th>
+                    </tr>
 
-        <!-- button back -->
-        <div class="row mb-5">
-            <div class="col-6">
-                <a href="\materialrequest" class="btn btn-danger btn-md font-weight-bold text-white mt-5">
-                    Back
-                </a>
-            </div>
-            <div class="col-6 text-end">
-                <a href="/tabelmaterialmr" type="submit" class="btn btn-danger btn-md font-weight-bold text-white mt-5">
-                    Next
-                </a>
-            </div>
+                </thead>
+                <tbody class="text-center">
+                     
+                        <tr>
+                            <td class="table-plus">no</td>
+                            <td class="table-plus">nama</td>
+                            <td class="table-plus">phone</td>
+                            <td class="table-plus">nama</td>
+                            </td>
+                            <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#"><i
+                                        class="fa-regular fa-file fa-lg"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {{-- @endforeach --}}
+                </tbody>
+            </table>
+            {{-- <ul class="pagination">
+                <li class="page-item {{ $warehouse->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $warehouse->previousPageUrl() }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <li class="page-item {{ $warehouse->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $warehouse->nextPageUrl() }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul> --}}
         </div>
     </div>
 @endsection

@@ -54,6 +54,9 @@
                             <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#"><i
                                         class="fa-regular fa-file fa-lg"></i>
                                 </button>
+                                <a class="btn btn-dark" href="/manager/addUser">
+                                    <i class="fa fa-trash"></i>
+                                </a> 
                             </td>
                         </tr>
                     @endforeach
@@ -132,6 +135,9 @@
                             <td><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#"><i
                                         class="fa-regular fa-file fa-lg"></i>
                                 </button>
+                                <a class="btn btn-dark" href="/manager/addUser">
+                                    <i class="fa fa-trash"></i>
+                                </a> 
                             </td>
                         </tr>
                     @endforeach
